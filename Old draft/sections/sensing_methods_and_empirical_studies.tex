@@ -1,0 +1,114 @@
+\section{Sensing Methods}
+In this section an overview of the sensing methods used for LCM is givena and the commonly used signal processing methods or models are described for each of the sensing methods. Online sensing methods for collecting data which is informative on the lubrication condition in ball bearings can be categorized in multiple ways. In this section methods are categorized as either active or passive and invasive or non-invasive.
+
+A sensing method is considered active if it induces, transmits or in another way supplies energy into the ball bearing system in order to allow a sensor to measure the resulting behaviour or response of the system. A sensing method is considered passive if it is not active, i.e. it solely measures signals which inherently stem from the bearing system under operation.
+
+A sensing method is considered invasive if it requires unobstructed line of sight into the bearing, direct physical contact with the lubricant, mounting inside the bearing, altering the construction of the bearing or physically extracting samples of the lubricant. A sensing methods is considered non-invasive if it requires none of the above.
+
+\subsection{Invasive Methods}
+The below section briefly summarises non-invasive online sensing methods for lubrication condition monitoring in ball bearings. A categorization of the sensed physical quantities and signal processing methods is seen in Table \ref{tab:invasive_methods}.
+
+\subsubsection{Optical Methods}
+Optical methods employ light-based techniques to assess lubrication conditions. These methods include the use of fiber optic sensors, laser interferometry, or other optical measurement techniques to detect debris content which are then linked to lubricant viscosity \cite{shang_comprehensive_2024} \cite{maruyama_lubrication_2019} \cite{dai_situ_2024}. The methods are invasive as they require direct line of sight to the lubricant and might need to be mounted in a way that alters the construction of the bearing.
+\\\\
+\textbf{Signal Processing}\\
+The following methods are used to derive lubrication conditions from optical measurements:
+\begin{itemize}
+    \item Multi-target tracking: algorithms utilizing blob extraction and Kalman filtering track multiple debris particles to compute their velocity which is linked to bearing damage \cite{liu_oil_2022}.
+    \item Classification: convolutional neural networks are employed for particle classification distinguishing wear debris from air bubble interference based on image features \cite{wang_online_2022}.
+    \item Statistical modeling: various statistical models including response surface methodology, ANOVA and regressions relate debris content to fluid viscosity \cite{liu_oil_2022}.
+\end{itemize}
+
+\subsection{Active Methods}
+The below section briefly summarises active sensing methods for lubrication condition monitoring. A categorization of the sensed physical quantities and signal processing methods is seen in Table \ref{tab:invasive_methods}.
+
+\subsubsection{Ultrasonic Detection Methods}
+Active ultrasonic methods utilize high-frequency sound waves to probe the lubrication film within a bearing. An ultrasonic wave is transmitted into the bearing and the modulation of this wave in the bearing contains information on the system. Ultrasonic methods can provide real-time measurements of film thickness and lubrication condition and operate on the principle that ultrasonic waves are partially reflected at the interface between the lubricant film and the bearing surfaces. The reflection coefficient is dependent on the film thickness and acoustic impedance of the materials involved. In conjunction with physical models of reflection and transmission the film thickness can be inferred from the measured ultrasonic signals \cite{chen_evaluation_2023} \cite{chen_sub-nyquist_2025} \cite{drinkwater_ultrasonic_2009}.
+\\\\
+\textbf{Modelling}\\
+A reference signal is established by transmitting an ultrasonic signal into the bearing under known lubrication conditions and observing the modulation. The measured signal during operation is then compared to the reference signal to determine a reflection coefficient. The film thickness can then be calculated by using models of acoustic wave propagation and reflection \cite{chen_evaluation_2023} \cite{drinkwater_ultrasonic_2009}.
+
+\subsubsection{Electrical Methods}
+These methods consider the ball bearing and lubricant as parts of an electrical system where changes in the lubrication film thickness and condition affect the overall electrical properties of the system. Three different electrical concepts are used to estimate lubrication conditions: capacitance, impedance and resistance. All of the methods rely on an electrical current being induced into the bearing and then observing the modulation of signal as a consequence of the state of the bearing system. A reference signal is established under known conditions and signals under operation are then subsequently compared to the reference signal. \cite{cen_ehl_2021} \cite{becker-dombrowsky_electrical_2024}.
+\\\\
+% \textbf{Electrical Capacitance}\\
+% A device introduces \todo{elaborate} a current into the bearing-lubricant system and measures changes \todo{with respect to what} in capacitance which are related to changes in film thickness, metallic debris in the lubricant and dielectric properties of the lubricant \cite{cen_ehl_2021}
+% \\\\
+% \textbf{Electrical Impedance}\\
+% A device introduces a current into the bearing-lubricant system and measures the resulting impedance. Changes in the lubrication film thickness and condition affect the impedance, which can be analyzed to infer lubrication status \cite{maruyama_lubrication_2023}.
+% \\\\
+% \textbf{Electrical Resistance}\\
+% Measures the electrical resistance generated in the elastohydrodynamic lubrication \todo{has not previously been introduced} (EHL) contacts. It is primarily used to measure the breakdown ratio of oil films and identify friction and wear mechanisms, particularly under mixed lubrication \cite{maruyama_lubrication_2023}.
+\textbf{Modelling}\\
+Two main approaches are used to convert electrical measurements into film thickness:
+\begin{itemize}
+    \item Physics based models of capacitance, impedance and resistance which establish expected relationships between lubrication conditions and the electrical signal used \cite{cen_ehl_2021} \cite{becker-dombrowsky_electrical_2024} \cite{schneider_method_2022}.
+    \item Relative to a benchmark: Uses calibration tests with reference lubricants to derive an empirical relationship between the measured capacitance or output voltage and the calculated theoretical film thickness, e.g. using Hamrock-Dowson equations \cite{cen_ehl_2021}.
+\end{itemize}
+
+\subsubsection{Surface Acoustic Wave}
+A surface acoustic wave (SAW) is an acoustic wave propagating along the surface of an elastic material and which decays quickly with depth in the material. Piezoelectric probes placed underneath the surface of the raceway actively excite SAWs that propagate along the surface of the raceway. As these waves interact with the lubricant film energy is transferred to the lubricant causing measurable wave attenuation and a time delay which can the be used to infer the lubrication condition \cite{kestel_condition_2025}. The SAW can also be invasive if the sensors must be mounted inside the bearing.
+\\\\
+\textbf{Signal Processing and Modelling}\\
+SAW signals are used for inference about the lubrication conditions by either 
+\begin{itemize}
+    \item Signal processing: the time delay and amplitude attenuation is used to assess changes in lubrication conditions and the frequency content and moduation is correlated to the operating and lubrication conditions, e.g. estimated with the Hamrock-Dowson equations \cite{lindner_a23_2011} \cite{tatzgern_tribo-acoustic_2025}.
+    \item The physics based spring model is used to infer film thickness from SAWs reflected by the lubricant \cite{tatzgern_tribo-acoustic_2025}.
+\end{itemize}
+
+\subsubsection{Magnetic Methods}
+Magnetic methods utilize the magnetic properties of certain lubricants, additives or wear debris to monitor lubrication conditions. By applying a magnetic field and measuring changes in magnetic flux or reluctance these methods can detect variations in lubricant film thickness and the presence of metallic debris \cite{sun_online_2021}.
+\\\\
+\textbf{Signal Processing}\\
+The magnitude of the output pulse signal is used to determine the size of the debris, and the polarity or phase of the signal is used to determine the material. Inductive sensors often use high-frequency AC excitation. The resulting modulated high-frequency AC signal must pass through a demodulation circuit and filter to eliminate harmonics and noise interference before the characteristic signal can be analyzed. Prior to feature extraction, the raw signal is typically subjected to zero-average processing to remove the DC component and enhance the accuracy of signal processing \cite{sun_online_2021} \cite{maruyama_lubrication_2019} \cite{shi_ultrasensitive_2022}.
+
+The symplectic geometry mode decomposition has furthermore been used to extract the debris signature of ball bearings \cite{yu_novel_2021}.
+
+\subsection{Passive and Non-invasive Methods}
+The below section briefly summarises the different non-invasive or passive sensing methods for lubrication condition monitoring described in the literature. A categorization of the sensed physical quantities and signal processing methods is seen in Table \ref{tab:non-invasive_methods}.
+
+\subsubsection{Acoustic Emission}
+Aoustic emission (AE) are transient high frequency waves emitted by small deformations and stresses in solids. These are therefore linked to initial wear of materials. AE sensors detect these waves and operate in high-frequency bands often above 100 kHz. AE is highly sensitive to changes in friction, crack formation, plastic deformation on or beneath the surface of components and contamination in ball bearing making it suitable for monitoring lubrication conditions \cite{hou_-situ_2025} \cite{delft_university_of_technology_tu_delft_influence_2024} \cite{wang_advanced_2024} \cite{scheeren_acoustic_2024}.
+\\\\
+\textbf{Signal Processing}\\
+AE signals are processed using methods categorized into four main domains to diagnose bearing status and lubrication conditions:
+\begin{itemize}
+    \item Time domain analysis: This involves statistical features such as root mean square, amplitude and kurtosis on the time series signal to trend overall signal level, impulsiveness, and energy content. AE parameters are also normalized to improve estimation accuracy across varying operating speeds \cite{cornel_condition_2021} \cite{kestel_condition_2025} \cite{hou_-situ_2025} \cite{scheeren_acoustic_2024} \cite{wang_advanced_2024}.
+    \item Frequency domain: This focuses on identifying characteristic frequencies and spectral components associated with bearing defects and lubrication issues using techniques like Fourier transform, envelope analysis, and spectral kurtosis \cite{zhang_graph-data-based_2024} \cite{kestel_condition_2025}.
+    \item Time-frequency domain analysis: This is used to analyze non-stationary signals arising from lubrication degradation, employing methods like short-time Fourier transform \cite{kestel_condition_2025} \cite{scheeren_acoustic_2024} \cite{wang_advanced_2024}.
+    \item Advanced signal processing, fusion and machine learning: Clustering based upon cross-correlation of signals is used to identify consistent AE source mechanisms such as crack and wear \cite{scheeren_acoustic_2024}. Minimum entropy deconvolution is used to enhance weak, random impulses caused by starved lubrication \cite{xu_vibration-based_2024}. Lastly data fusion, convolutional neural networks and graph neural networks are used for detection of lubrication degradation \cite{zhang_graph-data-based_2024} \cite{kestel_condition_2025} \cite{wang_advanced_2024}.
+\end{itemize}
+
+\subsubsection{Vibration}
+Rotating machinery produce vibrations which can be measured by accelerometers Vibrations are exacerbated by worsening lubrication conditions and bearing faults and the use of vibration analysis has been widely documented in literature and used in industry for bearing health monitoring. It has also been used for detecting lubrication faults but the method is limited in use because these often excite frequencies above 30 kHz which must be measured with other sensors \cite{jakobsen_detecting_2023} \cite{zhang_graph-data-based_2024}.
+\\\\
+\textbf{Signal Processing}\\
+Vibration signals are processed using methods categorized into four main domains to diagnose bearing status and lubrication conditions:
+\begin{itemize}
+    \item Time domain analysis: this relies on estimating time-domain statistical measures, e.g. root mean square, kurtosis and crest factor, to quantify the overall signal level, variability, and impulsiveness. Impulsiveness metrics are particularly effective for detecting random mechanical impacts characteristic of starved lubrication or early faults \cite{zhang_graph-data-based_2024} \cite{jakobsen_detecting_2023} \cite{xu_vibration-based_2024}.
+    \item Frequency domain analysis: the vibration signal is transformed with the Fourier transform and spectral kurtosis is correlated to $\kappa$ values to identify changes in lubrication conditions \cite{jakobsen_detecting_2023}. It is furthermore used in data fusion with AE signals for improved lubrication degradation detection \cite{zhang_graph-data-based_2024}.
+    \item Signal enhancement and separation: the minimum entropy deconvolution is used to enhance weak, random impulses caused by events like lubricant starvation \cite{xu_vibration-based_2024}.
+    \item Time-frequency domain analysis: techniques like the wavelet, Huang-Hilbert and short-time Fourier transforms are employed to analyze non-stationary signals arising from lubrication degradation \cite{wang_advanced_2024}.
+\end{itemize}
+
+\subsubsection{Thermal Monitoring}
+Temperature sensors or infrared thermography detect heat generation caused by friction and wear inside the bearing, serving as an indicator for lubrication failure \cite{zhang_graph-data-based_2024} \cite{wang_advanced_2024}.
+\\\\
+\textbf{Signal Processing}\\
+Temperature data is analyzed in the time domain focusing on trends and sudden increases in temperature that may indicate lubrication issues. \cite{moussa_passive_2017}.
+
+\subsubsection{Ultrasound \textgreater 20 kHz}
+Ultrasound microphones are used to pick up high-frequency acoustic signals generated by frition and wear. In contrast to vibration sensors, ultrasound sensors can capture higher frequency components associated with lubrication degradation earlier in the lubrication degradation process \cite{jakobsen_detecting_2023}. Ultrasound based methods are currently being used in the industry to monitoring lubrication conditions. Examples include Sonotec, UE Systems and AccuTrak which produce ultrasonic probes used for such threshold based methods.
+\\\\
+\textbf{Signal Processing}\\
+Two different signal processing methods are currently used for processing ultrasound:
+\begin{itemize}
+    \item Threshold methods: a baseline sound level under adequate conditions is established which subsequent measurements are then compared to. If the sound level rises a predetermined number of dBs, maintenance is adviced \cite{lineham_ultrasonic_2008}. The industrial applications use this method.
+    \item Time-domain analysis and regression: ultrasound has been processed using band pass filtering and time domain features combined with logistic models, LASSO regression and neural networks to predict values of $\kappa$, indicating correlation with lubrication conditions \cite{jakobsen_detecting_2023}.
+\end{itemize}
+
+\subsubsection{Sound 20 Hz - 20 kHz}
+Microphone arrays are used to capture audible sound emissions from the bearing. Changes in lubrication conditions increase the sound pressure levels and alter the frequency content of the emitted sound \cite{georgiev_microphone_2017}.
+\\\\
+\textbf{Signal Processing}\\
+Sound signals have been processed using frequency domain features which showed changes as lubrication levels change. It is suggested by the authors in \cite{georgiev_microphone_2017} to use the features for classification of lubrication conditions through fuzzy logic or neural networks.

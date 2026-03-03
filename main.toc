@@ -1,0 +1,79 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Key Definitions}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Monitoring Flow}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Existing Reviews and Their Limitations}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Contribution and Scope of This Review}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Paper Organisation}{5}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Systematic Literature Search}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Search Strategy}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Inclusion and Exclusion Criteria}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Search Results and PRISMA Flow}{7}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Theoretical Background}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Lubrication Regimes}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Stribeck Curve and Its Significance for Signal Processing}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Hamrock--Dowson Model}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}$\Lambda $-Ratio}{9}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}$\kappa $-Ratio}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Physical Origins of Measurable Signals}{10}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Lubricant Degradation Mechanisms}{10}{subsection.3.7}%
+\contentsline {section}{\numberline {4}Sensing Methods for Lubrication Condition Monitoring}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Passive and Non-Invasive Methods}{12}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Acoustic Emission}{12}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Vibration}{13}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Ultrasound ($>$20\,kHz)}{13}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}Audible Sound (20\,Hz--20\,kHz)}{13}{subsubsection.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.1.5}Thermal Monitoring}{14}{subsubsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.2}Active Methods}{14}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Active Ultrasonic Reflectometry}{14}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Electrical Methods}{14}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Surface Acoustic Wave Sensing}{14}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Optical Methods}{15}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}Magnetic and Inductive Methods}{15}{subsubsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.3}Summary Tables}{15}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Signal Processing Methods}{16}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Time-Domain Statistical Methods}{16}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Standard Statistical Moments and Energy Metrics}{16}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Threshold Methods}{17}{subsubsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.2}Frequency-Domain Methods}{17}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Power Spectral Density and Bearing Characteristic Frequencies}{17}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Envelope Analysis}{17}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Spectral Kurtosis and Optimal Band Selection}{17}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Fractional-Octave Filter Banks}{18}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}Multi-Band Hit-Rate and Wear Particle Index}{18}{subsubsection.5.2.5}%
+\contentsline {subsection}{\numberline {5.3}Time-Frequency and Decomposition Methods}{18}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Short-Time Fourier Transform}{18}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Wavelet Transform}{18}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Empirical Mode Decomposition and Hilbert--Huang Transform}{19}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Symplectic Geometry Mode Decomposition}{19}{subsubsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.4}Signal Enhancement Methods}{19}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Minimum Entropy Deconvolution}{19}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Resonance-Based Sparse Signal Decomposition}{19}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Waveform-Similarity Clustering}{19}{subsubsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.5}Physics-Based and Model-Driven Methods}{20}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}Quasi-Static Spring-Layer Model for Ultrasonic Reflectometry}{20}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}Electrical Circuit Models}{20}{subsubsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.3}Kappa and Lambda as Regression Targets}{20}{subsubsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.6}Machine Learning and Deep Learning}{20}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Classical Machine Learning}{20}{subsubsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.2}Deep Learning}{21}{subsubsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.3}Self-Supervised and Foundation Model Approaches}{21}{subsubsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.7}Multi-Sensor Data Fusion}{21}{subsection.5.7}%
+\contentsline {subsubsection}{\numberline {5.7.1}Feature-Level Fusion}{21}{subsubsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.2}Multi-Target Tracking for Debris}{21}{subsubsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.3}Multi-Parameter Oil Monitoring}{22}{subsubsection.5.7.3}%
+\contentsline {subsection}{\numberline {5.8}Master Cross-Reference Matrix}{22}{subsection.5.8}%
+\contentsline {section}{\numberline {6}Comparative Analysis}{23}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Sensitivity to Lubrication Fault Type}{23}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Sensitivity to Operating Conditions}{24}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Practical Deployment Requirements}{24}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Technology Maturity}{25}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Summary of Comparative Findings}{26}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Research Gaps and Future Directions}{27}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Absence of Standardised Benchmark Datasets}{27}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Speed- and Load-Invariant Signal Processing}{27}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Grease Lubrication Monitoring Is Underexplored}{27}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Maintenance Decision Integration}{27}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Multi-Sensor Fusion for Passive Non-Invasive Sensing}{28}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Self-Supervised and Foundation Model Approaches for Data-Scarce LCM}{28}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Conclusion}{29}{section.8}%

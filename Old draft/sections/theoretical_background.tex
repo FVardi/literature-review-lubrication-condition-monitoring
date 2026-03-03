@@ -1,0 +1,61 @@
+
+\section{Theoretical Background}
+Multiple theoretical models of lubrication exist which seek to estimate the lubrication film thickness in running ball bearings and the sufficiency thereof under specific operating conditions and with different lubricants. However, a complete understanding and model of the physico-chemical properties of lubricants and the lubricant film formation in ball bearings has yet to be formulated \cite{cen_ehl_2021} \cite{dai_situ_2024} \cite{li_lubrication_2026}.
+
+The following subsections present some of the most widely used models for estimating lubrication film thickness in ball bearings as well as a commonly used classification of lubrication regimes.
+
+\subsection{Lubrication Regimes}
+Lubrication films formed in ball bearings under operation are generally classifed into three different regimes which depend on the type of physical contact between balls and raceways and how the bearing load is distributed. The lubrication regimes are as follows:
+\begin{itemize}
+    \item Boundary: the entire load is carried by surface to surface contact (ball to raceway). This regime provides the highest friction which stems solely from the sliding of the surfaces against each other.
+    \item Mixed: the load carrying is shared between a thin lubricant film and surface asperities in the balls and raceway. This reduces friction and wear compared to boundary.
+    \item Elastohydrodynamic: all load is carried by a lubrication film between the balls and raceway. The high pressure building up between the balls and raceway cause an elastic deformatZion of the solid materials.
+\end{itemize}
+
+\subsection{Hamrock-Dowson Model}
+The Hamrock-Dowson model is an empirical model used for calculating the film thickness in ball bearings and is the most common model in use. It is given by
+\begin{equation}
+    \frac{h_m}{R_{x}^{'}} = 3.63U^{0.68}G^{0.49}W^{-0.073}(1-e^{-0.68k})
+\end{equation}
+where
+\begin{itemize}
+    \item $R^{'}_{x}$ and $R^{'}_{y}$ are the effective radii in the direction parallel and transverse to the lubricant entrainment, respectively,
+    \item $U=\eta_0u_e/(E^{'}R^{'}_{x})$ is a dimensionless grouping of speed parameters, where $u_e$ is the lubricant entrainment speed and $E^{'}$ is the effective elastic modulus of the balls and raceway,
+    \item $W=w_z/(E^{'}R^{'}_{x})$ is a dimensionless grouping of load parameters, where $w_z$ is the applied normal load,
+    \item $G=\alpha^*E^{'}$ is a dimensionless grouping of material parameters, where $\alpha^*$ is the pressure-viscosity coefficient and
+    \item $k$ is an elliptic parameter, $k=1.03(R_{y}^{'}/R_{x}^{'})^{2/\pi}$.
+\end{itemize}
+
+See \cite{cen_ehl_2021}, \cite{hansen_new_2021}, \cite{maruyama_lubrication_2019} or \cite{noauthor_elasto-hydrodynamic_1977} for further explaination of the variables and the physics motivated arguments for the equation.
+
+\subsection{$\Lambda$-Ratio}
+The $\Lambda$ ratio is the ratio between the lubrication film thickness and the composite surface roughness of the bearing components and is used to assess the lubrication regime in a bearing, with higher values indicating better lubrication conditions \cite{jakobsen_detecting_2023} \cite{hou_-situ_2025}. It is defined as
+\begin{equation}
+\Lambda = \frac{h_{m}}{\sqrt{R_{q1}^2 + R_{q2}^2}},
+\end{equation}
+where $h_{m}$ is the minimum film thickness, and $R_{q1}$ and $R_{q2}$ are the root mean square roughness values of the two contacting surfaces. The rules of thumb for lubrication regimes based on the $\Lambda$ ratio are as follows:
+\begin{itemize}
+    \item $\Lambda < 1$: Boundary lubrication
+    \item $1 \leq \Lambda \leq 3$: Mixed lubrication
+    \item $3 < \Lambda$: EHL
+\end{itemize}
+
+In \cite{hansen_new_2021} it is noted that the $\Lambda$-ratio has shortcomings related to the elastic deformation of asperities in the EHL regime and that it it is unpredictably and may yield erroneous results. They therefore present an improved $\Lambda^*$-ratio given as
+\begin{equation}
+\Lambda^* = \frac{h^*}{z_0} = \frac{h_m+\delta_a}{z_0},
+\end{equation}
+where $h_m$ is the minimum film thickness, $\delta_a$ is the elastic asperity deformation in an EHL regime and $z_0$ is the relaxed state height of the bearing. The Hamrock-Dowson model can be used for estimating $h_m$ and methods for estimating $\delta_a$ are given in \cite{hansen_new_2021}.
+
+\subsection{$\kappa$-Ratio}
+Tha $\kappa$-ratio is a model for assessing the adequacy of lubricant viscosity for a specific bearing under specific operating conditions. It is defined as
+\begin{equation}
+\kappa = \frac{\nu}{\nu_{1}},
+\end{equation}
+where $\nu$ is the modelled kinematic viscosity of the applied lubricant under specific operating conditions and $\nu_{1}$ is the reference kinematic viscosity for the operating bearing, dependent on the bearing diameter and rotational speed as calculated from the ISO 281 standard \cite{jakobsen_detecting_2023}. The $\kappa$-ratio provides a non-invasive analytical method of estimating the lubrication condition from available operating parameters and lubricant properties. $\kappa$ values are interpreted as follows:
+\begin{itemize}
+    \item $\kappa \leq 0.1$: insufficient lubrication, bearing load is carried almost solely by contact between surface asperities.
+    \item $0.1 < \kappa \leq 1$: insufficient lubrication, metallic surface to surface contact is present.
+    \item $1 < \kappa \leq 4$: adequate lubrication.
+    \item $4 < \kappa$: excessive viscosity resulting in higher friction.
+\end{itemize}
+The relationship between $\kappa$ and $\Lambda$ has been noted to be approximated as $\kappa = \Lambda^{1.3}$ and $\kappa$ is noted to be time-invariant and ignore lubricant degradation and wear effects \cite{jakobsen_detecting_2023}.

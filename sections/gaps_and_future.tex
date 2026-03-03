@@ -1,0 +1,48 @@
+\section{Research Gaps and Future Directions}
+\label{sec:gaps}
+
+The comparative analysis in Section~\ref{sec:comparative} reveals several gaps in the current state of LCM research that are specifically related to signal processing. This section identifies six gaps that represent the most consequential barriers to advancing passive, non-invasive LCM from research to industrial practice, and proposes future research directions for each.
+
+\subsection{Absence of Standardised Benchmark Datasets}
+\label{subsec:gap_datasets}
+
+The reviewed literature presents results from a wide variety of experimental setups: different bearing types, sizes, operating speed and load ranges, lubricant types, fault induction methods, and measurement configurations. No standardised publicly available dataset exists for LCM analogous to the CWRU, FEMTO-ST, or MFPT datasets that have enabled systematic comparison of fault detection methods in the broader bearing diagnostics community. As a result, no reviewed study is directly comparable to another in quantitative terms, and the relative merits of different SP approaches cannot be rigorously assessed from the literature alone.
+
+\textbf{Future direction:} A standardised LCM benchmark dataset should include multiple passive sensing modalities (AE, vibration, passive ultrasound) recorded simultaneously with an active reference method (electrical capacitance or active ultrasonic film thickness measurement) that provides ground-truth $\Lambda$ values. The dataset should span the boundary, mixed, and EHL regimes under systematically varied speed, load, and temperature, with both oil and grease lubrication and at least one contamination condition. Making such a dataset publicly available would substantially accelerate research in both SP methods and data-driven approaches.
+
+\subsection{Speed- and Load-Invariant Signal Processing}
+\label{subsec:gap_invariance}
+
+Virtually all SP methods in the reviewed literature are validated under constant or near-constant speed and load conditions. Real industrial machinery operates under continuously varying loads and speeds, and no SP method has been demonstrated to provide reliable LCM under realistically varying industrial operating conditions. The $\kappa$ regression approach of Jakobsen et al.\ \cite{jakobsen_detecting_2023} is the most principled attempt at operating-condition-aware processing, but it is validated only over a limited range of discrete operating points and does not address continuous variation.
+
+\textbf{Future direction:} SP methods for LCM under variable operating conditions should be developed and validated. Promising approaches include: physics-informed normalisation that uses the Hamrock--Dowson model to compute a condition-dependent baseline feature level; order tracking to convert time-domain features to shaft-angle domain, removing speed dependence from periodic signal components; and operating-condition-aware machine learning models that take speed and load as conditioning inputs or use contrastive learning to learn operating-condition-invariant representations.
+
+\subsection{Grease Lubrication Monitoring Is Underexplored}
+\label{subsec:gap_grease}
+
+The majority of quantitative SP results in the reviewed literature concern oil-lubricated bearings under controlled laboratory conditions. Grease lubrication -- which is employed in the majority of industrial rolling element bearings -- presents additional complexity: grease degrades through base-oil bleed-out, thickener structural breakdown, thermal degradation, and contamination, and the relationship between grease condition and measurable signal is less well characterised than for oil \cite{lugt_grease_2012,sahu_grease_2022,cen_effect_2025}. Miettinen et al.\ \cite{miettinen_analysis_2001} and Scheeren et al.\ \cite{scheeren_acoustic_2024} are among the few studies that specifically characterise passive AE for grease lubrication. The non-monotonic behaviour observed by Hou and Zhang \cite{hou_-situ_2025} further indicates that AE-lubrication relationships for grease may differ qualitatively from oil, depending on bearing configuration.
+
+\textbf{Future direction:} Controlled studies systematically varying grease degradation state (base-oil bleed-out, aging time, thickener degradation, contamination type and concentration) while simultaneously measuring passive sensor signals and reference quantities (film thickness by electrical or optical methods, or grease rheological properties by in-situ rheometry) are needed. The specific contribution of thickener structure to AE and vibration signals -- separate from base-oil film-forming effects -- has not been isolated in the reviewed literature.
+
+\subsection{Maintenance Decision Integration}
+\label{subsec:gap_maintenance}
+
+The LCM pipeline in Figure~\ref{fig:lcm_flow} includes a maintenance decision step (relubrication timing and quantity) downstream of the condition assessment. In the reviewed literature, this integration is almost entirely absent: studies terminate at condition assessment (classifying lubrication regime or estimating $\Lambda$/$\kappa$) without translating the estimate into a relubrication decision. The industrial threshold methods (UE Systems, Sonotec) effectively collapse the assessment and decision steps into a single threshold, but this approach is overly conservative and does not account for degradation rate or operating conditions. No reviewed SP method produces an output directly usable as a relubrication decision criterion -- for example, a predicted time-to-failure under the current lubrication condition, or an optimal relubrication interval estimate.
+
+\textbf{Future direction:} Prognostic models that extend the LCM output from current condition assessment to future condition prediction should be developed. Remaining useful life (RUL) estimation for lubrication degradation -- distinct from mechanical fault RUL -- is an open problem. Approaches could include survival models conditioned on the lubrication condition estimate \cite{lillelund_rulsurv_2025} or reinforcement learning-based relubrication policies that optimise between the costs of under- and over-lubrication.
+
+\subsection{Multi-Sensor Fusion for Passive Non-Invasive Sensing}
+\label{subsec:gap_fusion}
+
+Multi-sensor fusion is demonstrated in the reviewed literature primarily in controlled laboratory settings with multiple passive sensors on the same test rig \cite{zhang_graph-data-based_2024,cornel_condition_2021}. No reviewed study demonstrates multi-modal passive non-invasive LCM on a bearing in an actual industrial machine, where sensor placement is constrained, ambient noise is high, and the sensing system must operate autonomously. The complementarity of AE, vibration, and passive ultrasound for lubrication fault detection is argued in multiple papers but not quantified in a unified experimental framework with a common ground-truth reference.
+
+\textbf{Future direction:} A systematic experimental study combining AE, vibration, passive ultrasound, and temperature sensing simultaneously on an industrial bearing under realistic operating conditions, with an active film thickness reference, would establish the quantitative benefit of multi-modal fusion for LCM. Early and late fusion architectures should be compared against each sensor modality alone using consistent fault conditions and evaluation metrics.
+
+\subsection{Self-Supervised and Foundation Model Approaches for Data-Scarce LCM}
+\label{subsec:gap_ssl}
+
+A fundamental barrier to data-driven LCM is the scarcity of labelled training data. Generating controlled bearing degradation data under varied lubrication conditions is expensive, time-consuming, and results in small, application-specific datasets. Self-supervised learning (SSL) methods pre-train representations on large amounts of unlabelled bearing vibration or AE data and fine-tune on small labelled sets, offering a route to high-accuracy models with reduced labelled data requirements. The TF-C framework \cite{siddique_hybrid_2025} and time-series SSL survey \cite{shamba_contrast_2024} demonstrate that SSL representations transfer across mechanical fault detection tasks, but direct application to LCM -- where the label is a continuous lubrication condition variable rather than a discrete fault class -- has not been demonstrated.
+
+Foundation model approaches -- large pre-trained time-series models that can be adapted to new tasks with minimal retraining \cite{sun_state---art_2025} -- represent a longer-horizon research direction. A bearing foundation model pre-trained on large-scale unlabelled vibration data from multiple sources and machine types could in principle be fine-tuned for LCM with very few labelled examples, substantially reducing the data collection burden. No such model exists for bearing monitoring as of the time of writing.
+
+\textbf{Future direction:} SSL pre-training on large unlabelled AE or vibration datasets from bearings in normal operation -- which are abundant in industrial monitoring archives -- should be investigated as a method for learning representations informative for LCM. The key open questions are: (1) what pretext tasks are most effective for learning lubrication-relevant representations (time-frequency consistency, masked AE, contrastive clustering?); (2) how much labelled LCM data is required for effective fine-tuning; and (3) can SSL representations generalise across bearing types and operating conditions?

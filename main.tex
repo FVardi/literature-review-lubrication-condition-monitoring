@@ -1,0 +1,62 @@
+\documentclass{article}
+
+% Language setting
+\usepackage[english]{babel}
+
+% Set page size and margins
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage[disable]{todonotes}
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+\title{Signal Processing Methods for Lubrication Condition Monitoring of Ball Bearings: A Systematic Review}
+\author{Frederik Appel Vardinghus-Nielsen}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract.tex}
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\input{sections/introduction.tex}
+\clearpage
+\input{sections/literature_search_process.tex}
+\input{sections/inclusion_criteria.tex}
+\clearpage
+\input{sections/theoretical_background.tex}
+\clearpage
+\input{sections/sensing_methods_and_empirical_studies.tex}
+\clearpage
+\input{sections/signal_processing_methods.tex}
+\clearpage
+\input{sections/comparative_analysis.tex}
+\clearpage
+\input{sections/gaps_and_future.tex}
+\clearpage
+\input{sections/conclusion.tex}
+
+\clearpage
+\bibliographystyle{unsrt}
+\bibliography{bib}
+
+\end{document}

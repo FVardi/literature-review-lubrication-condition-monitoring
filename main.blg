@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: unsrt.bst
+Database file #1: bib.bib
+Warning--empty author and editor in noauthor_elasto-hydrodynamic_1977
+You've used 76 entries,
+            1791 wiz_defined-function locations,
+            867 strings with 20738 characters,
+and the built_in function-call counts, 19139 in all, are:
+= -- 1567
+> -- 1127
+< -- 7
++ -- 403
+- -- 327
+* -- 1669
+:= -- 3166
+add.period$ -- 231
+call.type$ -- 76
+change.case$ -- 75
+chr.to.int$ -- 0
+cite$ -- 77
+duplicate$ -- 737
+empty$ -- 1706
+format.name$ -- 327
+if$ -- 4079
+int.to.chr$ -- 0
+int.to.str$ -- 76
+missing$ -- 75
+newline$ -- 382
+num.names$ -- 77
+pop$ -- 129
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 302
+stack$ -- 0
+substring$ -- 1290
+swap$ -- 127
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 180
+width$ -- 78
+write$ -- 840
+(There was 1 warning)
