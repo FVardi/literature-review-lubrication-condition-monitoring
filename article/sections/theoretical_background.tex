@@ -74,26 +74,26 @@ The connection between lubricant physics and measurable signals is the key link 
 \begin{table}[H]
 \scriptsize
 \centering
-\begin{tabularx}{\linewidth}{| >{\raggedright\arraybackslash}p{2.8cm} | >{\raggedright\arraybackslash}p{3cm} | X |}
+\begin{tabularx}{\linewidth}{| >{\raggedright\arraybackslash}p{2.3cm} | >{\raggedright\arraybackslash}p{2.2cm} | >{\raggedright\arraybackslash}p{1.9cm} | X |}
 \hline
-\textbf{Physical mechanism} & \textbf{Signal type produced} & \textbf{Sensing modalities} \\
+\textbf{Physical mechanism} & \textbf{Signal type} & \textbf{Freq.\ range at sensor} & \textbf{Sensing modalities and propagation constraint} \\
 \hline
-Asperity-to-asperity contact and micro-fracture under insufficient film thickness & Transient elastic stress waves (broadband, $>$20\,kHz) & Acoustic emission (AE); ultrasound microphones ($>$20\,kHz) \\
+Asperity-to-asperity contact and micro-fracture under insufficient film thickness & Transient elastic stress waves & Source: 20\,kHz--1\,MHz; at sensor: 20--500\,kHz (path-limited) & AE sensors; passive ultrasound ($>$20\,kHz). High-frequency content ($>$300\,kHz) attenuated 20--60\,dB by housing interfaces; usable bandwidth is geometry-dependent. \\
 \hline
-Asperity contact, rolling/sliding friction at contact interfaces & Broadband mechanical vibration; audible sound (20\,Hz--20\,kHz) & Accelerometers; microphone arrays \\
+Asperity contact, rolling/sliding friction at contact interfaces & Broadband mechanical vibration; radiated audible sound & Vibration: 0--50\,kHz; Sound: 20\,Hz--20\,kHz & Accelerometers (limited to $<$50\,kHz by piezo hardware, $<$5\,kHz for MEMS); microphone arrays. LCM-relevant content is above standard accelerometer range. \\
 \hline
-Viscous shear and frictional energy dissipation & Heat generation; bearing temperature rise & Thermocouples; infrared thermography \\
+Viscous shear and frictional energy dissipation & Heat generation; bearing temperature rise & DC--10\,Hz (thermally diffusion-limited) & Thermocouples; IR thermography. No acoustic path loss; temporal resolution limited to seconds--minutes by thermal diffusion. \\
 \hline
-Change in dielectric properties of lubricant film with film thickness, viscosity degradation, and debris content & Change in capacitance, impedance, or resistance of the bearing-lubricant system & Electrical capacitance/impedance sensors (active) \\
+Change in dielectric properties of lubricant film (film thickness, viscosity, debris) & Change in capacitance, impedance, or resistance & DC--10\,MHz (excitation) & Electrical capacitance/impedance sensors (active). Electrical signal path; no structural wave propagation or path attenuation. \\
 \hline
-Partial reflection and transmission of elastic waves at lubricant-raceway interface & Reflected ultrasonic pulse; reflection coefficient & Active ultrasonic (pulse-echo); surface acoustic wave (SAW) sensors \\
+Partial reflection/transmission of elastic waves at lubricant--raceway interface & Reflected ultrasonic pulse; reflection coefficient & 1--100\,MHz (active) & Active ultrasonic (pulse-echo); SAW sensors. Double path loss; transducer--housing coupling quality is critical. \\
 \hline
-Ferromagnetic wear debris in lubricant & Perturbation of magnetic flux or inductance & Inductive/magnetic debris sensors \\
+Ferromagnetic wear debris in lubricant flow & Perturbation of magnetic flux or inductance & DC--kHz (debris transit) & Inductive/magnetic debris sensors. Signal is in lubricant flow path; structural propagation not involved. \\
 \hline
-Optical absorption, scattering, or particle size in lubricant & Light attenuation or scattering signature & Optical sensors; debris imaging \\
+Optical absorption, scattering, or fluorescence of lubricant or debris & Light attenuation or scattering & Optical (THz--PHz) & Optical sensors; machine-vision debris imaging. Requires line-of-sight access to lubricant. \\
 \hline
 \end{tabularx}
-\caption{Physical mechanisms linking lubrication conditions in ball bearings to measurable signals and the sensing modalities sensitive to each mechanism.}
+\caption{Physical mechanisms linking lubrication conditions in ball bearings to measurable signals, with the typical frequency range observable at the sensor after transmission through the structural path, and key constraints on propagation and sensing. Attenuation figures refer to the signal path from bearing contact zone through housing to an externally mounted sensor; see Section~\ref{subsec:transmission}.}
 \label{tab:signal_origins}
 \end{table}
 

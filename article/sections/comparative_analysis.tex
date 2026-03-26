@@ -111,43 +111,43 @@ Table~\ref{tab:deployment} compares sensing and signal processing method combina
 \scriptsize
 \centering
 \renewcommand{\arraystretch}{1.4}
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{3pt}
 \begin{tabularx}{\linewidth}{|
->{\raggedright\arraybackslash}p{2.2cm}
-| >{\centering\arraybackslash}X
-| >{\centering\arraybackslash}X
-| >{\centering\arraybackslash}X
-| >{\centering\arraybackslash}X
-| >{\centering\arraybackslash}X |}
+>{\raggedright\arraybackslash}p{1.8cm}
+| >{\raggedright\arraybackslash}p{1.7cm}
+| >{\raggedright\arraybackslash}X
+| >{\centering\arraybackslash}p{1.4cm}
+| >{\centering\arraybackslash}p{1.4cm}
+| >{\raggedright\arraybackslash}X |}
 \hline
-\textbf{Sensing method} & \textbf{Bearing modification required} & \textbf{Calibration / reference required} & \textbf{Sampling rate} & \textbf{Real-time capable} & \textbf{Labelled data required} \\
+\textbf{Sensing method} & \textbf{Bearing modif.} & \textbf{Sensor installation constraints} & \textbf{Sampling rate} & \textbf{Real-time capable} & \textbf{Calibration / data requirements} \\
 \hline
-AE & None & Baseline \cite{cornel_condition_2021} & $>$500\,kHz & Partial (features only) & For ML methods \\
+AE & None & Flat surface, direct structural path to bearing bore; avoid joints and material changes; bond or clamp required for high-freq.\ coupling & $>$500\,kHz & Partial (features only) & Baseline measurement \cite{cornel_condition_2021}; labelled data for ML \\
 \hline
-Vibration & None & No & $\leq$50\,kHz & Yes & For ML methods \\
+Vibration & None & Standard industrial accelerometer mount (stud, adhesive, magnet); location affects frequency content but less critically than AE & $\leq$50\,kHz & Yes & No baseline required; labelled data for ML \\
 \hline
-Passive ultrasound & None & Baseline (threshold) \cite{lineham_ultrasonic_2008} & 20--500\,kHz & Yes & For regression methods \\
+Passive ultrasound & None & As for AE, but less sensitive to exact path geometry at 38--40\,kHz; industrial instruments are handheld or clamp-on & 20--500\,kHz & Yes & Baseline reference at known good lubrication \cite{lineham_ultrasonic_2008}; labelled data for regression \\
 \hline
-Sound / microphone & None & No & $\leq$50\,kHz & Yes & For ML methods \\
+Sound / microphone & None & Non-contact; proximity ($<$0.5\,m) and low ambient noise critical; high-freq.\ content lost beyond 20\,kHz in air & $\leq$50\,kHz & Yes & No baseline; labelled data for ML \\
 \hline
-Thermal & None & No & Low (Hz) & Yes & No (threshold) \\
+Thermal & None & Housing surface or non-contact IR; robust to mounting position; slow response renders exact location unimportant & Low (Hz) & Yes & No; threshold or trend analysis \\
 \hline
-Active ultrasonic & Transducer coupling & Calibration reference \cite{hansen_comparison_2022} & $>$1\,MHz & Partial & No (model-based) \\
+Active ultrasonic & Transducer coupling & Requires permanent or clamp-on transducer with controlled couplant; alignment critical; curved surfaces need geometric correction \cite{li_lubrication_2026} & $>$1\,MHz & Partial & Calibration reference signal essential \cite{hansen_comparison_2022}; no labelled data (model-based) \\
 \hline
-Electrical & Electrical path through bearing & Calibration reference \cite{cen_ehl_2021} & kHz--MHz & Partial & No (model-based) \\
+Electrical & Electrical path through bearing & Requires electrical isolation of bearing from frame; brush or slip-ring contacts to rotating shaft; not retrofittable in standard machines & kHz--MHz & Partial & Calibration reference \cite{cen_ehl_2021}; no labelled data (model-based) \\
 \hline
-Magnetic / inductive & Access to lubricant flow & Particle count baseline & kHz & Yes & No \\
+Magnetic / inductive & Access to lubricant flow & Sensor in or around lubricant line or sump; not applicable to grease-lubricated sealed bearings & kHz & Yes & Particle count baseline; no labelled data \\
 \hline
-Oil multi-param. & Sensor in lubricant circuit & Lubricant reference & Low & Yes & No \\
+Oil multi-param. & Sensor in lubricant circuit & In-line sensor in oil circulation system; not applicable to grease or sealed bearings & Low & Yes & Reference lubricant values; no labelled data \\
 \hline
 \end{tabularx}
-\caption{Practical deployment characteristics of sensing methods for LCM. ``Bearing modification'' refers to structural changes to the bearing or housing beyond sensor attachment. ``Real-time capable'' refers to whether the SP method can produce condition estimates at bearing rotational rates without offline computation.}
+\caption{Practical deployment characteristics of sensing methods for LCM. ``Bearing modification'' refers to structural changes to the bearing or housing beyond sensor attachment. ``Real-time capable'' refers to whether the SP method can produce condition estimates at bearing rotational rates without offline computation. Installation constraints reflect both sensor coupling requirements and signal propagation considerations (Section~\ref{subsec:transmission}).}
 \label{tab:deployment}
 \end{table}
 
 Passive non-invasive methods (AE, vibration, ultrasound, sound, thermal) share the critical practical advantage that they require no bearing modification and can in principle be retrofitted to bearings in service. The trade-off is that their signals carry lubrication information mixed with other sources (machine vibration, electromagnetic interference, structural resonances), requiring more sophisticated SP to extract the lubrication-relevant component. Active and invasive methods provide cleaner, more direct lubrication information at the cost of installation complexity and, in some cases, bearing modification.
 
-Among passive methods, AE imposes the highest data-rate requirement ($>$500\,kHz sampling) due to the high-frequency nature of the emitted waves, which creates storage and computation challenges for continuous real-time monitoring. Vibration and passive ultrasound operate at lower sampling rates and are more readily integrated into standard industrial monitoring systems. The waveform clustering approach of Scheeren et al.\ \cite{scheeren_acoustic_2024} and the two-dimensional amplitude-energy framework of Hou and Zhang \cite{hou_-situ_2025} both demonstrate computationally demanding offline analyses; real-time implementations would require significant simplification or dedicated hardware.
+The installation constraints in Table~\ref{tab:deployment} highlight a practical hierarchy among passive non-invasive methods. AE is the most installation-sensitive: the frequency-dependent attenuation described in Section~\ref{subsec:transmission} means that signal quality degrades significantly if the sensor is separated from the bearing by bolted joints, material transitions, or long structural paths. A sensor poorly positioned relative to the bearing can render high-frequency AE content undetectable regardless of its nominal sensitivity. Passive ultrasound at 38--40\,kHz is more tolerant of imperfect mounting, which partly explains its wider industrial adoption. Vibration accelerometers, operating at yet lower frequencies, are the most robust to mounting position variations. Thermal sensors, operating at DC, are entirely insensitive to structural transmission path effects. Among passive methods, AE imposes the highest data-rate requirement ($>$500\,kHz sampling) due to the high-frequency nature of the emitted waves, which creates storage and computation challenges for continuous real-time monitoring. The waveform clustering approach of Scheeren et al.\ \cite{scheeren_acoustic_2024} and the two-dimensional amplitude-energy framework of Hou and Zhang \cite{hou_-situ_2025} both demonstrate computationally demanding offline analyses; real-time implementations would require significant simplification or dedicated hardware.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Technology Maturity}
