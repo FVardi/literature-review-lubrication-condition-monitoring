@@ -12,7 +12,7 @@
 \contentsline {section}{\numberline {3}Theoretical Background}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Lubrication Regimes}{8}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}The Stribeck Curve and Its Significance for Signal Processing}{8}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Hamrock--Dowson Model}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Hamrock--Dowson Model}{9}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}$\Lambda $-Ratio}{9}{subsection.3.4}%
 \contentsline {subsection}{\numberline {3.5}$\kappa $-Ratio}{9}{subsection.3.5}%
 \contentsline {subsection}{\numberline {3.6}Physical Origins of Measurable Signals}{10}{subsection.3.6}%
