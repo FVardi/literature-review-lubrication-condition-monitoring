@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdflatex -interaction=nonstopmode main)",
+      "Bash(bibtex main:*)",
+      "Bash(grep -rn \"\\\\\\\\\\\\\\\\label{\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/\")",
+      "Bash(grep -rn \"\\\\\\\\\\\\\\\\label{sec:sensing\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/\")",
+      "Bash(grep -rn \"\\\\\\\\\\\\\\\\label{fig:lcm_flow\\\\|\\\\\\\\\\\\\\\\label{subsec:transmission\\\\|\\\\\\\\\\\\\\\\label{tab:non-invasive\\\\|\\\\\\\\\\\\\\\\label{tab:invasive\\\\|\\\\\\\\\\\\\\\\label{fig:taxonomy\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/\")",
+      "Bash(python -c ':*)",
+      "Bash(grep -c \"\\\\\\\\\\\\\\\\citation\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main.aux\")",
+      "Bash(grep \"\\\\\\\\\\\\\\\\bibstyle\\\\|\\\\\\\\\\\\\\\\bibdata\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main.aux\")",
+      "Bash(ls \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/\"*.aux)",
+      "Bash(grep -c \"\\\\\\\\\\\\\\\\end{tabularx}\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/sensing_methods_and_empirical_studies.tex\")",
+      "Bash(grep -c \"\\\\\\\\\\\\\\\\begin{tabularx}\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/sensing_methods_and_empirical_studies.tex\")",
+      "Bash(pdflatex -interaction=nonstopmode main.tex)"
+    ]
+  }
+}

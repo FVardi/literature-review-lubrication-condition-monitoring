@@ -129,6 +129,21 @@ Hui Cen, Nicola De~Laurentis, Norbert Bader, and Piet~M. Lugt.
 \newblock Effect of thermal aging on the grease film thickness in ball bearings.
 \newblock {\em Tribology International}, 204:110511, April 2025.
 
+\bibitem{ono_comprehensive_2020}
+Kanji Ono.
+\newblock A comprehensive report on ultrasonic attenuation of engineering materials, including metals, ceramics, polymers, fiber-reinforced composites, wood, and rocks.
+\newblock {\em Applied Sciences}, 10(7):2230, 2020.
+
+\bibitem{scheeren_evaluation_2022}
+Bart Scheeren, Miroslaw~Lech Kaminski, and Lotfollah Pahlavan.
+\newblock Evaluation of ultrasonic stress wave transmission in cylindrical roller bearings for acoustic emission condition monitoring.
+\newblock {\em Sensors}, 22(4):1500, February 2022.
+
+\bibitem{carotenuto_ranging_2021}
+R.~Carotenuto, F.~Pezzimenti, F.~G. {Della Corte}, D.~Iero, and M.~Merenda.
+\newblock Ranging with frequency dependent ultrasound air attenuation.
+\newblock {\em Sensors}, 21(15):4963, 2021.
+
 \bibitem{delft_university_of_technology_tu_delft_influence_2024}
 {Delft University of Technology (TU Delft)}, Bart Scheeren, {Allseas Engineering}, Nitish~Perveshsingh Thakoerdajal, {Delft University of Technology (TU Delft)}, and Lotfollah Pahlavan.
 \newblock Influence of {Grease} {Contamination} on {Acoustic} {Emission} {Monitoring} of {Low}-speed {Roller} {Bearings}.
@@ -148,6 +163,11 @@ J~Miettinen, P~Andersson, and V~Wikströ.
 Takeo Yoshioka and Shigeo Shimizu.
 \newblock Monitoring of {Ball} {Bearing} {Operation} under {Grease} {Lubrication} {Using} a {New} {Compound} {Diagnostic} {System} {Detecting} {Vibration} and {Acoustic} {Emission}.
 \newblock {\em Tribology Transactions}, 52(6):725--730, October 2009.
+
+\bibitem{tandon_condition_2007}
+N.~Tandon, K.M. Ramakrishna, and G.S. Yadava.
+\newblock Condition monitoring of electric motor ball bearings for the detection of grease contaminants.
+\newblock {\em Tribology International}, 40(1):29--36, January 2007.
 
 \bibitem{randall_vibrationbased_2021}
 Robert~Bond Randall.
@@ -180,25 +200,15 @@ Volodymyr Kudriashov, Vladislav Ivanov, Kiril Alexiev, and Petia Koprinkova-Hris
 \newblock In Krassimir Georgiev, Michail Todorov, and Ivan Georgiev, editors, {\em Advanced {Computing} in {Industrial} {Mathematics}}, volume 681, pages 103--114. Springer International Publishing, Cham, 2017.
 \newblock Series Title: Studies in Computational Intelligence.
 
-\bibitem{pacheco-cherrez_bearing_2022}
-Josué Pacheco-Chérrez, Jesús~A. Fortoul-Díaz, Froylán Cortés-Santacruz, Luz María Aloso-Valerdi, and David~I. Ibarra-Zarate.
-\newblock Bearing fault detection with vibration and acoustic signals: {Comparison} among different machine leaning classification methods.
-\newblock {\em Engineering Failure Analysis}, 139:106515, September 2022.
-
-\bibitem{herwig_signal_2025}
-N.~Herwig, P.~Borghesani, W.~Smith, and Z.~Peng.
-\newblock Signal processing- and physics-informed neural network for explainable bearing condition monitoring.
-\newblock {\em Mechanical Systems and Signal Processing}, 235:112925, July 2025.
+\bibitem{yan_thermal_2019}
+Bei Yan, Ke~Yan, Te~Luo, Yongsheng Zhu, Ben~Q. Li, and Jun Hong.
+\newblock Thermal coefficients modification of high speed ball bearing by multi-object optimization method.
+\newblock {\em International Journal of Thermal Sciences}, 137:313--324, March 2019.
 
 \bibitem{moussa_passive_2017}
 Wael Moussa.
 \newblock A {Passive} {Thermography} {Approach} to {Bearing} {Condition} {Monitoring}.
 \newblock {\em Juniper Online Journal Material Science}, 1(4), June 2017.
-
-\bibitem{yan_thermal_2019}
-Bei Yan, Ke~Yan, Te~Luo, Yongsheng Zhu, Ben~Q. Li, and Jun Hong.
-\newblock Thermal coefficients modification of high speed ball bearing by multi-object optimization method.
-\newblock {\em International Journal of Thermal Sciences}, 137:313--324, March 2019.
 
 \bibitem{janssens_thermal_2015}
 Olivier Janssens, Raiko Schulz, Viktor Slavkovikj, Kurt Stockman, Mia Loccufier, Rik Van De~Walle, and Sofie Van~Hoecke.
@@ -299,11 +309,6 @@ Xinzhuo Zhang, Xuhua Zhang, Linbo Zhu, Chuang Gao, Bo~Ning, and Yongsheng Zhu.
 \newblock A {Graph}-{Data}-{Based} {Monitoring} {Method} of {Bearing} {Lubrication} {Using} {Multi}-{Sensor}.
 \newblock {\em Lubricants}, 12(6):229, June 2024.
 
-\bibitem{tandon_condition_2007}
-N.~Tandon, K.M. Ramakrishna, and G.S. Yadava.
-\newblock Condition monitoring of electric motor ball bearings for the detection of grease contaminants.
-\newblock {\em Tribology International}, 40(1):29--36, January 2007.
-
 \bibitem{marticorena_rolling_2022}
 Matias Marticorena and Oscar García~Peyrano.
 \newblock Rolling {Bearing} {Condition} {Monitoring} {Technique} {Based} on {Cage} {Rotation} {Analysis} and {Acoustic} {Emission}.
@@ -328,6 +333,16 @@ Philipp Renhart, Michael Maier, Christopher Strablegg, Florian Summer, Florian G
 Hui Cen and Piet~M. Lugt.
 \newblock Film thickness in a grease lubricated ball bearing.
 \newblock {\em Tribology International}, 134:26--35, June 2019.
+
+\bibitem{herwig_signal_2025}
+N.~Herwig, P.~Borghesani, W.~Smith, and Z.~Peng.
+\newblock Signal processing- and physics-informed neural network for explainable bearing condition monitoring.
+\newblock {\em Mechanical Systems and Signal Processing}, 235:112925, July 2025.
+
+\bibitem{pacheco-cherrez_bearing_2022}
+Josué Pacheco-Chérrez, Jesús~A. Fortoul-Díaz, Froylán Cortés-Santacruz, Luz María Aloso-Valerdi, and David~I. Ibarra-Zarate.
+\newblock Bearing fault detection with vibration and acoustic signals: {Comparison} among different machine leaning classification methods.
+\newblock {\em Engineering Failure Analysis}, 139:106515, September 2022.
 
 \bibitem{yu_novel_2021}
 Bing Yu, Nan Cao, and Tianhong Zhang.
