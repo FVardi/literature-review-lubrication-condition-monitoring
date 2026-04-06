@@ -33,9 +33,7 @@ AE & Time-domain (RMS, PCR) & High \cite{miettinen_analysis_2001,hou_-situ_2025,
 \hline
 AE & Octave filter bank ($P_5$) & High \cite{renhart_monitoring_2021} & Moderate & High \cite{renhart_monitoring_2021} \\
 \hline
-AE & Multi-band hit-rate + WPI & Low--Moderate & Low & High (abrasive only) \cite{scheeren_acoustic_2024,delft_university_of_technology_tu_delft_influence_2024} \\
-\hline
-AE & Waveform clustering & Low & Low & Moderate \cite{scheeren_acoustic_2024} \\
+AE & Multi-band hit-rate + WPI & Low--Moderate & Low & High (abrasive only) \cite{delft_university_of_technology_tu_delft_influence_2024} \\
 \hline
 Passive ultrasound & Threshold (dB) & Moderate \cite{lineham_ultrasonic_2008} & Low--Moderate & Low \\
 \hline
@@ -126,7 +124,7 @@ AE & None & Flat surface, direct structural path to bearing bore; avoid joints a
 \hline
 Vibration & None & Standard industrial accelerometer mount (stud, adhesive, magnet); location affects frequency content but less critically than AE & $\leq$50\,kHz & Yes & No baseline required; labelled data for ML \\
 \hline
-Passive ultrasound & None & As for AE, but less sensitive to exact path geometry at 38--40\,kHz; industrial instruments are handheld or clamp-on & 20--500\,kHz & Yes & Baseline reference at known good lubrication \cite{lineham_ultrasonic_2008}; labelled data for regression \\
+Passive ultrasound & None & As for AE, but less sensitive to exact path geometry at 20--100\,kHz; industrial instruments are handheld or clamp-on & 20--500\,kHz & Yes & Baseline reference at known good lubrication \cite{lineham_ultrasonic_2008}; labelled data for regression \\
 \hline
 Sound / microphone & None & Non-contact; proximity ($<$0.5\,m) and low ambient noise critical; high-freq.\ content lost beyond 20\,kHz in air & $\leq$50\,kHz & Yes & No baseline; labelled data for ML \\
 \hline
@@ -147,7 +145,7 @@ Oil multi-param. & Sensor in lubricant circuit & In-line sensor in oil circulati
 
 Passive non-invasive methods (AE, vibration, ultrasound, sound, thermal) share the critical practical advantage that they require no bearing modification and can in principle be retrofitted to bearings in service. The trade-off is that their signals carry lubrication information mixed with other sources (machine vibration, electromagnetic interference, structural resonances), requiring more sophisticated SP to extract the lubrication-relevant component. Active and invasive methods provide cleaner, more direct lubrication information at the cost of installation complexity and, in some cases, bearing modification.
 
-The installation constraints in Table~\ref{tab:deployment} highlight a practical hierarchy among passive non-invasive methods. AE is the most installation-sensitive: the frequency-dependent attenuation described in Section~\ref{subsec:transmission} means that signal quality degrades significantly if the sensor is separated from the bearing by bolted joints, material transitions, or long structural paths. A sensor poorly positioned relative to the bearing can render high-frequency AE content undetectable regardless of its nominal sensitivity. Passive ultrasound at 38--40\,kHz is more tolerant of imperfect mounting, which partly explains its wider industrial adoption. Vibration accelerometers, operating at yet lower frequencies, are the most robust to mounting position variations. Thermal sensors, operating at DC, are entirely insensitive to structural transmission path effects. Among passive methods, AE imposes the highest data-rate requirement ($>$500\,kHz sampling) due to the high-frequency nature of the emitted waves, which creates storage and computation challenges for continuous real-time monitoring. The waveform clustering approach of Scheeren et al.\ \cite{scheeren_acoustic_2024} and the two-dimensional amplitude-energy framework of Hou and Zhang \cite{hou_-situ_2025} both demonstrate computationally demanding offline analyses; real-time implementations would require significant simplification or dedicated hardware.
+The installation constraints in Table~\ref{tab:deployment} highlight a practical hierarchy among passive non-invasive methods. AE is the most installation-sensitive: the frequency-dependent attenuation described in Section~\ref{subsec:transmission} means that signal quality degrades significantly if the sensor is separated from the bearing by bolted joints, material transitions, or long structural paths. A sensor poorly positioned relative to the bearing can render high-frequency AE content undetectable regardless of its nominal sensitivity. Passive ultrasound at 20--100\,kHz is more tolerant of imperfect mounting, which partly explains its wider industrial adoption. Vibration accelerometers, operating at yet lower frequencies, are the most robust to mounting position variations. Thermal sensors, operating at DC, are entirely insensitive to structural transmission path effects. Among passive methods, AE imposes the highest data-rate requirement ($>$500\,kHz sampling) due to the high-frequency nature of the emitted waves, which creates storage and computation challenges for continuous real-time monitoring. The two-dimensional amplitude-energy framework of Hou and Zhang \cite{hou_-situ_2025} demonstrates a computationally demanding offline analysis; real-time implementations would require significant simplification or dedicated hardware.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Technology Maturity}
@@ -184,8 +182,6 @@ Passive ultrasound & $\kappa$ regression & Research & \cite{jakobsen_detecting_2
 \hline
 AE & Octave filter bank + $P_5$ & Research & \cite{renhart_monitoring_2021} \\
 \hline
-AE & Waveform clustering & Research & \cite{scheeren_acoustic_2024} \\
-\hline
 AE & GNN / multi-sensor fusion & Research & \cite{zhang_graph-data-based_2024} \\
 \hline
 Sound / microphone & Frequency features + ML & Research & \cite{georgiev_microphone_2017,pacheco-cherrez_bearing_2022} \\
@@ -209,7 +205,7 @@ The comparative analysis yields five principal findings:
 
 \begin{enumerate}
     \item \textbf{No single passive non-invasive method is universally optimal.} AE provides the earliest and most sensitive detection of starvation and covers a wider fault type range than vibration or ultrasound alone, but imposes the highest data-rate requirement. Vibration is the most mature and widely deployed, but is limited in frequency range for early lubrication fault detection. Passive ultrasound occupies a middle position: higher frequency range than vibration, lower than AE, and already industrially deployed -- albeit with simple threshold processing.
-    \item \textbf{Signal processing sophistication is not yet matched by deployment maturity.} The most diagnostically capable SP approaches (kappa regression, waveform clustering, GNN fusion) remain at the research stage. The field's industrial deployment is dominated by methods from the 2000s or earlier.
+    \item \textbf{Signal processing sophistication is not yet matched by deployment maturity.} The most diagnostically capable SP approaches (kappa regression, GNN fusion) remain at the research stage. The field's industrial deployment is dominated by methods from the 2000s or earlier.
     \item \textbf{Active and invasive methods provide quantitatively superior film thickness information} at the cost of deployment barriers. They are best suited to controlled test environments or high-value assets where the installation investment is justified.
     \item \textbf{Operating condition compensation is the central SP challenge for passive methods.} Methods that explicitly target $\kappa$ or $\Lambda$ via physics-informed regression are the most principled approach, but remain at the research stage.
     \item \textbf{Contamination detection is the least well-served fault type for passive methods.} AE multi-band hit-rate is sensitive to abrasive particles specifically; no passive method provides reliable general contamination monitoring. Oil multi-parameter or magnetic methods are required for comprehensive contamination monitoring but impose invasive installation.

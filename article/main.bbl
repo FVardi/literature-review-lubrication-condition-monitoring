@@ -349,40 +349,10 @@ Bing Yu, Nan Cao, and Tianhong Zhang.
 \newblock A novel signature extracting approach for inductive oil debris sensors based on symplectic geometry mode decomposition.
 \newblock {\em Measurement}, 185:110056, November 2021.
 
-\bibitem{kannan_review_2024}
-Vigneshwar Kannan, Tieling Zhang, and Huaizhong Li.
-\newblock A {Review} of the {Intelligent} {Condition} {Monitoring} of {Rolling} {Element} {Bearings}.
-\newblock {\em Machines}, 12(7):484, July 2024.
-
-\bibitem{jaros_advanced_2023}
-Rene Jaros, Radek Byrtus, Jakub Dohnal, Lukas Danys, Jan Baros, Jiri Koziorek, Petr Zmij, and Radek Martinek.
-\newblock Advanced {Signal} {Processing} {Methods} for {Condition} {Monitoring}.
-\newblock {\em Archives of Computational Methods in Engineering}, 30(3):1553--1577, April 2023.
-
 \bibitem{pan_symplectic_2019}
 Haiyang Pan, Yu~Yang, Xin Li, Jinde Zheng, and Junsheng Cheng.
 \newblock Symplectic geometry mode decomposition and its application to rotating machinery compound fault diagnosis.
 \newblock {\em Mechanical Systems and Signal Processing}, 114:189--211, January 2019.
-
-\bibitem{hotait_intelligent_2021}
-Hassane Hotait, Xavier Chiementin, and Lanto Rasolofondraibe.
-\newblock Intelligent {Online} {Monitoring} of {Rolling} {Bearing}: {Diagnosis} and {Prognosis}.
-\newblock {\em Entropy}, 23(7):791, June 2021.
-
-\bibitem{shamba_contrast_2024}
-Abdul-Kazeem Shamba, Kerstin Bach, and Gavin Taylor.
-\newblock Contrast {All} the {Time}: {Learning} {Time} {Series} {Representation} from {Temporal} {Consistency}, 2024.
-\newblock Version Number: 2.
-
-\bibitem{siddique_hybrid_2025}
-Muhammad~Farooq Siddique, Faisal Saleem, Muhammad Umar, Cheol~Hong Kim, and Jong-Myon Kim.
-\newblock A {Hybrid} {Deep} {Learning} {Approach} for {Bearing} {Fault} {Diagnosis} {Using} {Continuous} {Wavelet} {Transform} and {Attention}-{Enhanced} {Spatiotemporal} {Feature} {Extraction}.
-\newblock {\em Sensors}, 25(9):2712, April 2025.
-
-\bibitem{sun_state---art_2025}
-Bojun Sun, Zixin Sheng, Peng Song, Huilin Sun, Fei Wang, Xiaogang Sun, and Junyan Liu.
-\newblock State-of-the-{Art} {Detection} and {Diagnosis} {Methods} for {Rolling} {Bearing} {Defects}: {A} {Comprehensive} {Review}.
-\newblock {\em Applied Sciences}, 15(2):1001, January 2025.
 
 \bibitem{zhao_fault_2023}
 Yulai Zhao, Xiaowei Wang, Shuo Han, Junzhe Lin, and Qingkai Han.
@@ -393,5 +363,20 @@ Yulai Zhao, Xiaowei Wang, Shuo Han, Junzhe Lin, and Qingkai Han.
 Christian~Marius Lillelund, Fernando Pannullo, Morten~Opprud Jakobsen, Manuel Morante, and Christian~Fischer Pedersen.
 \newblock {RULSurv}: {A} probabilistic survival-based method for early censoring-aware prediction of remaining useful life in ball bearings, April 2025.
 \newblock arXiv:2405.01614 [cs].
+
+\bibitem{siddique_hybrid_2025}
+Muhammad~Farooq Siddique, Faisal Saleem, Muhammad Umar, Cheol~Hong Kim, and Jong-Myon Kim.
+\newblock A {Hybrid} {Deep} {Learning} {Approach} for {Bearing} {Fault} {Diagnosis} {Using} {Continuous} {Wavelet} {Transform} and {Attention}-{Enhanced} {Spatiotemporal} {Feature} {Extraction}.
+\newblock {\em Sensors}, 25(9):2712, April 2025.
+
+\bibitem{shamba_contrast_2024}
+Abdul-Kazeem Shamba, Kerstin Bach, and Gavin Taylor.
+\newblock Contrast {All} the {Time}: {Learning} {Time} {Series} {Representation} from {Temporal} {Consistency}, 2024.
+\newblock Version Number: 2.
+
+\bibitem{sun_state---art_2025}
+Bojun Sun, Zixin Sheng, Peng Song, Huilin Sun, Fei Wang, Xiaogang Sun, and Junyan Liu.
+\newblock State-of-the-{Art} {Detection} and {Diagnosis} {Methods} for {Rolling} {Bearing} {Defects}: {A} {Comprehensive} {Review}.
+\newblock {\em Applied Sciences}, 15(2):1001, January 2025.
 
 \end{thebibliography}
