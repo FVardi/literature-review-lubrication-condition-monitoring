@@ -168,8 +168,7 @@
 \citation{jakobsen_vibration_2021}
 \citation{xu_vibration-based_2024}
 \citation{jakobsen_detecting_2023}
-\citation{jakobsen_detecting_2023}
-\citation{jakobsen_low_2024}
+\citation{jakobsen_detecting_2023,jakobsen_low_2024}
 \citation{lineham_ultrasonic_2008}
 \citation{jakobsen_detecting_2023}
 \citation{lineham_ultrasonic_2008}
@@ -223,11 +222,11 @@
 \newlabel{subsubsec:magnetic}{{4.3.5}{16}{Magnetic and Inductive Methods}{subsubsection.4.3.5}{}}
 \citation{hou_-situ_2025,cornel_condition_2021,yoshioka_monitoring_2009,zhang_health_2025,renhart_monitoring_2021}
 \citation{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}
-\citation{jakobsen_detecting_2023}
+\citation{jakobsen_detecting_2023,jakobsen_low_2024}
 \citation{moussa_passive_2017}
 \citation{usgame_sandoval_acoustic_2013}
 \citation{yoshioka_monitoring_2009}
-\citation{jakobsen_detecting_2023}
+\citation{jakobsen_detecting_2023,jakobsen_low_2024}
 \citation{jakobsen_detecting_2023}
 \citation{hou_-situ_2025}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Signal Processing Methods}{18}{section.5}\protected@file@percent }
@@ -241,28 +240,33 @@
 \citation{cornel_condition_2021}
 \citation{hou_-situ_2025}
 \citation{lineham_ultrasonic_2008}
-\citation{randall_vibrationbased_2021}
-\citation{yoshioka_monitoring_2009}
-\citation{kestel_condition_2025}
+\citation{jakobsen_vibration_2021}
+\citation{jakobsen_low_2024}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Threshold Methods}{19}{subsubsection.5.1.2}\protected@file@percent }
 \newlabel{subsubsec:threshold}{{5.1.2}{19}{Threshold Methods}{subsubsection.5.1.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Frequency-Domain Methods}{19}{subsection.5.2}\protected@file@percent }
 \newlabel{subsec:sp_freq}{{5.2}{19}{Frequency-Domain Methods}{subsection.5.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Power Spectral Density and Bearing Characteristic Frequencies}{19}{subsubsection.5.2.1}\protected@file@percent }
 \newlabel{subsubsec:psd}{{5.2.1}{19}{Power Spectral Density and Bearing Characteristic Frequencies}{subsubsection.5.2.1}{}}
+\citation{randall_vibrationbased_2021}
+\citation{yoshioka_monitoring_2009}
+\citation{kestel_condition_2025}
 \citation{jakobsen_vibration_2021}
-\citation{zhang_graph-data-based_2024}
 \citation{renhart_monitoring_2021}
 \citation{delft_university_of_technology_tu_delft_influence_2024}
+\citation{jakobsen_vibration_2021}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Envelope Analysis}{20}{subsubsection.5.2.2}\protected@file@percent }
 \newlabel{subsubsec:envelope}{{5.2.2}{20}{Envelope Analysis}{subsubsection.5.2.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}Higher-Order Spectral Statistics and Spectral Shape Descriptors}{20}{subsubsection.5.2.3}\protected@file@percent }
-\newlabel{subsubsec:spectral_shape}{{5.2.3}{20}{Higher-Order Spectral Statistics and Spectral Shape Descriptors}{subsubsection.5.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}Spectral Kurtosis and Optimal Band Selection}{20}{subsubsection.5.2.3}\protected@file@percent }
+\newlabel{subsubsec:spectral_kurtosis}{{5.2.3}{20}{Spectral Kurtosis and Optimal Band Selection}{subsubsection.5.2.3}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.4}Fractional-Octave Filter Banks}{20}{subsubsection.5.2.4}\protected@file@percent }
 \newlabel{subsubsec:octave}{{5.2.4}{20}{Fractional-Octave Filter Banks}{subsubsection.5.2.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.5}Multi-Band Hit-Rate and Wear Particle Index}{20}{subsubsection.5.2.5}\protected@file@percent }
 \newlabel{subsubsec:hitrate}{{5.2.5}{20}{Multi-Band Hit-Rate and Wear Particle Index}{subsubsection.5.2.5}{}}
-\citation{jakobsen_vibration_2021}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Time-Frequency and Decomposition Methods}{20}{subsection.5.3}\protected@file@percent }
+\newlabel{subsec:sp_tf}{{5.3}{20}{Time-Frequency and Decomposition Methods}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Short-Time Fourier Transform}{20}{subsubsection.5.3.1}\protected@file@percent }
+\newlabel{subsubsec:stft}{{5.3.1}{20}{Short-Time Fourier Transform}{subsubsection.5.3.1}{}}
 \citation{renhart_monitoring_2021}
 \citation{pacheco-cherrez_bearing_2022}
 \citation{wang_advanced_2024}
@@ -270,10 +274,7 @@
 \citation{yu_novel_2021}
 \citation{pan_symplectic_2019}
 \citation{xu_vibration-based_2024}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Time-Frequency and Decomposition Methods}{21}{subsection.5.3}\protected@file@percent }
-\newlabel{subsec:sp_tf}{{5.3}{21}{Time-Frequency and Decomposition Methods}{subsection.5.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Short-Time Fourier Transform}{21}{subsubsection.5.3.1}\protected@file@percent }
-\newlabel{subsubsec:stft}{{5.3.1}{21}{Short-Time Fourier Transform}{subsubsection.5.3.1}{}}
+\citation{herwig_signal_2025}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.2}Wavelet Transform}{21}{subsubsection.5.3.2}\protected@file@percent }
 \newlabel{subsubsec:wavelet}{{5.3.2}{21}{Wavelet Transform}{subsubsection.5.3.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.3}Empirical Mode Decomposition and Hilbert--Huang Transform}{21}{subsubsection.5.3.3}\protected@file@percent }
@@ -282,7 +283,8 @@
 \newlabel{subsubsec:sgmd}{{5.3.4}{21}{Symplectic Geometry Mode Decomposition}{subsubsection.5.3.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Signal Enhancement Methods}{21}{subsection.5.4}\protected@file@percent }
 \newlabel{subsec:sp_enhance}{{5.4}{21}{Signal Enhancement Methods}{subsection.5.4}{}}
-\citation{herwig_signal_2025}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Minimum Entropy Deconvolution}{21}{subsubsection.5.4.1}\protected@file@percent }
+\newlabel{subsubsec:med}{{5.4.1}{21}{Minimum Entropy Deconvolution}{subsubsection.5.4.1}{}}
 \citation{drinkwater_ultrasonic_2009,dou_review_2022}
 \citation{dwyer-joyce_measurement_2003,zhang_ultrasonic_2015,chen_evaluation_2023}
 \citation{wang_accuracy-improved_2024}
@@ -293,35 +295,34 @@
 \citation{maruyama_lubrication_2023}
 \citation{cen_ehl_2021,schneider_method_2022}
 \citation{jakobsen_detecting_2023}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Minimum Entropy Deconvolution}{22}{subsubsection.5.4.1}\protected@file@percent }
-\newlabel{subsubsec:med}{{5.4.1}{22}{Minimum Entropy Deconvolution}{subsubsection.5.4.1}{}}
+\citation{jakobsen_detecting_2023}
+\citation{wang_evaluation_2018}
+\citation{cornel_condition_2021}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2}Resonance-Based Sparse Signal Decomposition}{22}{subsubsection.5.4.2}\protected@file@percent }
 \newlabel{subsubsec:rssd}{{5.4.2}{22}{Resonance-Based Sparse Signal Decomposition}{subsubsection.5.4.2}{}}
 \@writefile{tdo}{\contentsline {todo}{Verify: herwig\_signal\_2025 title suggests a physics-informed neural network paper -- confirm that RSSD and RLS de-reverberation are the primary signal processing contribution rather than the neural network component.}{22}{section*.27}\protected@file@percent }
-\pgfsyspdfmark {pgfid83}{8580526}{34502139}
-\pgfsyspdfmark {pgfid86}{36133428}{34514427}
-\pgfsyspdfmark {pgfid87}{37981723}{34290513}
+\pgfsyspdfmark {pgfid83}{8580526}{45279621}
+\pgfsyspdfmark {pgfid86}{36133428}{45291909}
+\pgfsyspdfmark {pgfid87}{37981723}{45067995}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Physics-Based and Model-Driven Methods}{22}{subsection.5.5}\protected@file@percent }
 \newlabel{subsec:sp_model}{{5.5}{22}{Physics-Based and Model-Driven Methods}{subsection.5.5}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.1}Quasi-Static Spring-Layer Model for Ultrasonic Reflectometry}{22}{subsubsection.5.5.1}\protected@file@percent }
 \newlabel{subsubsec:spring}{{5.5.1}{22}{Quasi-Static Spring-Layer Model for Ultrasonic Reflectometry}{subsubsection.5.5.1}{}}
 \@writefile{tdo}{\contentsline {todo}{Verify spring-layer equation against drinkwater\_ultrasonic\_2009: the standard form is $R = (Z_2 - Z_1 + iZ_1Z_2/\omega K^*)/(Z_2 + Z_1 + iZ_1Z_2/\omega K^*)$ -- the $(Z_1^2 - Z_2^2)$ term in the denominator here may be a transcription error.}{22}{section*.28}\protected@file@percent }
-\pgfsyspdfmark {pgfid88}{27571726}{19918100}
-\pgfsyspdfmark {pgfid91}{36133428}{13586599}
-\pgfsyspdfmark {pgfid92}{37981723}{13362685}
+\pgfsyspdfmark {pgfid88}{27571726}{30862660}
+\pgfsyspdfmark {pgfid91}{36133428}{24531159}
+\pgfsyspdfmark {pgfid92}{37981723}{24307245}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.2}Electrical Circuit Models}{22}{subsubsection.5.5.2}\protected@file@percent }
 \newlabel{subsubsec:electrical_model}{{5.5.2}{22}{Electrical Circuit Models}{subsubsection.5.5.2}{}}
-\citation{jakobsen_detecting_2023}
-\citation{wang_evaluation_2018}
-\citation{cornel_condition_2021}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.3}Kappa and Lambda as Regression Targets}{22}{subsubsection.5.5.3}\protected@file@percent }
+\newlabel{subsubsec:kappa_target}{{5.5.3}{22}{Kappa and Lambda as Regression Targets}{subsubsection.5.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Machine Learning and Deep Learning}{22}{subsection.5.6}\protected@file@percent }
+\newlabel{subsec:sp_ml}{{5.6}{22}{Machine Learning and Deep Learning}{subsection.5.6}{}}
 \citation{wang_online_2022}
 \citation{zhang_health_2025}
 \citation{zhang_graph-data-based_2024}
 \citation{zhang_graph-data-based_2024}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.3}Kappa and Lambda as Regression Targets}{23}{subsubsection.5.5.3}\protected@file@percent }
-\newlabel{subsubsec:kappa_target}{{5.5.3}{23}{Kappa and Lambda as Regression Targets}{subsubsection.5.5.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Machine Learning and Deep Learning}{23}{subsection.5.6}\protected@file@percent }
-\newlabel{subsec:sp_ml}{{5.6}{23}{Machine Learning and Deep Learning}{subsection.5.6}{}}
+\citation{wang_evaluation_2018}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.1}Classical Machine Learning}{23}{subsubsection.5.6.1}\protected@file@percent }
 \newlabel{subsubsec:classical_ml}{{5.6.1}{23}{Classical Machine Learning}{subsubsection.5.6.1}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.2}Deep Learning}{23}{subsubsection.5.6.2}\protected@file@percent }
@@ -329,8 +330,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Multi-Sensor Data Fusion}{23}{subsection.5.7}\protected@file@percent }
 \newlabel{subsec:sp_fusion}{{5.7}{23}{Multi-Sensor Data Fusion}{subsection.5.7}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.1}Feature-Level Fusion}{23}{subsubsection.5.7.1}\protected@file@percent }
-\citation{wang_evaluation_2018}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.2}Multi-Parameter Oil Monitoring}{24}{subsubsection.5.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.2}Multi-Parameter Oil Monitoring}{23}{subsubsection.5.7.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Master Cross-Reference Matrix}{24}{subsection.5.8}\protected@file@percent }
 \newlabel{subsec:sp_crossref}{{5.8}{24}{Master Cross-Reference Matrix}{subsection.5.8}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \text  {$\mathsurround \z@ \mathchar "458$}indicates the combination has been demonstrated in at least one study included in this review.}}{24}{table.3}\protected@file@percent }
@@ -347,7 +347,7 @@
 \citation{renhart_monitoring_2021}
 \citation{delft_university_of_technology_tu_delft_influence_2024}
 \citation{lineham_ultrasonic_2008}
-\citation{jakobsen_detecting_2023}
+\citation{jakobsen_detecting_2023,jakobsen_low_2024}
 \citation{moussa_passive_2017}
 \citation{chen_evaluation_2023,dwyer-joyce_measurement_2003}
 \citation{chen_evaluation_2023}
@@ -389,7 +389,7 @@
 \citation{cen_ehl_2021,becker-dombrowsky_electrical_2024,schneider_method_2022}
 \citation{cornel_condition_2021,hou_-situ_2025,miettinen_analysis_2001}
 \citation{jakobsen_detecting_2023,jakobsen_vibration_2021}
-\citation{jakobsen_detecting_2023}
+\citation{jakobsen_detecting_2023,jakobsen_low_2024}
 \citation{renhart_monitoring_2021}
 \citation{zhang_graph-data-based_2024}
 \citation{georgiev_microphone_2017,pacheco-cherrez_bearing_2022}
@@ -507,3 +507,4 @@
 \bibcite{sun_state---art_2025}{{76}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
 \gdef \@abspage@last{37}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

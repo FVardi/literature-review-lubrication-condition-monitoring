@@ -19,13 +19,13 @@ The most widely reported features are:
     \begin{equation}
     x_\mathrm{RMS} = \sqrt{\frac{1}{N}\sum_{i=1}^{N} x_i^2}.
     \end{equation}
-    For passive methods, RMS increases monotonically with worsening lubrication in the mixed and boundary regimes due to increasing asperity contact energy. Widely reported for AE \cite{hou_-situ_2025,cornel_condition_2021,yoshioka_monitoring_2009,zhang_health_2025,renhart_monitoring_2021}, vibration \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}, passive ultrasound \cite{jakobsen_detecting_2023,jakobsen_low_2024}, and thermal monitoring \cite{moussa_passive_2017}.
+    For passive methods, RMS increases monotonically with worsening lubrication in the mixed and boundary regimes due to increasing asperity contact energy. Widely reported for AE \cite{hou_-situ_2025,cornel_condition_2021,yoshioka_monitoring_2009,zhang_health_2025,renhart_monitoring_2021}, vibration \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}, passive ultrasound \cite{jakobsen_detecting_2023}, and thermal monitoring \cite{moussa_passive_2017}.
     \item \textbf{Kurtosis:} Measures the impulsiveness of the signal relative to a Gaussian distribution (for which $K=3$) and defined as
     \begin{equation}
     K = \frac{\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^4}{\left(\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2\right)^2}.
     \end{equation}
-    High kurtosis indicates sparse, high-amplitude transients such as those produced by asperity micro-contacts or incipient crack impacts. Usgame Sandoval et al.\ \cite{usgame_sandoval_acoustic_2013} report an $\sim$8.6-fold increase in AE kurtosis from normal to severe fault in tapered roller bearings. Yoshioka and Shimizu \cite{yoshioka_monitoring_2009} note that under grease lubrication, kurtosis of the raw vibration signal decreases as damage transitions from sparse impulsive AE to a continuous broadband noise floor -- a counter-intuitive reversal that illustrates the importance of bearing-specific calibration. Kurtosis is also used as a band-selection criterion in spectral kurtosis (Section~\ref{subsubsec:spectral_kurtosis}).
-    \item \textbf{Crest factor:} peak-to-RMS ratio. Sensitive to impulsive events but tends to decrease as the signal transitions from sparse impulses to continuous broadband noise, similarly to kurtosis. Applied to passive ultrasound and vibration signals for lubrication condition monitoring by Jakobsen et al.\ \cite{jakobsen_detecting_2023,jakobsen_low_2024}.
+    High kurtosis indicates sparse, high-amplitude transients such as those produced by asperity micro-contacts or incipient crack impacts. Usgame Sandoval et al.\ \cite{usgame_sandoval_acoustic_2013} report an $\sim$8.6-fold increase in AE kurtosis from normal to severe fault in tapered roller bearings. Yoshioka and Shimizu \cite{yoshioka_monitoring_2009} note that under grease lubrication, kurtosis of the raw vibration signal decreases as damage transitions from sparse impulsive AE to a continuous broadband noise floor -- a counter-intuitive reversal that illustrates the importance of bearing-specific calibration. Kurtosis applied to spectral representations forms the basis for higher-order spectral analysis of lubrication signals (Section~\ref{subsubsec:spectral_shape}).
+    \item \textbf{Crest factor:} peak-to-RMS ratio. Sensitive to impulsive events but tends to decrease as the signal transitions from sparse impulses to continuous broadband noise, similarly to kurtosis. Applied to passive ultrasound and vibration signals for lubrication condition monitoring by Jakobsen et al.\ \cite{jakobsen_detecting_2023}.
     \item \textbf{Hjorth parameters:} three features derived from successive derivatives of the signal -- \textit{activity} (signal variance), \textit{mobility} (ratio of the standard deviation of the first derivative to that of the signal, proportional to mean frequency), and \textit{complexity} (ratio of the mobility of the first derivative to the mobility of the signal, reflecting bandwidth). Jakobsen et al.\ \cite{jakobsen_detecting_2023} apply all three to high-pass filtered passive ultrasound signals and find good correlation with $\kappa$; combined with linear regression or a shallow neural network they predict $\kappa$ with good precision. No other paper in the reviewed literature reports Hjorth parameters for LCM.
     \item \textbf{AE amplitude and energy centres (Hou \& Zhang):} Rather than a single scalar, Hou and Zhang \cite{hou_-situ_2025} define the amplitude centre $A_c = \frac{1}{N}\sum A_i$ and energy centre $E_c = \frac{1}{N}\sum E_i$ over a 10-minute window, and form the two-dimensional pair $(A_c, E_c)$. The joint distribution in this space exhibits spatially distinct clusters for boundary, mixed, and EHL lubrication, enabling regime classification without a hard threshold. A speed-dependent weighted power-law regression of the form
     \begin{equation}
@@ -50,15 +50,19 @@ Frequency-domain methods transform the time-domain signal into a spectral repres
 
 \subsubsection{Power Spectral Density and Bearing Characteristic Frequencies}
 \label{subsubsec:psd}
-The Fourier transform and power spectral density (PSD) reveal the distribution of signal energy across frequency. In the context of LCM, two types of spectral content are of interest: (1) broadband increases in spectral energy associated with increased asperity contact under inadequate lubrication, and (2) narrowband peaks at bearing characteristic frequencies -- the ball pass frequency of the outer race (BPFO), ball pass frequency of the inner race (BPFI), ball spin frequency (BSF), and fundamental train frequency (FTF) -- which indicate rolling element excitation of resonances in the bearing structure. Frequency-domain features carry lubrication-related information beyond what is captured by time-domain statistics alone, as demonstrated by spectral kurtosis and band-filtered RMS features showing correlation with $\kappa$ in vibration \cite{jakobsen_vibration_2021} and passive ultrasound \cite{jakobsen_low_2024} signals.
+The Fourier transform and power spectral density (PSD) reveal the distribution of signal energy across frequency. In the context of LCM, two types of spectral content are of interest: (1) broadband increases in spectral energy associated with increased asperity contact under inadequate lubrication, and (2) narrowband peaks at bearing characteristic frequencies -- the ball pass frequency of the outer race (BPFO), ball pass frequency of the inner race (BPFI), ball spin frequency (BSF), and fundamental train frequency (FTF) -- which indicate rolling element excitation of resonances in the bearing structure. Frequency-domain features carry lubrication-related information beyond what is captured by time-domain statistics alone.
 
 \subsubsection{Envelope Analysis}
 \label{subsubsec:envelope}
 Envelope analysis demodulates a high-frequency carrier signal -- such as a structural resonance excited by bearing impacts -- to extract the low-frequency amplitude modulation produced by periodic contact events \cite{randall_vibrationbased_2021}. The approach consists of: (1) bandpass filtering around a resonance frequency to isolate the carrier, (2) computing the analytic signal via the Hilbert transform to obtain the instantaneous envelope, and (3) computing the FFT of the envelope (the envelope spectrum) to reveal modulation frequencies. In the LCM context, envelope analysis of AE signals at $>$100\,kHz reveals BPFO and its harmonics in the envelope spectrum before they appear in conventional vibration measurements. Yoshioka and Shimizu \cite{yoshioka_monitoring_2009} apply this approach to AE from a deep-groove ball bearing and detect BPFO peaks approximately 40\,000 revolutions before vibration RMS increases. The same principle is used by Kestel et al.\ \cite{kestel_condition_2025} for AE envelope analysis in multi-sensor LCM.
 
-\subsubsection{Spectral Kurtosis and Optimal Band Selection}
-\label{subsubsec:spectral_kurtosis}
-Spectral kurtosis (SK) quantifies the kurtosis of the signal's short-time Fourier transform (STFT) coefficient distribution at each frequency bin, identifying frequency bands where impulsive transients have the highest signal-to-noise ratio. The frequency band with the highest SK can be used to design an optimal bandpass filter for envelope analysis. Jakobsen et al.\ \cite{jakobsen_vibration_2021} apply SK to vibration signals from grease-lubricated ball bearings and find that the SK-optimal band shows good correlation with $\kappa$, particularly for new bearings and at $\kappa < 0.6$, providing a principled frequency-domain LCM indicator that adapts to the specific bearing and operating condition.
+\subsubsection{Higher-Order Spectral Statistics and Spectral Shape Descriptors}
+\label{subsubsec:spectral_shape}
+Higher-order spectral statistics and shape descriptors characterise the spectral distribution beyond its energy content. Whether computed on a one-dimensional amplitude spectrum or per frequency bin across the time dimension of a two-dimensional STFT spectrogram, these are fundamentally shape analyses: kurtosis measures impulsiveness and peakedness, skewness measures asymmetry, flatness the energy concentration relative to white noise, and center frequency, RMS frequency, and bandwidth-related measures the location and spread of spectral energy.
+
+Jakobsen et al.\ \cite{jakobsen_vibration_2021} apply spectral kurtosis (SK) to vibration signals from grease-lubricated ball bearings under alternating lubrication conditions, with speed and temperature varied to span $\kappa$ from approximately 0.2 to 3.0. SK is computed as the normalised fourth moment of the STFT coefficient distribution at each frequency bin across successive time slices, reducing the two-dimensional spectrogram to a one-dimensional kurtosis profile. Band energy extracted from a lubrication-sensitive kurtogram band (7500--12000\,Hz) is correlated directly with $\kappa$ using Pearson and Spearman coefficients; values of $r = -0.76$, $\rho = -0.84$ are reported during the first hot-run stage ($\kappa < 0.5$). The kurtogram band energy serves as the lubrication condition indicator itself, not as a selector for downstream envelope analysis.
+
+Zhang et al.\ \cite{zhang_graph-data-based_2024} take a complementary approach, computing 15 spectral shape descriptors (features F10--F24 in their Table~1) from vibration signals in the 0--3\,kHz and 10--12.8\,kHz bands and from AE signals in the 20--40\,kHz band. These include dominant frequency, band-specific energy, center frequency, RMS frequency, spectral mean and standard deviation, spectral flatness, frequency-domain skewness and kurtosis, and normalised bandwidth. Features are selected by monotonicity and time-correlation criteria and combined with time-domain statistics as node embeddings in an MTAD-GAT model for lubrication degradation detection; temperature receives no spectral processing. The kurtosis term in Zhang et al.\ (F15) is the fourth standardised moment of the one-dimensional amplitude spectrum -- a global scalar shape statistic -- whereas Jakobsen et al.'s SK is a per-frequency-bin statistic computed over the time dimension of the STFT; both are instances of applying kurtosis to a spectral representation.
 
 \subsubsection{Fractional-Octave Filter Banks}
 \label{subsubsec:octave}
@@ -156,13 +160,10 @@ A consistent challenge for deep learning in LCM is the scarcity of labelled trai
 Multi-sensor fusion combines information from multiple sensing modalities to obtain lubrication condition estimates more accurate or robust than any single modality alone.
 
 \subsubsection{Feature-Level Fusion}
-Feature-level (early) fusion concatenates feature vectors from multiple sensors into a single feature vector before the classification or regression step. Zhang et al.\ \cite{zhang_graph-data-based_2024} demonstrate feature fusion of vibration, AE, and temperature signals for lubrication degradation detection, showing that the fused system outperforms any single-modality approach. Zhao et al.\ \cite{zhao_fault_2023} combine oil debris features with vibration features for bearing fault diagnosis, reporting a 15.7\% improvement in diagnostic accuracy from the oil debris features alone. Cornel et al.\ \cite{cornel_condition_2021} combine AE with vibration for complementary early detection under varying lubrication conditions.
-
-\subsubsection{Multi-Target Tracking for Debris}
-For optical debris monitoring, multi-target tracking algorithms combine blob extraction from debris images with Kalman filtering to track individual debris particles and compute their velocity, which is correlated with debris-related bearing damage \cite{wang_online_2022}. The Kalman filter provides temporal smoothing and handles particle occlusion.
+Feature-level (early) fusion concatenates feature vectors from multiple sensors into a single feature vector before the classification or regression step. Zhang et al.\ \cite{zhang_graph-data-based_2024} provide the clearest example in the lubrication condition monitoring literature: vibration, AE, and temperature signals are represented as a graph in which nodes correspond to sensing modalities and edges encode their relationships through a priori domain knowledge; a graph attention network trained on this structure detects lubrication degradation, and the multi-sensor system outperforms any single-modality baseline. The graph-attention architecture is notable because it learns which modality combinations are most informative for a given operating condition, rather than weighting all sensor contributions equally.
 
 \subsubsection{Multi-Parameter Oil Monitoring}
-Wang et al.\ \cite{wang_evaluation_2018} combine six independently measured oil parameters (viscosity, density, permittivity, water content, temperature, ferrous debris count) using a grey-correlation model, aggregating diverse physical information into a scalar wear state indicator. This multi-parameter approach is analogous in structure to feature-level fusion of passive sensor signals, and demonstrates that the information from multiple oil quality indicators is complementary for classifying bearing wear stages.
+Wang et al.\ \cite{wang_evaluation_2018} combine six independently measured oil parameters (viscosity, density, permittivity, water content, temperature, and ferrous debris count) using a grey k-means clustering model (G-KCM), which first computes a grey correlation degree distance matrix to express the temporal relationships between oil monitoring samples and then applies k-means clustering to assign lubrication condition classes. This multi-parameter approach is analogous in structure to feature-level fusion of passive sensor signals, and demonstrates that combining diverse oil quality indicators yields better discrimination of lubrication condition than any single parameter alone.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Master Cross-Reference Matrix}
@@ -205,7 +206,7 @@ PSD / Bearing char.\ freqs  & \checkmark & \checkmark & \checkmark & \checkmark 
 \hline
 Envelope analysis           & \checkmark & \checkmark &            &            &            &            &            &            \\
 \hline
-Spectral kurtosis           & \checkmark & \checkmark & \checkmark &            &            &            &            &            \\
+Spectral shape \& kurtosis  & \checkmark & \checkmark &            &            &            &            &            &            \\
 \hline
 Octave filter bank          &            & \checkmark &            &            &            &            &            &            \\
 \hline
@@ -234,6 +235,167 @@ Deep learning (CNN, GNN)    & \checkmark & \checkmark &            & \checkmark 
 Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            & \checkmark \\
 \hline
 \end{tabularx}
-\caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \checkmark indicates the combination has been demonstrated for LCM in at least one reviewed study. Empty cells represent combinations that are theoretically applicable but not yet demonstrated in the reviewed literature.}
+\caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \checkmark indicates the combination has been demonstrated in at least one study included in this review.}
 \label{tab:sp_crossref}
 \end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+% Detailed citation-level cross-reference tables (formerly §4.4).
+% Commented out as redundant with the master matrix above; retained here
+% in case citation-level detail is needed for a future revision.
+%
+%\begin{table}[H]
+%\scriptsize
+%\centering
+%\renewcommand{\arraystretch}{1.3}
+%\setlength{\tabcolsep}{4pt}
+%\begin{tabularx}{\linewidth}{|
+%>{\raggedright\arraybackslash}p{2.2cm}
+%| X | X | X | X | X |}
+%\hline
+%\textbf{SP Method}
+%& \textbf{Vibration}
+%& \textbf{Acoustic Emission}
+%& \textbf{Temperature}
+%& \textbf{Ultrasound ($>$20\,kHz)}
+%& \textbf{Sound (20\,Hz--20\,kHz)}
+%\\
+%\hline
+%\textbf{Time Domain}
+%& \cite{jakobsen_detecting_2023} \cite{zhang_graph-data-based_2024} \cite{tandon_condition_2007} \cite{cornel_condition_2021} \cite{jakobsen_vibration_2021} \cite{xu_vibration-based_2024} \cite{jakobsen_low_2024} \cite{wang_advanced_2024} \cite{marticorena_rolling_2022}
+%& \cite{zhang_graph-data-based_2024} \cite{miettinen_analysis_2001} \cite{tandon_condition_2007} \cite{cornel_condition_2021} \cite{kestel_condition_2025} \cite{hou_-situ_2025} \cite{delft_university_of_technology_tu_delft_influence_2024} \cite{marticorena_rolling_2022} \cite{wang_advanced_2024} \cite{yoshioka_monitoring_2009} \cite{usgame_sandoval_acoustic_2013} \cite{zhang_health_2025} \cite{renhart_monitoring_2021}
+%& \cite{zhang_graph-data-based_2024} \cite{moussa_passive_2017} \cite{cen_film_2019} \cite{wang_advanced_2024}
+%& \cite{jakobsen_detecting_2023} \cite{jakobsen_low_2024} \cite{lineham_ultrasonic_2008}
+%&
+%\\
+%\hline
+%\textbf{Frequency Domain}
+%& \cite{zhang_graph-data-based_2024} \cite{jakobsen_vibration_2021} \cite{xu_vibration-based_2024} \cite{jakobsen_low_2024}
+%& \cite{zhang_graph-data-based_2024} \cite{kestel_condition_2025} \cite{marticorena_rolling_2022} \cite{yoshioka_monitoring_2009} \cite{renhart_monitoring_2021} \cite{scheeren_acoustic_2024}
+%& \cite{zhang_graph-data-based_2024}
+%& \cite{jakobsen_low_2024}
+%& \cite{georgiev_microphone_2017}
+%\\
+%\hline
+%\textbf{Time-Frequency / Decomposition}
+%& \cite{jakobsen_vibration_2021} \cite{xu_vibration-based_2024}
+%& \cite{kestel_condition_2025} \cite{renhart_monitoring_2021}
+%&
+%&
+%&
+%\\
+%\hline
+%\textbf{Signal Enhancement}
+%& \cite{xu_vibration-based_2024}
+%& \cite{renhart_monitoring_2021}
+%&
+%&
+%& \cite{herwig_signal_2025} \cite{pacheco-cherrez_bearing_2022}
+%\\
+%\hline
+%\textbf{Model-Based}
+%& \cite{jakobsen_detecting_2023}
+%& \cite{hou_-situ_2025}
+%& \cite{moussa_passive_2017}
+%&
+%&
+%\\
+%\hline
+%\textbf{Machine Learning / DL}
+%& \cite{zhang_graph-data-based_2024} \cite{wang_advanced_2024}
+%& \cite{zhang_graph-data-based_2024} \cite{kestel_condition_2025} \cite{wang_advanced_2024} \cite{zhang_health_2025}
+%& \cite{zhang_graph-data-based_2024} \cite{wang_advanced_2024}
+%&
+%& \cite{georgiev_microphone_2017} \cite{pacheco-cherrez_bearing_2022}
+%\\
+%\hline
+%\textbf{Data Fusion}
+%& \cite{zhang_graph-data-based_2024}
+%& \cite{zhang_graph-data-based_2024}
+%& \cite{zhang_graph-data-based_2024}
+%&
+%&
+%\\
+%\hline
+%\end{tabularx}
+%\caption{Cross-reference of signal processing methods and passive/non-invasive sensing modalities for lubrication condition monitoring in rolling element bearings.}
+%\label{tab:non-invasive_methods}
+%\end{table}
+%
+%\begin{table}[H]
+%\scriptsize
+%\centering
+%\renewcommand{\arraystretch}{1.3}
+%\setlength{\tabcolsep}{4pt}
+%\begin{tabularx}{\linewidth}{|
+%>{\raggedright\arraybackslash}p{2.2cm}
+%| X | X | X | X | X |}
+%\hline
+%\textbf{SP Method}
+%& \textbf{Active Ultrasonic}
+%& \textbf{Electrical}
+%& \textbf{Magnetic / Inductive}
+%& \textbf{Optical}
+%& \textbf{SAW}
+%\\
+%\hline
+%\textbf{Time Domain}
+%& \cite{shang_comprehensive_2024} \cite{lineham_ultrasonic_2008}
+%& \cite{sun_online_2021}
+%& \cite{sun_online_2021}
+%& \cite{sun_online_2021}
+%& \cite{kestel_condition_2025} \cite{lindner_a23_2011}
+%\\
+%\hline
+%\textbf{Frequency Domain}
+%&
+%& \cite{sun_online_2021}
+%&
+%&
+%&
+%\\
+%\hline
+%\textbf{Mode Decomposition}
+%&
+%&
+%& \cite{yu_novel_2021}
+%&
+%&
+%\\
+%\hline
+%\textbf{Model-Based}
+%& \cite{drinkwater_ultrasonic_2009} \cite{wang_accuracy-improved_2024} \cite{chen_evaluation_2023} \cite{dou_review_2022} \cite{zhang_ultrasonic_2015} \cite{wu_ultrasonic_2025} \cite{li_lubrication_2026}
+%& \cite{cen_ehl_2021} \cite{becker-dombrowsky_electrical_2024} \cite{cen_film_2019} \cite{maruyama_lubrication_2023} \cite{maruyama_lubrication_2019} \cite{dai_situ_2024} \cite{schneider_method_2022} \cite{jablonka_quantitative_2018}
+%& \cite{zhu_lubricating_2017}
+%& \cite{liu_oil_2022} \cite{jablonka_quantitative_2018}
+%& \cite{lindner_a23_2011} \cite{tatzgern_tribo-acoustic_2025}
+%\\
+%\hline
+%\textbf{Sparse Sampling}
+%& \cite{chen_sub-nyquist_2025}
+%&
+%&
+%&
+%&
+%\\
+%\hline
+%\textbf{Machine Learning / DL}
+%&
+%&
+%&
+%& \cite{wang_online_2022}
+%&
+%\\
+%\hline
+%\textbf{Multi-param.\ fusion}
+%&
+%&
+%& \cite{wang_evaluation_2018}
+%&
+%&
+%\\
+%\hline
+%\end{tabularx}
+%\caption{Cross-reference of signal processing methods and active or invasive sensing modalities for lubrication condition monitoring in rolling element bearings.}
+%\label{tab:invasive_methods}
+%\end{table}

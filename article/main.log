@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.3)  6 APR 2026 23:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.20)  7 APR 2026 14:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/Article/main.tex
-(c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/Article/main.tex
+**c:/Users/au808956/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main
+(c:/Users/au808956/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main.tex
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-11-14>
+L3 programming layer <2025-11-06>
 (c:/texlive/2025/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
 (c:/texlive/2025/texmf-dist/tex/latex/base/size10.clo
@@ -24,7 +24,7 @@ File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
 ) (c:/texlive/2025/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2025/11/23 v25.16 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+Package: babel 2025/11/09 v25.15 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
 \babel@savecnt=\count283
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2050.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2052.
@@ -713,13 +713,13 @@ LaTeX Warning: Marginpar on page 3 moved.
 [3
 
 ]
-<figures/lcm_overview.png, id=438, 811.03pt x 262.9825pt>
+<figures/lcm_overview.png, id=428, 811.03pt x 262.9825pt>
 File: figures/lcm_overview.png Graphic file (type png)
 <use figures/lcm_overview.png>
 Package pdftex.def Info: figures/lcm_overview.png  used on input line 41.
 (pdftex.def)             Requested size: 384.1096pt x 124.55281pt.
  [4 <./figures/lcm_overview.png>]) [5] (./sections/literature_search_process.tex
-<figures/prisma_flow.pdf, id=485, 570.93298pt x 714.51439pt>
+<figures/prisma_flow.pdf, id=475, 570.93298pt x 714.51439pt>
 File: figures/prisma_flow.pdf Graphic file (type pdf)
 <use figures/prisma_flow.pdf>
 Package pdftex.def Info: figures/prisma_flow.pdf  used on input line 51.
@@ -778,7 +778,7 @@ Underfull \hbox (badness 1142) in paragraph at lines 95--95
 
 LaTeX Warning: Marginpar on page 12 moved.
 
-<figures/sensing_taxonomy.pdf, id=662, 713.93668pt x 498.45723pt>
+<figures/sensing_taxonomy.pdf, id=652, 713.93668pt x 498.45723pt>
 File: figures/sensing_taxonomy.pdf Graphic file (type pdf)
 <use figures/sensing_taxonomy.pdf>
 Package pdftex.def Info: figures/sensing_taxonomy.pdf  used on input line 10.
@@ -831,80 +831,55 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
 (hyperref)                removed on input line 66.
 
-[15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 195--195
-[]|\OT1/cmr/bx/n/7 Ultrasound
- []
+[15] [16]) [17] (./sections/signal_processing_methods.tex [18
 
-
-Underfull \hbox (badness 4505) in paragraph at lines 195--195
-[]|\OT1/cmr/bx/n/7 Sound (20Hz--
- []
-
-
-Underfull \hbox (badness 1082) in paragraph at lines 195--195
-[]|\OT1/cmr/m/n/7 [[]] [[]] [[]] [[]]
- []
-
-
-Underfull \hbox (badness 1082) in paragraph at lines 195--195
-\OT1/cmr/m/n/7 [[]] [[]] [[]] [[]]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--273
-[]|\OT1/cmr/bx/n/7 Active Ul-tra-
- []
-
-) [17] (./sections/signal_processing_methods.tex [18
-
-] [19] [20]
-Overfull \hbox (18.2391pt too wide) in paragraph at lines 107--107
+] [19] [20] [21]
+Overfull \hbox (18.2391pt too wide) in paragraph at lines 111--111
 \OT1/cmr/m/n/10 wig[]signal[]2025 
  []
 
 
-Overfull \hbox (9.12239pt too wide) in paragraph at lines 107--107
+Overfull \hbox (9.12239pt too wide) in paragraph at lines 111--111
 \OT1/cmr/m/n/10 reverberation 
  []
 
 
-Overfull \hbox (18.2391pt too wide) in paragraph at lines 107--107
+Overfull \hbox (18.2391pt too wide) in paragraph at lines 111--111
 \OT1/cmr/m/n/10 wig[]signal[]2025 
  []
 
 
-Overfull \hbox (9.12239pt too wide) in paragraph at lines 107--107
+Overfull \hbox (9.12239pt too wide) in paragraph at lines 111--111
 \OT1/cmr/m/n/10 reverberation 
  []
 
-[21]
-Overfull \hbox (36.07246pt too wide) in paragraph at lines 122--122
+
+Overfull \hbox (36.07246pt too wide) in paragraph at lines 126--126
 \OT1/cmr/m/n/10 ter[]ultrasonic[]2009: 
  []
 
 
-Overfull \hbox (34.31061pt too wide) in paragraph at lines 122--122
+Overfull \hbox (34.31061pt too wide) in paragraph at lines 126--126
 \OML/cmm/m/it/10 iZ[]Z[]=!K[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z[] \OT1/cmr/m/n/10 + 
  []
 
 
-Overfull \hbox (6.33136pt too wide) in paragraph at lines 122--122
+Overfull \hbox (6.33136pt too wide) in paragraph at lines 126--126
 \OML/cmm/m/it/10 iZ[]Z[]=!K[]\OT1/cmr/m/n/10 )$ 
  []
 
 
-Overfull \hbox (36.07246pt too wide) in paragraph at lines 122--122
+Overfull \hbox (36.07246pt too wide) in paragraph at lines 126--126
 \OT1/cmr/m/n/10 ter[]ultrasonic[]2009: 
  []
 
 
-Overfull \hbox (34.31061pt too wide) in paragraph at lines 122--122
+Overfull \hbox (34.31061pt too wide) in paragraph at lines 126--126
 \OML/cmm/m/it/10 iZ[]Z[]=!K[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z[] \OT1/cmr/m/n/10 + 
  []
 
 
-Overfull \hbox (6.33136pt too wide) in paragraph at lines 122--122
+Overfull \hbox (6.33136pt too wide) in paragraph at lines 126--126
 \OML/cmm/m/it/10 iZ[]Z[]=!K[]\OT1/cmr/m/n/10 )$ 
  []
 
@@ -932,24 +907,28 @@ Underfull \hbox (badness 2608) in paragraph at lines 14--17
 ] [34] [35] [36]) [37] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-11-14>
+L3 programming layer <2025-11-06>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 66B083C2AEE4E10FA9476605EAE841FD;16839.
+(rerunfilecheck)             Checksum: 490BCE8AA8574E6DEDAA4D6B354EA444;16569.
  ) 
 Here is how much of TeX's memory you used:
- 24747 strings out of 467538
- 454907 string characters out of 5423725
- 931381 words of memory out of 5000000
- 52958 multiletter control sequences out of 15000+600000
+ 24730 strings out of 467538
+ 454573 string characters out of 5423724
+ 927454 words of memory out of 5000000
+ 52946 multiletter control sequences out of 15000+600000
  637182 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,108p,1607b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,108p,1605b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (37 pages, 501128 bytes).
+Output written on main.pdf (37 pages, 494570 bytes).
 PDF statistics:
- 1760 PDF objects out of 2073 (max. 8388607)
- 1169 compressed objects within 12 object streams
- 254 named destinations out of 1000 (max. 500000)
- 644 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1436 PDF objects out of 1440 (max. 8388607)
+ 1046 compressed objects within 11 object streams
+ 249 named destinations out of 1000 (max. 500000)
+ 628 words of extra memory for PDF output out of 10000 (max. 10000000)
 
