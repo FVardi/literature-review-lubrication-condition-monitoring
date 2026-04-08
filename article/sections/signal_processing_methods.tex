@@ -19,12 +19,12 @@ The most widely reported features are:
     \begin{equation}
     x_\mathrm{RMS} = \sqrt{\frac{1}{N}\sum_{i=1}^{N} x_i^2}.
     \end{equation}
-    For passive methods, RMS increases monotonically with worsening lubrication in the mixed and boundary regimes due to increasing asperity contact energy. Widely reported for AE \cite{hou_-situ_2025,cornel_condition_2021,yoshioka_monitoring_2009,zhang_health_2025,renhart_monitoring_2021}, vibration \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}, passive ultrasound \cite{jakobsen_detecting_2023,jakobsen_low_2024}, and thermal monitoring \cite{moussa_passive_2017}.
+    For passive methods, RMS increases monotonically with worsening lubrication in the mixed and boundary regimes due to increasing asperity contact energy. Widely reported for AE \cite{hou_-situ_2025,cornel_condition_2021,zhang_health_2025,renhart_monitoring_2021}, vibration \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}, passive ultrasound \cite{jakobsen_detecting_2023,jakobsen_low_2024}, and thermal monitoring \cite{moussa_passive_2017}.
     \item \textbf{Kurtosis:} Measures the impulsiveness of the signal relative to a Gaussian distribution (for which $K=3$) and defined as
     \begin{equation}
     K = \frac{\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^4}{\left(\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2\right)^2}.
     \end{equation}
-    High kurtosis indicates sparse, high-amplitude transients such as those produced by asperity micro-contacts or incipient crack impacts. Usgame Sandoval et al.\ \cite{usgame_sandoval_acoustic_2013} report an $\sim$8.6-fold increase in AE kurtosis from normal to severe fault in tapered roller bearings. Yoshioka and Shimizu \cite{yoshioka_monitoring_2009} note that under grease lubrication, kurtosis of the raw vibration signal decreases as damage transitions from sparse impulsive AE to a continuous broadband noise floor -- a counter-intuitive reversal that illustrates the importance of bearing-specific calibration. Kurtosis is also used as a band-selection criterion in spectral kurtosis (Section~\ref{subsubsec:spectral_kurtosis}).
+    High kurtosis indicates sparse, high-amplitude transients such as those produced by asperity micro-contacts or incipient crack impacts. Usgame Sandoval et al.\ \cite{usgame_sandoval_acoustic_2013} report an $\sim$8.6-fold increase in AE kurtosis from normal to severe fault in tapered roller bearings. Kurtosis is also used as a band-selection criterion in spectral kurtosis (Section~\ref{subsubsec:spectral_kurtosis}).
     \item \textbf{Crest factor:} peak-to-RMS ratio. Sensitive to impulsive events but tends to decrease as the signal transitions from sparse impulses to continuous broadband noise, similarly to kurtosis. Applied to passive ultrasound and vibration signals for lubrication condition monitoring by Jakobsen et al.\ \cite{jakobsen_detecting_2023,jakobsen_low_2024}.
     \item \textbf{Hjorth parameters:} three features derived from successive derivatives of the signal -- \textit{activity} (signal variance), \textit{mobility} (ratio of the standard deviation of the first derivative to that of the signal, proportional to mean frequency), and \textit{complexity} (ratio of the mobility of the first derivative to the mobility of the signal, reflecting bandwidth). Jakobsen et al.\ \cite{jakobsen_detecting_2023} apply all three to high-pass filtered passive ultrasound signals and find good correlation with $\kappa$; combined with linear regression or a shallow neural network they predict $\kappa$ with good precision. No other paper in the reviewed literature reports Hjorth parameters for LCM.
     \item \textbf{AE amplitude and energy centres (Hou \& Zhang):} Rather than a single scalar, Hou and Zhang \cite{hou_-situ_2025} define the amplitude centre $A_c = \frac{1}{N}\sum A_i$ and energy centre $E_c = \frac{1}{N}\sum E_i$ over a 10-minute window, and form the two-dimensional pair $(A_c, E_c)$. The joint distribution in this space exhibits spatially distinct clusters for boundary, mixed, and EHL lubrication, enabling regime classification without a hard threshold. A speed-dependent weighted power-law regression of the form
@@ -54,7 +54,7 @@ The Fourier transform and power spectral density (PSD) reveal the distribution o
 
 \subsubsection{Envelope Analysis}
 \label{subsubsec:envelope}
-Envelope analysis demodulates a high-frequency carrier signal -- such as a structural resonance excited by bearing impacts -- to extract the low-frequency amplitude modulation produced by periodic contact events \cite{randall_vibrationbased_2021}. The approach consists of: (1) bandpass filtering around a resonance frequency to isolate the carrier, (2) computing the analytic signal via the Hilbert transform to obtain the instantaneous envelope, and (3) computing the FFT of the envelope (the envelope spectrum) to reveal modulation frequencies. In the LCM context, envelope analysis of AE signals at $>$100\,kHz reveals BPFO and its harmonics in the envelope spectrum before they appear in conventional vibration measurements. Yoshioka and Shimizu \cite{yoshioka_monitoring_2009} apply this approach to AE from a deep-groove ball bearing and detect BPFO peaks approximately 40\,000 revolutions before vibration RMS increases. The same principle is used by Kestel et al.\ \cite{kestel_condition_2025} for AE envelope analysis in multi-sensor LCM.
+Envelope analysis demodulates a high-frequency carrier signal -- such as a structural resonance excited by bearing impacts -- to extract the low-frequency amplitude modulation produced by periodic contact events \cite{randall_vibrationbased_2021}. The approach consists of: (1) bandpass filtering around a resonance frequency to isolate the carrier, (2) computing the analytic signal via the Hilbert transform to obtain the instantaneous envelope, and (3) computing the FFT of the envelope (the envelope spectrum) to reveal modulation frequencies. In the LCM context, envelope analysis is most naturally applied to AE signals above 100\,kHz, where lubrication-induced asperity contact events modulate the high-frequency carrier. Kestel et al.\ \cite{kestel_condition_2025} apply AE envelope analysis as part of a multi-sensor LCM system.
 
 \subsubsection{Spectral Kurtosis and Optimal Band Selection}
 \label{subsubsec:spectral_kurtosis}
@@ -80,9 +80,9 @@ The STFT divides the signal into short, overlapping windows and computes the FFT
 
 \subsubsection{Wavelet Transform}
 \label{subsubsec:wavelet}
-The continuous wavelet transform (CWT) provides time-frequency resolution that adapts to the local signal frequency through a scaling parameter: short wavelets at high frequencies and long wavelets at low frequencies, giving better time resolution where signals are fast-varying and better frequency resolution where they are slow-varying. This property is well-suited to AE bursts, which are transient and broadband. Renhart et al.\ \cite{renhart_monitoring_2021} apply the CWT with a Morse (generalised Morse) wavelet to individual AE bursts triggered by the $P_5$ criterion, producing amplitude scalograms that reveal a two-stage within-event mechanism: an initial high-frequency asperity impact followed by a lower-frequency relaxation. Adaptive wavelet denoising -- in which the wavelet decomposition threshold is optimised by a kurtosis-entropy criterion -- is applied to non-contact acoustic (microphone) signals from bearings to denoise and classify bearing health \cite{pacheco-cherrez_bearing_2022}.
+The continuous wavelet transform (CWT) provides time-frequency resolution that adapts to the local signal frequency through a scaling parameter: short wavelets at high frequencies and long wavelets at low frequencies, giving better time resolution where signals are fast-varying and better frequency resolution where they are slow-varying. This property is well-suited to AE bursts, which are transient and broadband. Renhart et al.\ \cite{renhart_monitoring_2021} apply the CWT with a Morse (generalised Morse) wavelet to individual AE bursts triggered by the $P_5$ criterion, producing amplitude scalograms that reveal a two-stage within-event mechanism: an initial high-frequency asperity impact followed by a lower-frequency relaxation. Adaptive wavelet denoising -- in which the wavelet decomposition threshold is optimised by a kurtosis-entropy criterion -- is a further variant applicable to bearing signals, though no reviewed study applies this specifically to lubrication condition monitoring.
 
-The discrete wavelet transform (DWT) and its multi-resolution analysis framework are also applied to vibration signals for LCM, enabling simultaneous extraction of features at multiple frequency scales corresponding to different physical phenomena \cite{wang_advanced_2024}.
+The discrete wavelet transform (DWT) and its multi-resolution analysis framework enable simultaneous extraction of features at multiple frequency scales, which is in principle applicable to vibration signals for LCM, though no reviewed study reports DWT specifically for lubrication condition monitoring of vibration signals.
 
 \subsubsection{Empirical Mode Decomposition and Hilbert--Huang Transform}
 \label{subsubsec:emd}
@@ -203,21 +203,21 @@ Threshold methods           &            & \checkmark & \checkmark &            
 \hline
 PSD / Bearing char.\ freqs  & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            &            \\
 \hline
-Envelope analysis           & \checkmark & \checkmark &            &            &            &            &            &            \\
+Envelope analysis           &            & \checkmark &            &            &            &            &            &            \\
 \hline
-Spectral kurtosis           & \checkmark & \checkmark & \checkmark &            &            &            &            &            \\
+Spectral kurtosis           & \checkmark &            & \checkmark &            &            &            &            &            \\
 \hline
 Octave filter bank          &            & \checkmark &            &            &            &            &            &            \\
 \hline
-STFT / Spectrogram          & \checkmark & \checkmark &            &            &            &            &            &            \\
+STFT / Spectrogram          & \checkmark &            &            &            &            &            &            &            \\
 \hline
-Wavelet transform           & \checkmark & \checkmark &            & \checkmark &            &            &            &            \\
+Wavelet transform           &            & \checkmark &            &            &            &            &            &            \\
 \hline
-EMD / HHT                   & \checkmark & \checkmark &            &            &            &            &            &            \\
+EMD / HHT                   &            &            &            &            &            &            &            &            \\
 \hline
 Mode decomposition (SGMD)   &            &            &            &            &            &            &            & \checkmark \\
 \hline
-MED / Deconvolution         & \checkmark & \checkmark &            &            &            &            &            &            \\
+MED / Deconvolution         & \checkmark &            &            &            &            &            &            &            \\
 \hline
 RSSD / Sparse decomposition &            &            &            & \checkmark &            &            &            &            \\
 \hline
@@ -234,6 +234,6 @@ Deep learning (CNN, GNN)    & \checkmark & \checkmark &            & \checkmark 
 Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            & \checkmark \\
 \hline
 \end{tabularx}
-\caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \checkmark indicates the combination has been demonstrated for LCM in at least one reviewed study. Empty cells represent combinations that are theoretically applicable but not yet demonstrated in the reviewed literature.}
+\caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \checkmark indicates the combination has been demonstrated for LCM in at least one reviewed study.}
 \label{tab:sp_crossref}
 \end{table}

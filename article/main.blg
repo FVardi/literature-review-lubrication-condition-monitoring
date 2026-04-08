@@ -4,45 +4,45 @@ The top-level auxiliary file: main.aux
 The style file: unsrt.bst
 Database file #1: bib.bib
 Warning--empty author and editor in noauthor_elasto-hydrodynamic_1977
-You've used 76 entries,
+You've used 74 entries,
             1791 wiz_defined-function locations,
-            865 strings with 20625 characters,
-and the built_in function-call counts, 19025 in all, are:
-= -- 1559
-> -- 1111
+            855 strings with 20114 characters,
+and the built_in function-call counts, 18516 in all, are:
+= -- 1518
+> -- 1080
 < -- 7
-+ -- 398
-- -- 322
-* -- 1650
-:= -- 3147
-add.period$ -- 231
-call.type$ -- 76
-change.case$ -- 75
++ -- 387
+- -- 313
+* -- 1601
+:= -- 3062
+add.period$ -- 225
+call.type$ -- 74
+change.case$ -- 73
 chr.to.int$ -- 0
-cite$ -- 77
-duplicate$ -- 737
-empty$ -- 1703
-format.name$ -- 322
-if$ -- 4059
+cite$ -- 75
+duplicate$ -- 719
+empty$ -- 1658
+format.name$ -- 313
+if$ -- 3953
 int.to.chr$ -- 0
-int.to.str$ -- 76
-missing$ -- 75
-newline$ -- 382
-num.names$ -- 77
-pop$ -- 129
+int.to.str$ -- 74
+missing$ -- 73
+newline$ -- 372
+num.names$ -- 75
+pop$ -- 127
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 302
+skip$ -- 295
 stack$ -- 0
-substring$ -- 1277
-swap$ -- 127
+substring$ -- 1240
+swap$ -- 125
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 179
-width$ -- 78
-write$ -- 840
+while$ -- 174
+width$ -- 76
+write$ -- 818
 (There was 1 warning)

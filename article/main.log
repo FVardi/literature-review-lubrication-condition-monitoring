@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.3)  6 APR 2026 23:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.3)  8 APR 2026 06:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -812,7 +812,6 @@ Overfull \hbox (14.31445pt too wide) in paragraph at lines 64--65
  []\OT1/cmr/bx/n/10 Sensor tech-nol-ogy.[] \OT1/cmr/m/n/10 In-dus-trial pas-sive ul-tra-sound in-stru-ments (hand-held or continuous-monitoring)
  []
 
-[14]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\leavevmode@ifvmode' on input line 66.
@@ -831,7 +830,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
 (hyperref)                removed on input line 66.
 
-[15] [16]
+[14] [15] [16]
 Underfull \hbox (badness 10000) in paragraph at lines 195--195
 []|\OT1/cmr/bx/n/7 Ultrasound
  []
@@ -839,16 +838,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--195
 
 Underfull \hbox (badness 4505) in paragraph at lines 195--195
 []|\OT1/cmr/bx/n/7 Sound (20Hz--
- []
-
-
-Underfull \hbox (badness 1082) in paragraph at lines 195--195
-[]|\OT1/cmr/m/n/7 [[]] [[]] [[]] [[]]
- []
-
-
-Underfull \hbox (badness 1082) in paragraph at lines 195--195
-\OT1/cmr/m/n/7 [[]] [[]] [[]] [[]]
  []
 
 
@@ -935,21 +924,21 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 66B083C2AEE4E10FA9476605EAE841FD;16839.
+(rerunfilecheck)             Checksum: C87AA51B56729EB904F512489AB330B7;16844.
  ) 
 Here is how much of TeX's memory you used:
- 24747 strings out of 467538
- 454907 string characters out of 5423725
- 931381 words of memory out of 5000000
- 52958 multiletter control sequences out of 15000+600000
+ 24739 strings out of 467538
+ 454673 string characters out of 5423725
+ 928413 words of memory out of 5000000
+ 52952 multiletter control sequences out of 15000+600000
  637182 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,108p,1607b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (37 pages, 501128 bytes).
+Output written on main.pdf (37 pages, 499411 bytes).
 PDF statistics:
- 1760 PDF objects out of 2073 (max. 8388607)
- 1169 compressed objects within 12 object streams
- 254 named destinations out of 1000 (max. 500000)
+ 1724 PDF objects out of 1728 (max. 8388607)
+ 1149 compressed objects within 12 object streams
+ 252 named destinations out of 1000 (max. 500000)
  644 words of extra memory for PDF output out of 10000 (max. 10000000)
 

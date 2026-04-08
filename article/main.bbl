@@ -159,11 +159,6 @@ J~Miettinen, P~Andersson, and V~Wikströ.
 \newblock Analysis of grease lubrication of a ball bearing using acoustic emission measurement.
 \newblock {\em Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology}, 215(6):535--544, June 2001.
 
-\bibitem{yoshioka_monitoring_2009}
-Takeo Yoshioka and Shigeo Shimizu.
-\newblock Monitoring of {Ball} {Bearing} {Operation} under {Grease} {Lubrication} {Using} a {New} {Compound} {Diagnostic} {System} {Detecting} {Vibration} and {Acoustic} {Emission}.
-\newblock {\em Tribology Transactions}, 52(6):725--730, October 2009.
-
 \bibitem{tandon_condition_2007}
 N.~Tandon, K.M. Ramakrishna, and G.S. Yadava.
 \newblock Condition monitoring of electric motor ball bearings for the detection of grease contaminants.
@@ -329,25 +324,20 @@ Philipp Renhart, Michael Maier, Christopher Strablegg, Florian Summer, Florian G
 \newblock Monitoring {Tribological} {Events} by {Acoustic} {Emission} {Measurements} for {Bearing} {Contacts}.
 \newblock {\em Lubricants}, 9(11):109, November 2021.
 
-\bibitem{cen_film_2019}
-Hui Cen and Piet~M. Lugt.
-\newblock Film thickness in a grease lubricated ball bearing.
-\newblock {\em Tribology International}, 134:26--35, June 2019.
-
 \bibitem{herwig_signal_2025}
 N.~Herwig, P.~Borghesani, W.~Smith, and Z.~Peng.
 \newblock Signal processing- and physics-informed neural network for explainable bearing condition monitoring.
 \newblock {\em Mechanical Systems and Signal Processing}, 235:112925, July 2025.
 
-\bibitem{pacheco-cherrez_bearing_2022}
-Josué Pacheco-Chérrez, Jesús~A. Fortoul-Díaz, Froylán Cortés-Santacruz, Luz María Aloso-Valerdi, and David~I. Ibarra-Zarate.
-\newblock Bearing fault detection with vibration and acoustic signals: {Comparison} among different machine leaning classification methods.
-\newblock {\em Engineering Failure Analysis}, 139:106515, September 2022.
-
 \bibitem{yu_novel_2021}
 Bing Yu, Nan Cao, and Tianhong Zhang.
 \newblock A novel signature extracting approach for inductive oil debris sensors based on symplectic geometry mode decomposition.
 \newblock {\em Measurement}, 185:110056, November 2021.
+
+\bibitem{cen_film_2019}
+Hui Cen and Piet~M. Lugt.
+\newblock Film thickness in a grease lubricated ball bearing.
+\newblock {\em Tribology International}, 134:26--35, June 2019.
 
 \bibitem{pan_symplectic_2019}
 Haiyang Pan, Yu~Yang, Xin Li, Jinde Zheng, and Junsheng Cheng.
@@ -358,6 +348,11 @@ Haiyang Pan, Yu~Yang, Xin Li, Jinde Zheng, and Junsheng Cheng.
 Yulai Zhao, Xiaowei Wang, Shuo Han, Junzhe Lin, and Qingkai Han.
 \newblock Fault {Diagnosis} for {Abnormal} {Wear} of {Rolling} {Element} {Bearing} {Fusing} {Oil} {Debris} {Monitoring}.
 \newblock {\em Sensors}, 23(7):3402, March 2023.
+
+\bibitem{pacheco-cherrez_bearing_2022}
+Josué Pacheco-Chérrez, Jesús~A. Fortoul-Díaz, Froylán Cortés-Santacruz, Luz María Aloso-Valerdi, and David~I. Ibarra-Zarate.
+\newblock Bearing fault detection with vibration and acoustic signals: {Comparison} among different machine leaning classification methods.
+\newblock {\em Engineering Failure Analysis}, 139:106515, September 2022.
 
 \bibitem{lillelund_rulsurv_2025}
 Christian~Marius Lillelund, Fernando Pannullo, Morten~Opprud Jakobsen, Manuel Morante, and Christian~Fischer Pedersen.
@@ -373,10 +368,5 @@ Muhammad~Farooq Siddique, Faisal Saleem, Muhammad Umar, Cheol~Hong Kim, and Jong
 Abdul-Kazeem Shamba, Kerstin Bach, and Gavin Taylor.
 \newblock Contrast {All} the {Time}: {Learning} {Time} {Series} {Representation} from {Temporal} {Consistency}, 2024.
 \newblock Version Number: 2.
-
-\bibitem{sun_state---art_2025}
-Bojun Sun, Zixin Sheng, Peng Song, Huilin Sun, Fei Wang, Xiaogang Sun, and Junyan Liu.
-\newblock State-of-the-{Art} {Detection} and {Diagnosis} {Methods} for {Rolling} {Bearing} {Defects}: {A} {Comprehensive} {Review}.
-\newblock {\em Applied Sciences}, 15(2):1001, January 2025.
 
 \end{thebibliography}
