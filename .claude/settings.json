@@ -13,7 +13,8 @@
       "Bash(grep -c \"\\\\\\\\\\\\\\\\end{tabularx}\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/sensing_methods_and_empirical_studies.tex\")",
       "Bash(grep -c \"\\\\\\\\\\\\\\\\begin{tabularx}\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/sensing_methods_and_empirical_studies.tex\")",
       "Bash(pdflatex -interaction=nonstopmode main.tex)",
-      "Bash(grep -n \"\\\\\\\\\\\\\\\\TODO\\\\|\\\\\\\\\\\\\\\\todo\\\\|FIXME\\\\|TODO\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/sensing_methods_and_empirical_studies.tex\")"
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\TODO\\\\|\\\\\\\\\\\\\\\\todo\\\\|FIXME\\\\|TODO\" \"c:/Users/Bruger/Documents/Repos/literature-review-lubrication-condition-monitoring/article/sections/sensing_methods_and_empirical_studies.tex\")",
+      "Bash(latexmk -pdf -interaction=nonstopmode main.tex)"
     ]
   }
 }

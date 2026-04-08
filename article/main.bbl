@@ -109,6 +109,11 @@ Daniel Cornel, Francisco Gutiérrez~Guzmán, Georg Jacobs, and Stephan Neumann.
 \newblock Condition monitoring of roller bearings using acoustic emission.
 \newblock {\em Wind Energy Science}, 6(2):367--376, March 2021.
 
+\bibitem{jakobsen_vibration_2021}
+Morten~Opprud Jakobsen, Eskild~Sune Herskind, Kim Bjerge, Peter Ahrendt, Christian~Fischer Pedersen, and Mikael~Bergholz Knudsen.
+\newblock Vibration signatures in ball bearings as a function of lubricant viscosity ratio kappa, under alternating lubrication conditions.
+\newblock {\em Tribology International}, 156:106840, April 2021.
+
 \bibitem{lugt_grease_2012}
 Piet~M. Lugt.
 \newblock {\em Grease {Lubrication} in {Rolling} {Bearings}}.
@@ -173,11 +178,6 @@ Robert~Bond Randall.
 Akhand Rai and S.H. Upadhyay.
 \newblock A review on signal processing techniques utilized in the fault diagnosis of rolling element bearings.
 \newblock {\em Tribology International}, 96:289--306, April 2016.
-
-\bibitem{jakobsen_vibration_2021}
-Morten~Opprud Jakobsen, Eskild~Sune Herskind, Kim Bjerge, Peter Ahrendt, Christian~Fischer Pedersen, and Mikael~Bergholz Knudsen.
-\newblock Vibration signatures in ball bearings as a function of lubricant viscosity ratio kappa, under alternating lubrication conditions.
-\newblock {\em Tribology International}, 156:106840, April 2021.
 
 \bibitem{jakobsen_low_2024}
 Morten~Opprud Jakobsen.
@@ -348,11 +348,6 @@ Takeo Yoshioka and Shigeo Shimizu.
 Haiyang Pan, Yu~Yang, Xin Li, Jinde Zheng, and Junsheng Cheng.
 \newblock Symplectic geometry mode decomposition and its application to rotating machinery compound fault diagnosis.
 \newblock {\em Mechanical Systems and Signal Processing}, 114:189--211, January 2019.
-
-\bibitem{pacheco-cherrez_bearing_2022}
-Josué Pacheco-Chérrez, Jesús~A. Fortoul-Díaz, Froylán Cortés-Santacruz, Luz María Aloso-Valerdi, and David~I. Ibarra-Zarate.
-\newblock Bearing fault detection with vibration and acoustic signals: {Comparison} among different machine leaning classification methods.
-\newblock {\em Engineering Failure Analysis}, 139:106515, September 2022.
 
 \bibitem{lillelund_rulsurv_2025}
 Christian~Marius Lillelund, Fernando Pannullo, Morten~Opprud Jakobsen, Manuel Morante, and Christian~Fischer Pedersen.
