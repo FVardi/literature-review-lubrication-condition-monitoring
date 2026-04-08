@@ -339,15 +339,15 @@ Hui Cen and Piet~M. Lugt.
 \newblock Film thickness in a grease lubricated ball bearing.
 \newblock {\em Tribology International}, 134:26--35, June 2019.
 
+\bibitem{yoshioka_monitoring_2009}
+Takeo Yoshioka and Shigeo Shimizu.
+\newblock Monitoring of {Ball} {Bearing} {Operation} under {Grease} {Lubrication} {Using} a {New} {Compound} {Diagnostic} {System} {Detecting} {Vibration} and {Acoustic} {Emission}.
+\newblock {\em Tribology Transactions}, 52(6):725--730, October 2009.
+
 \bibitem{pan_symplectic_2019}
 Haiyang Pan, Yu~Yang, Xin Li, Jinde Zheng, and Junsheng Cheng.
 \newblock Symplectic geometry mode decomposition and its application to rotating machinery compound fault diagnosis.
 \newblock {\em Mechanical Systems and Signal Processing}, 114:189--211, January 2019.
-
-\bibitem{zhao_fault_2023}
-Yulai Zhao, Xiaowei Wang, Shuo Han, Junzhe Lin, and Qingkai Han.
-\newblock Fault {Diagnosis} for {Abnormal} {Wear} of {Rolling} {Element} {Bearing} {Fusing} {Oil} {Debris} {Monitoring}.
-\newblock {\em Sensors}, 23(7):3402, March 2023.
 
 \bibitem{pacheco-cherrez_bearing_2022}
 Josué Pacheco-Chérrez, Jesús~A. Fortoul-Díaz, Froylán Cortés-Santacruz, Luz María Aloso-Valerdi, and David~I. Ibarra-Zarate.
