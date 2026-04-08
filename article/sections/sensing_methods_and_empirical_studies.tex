@@ -12,6 +12,83 @@ These two axes define four categories illustrated in Figure~\ref{fig:taxonomy}: 
 \label{fig:taxonomy}
 \end{figure}
 
+\begin{center}
+\begin{tikzpicture}
+    % ===== PARAMETERS =====
+    \pgfmathsetmacro{\W}{7}    % total width
+    \pgfmathsetmacro{\H}{5}    % total height
+    \pgfmathsetmacro{\S}{1.4}  % global scale factor
+    \pgfmathsetmacro{\LW}{1}   % line width in pt
+
+    % Derived midpoints
+    \pgfmathsetmacro{\Mx}{\W/2}
+    \pgfmathsetmacro{\My}{\H/2}
+
+    \begin{scope}[scale=\S]
+
+        % ===== DRAWING =====
+        % Outer rectangle
+        \draw[line width=\LW pt] (0,0) rectangle (\W,\H);
+
+        % Softer, semi-transparent colors
+        \fill[red!40,    opacity=0.3] (0,\My) rectangle (\Mx,\H);
+        \fill[blue!40,   opacity=0.3] (\Mx,\My) rectangle (\W,\H);
+        \fill[green!40,  opacity=0.3] (0,0) rectangle (\Mx,\My);
+        \fill[yellow!40, opacity=0.3] (\Mx,0) rectangle (\W,\My);
+
+        % Dividing lines
+        \draw[line width=\LW pt] (0,\My) -- (\W,\My);
+        \draw[line width=\LW pt] (\Mx,0) -- (\Mx,\H);
+
+        % ===== TEXT STYLE =====
+        \tikzset{
+            boxtext/.style={
+                font=\sffamily\bfseries, % font family + weight + size
+                text=black                     % text color
+            }
+        }
+
+        % ===== TEXT OUTSIDE BOXES =====
+        % Top labels (centered above top squares)
+        \node[anchor=south] at (\Mx/2, \H) {Passive};
+        \node[anchor=south] at (\Mx + \Mx/2, \H) {Active};
+
+        % Left labels (vertical, centered beside left squares)
+        \node[anchor=south, rotate=90] at (0, \My + \My/2) {Non-invasive};
+        \node[anchor=south, rotate=90] at (0, \My/2) {Invasive};
+
+        % ===== TEXT INSIDE BOXES =====
+        % Centers of each quadrant
+        \node[boxtext] at (\Mx/2,        \My + \My/2) {
+            \begin{tabular}{l}
+                $\bullet$ Acoustic Emission \\
+                $\bullet$ Vibration \\
+                $\bullet$ Passive Ultrasound \\
+                $\bullet$ Audible Sound \\
+                $\bullet$ Thermal Monitoring
+            \end{tabular}
+        };
+        \node[boxtext] at (\Mx + \Mx/2,  \My + \My/2) {
+            \begin{tabular}{l}
+                $\bullet$ Active Ultrasonic Reflectometry \\
+                $\bullet$ Surface Acoustic Wave Sensing \\
+            \end{tabular}
+        };
+        \node[boxtext] at (\Mx/2,        \My/2)       {
+            \begin{tabular}{l}
+                $\bullet$ Direct Lubricant Sampling \\
+                $\bullet$ Embedded Sensors \\
+                $\bullet$ Internal Probes
+            \end{tabular}
+        };
+        \node[boxtext] at (\Mx + \Mx/2,  \My/2)       {
+            Test
+        };
+
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
 \noindent The subsections below describe each sensing modality with a standardised structure: (i) physical principle, (ii) what lubrication information it is sensitive to, (iii) sensor hardware and technology considerations, and (iv) installation and operational characteristics. Signal processing methods are treated in depth in Section~\ref{sec:sp}. A factor common to all modalities is the transmission path between the signal origin and the sensor, which is treated first as it governs which signals are accessible at the sensor regardless of modality.
 
 % ─────────────────────────────────────────────────────────────────────────────

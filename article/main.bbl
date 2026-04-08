@@ -304,21 +304,6 @@ Si-Yuan Wang, Ding-Xin Yang, and Hai-Feng Hu.
 \newblock Evaluation for {Bearing} {Wear} {States} {Based} on {Online} {Oil} {Multi}-{Parameters} {Monitoring}.
 \newblock {\em Sensors}, 18(4):1111, April 2018.
 
-\bibitem{zhang_graph-data-based_2024}
-Xinzhuo Zhang, Xuhua Zhang, Linbo Zhu, Chuang Gao, Bo~Ning, and Yongsheng Zhu.
-\newblock A {Graph}-{Data}-{Based} {Monitoring} {Method} of {Bearing} {Lubrication} {Using} {Multi}-{Sensor}.
-\newblock {\em Lubricants}, 12(6):229, June 2024.
-
-\bibitem{marticorena_rolling_2022}
-Matias Marticorena and Oscar García~Peyrano.
-\newblock Rolling {Bearing} {Condition} {Monitoring} {Technique} {Based} on {Cage} {Rotation} {Analysis} and {Acoustic} {Emission}.
-\newblock {\em Journal of Dynamics, Monitoring and Diagnostics}, pages 57--65, March 2022.
-
-\bibitem{usgame_sandoval_acoustic_2013}
-Hector~M. Usgame~Sandoval, Camilo~A. Pedraza~Ramírez, and Jabid Quiroga.
-\newblock Acoustic emission-based early fault detection in tapered roller bearings.
-\newblock {\em Ingeniería e Investigación}, 33(3):5--10, September 2013.
-
 \bibitem{zhang_health_2025}
 Junjiao Zhang, Yongna Shen, Zhanwen Wu, Gongtian Shen, Yilin Yuan, and Bin Hu.
 \newblock Health {Status} {Assessment} of {Passenger} {Ropeway} {Bearings} {Based} on {Multi}-{Parameter} {Acoustic} {Emission} {Analysis}.
@@ -329,15 +314,15 @@ Philipp Renhart, Michael Maier, Christopher Strablegg, Florian Summer, Florian G
 \newblock Monitoring {Tribological} {Events} by {Acoustic} {Emission} {Measurements} for {Bearing} {Contacts}.
 \newblock {\em Lubricants}, 9(11):109, November 2021.
 
-\bibitem{cen_film_2019}
-Hui Cen and Piet~M. Lugt.
-\newblock Film thickness in a grease lubricated ball bearing.
-\newblock {\em Tribology International}, 134:26--35, June 2019.
+\bibitem{usgame_sandoval_acoustic_2013}
+Hector~M. Usgame~Sandoval, Camilo~A. Pedraza~Ramírez, and Jabid Quiroga.
+\newblock Acoustic emission-based early fault detection in tapered roller bearings.
+\newblock {\em Ingeniería e Investigación}, 33(3):5--10, September 2013.
 
-\bibitem{herwig_signal_2025}
-N.~Herwig, P.~Borghesani, W.~Smith, and Z.~Peng.
-\newblock Signal processing- and physics-informed neural network for explainable bearing condition monitoring.
-\newblock {\em Mechanical Systems and Signal Processing}, 235:112925, July 2025.
+\bibitem{zhang_graph-data-based_2024}
+Xinzhuo Zhang, Xuhua Zhang, Linbo Zhu, Chuang Gao, Bo~Ning, and Yongsheng Zhu.
+\newblock A {Graph}-{Data}-{Based} {Monitoring} {Method} of {Bearing} {Lubrication} {Using} {Multi}-{Sensor}.
+\newblock {\em Lubricants}, 12(6):229, June 2024.
 
 \bibitem{pacheco-cherrez_bearing_2022}
 Josué Pacheco-Chérrez, Jesús~A. Fortoul-Díaz, Froylán Cortés-Santacruz, Luz María Aloso-Valerdi, and David~I. Ibarra-Zarate.
@@ -354,10 +339,10 @@ Haiyang Pan, Yu~Yang, Xin Li, Jinde Zheng, and Junsheng Cheng.
 \newblock Symplectic geometry mode decomposition and its application to rotating machinery compound fault diagnosis.
 \newblock {\em Mechanical Systems and Signal Processing}, 114:189--211, January 2019.
 
-\bibitem{zhao_fault_2023}
-Yulai Zhao, Xiaowei Wang, Shuo Han, Junzhe Lin, and Qingkai Han.
-\newblock Fault {Diagnosis} for {Abnormal} {Wear} of {Rolling} {Element} {Bearing} {Fusing} {Oil} {Debris} {Monitoring}.
-\newblock {\em Sensors}, 23(7):3402, March 2023.
+\bibitem{herwig_signal_2025}
+N.~Herwig, P.~Borghesani, W.~Smith, and Z.~Peng.
+\newblock Signal processing- and physics-informed neural network for explainable bearing condition monitoring.
+\newblock {\em Mechanical Systems and Signal Processing}, 235:112925, July 2025.
 
 \bibitem{lillelund_rulsurv_2025}
 Christian~Marius Lillelund, Fernando Pannullo, Morten~Opprud Jakobsen, Manuel Morante, and Christian~Fischer Pedersen.

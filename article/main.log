@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.20)  7 APR 2026 14:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.25)  8 APR 2026 06:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/au808956/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main
+**c:/Users/au808956/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main.tex
 (c:/Users/au808956/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main.tex
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-11-06>
+L3 programming layer <2025-11-14>
 (c:/texlive/2025/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
 (c:/texlive/2025/texmf-dist/tex/latex/base/size10.clo
@@ -24,7 +24,7 @@ File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
 ) (c:/texlive/2025/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2025/11/09 v25.15 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+Package: babel 2025/11/23 v25.16 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
 \babel@savecnt=\count283
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2050.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2052.
@@ -786,50 +786,49 @@ Package pdftex.def Info: figures/sensing_taxonomy.pdf  used on input line 10.
 [12
 
  <./figures/sensing_taxonomy.pdf>] [13]
-Overfull \hbox (9.97795pt too wide) in paragraph at lines 50--51
+Overfull \hbox (9.97795pt too wide) in paragraph at lines 127--128
 \OT1/cmr/m/n/10 Accelerometers mea-sure me-chan-i-cal vi-bra-tion of the bear-ing hous-ing or ad-ja-cent struc-ture. Vibration-
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 57.
+(hyperref)                removing `math shift' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 57.
+(hyperref)                removing `math shift' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 57.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 57.
+(hyperref)                removed on input line 134.
 
-
-Overfull \hbox (14.31445pt too wide) in paragraph at lines 64--65
+[14]
+Overfull \hbox (14.31445pt too wide) in paragraph at lines 141--142
  []\OT1/cmr/bx/n/10 Sensor tech-nol-ogy.[] \OT1/cmr/m/n/10 In-dus-trial pas-sive ul-tra-sound in-stru-ments (hand-held or continuous-monitoring)
  []
 
-[14]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 66.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 66.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 66.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 143.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 66.
+(hyperref)                removed on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 143.
 
 [15] [16]) [17] (./sections/signal_processing_methods.tex [18
 
@@ -907,28 +906,24 @@ Underfull \hbox (badness 2608) in paragraph at lines 14--17
 ] [34] [35] [36]) [37] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-11-06>
+L3 programming layer <2025-11-14>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 490BCE8AA8574E6DEDAA4D6B354EA444;16569.
  ) 
 Here is how much of TeX's memory you used:
- 24730 strings out of 467538
- 454573 string characters out of 5423724
- 927454 words of memory out of 5000000
- 52946 multiletter control sequences out of 15000+600000
- 637182 words of font info for 76 fonts, out of 8000000 for 9000
+ 24764 strings out of 467538
+ 455083 string characters out of 5423724
+ 928490 words of memory out of 5000000
+ 52981 multiletter control sequences out of 15000+600000
+ 637781 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,108p,1605b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (37 pages, 494570 bytes).
+ 99i,12n,108p,1609b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on main.pdf (37 pages, 507775 bytes).
 PDF statistics:
- 1436 PDF objects out of 1440 (max. 8388607)
- 1046 compressed objects within 11 object streams
- 249 named destinations out of 1000 (max. 500000)
+ 1437 PDF objects out of 1440 (max. 8388607)
+ 1045 compressed objects within 11 object streams
+ 246 named destinations out of 1000 (max. 500000)
  628 words of extra memory for PDF output out of 10000 (max. 10000000)
 
