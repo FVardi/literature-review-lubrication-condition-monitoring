@@ -1,0 +1,45 @@
+
+\section{Physical Origins of Measurable Signals}
+\label{sec:signal_origins}
+The connection between lubricant physics and measurable signals is the key link between the theoretical models in Section~\ref{sec:lubrication_physics} and the sensing and signal processing methods reviewed in Sections~\ref{sec:sensing} and~\ref{sec:sp}. Table~\ref{tab:signal_origins} maps each physical mechanism through which lubrication condition becomes observable to the sensing modality that captures it, the frequency band available for signal processing, the LCM quantities it encodes, and the principal practical constraint on its use.
+
+\begin{table}[H]
+\scriptsize
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{|
+  >{\raggedright\arraybackslash}p{2.0cm} |
+  >{\raggedright\arraybackslash}p{1.7cm} |
+  >{\raggedright\arraybackslash}p{2.2cm} |
+  >{\raggedright\arraybackslash}p{1.6cm} |
+  >{\raggedright\arraybackslash}X |
+  >{\raggedright\arraybackslash}p{3.0cm} |}
+\hline
+\textbf{Physical mechanism} & \textbf{Signal type} & \textbf{Sensing modality} & \textbf{Freq.\ range at sensor} & \textbf{LCM quantities encoded} & \textbf{Principal constraint} \\
+\hline
+Asperity micro-contact and micro-fracture at ball--raceway interface under insufficient lubricant film & Transient elastic stress waves & AE sensors; passive ultrasound (\S\ref{subsubsec:ae}, \S\ref{subsubsec:ultrasound_passive}) & 20--500\,kHz (path-limited) \cite{ono_comprehensive_2020,scheeren_evaluation_2022} & Lubrication regime ($\Lambda$); starvation severity; abrasive contamination events \cite{miettinen_analysis_2001,cornel_condition_2021,hou_-situ_2025} & Path attenuation 30--60\,dB at 500\,kHz through housing; usable bandwidth geometry- and mounting-specific \cite{ono_comprehensive_2020,scheeren_evaluation_2022} \\
+\hline
+Rolling/sliding friction and impulsive excitation from asperity contacts at ball--raceway and ball--cage interfaces & Broadband structural vibration; radiated audible sound & Accelerometers; microphones (\S\ref{subsubsec:vibration}, \S\ref{subsubsec:sound}) & Vibration: 0--50\,kHz; Sound: 20\,Hz--20\,kHz & Lubrication adequacy ($\kappa$, $\Lambda$); starvation onset \cite{jakobsen_vibration_2021,xu_vibration-based_2024,georgiev_microphone_2017} & Standard industrial accelerometers limited to $<$10\,kHz; LCM-informative content predominantly $>$30\,kHz \cite{jakobsen_detecting_2023} \\
+\hline
+Viscous shear heating and boundary-lubrication friction energy dissipation & Bearing temperature rise & Thermocouples; IR thermography (\S\ref{subsubsec:thermal}) & DC--10\,Hz (thermally diffusion-limited) & Sustained lubrication inadequacy; long-term friction regime shift \cite{moussa_passive_2017,yan_thermal_2019} & Thermal response lags lubrication onset by seconds to minutes; insensitive to transient or intermittent starvation events \\
+\hline
+Lubricant film thickness and dielectric state alter electrical properties of bearing contact & Change in capacitance, impedance, or resistance & Electrical sensors (\S\ref{subsubsec:electrical}) & DC--10\,MHz (excitation dependent) & Film thickness ($h_m$, $\Lambda$); lubricant degradation state; water ingress \cite{cen_ehl_2021,becker-dombrowsky_electrical_2024,maruyama_lubrication_2023} & Bearing electrical isolation and shaft brush or slip-ring contacts required; not retrofittable to standard machines \\
+\hline
+Partial reflection of ultrasonic pulses at the lubricant--raceway interface (acoustic impedance mismatch) & Reflected ultrasonic pulse; reflection coefficient & Active ultrasonic reflectometry; SAW sensors (\S\ref{subsubsec:ultrasonic_active}, \S\ref{subsubsec:saw}) & 1--100\,MHz (applied excitation) & Film thickness ($h_m$) via spring-layer model; lubricant bulk modulus \cite{drinkwater_ultrasonic_2009,chen_evaluation_2023,dwyer-joyce_measurement_2003} & Double-path transmission loss; precise coupling, alignment, and reference calibration required; not retrofittable \cite{hansen_comparison_2022} \\
+\hline
+Magnetic field perturbation by ferromagnetic or conductive wear particles in lubricant flow & Inductance change; eddy current signature & Inductive/magnetic debris sensors (\S\ref{subsubsec:magnetic}) & DC--kHz (debris transit) & Ferrous wear debris count and size; contamination severity \cite{yu_novel_2021,wang_evaluation_2018} & Applicable only to oil-circulating systems; inapplicable to grease-lubricated or sealed bearings \\
+\hline
+Optical interaction of light with lubricant film (interference, fluorescence) or suspended debris (scattering) & Interference fringe pattern; scattered or attenuated light intensity & Optical interferometry; LIF; machine-vision (\S\ref{subsubsec:optical}) & Optical (THz--PHz) & Film thickness ($h_m$) via interferometry; lubricant composition via LIF; debris count and size via machine vision \cite{shang_comprehensive_2024,liu_oil_2022,wang_online_2022} & Interferometry and LIF require transparent contact zone (purpose-built test rigs only); machine vision requires in-line optical access to lubricant flow \\
+\hline
+\end{tabularx}
+\caption{Physical mechanisms linking lubrication conditions in ball bearings to measurable signals. `Freq.\ range at sensor' is the band available to signal processing methods after transmission through the structural path from the contact zone to the sensor; see Section~\ref{subsec:transmission}. `LCM quantities encoded' identifies the lubrication-condition-relevant information carried by each signal, directly connecting physical origin to the sensing discussion in Section~\ref{sec:sensing} and the comparative analysis in Section~\ref{sec:comparative}. Sensing modality cross-references refer to subsections of Section~\ref{sec:sensing}.}
+\label{tab:signal_origins}
+\end{table}
+
+Three observations follow directly from Table~\ref{tab:signal_origins} and are important for understanding the signal processing requirements of each modality.
+
+First, \textit{passive signals increase in amplitude as lubrication conditions worsen}. AE amplitude, vibration RMS, sound pressure, and temperature all rise as the lubricant film thins and asperity contacts increase. This monotonic relationship (with some exceptions noted below) makes these signals attractive for online monitoring without calibration: a rising trend is itself diagnostic. However, it also means that passive signals are weakest when lubrication is adequate -- precisely the regime in which a sensitive early-warning system is most valuable.
+
+Second, \textit{active methods provide direct film thickness information}. Electrical and ultrasonic active methods measure changes in the bearing--lubricant system that can be analytically related to film thickness via physics-based models (capacitance models, spring-layer acoustic models). They are therefore capable of producing quantitative estimates of $h_m$ and $\Lambda$ rather than qualitative condition indicators. The trade-off is the requirement for a dedicated excitation source and, in most cases, modifications to the bearing or its housing.
+
+Third, \textit{lubricant degradation mechanisms produce partially distinct signal signatures}. Starvation (insufficient lubricant quantity) increases asperity contact and thus AE and vibration energy. Viscosity degradation (thermal or oxidative aging) shifts the Stribeck curve and changes the operating regime at a given speed and load. Contamination by wear debris or external particles increases surface roughness and generates additional impulsive events. Water ingress changes lubricant dielectric properties (detectable electrically) and reduces film-forming capacity. These distinctions have direct implications for the choice of signal processing method, since features optimised for detecting starvation may not be equally sensitive to viscosity degradation or contamination -- a trade-off quantified in Table~\ref{tab:fault_sensitivity}.
