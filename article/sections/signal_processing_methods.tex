@@ -54,7 +54,7 @@ The Fourier transform and power spectral density (PSD) reveal the distribution o
 
 \subsubsection{Envelope Analysis}
 \label{subsubsec:envelope}
-Envelope analysis demodulates a high-frequency carrier signal -- such as a structural resonance excited by bearing impacts -- to extract the low-frequency amplitude modulation produced by periodic contact events \cite{randall_vibrationbased_2021}. The approach consists of: (1) bandpass filtering around a resonance frequency to isolate the carrier, (2) computing the analytic signal via the Hilbert transform to obtain the instantaneous envelope, and (3) computing the FFT of the envelope (the envelope spectrum) to reveal modulation frequencies. In the LCM context, envelope analysis of AE signals at $>$100\,kHz reveals BPFO and its harmonics in the envelope spectrum before they appear in conventional vibration measurements. Yoshioka and Shimizu \cite{yoshioka_monitoring_2009} apply this approach to AE from a deep-groove ball bearing and detect BPFO peaks approximately 40\,000 revolutions before vibration RMS increases. The same principle is used by Kestel et al.\ \cite{kestel_condition_2025} for AE envelope analysis in multi-sensor LCM.
+Envelope analysis demodulates a high-frequency carrier signal -- such as a structural resonance excited by bearing impacts -- to extract the low-frequency amplitude modulation produced by periodic contact events \cite{randall_vibrationbased_2021}. The approach consists of: (1) bandpass filtering around a resonance frequency to isolate the carrier, (2) computing the analytic signal via the Hilbert transform to obtain the instantaneous envelope, and (3) computing the FFT of the envelope (the envelope spectrum) to reveal modulation frequencies. In the LCM context, envelope analysis is most naturally applied to AE signals above 100\,kHz, where lubrication-induced asperity contact events modulate the high-frequency carrier. Kestel et al.\ \cite{kestel_condition_2025} apply AE envelope analysis as part of a multi-sensor LCM system.
 
 \subsubsection{Higher-Order Spectral Statistics and Spectral Shape Descriptors}
 \label{subsubsec:spectral_shape}
@@ -84,9 +84,9 @@ The STFT divides the signal into short, overlapping windows and computes the FFT
 
 \subsubsection{Wavelet Transform}
 \label{subsubsec:wavelet}
-The continuous wavelet transform (CWT) provides time-frequency resolution that adapts to the local signal frequency through a scaling parameter: short wavelets at high frequencies and long wavelets at low frequencies, giving better time resolution where signals are fast-varying and better frequency resolution where they are slow-varying. This property is well-suited to AE bursts, which are transient and broadband. Renhart et al.\ \cite{renhart_monitoring_2021} apply the CWT with a Morse (generalised Morse) wavelet to individual AE bursts triggered by the $P_5$ criterion, producing amplitude scalograms that reveal a two-stage within-event mechanism: an initial high-frequency asperity impact followed by a lower-frequency relaxation. Adaptive wavelet denoising -- in which the wavelet decomposition threshold is optimised by a kurtosis-entropy criterion -- is applied to non-contact acoustic (microphone) signals from bearings to denoise and classify bearing health \cite{pacheco-cherrez_bearing_2022}.
+The continuous wavelet transform (CWT) provides time-frequency resolution that adapts to the local signal frequency through a scaling parameter: short wavelets at high frequencies and long wavelets at low frequencies, giving better time resolution where signals are fast-varying and better frequency resolution where they are slow-varying. This property is well-suited to AE bursts, which are transient and broadband. Renhart et al.\ \cite{renhart_monitoring_2021} apply the CWT with a Morse (generalised Morse) wavelet to individual AE bursts triggered by the $P_5$ criterion, producing amplitude scalograms that reveal a two-stage within-event mechanism: an initial high-frequency asperity impact followed by a lower-frequency relaxation. Adaptive wavelet denoising -- in which the wavelet decomposition threshold is optimised by a kurtosis-entropy criterion -- is a further variant applicable to bearing signals, though no reviewed study applies this specifically to lubrication condition monitoring.
 
-The discrete wavelet transform (DWT) and its multi-resolution analysis framework are also applied to vibration signals for LCM, enabling simultaneous extraction of features at multiple frequency scales corresponding to different physical phenomena \cite{wang_advanced_2024}.
+The discrete wavelet transform (DWT) and its multi-resolution analysis framework enable simultaneous extraction of features at multiple frequency scales, which is in principle applicable to vibration signals for LCM, though no reviewed study reports DWT specifically for lubrication condition monitoring of vibration signals.
 
 \subsubsection{Empirical Mode Decomposition and Hilbert--Huang Transform}
 \label{subsubsec:emd}
@@ -204,21 +204,21 @@ Threshold methods           &            & \checkmark & \checkmark &            
 \hline
 PSD / Bearing char.\ freqs  & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            &            \\
 \hline
-Envelope analysis           & \checkmark & \checkmark &            &            &            &            &            &            \\
+Envelope analysis           &            & \checkmark &            &            &            &            &            &            \\
 \hline
 Spectral shape \& kurtosis  & \checkmark & \checkmark &            &            &            &            &            &            \\
 \hline
 Octave filter bank          &            & \checkmark &            &            &            &            &            &            \\
 \hline
-STFT / Spectrogram          & \checkmark & \checkmark &            &            &            &            &            &            \\
+STFT / Spectrogram          & \checkmark &            &            &            &            &            &            &            \\
 \hline
-Wavelet transform           & \checkmark & \checkmark &            & \checkmark &            &            &            &            \\
+Wavelet transform           &            & \checkmark &            &            &            &            &            &            \\
 \hline
-EMD / HHT                   & \checkmark & \checkmark &            &            &            &            &            &            \\
+EMD / HHT                   &            &            &            &            &            &            &            &            \\
 \hline
 Mode decomposition (SGMD)   &            &            &            &            &            &            &            & \checkmark \\
 \hline
-MED / Deconvolution         & \checkmark & \checkmark &            &            &            &            &            &            \\
+MED / Deconvolution         & \checkmark &            &            &            &            &            &            &            \\
 \hline
 RSSD / Sparse decomposition &            &            &            & \checkmark &            &            &            &            \\
 \hline

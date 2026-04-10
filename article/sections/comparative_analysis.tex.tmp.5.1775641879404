@@ -84,19 +84,19 @@ Vibration time-domain & High \cite{jakobsen_vibration_2021} & High \cite{jakobse
 \hline
 Vibration spectral kurtosis + $\kappa$ regression & High \cite{jakobsen_vibration_2021} & High \cite{jakobsen_vibration_2021} & & $\kappa$ target encodes speed, load, viscosity via Hamrock--Dowson model \cite{jakobsen_vibration_2021} \\
 \hline
-AE time-domain & High \cite{hou_-situ_2025} & Moderate \cite{cornel_condition_2021} & & Speed-weighted features \cite{hou_-situ_2025}; baseline normalisation \cite{cornel_condition_2021} \\
+AE time-domain & High & Moderate & Moderate & Speed-weighted features \cite{hou_-situ_2025}; baseline normalisation \cite{cornel_condition_2021} \\
 \hline
-AE frequency domain (octave, SK) & & & & No compensation strategy reported in reviewed literature \\
+AE frequency domain (octave, SK) & High & Moderate & Moderate & Band-specific normalisation; no compensation strategy reported in reviewed literature \\
 \hline
-Passive ultrasound threshold & High \cite{lineham_ultrasonic_2008} & & & Reference measurement at same operating point \cite{lineham_ultrasonic_2008} \\
+Passive ultrasound threshold & High & Moderate & Low & Reference measurement at same operating point \cite{lineham_ultrasonic_2008} \\
 \hline
-Passive ultrasound $\kappa$ regression & Moderate \cite{jakobsen_detecting_2023,jakobsen_low_2024} & Moderate \cite{jakobsen_detecting_2023,jakobsen_low_2024} & & $\kappa$ target implicitly encodes operating conditions; most principled passive compensation strategy \cite{jakobsen_detecting_2023,jakobsen_low_2024} \\
+Passive ultrasound $\kappa$ regression & Moderate & Moderate & Low & $\kappa$ target implicitly encodes operating conditions; most principled passive compensation strategy \cite{jakobsen_detecting_2023,jakobsen_low_2024} \\
 \hline
-Thermal monitoring & & & N/A (temperature is the signal) & Thermal model as baseline \cite{moussa_passive_2017} \\
+Thermal monitoring & Moderate & Moderate & N/A (temperature is the signal) & Thermal model as baseline \cite{moussa_passive_2017} \\
 \hline
-Active ultrasonic (film) & Low (direct measurement) \cite{chen_evaluation_2023} & Low \cite{chen_evaluation_2023} & Moderate (lubricant viscosity varies) \cite{chen_evaluation_2023} & EHL model with temperature correction \cite{chen_evaluation_2023} \\
+Active ultrasonic (film) & Low (direct measurement) & Low & Moderate (lubricant viscosity varies) & EHL model with temperature correction \cite{chen_evaluation_2023} \\
 \hline
-Electrical (capacitance/impedance) & Low (direct measurement) \cite{cen_ehl_2021} & Low \cite{cen_ehl_2021} & Moderate (dielectric constant varies) \cite{becker-dombrowsky_electrical_2024} & Temperature-corrected circuit model \cite{cen_ehl_2021} \\
+Electrical (capacitance/impedance) & Low (direct measurement) & Low & Moderate (dielectric constant varies) & Temperature-corrected circuit model \cite{cen_ehl_2021} \\
 \hline
 \end{tabularx}
 \caption{Operating condition dependence of sensing and signal processing method combinations for LCM, with reported compensation strategies.}
@@ -184,7 +184,7 @@ AE & Time-domain (RMS, PCR) & Prototype & \cite{cornel_condition_2021,hou_-situ_
 \hline
 Vibration & $\kappa$ regression (LASSO, NN) & Research & \cite{jakobsen_vibration_2021} \\
 \hline
-Passive ultrasound & $\kappa$ regression & Research & \cite{jakobsen_detecting_2023,jakobsen_low_2024} \\
+Passive ultrasound & $\kappa$ regression & Research & \cite{jakobsen_detecting_2023} \\
 \hline
 AE & Octave filter bank + $P_5$ & Research & \cite{renhart_monitoring_2021} \\
 \hline
@@ -197,7 +197,7 @@ SAW & Spring-layer model & Research & \cite{tatzgern_tribo-acoustic_2025,lindner
 Oil multi-param. & Grey-corr.\ clustering & Research & \cite{wang_evaluation_2018} \\
 \hline
 \end{tabularx}
-\caption{Technology maturity of sensing and signal processing method combinations for LCM. Maturity levels: \textit{Industrial} -- commercially deployed; \textit{Prototype} -- demonstrated on industrial components or in field tests; \textit{Research} -- demonstrated in controlled laboratory studies only. Note: the \textit{Industrial} maturity of vibration refers to general bearing condition monitoring; LCM-specific vibration deployment is limited to simple threshold methods not identified as a dedicated LCM product in the reviewed literature.}
+\caption{Technology maturity of sensing and signal processing method combinations for LCM. Maturity levels: \textit{Industrial} -- commercially deployed; \textit{Prototype} -- demonstrated on industrial components or in field tests; \textit{Research} -- demonstrated in controlled laboratory studies only.}
 \label{tab:maturity}
 \end{table}
 
