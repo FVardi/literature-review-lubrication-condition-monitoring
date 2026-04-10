@@ -11,12 +11,12 @@ Lubrication films formed in ball bearings under operation are generally classifi
     \item \textbf{Boundary lubrication}: the entire load is carried by surface-to-surface contact (ball to raceway). This regime produces the highest friction, arising solely from sliding of asperities against each other. Wear rate is high, and heat generation and elastic stress-wave emission are correspondingly intense.
     \item \textbf{Mixed lubrication}: load is shared between a thin lubricant film and surface asperity contacts. Friction and wear are reduced compared to the boundary regime but asperity contacts continue to generate transient stress waves detectable by acoustic and vibration sensors.
     \item \textbf{Elastohydrodynamic lubrication (EHL)}: all load is carried by a lubricant film between the balls and raceway. The high pressure building up in the contact zone causes elastic deformation of the solid materials, sustaining the film. Friction is at its minimum for full-film EHL and rises again at excessive viscosities due to viscous shear losses. Wear is minimal and elastic wave emission is negligible, making this the ideal operating regime for bearing longevity.
-\end{itemize}
+\end{itemize}\todo{Should the hydrodynamic lubrication regime be added here?}
 The progression through these regimes as lubrication conditions deteriorate determines both the nature and the intensity of the signals accessible to passive sensing methods.
 
 \subsection{The Stribeck Curve and Its Significance for Signal Processing}
 \label{subsec:stribeck}
-\todo{Include figure with the Stribeck curve} The Stribeck curve describes the relationship between the friction coefficient and the Hersey number $\eta n / p$, where $\eta$ is the dynamic viscosity, $n$ is the rotational speed, and $p$ is the contact pressure. As the Hersey number decreases -- due to lower speed, lower viscosity, or higher load -- the bearing transitions from the EHL regime, through mixed lubrication, into boundary lubrication, and the friction coefficient rises sharply. The curve is illustrated in Figure~\ref{fig:stribeck}
+The Stribeck curve describes the relationship between the friction coefficient and the Hersey number $\eta n / p$, where $\eta$ is the dynamic viscosity, $n$ is the rotational speed, and $p$ is the contact pressure. As the Hersey number decreases -- due to lower speed, lower viscosity, or higher load -- the bearing transitions from the EHL regime, through mixed lubrication, into boundary lubrication, and the friction coefficient rises sharply. The curve is illustrated in Figure~\ref{fig:stribeck}
 
 \begin{figure}[htbp]
     \centering
@@ -29,7 +29,7 @@ The Stribeck curve is directly relevant to signal processing because the frictio
 
 \subsection{Hamrock--Dowson Model}
 \label{subsec:hamrock_dowson}
-The Hamrock--Dowson model is the most widely used empirical model for calculating the central film thickness, $h_m$, in ball bearings. It is given by
+The Hamrock--Dowson model is the most widely used empirical model for calculating the minimum film thickness, $h_m$, in ball bearings. It is given by
 \begin{equation}
     \frac{h_m}{R_{x}^{'}} = 3.63\,U^{0.68}\,G^{0.49}\,W^{-0.073}\,(1-e^{-0.68k}),
 \end{equation}

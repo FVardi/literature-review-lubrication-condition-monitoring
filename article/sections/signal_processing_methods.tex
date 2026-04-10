@@ -3,7 +3,124 @@
 
 This section provides the primary systematic contribution of this review: a taxonomy of signal processing methods applied to LCM of ball bearings, organised by processing family rather than by sensing modality. For each family the method is first described on its own terms -- its mathematical basis, assumptions, and outputs -- and then its specific applications across sensing modalities are discussed, drawing on the literature surveyed. A master cross-reference matrix linking SP method families to sensing modalities is provided in Table~\ref{tab:sp_crossref} at the end of this section.
 
-The organisation of this section reflects the signal processing chain from raw sensor data to a lubrication condition estimate. Time-domain and frequency-domain methods (Sections~\ref{subsec:sp_time}--\ref{subsec:sp_freq}) operate directly on the measured signal. Time-frequency and decomposition methods (Section~\ref{subsec:sp_tf}) address non-stationarity. Signal enhancement methods (Section~\ref{subsec:sp_enhance}) improve the signal before feature extraction. Physics-based and model-driven methods (Section~\ref{subsec:sp_model}) incorporate lubrication physics to convert processed signals into physically interpretable quantities. Finally, machine learning and data fusion methods (Sections~\ref{subsec:sp_ml}--\ref{subsec:sp_fusion}) learn mappings from processed features to lubrication condition labels or regression targets.
+The organisation of this section reflects the signal processing chain from raw sensor data to a lubrication condition estimate. Time-domain and frequency-domain methods (Sections~\ref{subsec:sp_time}--\ref{subsec:sp_freq}) operate directly on the measured signal. Time-frequency and decomposition methods (Section~\ref{subsec:sp_tf}) address non-stationarity. Signal enhancement methods (Section~\ref{subsec:sp_enhance}) improve the signal before feature extraction. Physics-based and model-driven methods (Section~\ref{subsec:sp_model}) incorporate lubrication physics to convert processed signals into physically interpretable quantities. Finally, machine learning and data fusion methods (Sections~\ref{subsec:sp_ml}--\ref{subsec:sp_fusion}) learn mappings from processed features to lubrication condition labels or regression targets. Figure~\ref{fig:sp_taxonomy} provides an overview of this taxonomy.
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  root/.style={rectangle, rounded corners=5pt, draw=black, line width=1.2pt,
+               fill=black!80, text=white, align=center,
+               font=\sffamily\bfseries\large, inner sep=10pt},
+  f1/.style={rectangle, rounded corners=4pt, draw=blue!60!black, line width=0.9pt,
+             fill=blue!18, align=center, font=\sffamily\bfseries\normalsize,
+             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
+  f2/.style={rectangle, rounded corners=4pt, draw=teal!70!black, line width=0.9pt,
+             fill=teal!18, align=center, font=\sffamily\bfseries\normalsize,
+             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
+  f3/.style={rectangle, rounded corners=4pt, draw=violet!70!black, line width=0.9pt,
+             fill=violet!15, align=center, font=\sffamily\bfseries\normalsize,
+             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
+  f4/.style={rectangle, rounded corners=4pt, draw=orange!70!black, line width=0.9pt,
+             fill=orange!18, align=center, font=\sffamily\bfseries\normalsize,
+             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
+  f5/.style={rectangle, rounded corners=4pt, draw=red!60!black, line width=0.9pt,
+             fill=red!15, align=center, font=\sffamily\bfseries\normalsize,
+             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
+  f6/.style={rectangle, rounded corners=4pt, draw=green!55!black, line width=0.9pt,
+             fill=green!15, align=center, font=\sffamily\bfseries\normalsize,
+             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
+  m1/.style={rectangle, rounded corners=3pt, draw=blue!50!black, line width=0.6pt,
+             fill=blue!7, align=center, font=\sffamily\small,
+             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
+  m2/.style={rectangle, rounded corners=3pt, draw=teal!60!black, line width=0.6pt,
+             fill=teal!7, align=center, font=\sffamily\small,
+             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
+  m3/.style={rectangle, rounded corners=3pt, draw=violet!60!black, line width=0.6pt,
+             fill=violet!7, align=center, font=\sffamily\small,
+             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
+  m4/.style={rectangle, rounded corners=3pt, draw=orange!60!black, line width=0.6pt,
+             fill=orange!7, align=center, font=\sffamily\small,
+             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
+  m5/.style={rectangle, rounded corners=3pt, draw=red!50!black, line width=0.6pt,
+             fill=red!7, align=center, font=\sffamily\small,
+             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
+  m6/.style={rectangle, rounded corners=3pt, draw=green!50!black, line width=0.6pt,
+             fill=green!7, align=center, font=\sffamily\small,
+             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
+  arr/.style={->, >=stealth, line width=0.7pt, gray!65},
+]
+
+% Root
+\node[root] (R) at (0,0) {Signal Processing Methods for LCM};
+
+% Family nodes — x positions: -7.8 -4.7 -1.6 1.6 4.7 7.8
+\node[f1] (F1) at (-7.8,-2.0) {Time-Domain\\Statistics};
+\node[f2] (F2) at (-4.7,-2.0) {Frequency\\Domain};
+\node[f3] (F3) at (-1.6,-2.0) {Time-Freq.\ \&\\Decomposition};
+\node[f4] (F4) at ( 1.6,-2.0) {Signal\\Enhancement};
+\node[f5] (F5) at ( 4.7,-2.0) {Physics-Based\\\& Model-Driven};
+\node[f6] (F6) at ( 7.8,-2.0) {ML \&\\Data Fusion};
+
+% Root → families
+\draw[arr] (R.south) -- (F1.north);
+\draw[arr] (R.south) -- (F2.north);
+\draw[arr] (R.south) -- (F3.north);
+\draw[arr] (R.south) -- (F4.north);
+\draw[arr] (R.south) -- (F5.north);
+\draw[arr] (R.south) -- (F6.north);
+
+% Time-Domain methods
+\node[m1] (M11) at (-7.8,-3.6)  {RMS, kurtosis,\\crest factor, PCR};
+\node[m1] (M12) at (-7.8,-4.75) {AE amplitude\\\& energy centres};
+\node[m1] (M13) at (-7.8,-5.9)  {Threshold\\methods};
+\draw[arr] (F1.south)--(M11.north);
+\draw[arr] (M11.south)--(M12.north);
+\draw[arr] (M12.south)--(M13.north);
+
+% Frequency-Domain methods
+\node[m2] (M21) at (-4.7,-3.6)  {PSD \& bearing\\char.\ frequencies};
+\node[m2] (M22) at (-4.7,-4.75) {Envelope analysis\\(Hilbert / BPFO)};
+\node[m2] (M23) at (-4.7,-5.9)  {SK \& spectral\\shape descriptors};
+\draw[arr] (F2.south)--(M21.north);
+\draw[arr] (M21.south)--(M22.north);
+\draw[arr] (M22.south)--(M23.north);
+
+% Time-Freq & Decomposition methods
+\node[m3] (M31) at (-1.6,-3.6)  {STFT \&\\spectrogram};
+\node[m3] (M32) at (-1.6,-4.75) {Wavelet\\transform};
+\node[m3] (M33) at (-1.6,-5.9)  {EMD\,/\,VMD};
+\node[m3] (M34) at (-1.6,-7.05) {SGMD};
+\draw[arr] (F3.south)--(M31.north);
+\draw[arr] (M31.south)--(M32.north);
+\draw[arr] (M32.south)--(M33.north);
+\draw[arr] (M33.south)--(M34.north);
+
+% Signal Enhancement methods
+\node[m4] (M41) at ( 1.6,-3.6)  {MED \&\\deconvolution};
+\draw[arr] (F4.south)--(M41.north);
+
+% Physics-Based & Model-Driven methods
+\node[m5] (M51) at ( 4.7,-3.6)  {Spring-layer model\\(ultrasonic)};
+\node[m5] (M52) at ( 4.7,-4.75) {Electrical circuit\\model};
+\node[m5] (M53) at ( 4.7,-5.9)  {$\kappa$\,/\,$\Lambda$\\regression};
+\draw[arr] (F5.south)--(M51.north);
+\draw[arr] (M51.south)--(M52.north);
+\draw[arr] (M52.south)--(M53.north);
+
+% ML & Data Fusion methods
+\node[m6] (M61) at ( 7.8,-3.6)  {Classical ML\\(LASSO, SVM)};
+\node[m6] (M62) at ( 7.8,-4.75) {Deep learning\\(CNN, GNN)};
+\node[m6] (M63) at ( 7.8,-5.9)  {Feature-level\\fusion};
+\draw[arr] (F6.south)--(M61.north);
+\draw[arr] (M61.south)--(M62.north);
+\draw[arr] (M62.south)--(M63.north);
+
+\end{tikzpicture}%
+}
+\caption{Taxonomy of signal processing method families applied to lubrication condition monitoring of rolling element bearings. Methods are organised by processing family rather than by sensing modality; the master cross-reference matrix (Table~\ref{tab:sp_crossref}) maps each family to the sensing modalities for which LCM application has been demonstrated in the reviewed literature.}
+\label{fig:sp_taxonomy}
+\end{figure}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Time-Domain Statistical Methods}
@@ -36,7 +153,7 @@ The most widely reported features are:
     \item \textbf{Ring-down count:} the total number of threshold crossings within a single AE burst event. Usgame Sandoval et al.\ \cite{usgame_sandoval_acoustic_2013} report a $\sim$266-fold increase in ring-down count from normal to severe fault -- the most sensitive single time-domain feature in their study, outperforming kurtosis and RMS.
 \end{itemize}
 
-\textbf{Speed and load normalisation.} Time-domain features are sensitive to changes in operating speed and load independently of lubrication condition. This confounding effect is addressed by normalising features against a speed-dependent or load-dependent baseline: Cornel et al.\ \cite{cornel_condition_2021} normalise AE parameters against reference measurements at the same operating point; Hou and Zhang \cite{hou_-situ_2025} explicitly incorporate speed as a predictor in their film-thickness regression. Without such normalisation, a feature increase caused by a speed change is indistinguishable from a lubrication-related change, which limits the applicability of fixed-threshold industrial methods to constant-speed machinery.
+\textbf{Speed and load normalisation.} Time-domain features are sensitive to changes in operating speed and load independently of lubrication condition. Cornel et al.\ \cite{cornel_condition_2021} demonstrate this concretely: the AE amplitude--$\lambda$ relationship follows distinct curves at 500\,rpm and 3000\,rpm, making a single amplitude threshold insufficient for regime classification across speeds. This confounding effect is addressed by normalising features against a speed-dependent or load-dependent baseline; Hou and Zhang \cite{hou_-situ_2025} explicitly incorporate speed as a predictor in their film-thickness regression. Without such normalisation, a feature increase caused by a speed change is indistinguishable from a lubrication-related change, which limits the applicability of fixed-threshold industrial methods to constant-speed machinery.
 
 \subsubsection{Threshold Methods}
 \label{subsubsec:threshold}
@@ -106,10 +223,6 @@ Signal enhancement methods improve the signal-to-noise ratio or impulsiveness of
 \label{subsubsec:med}
 Minimum entropy deconvolution (MED) designs a finite impulse response (FIR) filter that maximises the kurtosis (equivalently, minimises the entropy) of the filter output, thereby recovering the sparse impulsive excitation source from a convolved, noisy observation. In the LCM context, the impulsive sources are the transient mechanical impacts associated with asperity contacts or rolling element passage over roughened raceways under starved lubrication. Xu et al.\ \cite{xu_vibration-based_2024} demonstrate that MED applied to vibration signals significantly enhances the detection of lubrication starvation-related impulses, enabling spectral centroid and envelope features to detect starved conditions that are not detectable in the unprocessed signal. The method assumes that the source signal is sparse (impulsive), which may not hold for all lubrication fault types. Multipoint optimal minimum entropy deconvolution adjusted (MOMEDA) and its variants extend MED to multi-channel and periodic-source scenarios.
 
-\subsubsection{Resonance-Based Sparse Signal Decomposition}
-\label{subsubsec:rssd}
-Resonance-based sparse signal decomposition (RSSD) decomposes the signal into a high-resonance (sustained, oscillatory) component and a low-resonance (impulsive) component using morphological component analysis with Q-factor wavelet transform bases. The impulsive component captures the bearing contact events relevant to LCM. Herwig et al.\ \cite{herwig_signal_2025} demonstrate RSSD combined with recursive least squares (RLS) de-reverberation for non-contact acoustic (microphone) bearing monitoring, reducing the masking effect of multi-path acoustic reflections on the impulsive bearing signal.\todo{Verify: herwig\_signal\_2025 title suggests a physics-informed neural network paper -- confirm that RSSD and RLS de-reverberation are the primary signal processing contribution rather than the neural network component.} The approach is relevant to passive, non-contact sensing where channel effects and reverberation are significant.
-
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Physics-Based and Model-Driven Methods}
@@ -121,9 +234,9 @@ Physics-based methods incorporate lubricant or structural mechanics models to co
 \label{subsubsec:spring}
 Active ultrasonic reflectometry measures the reflection coefficient $R$ of an ultrasonic pulse at the raceway--lubricant interface. For a thin lubricant film (film thickness much less than the acoustic wavelength), the spring-layer model relates $R$ to the film stiffness $K^*$:
 \begin{equation}
-    R = \frac{1}{1 + \frac{2Z_1 K^*}{\omega (Z_1^2 - Z_2^2)}} \cdot \left(\frac{Z_2 - Z_1}{Z_2 + Z_1}\right),
+    R = \frac{Z_2 - Z_1 + iZ_1Z_2/\omega K^*}{Z_2 + Z_1 + iZ_1Z_2/\omega K^*}
 \end{equation}
-where $Z_1$, $Z_2$ are the acoustic impedances of the raceway and lubricant materials, $\omega$ is the angular frequency of the ultrasonic pulse, and $K^*$ is the complex stiffness of the lubricant layer related to film thickness $h$ and lubricant bulk modulus $E^*$ by $K^* = E^*/h$ \cite{drinkwater_ultrasonic_2009,dou_review_2022}.\todo{Verify spring-layer equation against drinkwater\_ultrasonic\_2009: the standard form is $R = (Z_2 - Z_1 + iZ_1Z_2/\omega K^*)/(Z_2 + Z_1 + iZ_1Z_2/\omega K^*)$ -- the $(Z_1^2 - Z_2^2)$ term in the denominator here may be a transcription error.} This model enables direct, calibrated film thickness estimation from the measured reflection coefficient. Validation against Hamrock--Dowson predictions is reported in \cite{dwyer-joyce_measurement_2003,zhang_ultrasonic_2015,chen_evaluation_2023}. Phase-based algorithms that improve accuracy for thin films are described in \cite{wang_accuracy-improved_2024}. Sub-Nyquist sampling to reduce data acquisition requirements while retaining film thickness accuracy is demonstrated by Chen et al.\ \cite{chen_sub-nyquist_2025}. Li et al.\ \cite{li_lubrication_2026} extend the spring-layer model to the curved contact geometry of wind turbine pitch bearings using ray-modelling corrections for transducer curvature and surface geometry.
+where $Z_1$, $Z_2$ are the acoustic impedances of the raceway and lubricant materials, $\omega$ is the angular frequency of the ultrasonic pulse, and $K^*$ is the complex stiffness of the lubricant layer related to film thickness $h$ and lubricant bulk modulus $E^*$ by $K^* = E^*/h$ \cite{drinkwater_ultrasonic_2009,dou_review_2022}. This model enables direct, calibrated film thickness estimation from the measured reflection coefficient. Validation against Hamrock--Dowson predictions is reported in \cite{dwyer-joyce_measurement_2003,zhang_ultrasonic_2015,chen_evaluation_2023}. Phase-based algorithms that improve accuracy for thin films are described in \cite{wang_accuracy-improved_2024}. Sub-Nyquist sampling to reduce data acquisition requirements while retaining film thickness accuracy is demonstrated by Chen et al.\ \cite{chen_sub-nyquist_2025}. Li et al.\ \cite{li_lubrication_2026} extend the spring-layer model to the curved contact geometry of wind turbine pitch bearings using ray-modelling corrections for transducer curvature and surface geometry.
 
 \subsubsection{Electrical Circuit Models}
 \label{subsubsec:electrical_model}
@@ -141,7 +254,7 @@ Data-driven methods learn mappings from handcrafted or raw signal features to lu
 
 \subsubsection{Classical Machine Learning}
 \label{subsubsec:classical_ml}
-Classical machine learning methods -- support vector machines (SVM), random forests, logistic regression, and regularised linear regression (LASSO) -- are applied to vectors of handcrafted features extracted by the time-domain, frequency-domain, or time-frequency methods described above. Jakobsen et al.\ \cite{jakobsen_detecting_2023} demonstrate that LASSO regression on passive ultrasound features achieves good $\kappa$ prediction while providing interpretable feature weights. Wang et al.\ \cite{wang_evaluation_2018} apply grey-correlation K-means clustering to oil multi-parameter monitoring data (viscosity, density, permittivity, water content, debris) to evaluate bearing wear states over full bearing lifetime, achieving earlier failure prediction than vibration signals alone. Classification of lubrication fault types (starvation vs.\ contamination vs.\ degraded viscosity) using SVM with handcrafted AE or vibration features is demonstrated in \cite{cornel_condition_2021}.
+Classical machine learning methods -- support vector machines (SVM), random forests, logistic regression, and regularised linear regression (LASSO) -- are applied to vectors of handcrafted features extracted by the time-domain, frequency-domain, or time-frequency methods described above. Jakobsen et al.\ \cite{jakobsen_detecting_2023} demonstrate that LASSO regression on passive ultrasound features achieves good $\kappa$ prediction while providing interpretable feature weights.
 
 \subsubsection{Deep Learning}
 \label{subsubsec:dl}
@@ -162,8 +275,6 @@ Multi-sensor fusion combines information from multiple sensing modalities to obt
 \subsubsection{Feature-Level Fusion}
 Feature-level (early) fusion concatenates feature vectors from multiple sensors into a single feature vector before the classification or regression step. Zhang et al.\ \cite{zhang_graph-data-based_2024} provide the clearest example in the lubrication condition monitoring literature: vibration, AE, and temperature signals are represented as a graph in which nodes correspond to sensing modalities and edges encode their relationships through a priori domain knowledge; a graph attention network trained on this structure detects lubrication degradation, and the multi-sensor system outperforms any single-modality baseline. The graph-attention architecture is notable because it learns which modality combinations are most informative for a given operating condition, rather than weighting all sensor contributions equally.
 
-\subsubsection{Multi-Parameter Oil Monitoring}
-Wang et al.\ \cite{wang_evaluation_2018} combine six independently measured oil parameters (viscosity, density, permittivity, water content, temperature, and ferrous debris count) using a grey k-means clustering model (G-KCM), which first computes a grey correlation degree distance matrix to express the temporal relationships between oil monitoring samples and then applies k-means clustering to assign lubrication condition classes. This multi-parameter approach is analogous in structure to feature-level fusion of passive sensor signals, and demonstrates that combining diverse oil quality indicators yields better discrimination of lubrication condition than any single parameter alone.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Master Cross-Reference Matrix}
@@ -219,8 +330,6 @@ EMD / HHT                   &            &            &            &            
 Mode decomposition (SGMD)   &            &            &            &            &            &            &            & \checkmark \\
 \hline
 MED / Deconvolution         & \checkmark &            &            &            &            &            &            &            \\
-\hline
-RSSD / Sparse decomposition &            &            &            & \checkmark &            &            &            &            \\
 \hline
 Spring-layer model          &            &            &            &            &            & \checkmark &            &            \\
 \hline

@@ -58,13 +58,12 @@ These two axes define four categories illustrated in Figure~\ref{fig:taxonomy}: 
                 Vibration \\
                 Passive Ultrasound \\
                 Audible Sound \\
-                Infrared Thermography
+                Thermal Monitoring
             \end{tabular}
         };
         \node[boxtext] at (\Mx + \Mx/2,  \My + \My/2) {
             \begin{tabular}{l}
                 Ultrasonic Reflectometry\\
-                Surface Acoustic Wave \\
             \end{tabular}
         };
         \node[boxtext] at (\Mx/2,        \My/2)       {
@@ -76,8 +75,8 @@ These two axes define four categories illustrated in Figure~\ref{fig:taxonomy}: 
             \begin{tabular}{l}
                 Optical interferometry \\
                 Electrical methods \\
+                Surface Acoustic Wave \\
                 Magnetic/Inductive debris detection \\
-                Oil and lubricant sampling
             \end{tabular}
         };
 
@@ -95,7 +94,61 @@ These two axes define four categories illustrated in Figure~\ref{fig:taxonomy}: 
 
 All online sensing methods for LCM share a fundamental constraint: the sensor cannot be placed at the signal origin. The bearing contact zone -- where asperity contacts, lubricant film formation, and wear events occur -- is physically inaccessible to a sensor. Any measurable signal must first propagate from the contact zone to the sensor through a series of solid media and mechanical interfaces. Understanding this transmission path is not merely a practical installation concern; it directly constrains which signal processing operations are valid, which frequency bands are informative, and how results from laboratory rigs transfer to industrial deployments.
 
-For a sensor mounted on the bearing housing, the signal path from the ball--raceway contact zone crosses four sequential segments: the bearing element material, the outer ring--housing bore press-fit interface, the housing wall, and the sensor coupling layer. Each material and interface boundary introduces frequency-dependent attenuation; cumulative losses over a typical path through the housing material and press-fit interface mean that a 500\,kHz AE signal may arrive at the sensor attenuated by 30--60\,dB relative to the source \cite{ono_comprehensive_2020,scheeren_evaluation_2022} -- a range that spans the difference between a detectable signal and the noise floor. For active methods such as ultrasonic reflectometry and SAW sensing, the path is traversed twice and losses are compounded. The transmission path therefore acts as a \textit{frequency-dependent low-pass filter} whose effective bandwidth decreases as path length increases or more interfaces are crossed.
+For a sensor mounted on the bearing housing, the signal path from the ball--raceway contact zone crosses four sequential segments: the bearing element material, the outer ring--housing bore press-fit interface, the housing wall, and the sensor coupling layer. Each material and interface boundary introduces frequency-dependent attenuation; cumulative losses over a typical path through the housing material and press-fit interface mean that a 500\,kHz AE signal may arrive at the sensor attenuated by 30--60\,dB relative to the source \cite{ono_comprehensive_2020,scheeren_evaluation_2022} -- a range that spans the difference between a detectable signal and the noise floor. For active methods such as ultrasonic reflectometry and SAW sensing, the path is traversed twice and losses are compounded. The transmission path therefore acts as a \textit{frequency-dependent low-pass filter} whose effective bandwidth decreases as path length increases or more interfaces are crossed. This path is illustrated in Figure~\ref{fig:transmission_path}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  blk/.style={rectangle, rounded corners=4pt, draw=black!65, line width=0.9pt,
+              fill=#1, minimum width=2.4cm, minimum height=1.2cm,
+              align=center, font=\sffamily\small\bfseries, inner sep=5pt},
+  iface/.style={font=\sffamily\scriptsize, align=center, text=black!60},
+  att/.style={font=\scriptsize\itshape, align=center, text=black!55},
+  arr/.style={->, >=stealth, line width=1.3pt, black!55},
+  darr/.style={->, >=stealth, line width=1.0pt, dashed, blue!50},
+]
+
+% Blocks
+\node[blk=red!15]    (SRC) at (0,0)     {Contact\\zone\\(source)};
+\node[blk=orange!15] (OR)  at (3.6,0)   {Bearing\\element};
+\node[blk=yellow!25] (HB)  at (7.2,0)   {Outer ring\\\&\ housing bore};
+\node[blk=blue!12]   (HW)  at (10.8,0)  {Housing\\wall};
+\node[blk=green!18]  (SEN) at (14.4,0)  {Sensor};
+
+% Arrows between blocks with interface labels above
+\draw[arr] (SRC.east) -- (OR.west);
+\draw[arr] (OR.east)  -- (HB.west);
+\draw[arr] (HB.east)  -- (HW.west);
+\draw[arr] (HW.east)  -- (SEN.west);
+
+% Interface labels (above arrows)
+\node[iface] at (1.8, 0.85)  {Bearing\\material};
+\node[iface] at (5.4, 0.85)  {Press-fit\\interface};
+\node[iface] at (9.0, 0.85)  {Housing\\wall};
+\node[iface] at (12.6, 0.85) {Coupling\\layer};
+
+% Attenuation characterisation (below arrows)
+\node[att] at (1.8,  -0.85) {Slight HF\\loss};
+\node[att] at (5.4,  -0.85) {\textbf{Major HF loss}\\(dominant interface)};
+\node[att] at (9.0,  -0.85) {Moderate\\HF loss};
+\node[att] at (12.6, -0.85) {Couplant-\\sensitive};
+
+% Bandwidth arrow (top, spanning full path)
+\node[font=\sffamily\scriptsize\bfseries, text=blue!65] at (7.2, 2.0)
+  {Usable signal bandwidth narrows with path length};
+\draw[darr] (0.5,1.7) -- (13.9,1.7);
+
+% Cumulative attenuation brace (bottom)
+\draw[decorate, decoration={brace, amplitude=7pt, mirror}, thick, black!45]
+  ([yshift=-1.6cm]SRC.south west) -- ([yshift=-1.6cm]SEN.south east)
+  node[midway, below=9pt, font=\footnotesize\itshape, text=black!60, align=center]
+  {Cumulative attenuation: 30\,--\,60\,dB at 500\,kHz
+   \cite{ono_comprehensive_2020,scheeren_evaluation_2022}};
+
+\end{tikzpicture}
+\caption{Signal transmission path from the ball--raceway contact zone to a housing-mounted sensor. The press-fit interface between the outer ring and housing bore is the dominant attenuation element for high-frequency content. Cumulative path losses of 30--60\,dB at 500\,kHz render the usable frequency bandwidth at the sensor geometry-, mounting-, and material-specific, limiting the transferability of signal processing configurations across experimental setups.}
+\label{fig:transmission_path}
+\end{figure}
 
 This has two direct consequences for signal processing.
 
@@ -186,4 +239,4 @@ Machine-vision approaches analyse lubricant debris content using image processin
 
 \subsubsection{Magnetic and Inductive Methods}
 \label{subsubsec:magnetic}
-Magnetic and inductive methods detect metallic wear debris in the lubricant by monitoring perturbations in a magnetic field \cite{sun_online_2021}. An excitation coil generates an alternating magnetic field in or around the lubricant flow path. Ferromagnetic particles perturb the magnetic field primarily through their high permeability, while non-ferrous conductive particles can induce eddy currents that alter the coil impedance. These effects may produce differences in amplitude and phase in the measured signal; in some sensor systems, such differences can be exploited to help distinguish particle types, although reliable material classification and size estimation depend on the sensor design, operating frequency, and signal processing. These methods require access to the lubricant flow and are therefore applicable only to oil-circulating systems; they cannot be used with grease-lubricated or sealed bearings. Shi et al.\ \cite{shi_ultrasensitive_2022} demonstrate an ultrasensitive impedance-based microsensor for oil condition monitoring applicable to small particle sizes. Wang et al.\ \cite{wang_evaluation_2018} combine multiple online oil parameters -- including ferrous debris content, water content, viscosity, and permittivity -- with a grey-correlation clustering model to evaluate bearing wear states over full bearing lifetime, demonstrating earlier wear detection than vibration signals alone.
+Magnetic and inductive methods detect metallic wear debris in the lubricant by monitoring perturbations in a magnetic field \cite{sun_online_2021}. An excitation coil generates an alternating magnetic field in or around the lubricant flow path. Ferromagnetic particles perturb the magnetic field primarily through their high permeability, while non-ferrous conductive particles can induce eddy currents that alter the coil impedance. These effects may produce differences in amplitude and phase in the measured signal; in some sensor systems, such differences can be exploited to help distinguish particle types, although reliable material classification and size estimation depend on the sensor design, operating frequency, and signal processing. These methods require access to the lubricant flow and are therefore applicable only to oil-circulating systems; they cannot be used with grease-lubricated or sealed bearings. Shi et al.\ \cite{shi_ultrasensitive_2022} demonstrate an ultrasensitive impedance-based microsensor for oil condition monitoring applicable to small particle sizes.
