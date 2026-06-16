@@ -11,7 +11,7 @@ Lubrication films formed in ball bearings under operation are generally classifi
     \item \textbf{Boundary lubrication}: the entire load is carried by surface-to-surface contact (ball to raceway). This regime produces the highest friction, arising solely from sliding of asperities against each other. Wear rate is high, and heat generation and elastic stress-wave emission are correspondingly intense.
     \item \textbf{Mixed lubrication}: load is shared between a thin lubricant film and surface asperity contacts. Friction and wear are reduced compared to the boundary regime but asperity contacts continue to generate transient stress waves detectable by acoustic and vibration sensors.
     \item \textbf{Elastohydrodynamic lubrication (EHL)}: all load is carried by a lubricant film between the balls and raceway. The high pressure building up in the contact zone causes elastic deformation of the solid materials, sustaining the film. Friction is at its minimum for full-film EHL and rises again at excessive viscosities due to viscous shear losses. Wear is minimal and elastic wave emission is negligible, making this the ideal operating regime for bearing longevity.
-\end{itemize}\todo{Should the hydrodynamic lubrication regime be added here?}
+\end{itemize}
 The progression through these regimes as lubrication conditions deteriorate determines both the nature and the intensity of the signals accessible to passive sensing methods.
 
 \subsection{The Stribeck Curve and Its Significance for Signal Processing}
@@ -19,10 +19,51 @@ The progression through these regimes as lubrication conditions deteriorate dete
 The Stribeck curve describes the relationship between the friction coefficient and the Hersey number $\eta n / p$, where $\eta$ is the dynamic viscosity, $n$ is the rotational speed, and $p$ is the contact pressure. As the Hersey number decreases -- due to lower speed, lower viscosity, or higher load -- the bearing transitions from the EHL regime, through mixed lubrication, into boundary lubrication, and the friction coefficient rises sharply. The curve is illustrated in Figure~\ref{fig:stribeck}
 
 \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.5\textwidth]{figures/stribeck_curve.jpg}
-    \caption{Stribeck curve illustrating the relationship between friction coefficient and Hersey number, with lubrication regimes indicated.}
-    \label{fig:stribeck}
+\centering
+\begin{tikzpicture}[scale=1.1]
+
+  % Regime background shading
+  \fill[red!10]    (0.0,0) rectangle (2.4,4.8);
+  \fill[yellow!12] (2.4,0) rectangle (5.2,4.8);
+  \fill[green!10]  (5.2,0) rectangle (8.5,4.8);
+
+  % Stribeck curve (bezier)
+  \draw[very thick, blue!65!black]
+    (0.2, 4.2)
+    .. controls (0.9, 4.15) and (1.5, 4.0)  ..
+    (2.0, 3.6)
+    .. controls (2.6, 3.0)  and (3.1, 2.1)  ..
+    (3.7, 1.35)
+    .. controls (4.2, 0.82) and (4.6, 0.52) ..
+    (5.0, 0.40)
+    .. controls (5.4, 0.36) and (5.7, 0.38) ..
+    (6.1, 0.46)
+    .. controls (6.8, 0.62) and (7.4, 0.80) ..
+    (8.2, 1.05);
+
+  % Axes
+  \draw[->, thick] (0,0) -- (8.9,0)
+    node[right, font=\small\sffamily] {Hersey number $\eta n/p$};
+  \draw[->, thick] (0,0) -- (0,5.3)
+    node[above, font=\small\sffamily] {Friction coefficient $\mu$};
+
+  % Regime boundary lines
+  \draw[dashed, gray!60, line width=0.8pt] (2.4,0) -- (2.4,4.8);
+  \draw[dashed, gray!60, line width=0.8pt] (5.2,0) -- (5.2,4.8);
+
+  % Regime labels
+  \node[font=\sffamily\small\bfseries, text=red!70!black]     at (1.20, 5.08) {Boundary};
+  \node[font=\sffamily\small\bfseries, text=orange!70!black]  at (3.80, 5.08) {Mixed};
+  \node[font=\sffamily\small\bfseries, text=green!50!black]   at (6.85, 5.08) {EHL};
+
+  % Stribeck minimum annotation
+  \node[font=\scriptsize\sffamily, align=left, text=gray!65]
+    (minlabel) at (7.0, 1.70) {Stribeck\\minimum};
+  \draw[->, thin, gray!55] (6.35, 1.60) -- (5.35, 0.42);
+
+\end{tikzpicture}
+\caption{Schematic Stribeck curve showing friction coefficient $\mu$ as a function of Hersey number $\eta n/p$, where $\eta$ is dynamic viscosity, $n$ rotational speed, and $p$ contact pressure. As the Hersey number decreases -- due to lower speed, lower viscosity, or higher load -- the bearing transitions from full-film EHL through mixed lubrication into boundary lubrication, with a sharp rise in friction coefficient. The Stribeck minimum marks the onset of full-film lubrication.}
+\label{fig:stribeck}
 \end{figure}
 
 The Stribeck curve is directly relevant to signal processing because the friction coefficient governs the amplitude of signals detectable by passive methods: higher friction produces stronger elastic wave emission (detectable by acoustic emission and ultrasound sensors), higher heat generation (detectable by temperature and infrared sensors), and increased mechanical vibration (detectable by accelerometers and microphones). A bearing operating in the EHL regime near the Stribeck minimum will produce weaker passive signals than one in boundary lubrication. This has two important signal processing consequences: first, monitoring under optimal lubrication (and in a neighbourhood of the optimum) is inherently a low-SNR problem; second, any feature that is strongly correlated to friction can in principle serve as a lubrication condition indicator. Hou and Zhang \cite{hou_-situ_2025} demonstrate this explicitly by mapping acoustic emission amplitude and energy onto lubrication regime clusters, with the joint distribution in a two-dimensional (amplitude, energy) space discriminating boundary, mixed, and EHL conditions.
@@ -63,14 +104,14 @@ The $\kappa$ ratio is a model-based indicator of lubricant viscosity adequacy fo
 \begin{equation}
 \kappa = \frac{\nu}{\nu_{1}},
 \end{equation}
-where $\nu$ is the kinematic viscosity of the applied lubricant under the operating conditions and $\nu_{1}$ is the reference kinematic viscosity calculated from the ISO 281 standard for the bearing diameter and rotational speed \cite{jakobsen_detecting_2023}. Interpretation guidelines are:
+where $\nu$ is the kinematic viscosity of the applied lubricant under the operating conditions and $\nu_{1}$ is the reference kinematic viscosity calculated from the ISO 281 standard for the bearing diameter and rotational speed \cite{jakobsen_detecting_2023}. Interpretation guidelines are \todo{Find citation for $\kappa$ thresholds (ISO 281 or SKF/FAG catalogue)}:
 \begin{itemize}
     \item $\kappa \leq 0.1$: insufficient lubrication; load carried almost entirely by asperity contact.
     \item $0.1 < \kappa \leq 1$: insufficient lubrication; metallic surface-to-surface contact present.
     \item $1 < \kappa \leq 4$: adequate lubrication.
     \item $4 < \kappa$: excessive viscosity; higher viscous friction losses.
 \end{itemize}
-Given the fact that $\kappa$ can be tied to lubrication conditions it can also be tied to the Stribeck curve and lubrication regimes. The $\kappa$ ratio is related to the $\Lambda$ ratio approximately as $\kappa \approx \Lambda^{1.3}$. Jakobsen et al.\ \cite{jakobsen_detecting_2023,jakobsen_vibration_2021} use $\kappa$ as the regression target for data-driven models trained on vibration and ultrasound features, linking directly to the ISO standard and enabling quantitative LCM without invasive lubricant sampling. It should be noted that $\kappa$ is time-invariant for a given bearing and operating condition; it therefore captures viscosity inadequacy if the conditions remain constant but does not account for lubricant degradation or contamination that develops over time.
+Given the fact that $\kappa$ can be tied to lubrication conditions it can also be tied to the Stribeck curve and lubrication regimes. Jakobsen et al.\ \cite{jakobsen_detecting_2023,jakobsen_vibration_2021} use $\kappa$ as the regression target for data-driven models trained on vibration and ultrasound features, linking directly to the ISO standard and enabling quantitative LCM without invasive lubricant sampling. It should be noted that $\kappa$ is time-invariant for a given bearing and operating condition; it therefore captures viscosity inadequacy if the conditions remain constant but does not account for lubricant degradation or contamination that develops over time.
 
 
 

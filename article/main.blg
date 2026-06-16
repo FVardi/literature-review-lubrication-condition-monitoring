@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: unsrt.bst
+Reallocating 'name_of_file' (item size: 1) to 4 items.
+Database file #1: bib.bib
+Warning--empty author and editor in noauthor_elasto-hydrodynamic_1977
+You've used 69 entries,
+            1791 wiz_defined-function locations,
+            833 strings with 19142 characters,
+and the built_in function-call counts, 17293 in all, are:
+= -- 1417
+> -- 1013
+< -- 6
++ -- 363
+- -- 294
+* -- 1502
+:= -- 2861
+add.period$ -- 210
+call.type$ -- 69
+change.case$ -- 68
+chr.to.int$ -- 0
+cite$ -- 70
+duplicate$ -- 667
+empty$ -- 1549
+format.name$ -- 294
+if$ -- 3687
+int.to.chr$ -- 0
+int.to.str$ -- 69
+missing$ -- 68
+newline$ -- 347
+num.names$ -- 70
+pop$ -- 120
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 270
+stack$ -- 0
+substring$ -- 1162
+swap$ -- 113
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 162
+width$ -- 71
+write$ -- 763
+(There was 1 warning)

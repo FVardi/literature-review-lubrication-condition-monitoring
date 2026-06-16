@@ -205,13 +205,11 @@ The continuous wavelet transform (CWT) provides time-frequency resolution that a
 
 The discrete wavelet transform (DWT) and its multi-resolution analysis framework enable simultaneous extraction of features at multiple frequency scales, which is in principle applicable to vibration signals for LCM, though no reviewed study reports DWT specifically for lubrication condition monitoring of vibration signals.
 
-\subsubsection{Empirical Mode Decomposition and Hilbert--Huang Transform}
-\label{subsubsec:emd}
-Empirical mode decomposition (EMD) adaptively decomposes a signal into intrinsic mode functions (IMFs) by iterative sifting of local extrema, without requiring a predefined basis. The Hilbert transform applied to each IMF yields instantaneous frequency and amplitude, producing the Hilbert spectrum -- the Hilbert--Huang Transform (HHT). EMD is particularly suited to non-linear and non-stationary signals, properties that characterise bearing signals under time-varying lubrication conditions \cite{wang_advanced_2024}. However, EMD suffers from mode mixing in the presence of intermittent signals, which has motivated variants such as ensemble EMD (EEMD) and variational mode decomposition (VMD).
+\subsubsection{Signal Decomposition Methods}
+\label{subsubsec:decomposition}
+Empirical mode decomposition (EMD) and its variants -- ensemble EMD (EEMD) and variational mode decomposition (VMD) -- adaptively decompose a signal into intrinsic mode functions without requiring a predefined basis, making them suited to non-linear and non-stationary bearing signals \cite{wang_advanced_2024}. Although these methods are used in general bearing condition monitoring, no study in the reviewed LCM literature applies EMD or VMD specifically to lubrication condition estimation, leaving them as a potential avenue for future work.
 
-\subsubsection{Symplectic Geometry Mode Decomposition}
-\label{subsubsec:sgmd}
-Symplectic geometry mode decomposition (SGMD) is a signal decomposition method based on the symplectic geometry of the phase space of the signal's trajectory matrix. Yu et al.\ \cite{yu_novel_2021} apply SGMD to signals from inductive debris sensors, extracting debris-particle signatures from inductive bearing monitoring signals buried in noise and harmonic interference. Pan et al.\ \cite{pan_symplectic_2019} provide the methodological foundation. The method offers improved separation of overlapping frequency components compared to EMD-based methods in specific application scenarios.
+Symplectic geometry mode decomposition (SGMD) is a decomposition method based on the symplectic geometry of the phase space of the signal's trajectory matrix. Yu et al.\ \cite{yu_novel_2021} apply SGMD to signals from inductive debris sensors, extracting debris-particle signatures buried in noise and harmonic interference. Pan et al.\ \cite{pan_symplectic_2019} provide the methodological foundation. The method offers improved separation of overlapping frequency components compared to EMD-based methods in specific application scenarios.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Signal Enhancement Methods}
@@ -234,7 +232,7 @@ Physics-based methods incorporate lubricant or structural mechanics models to co
 \label{subsubsec:spring}
 Active ultrasonic reflectometry measures the reflection coefficient $R$ of an ultrasonic pulse at the raceway--lubricant interface. For a thin lubricant film (film thickness much less than the acoustic wavelength), the spring-layer model relates $R$ to the film stiffness $K^*$:
 \begin{equation}
-    R = \frac{Z_2 - Z_1 + iZ_1Z_2/\omega K^*}{Z_2 + Z_1 + iZ_1Z_2/\omega K^*}
+    R = \frac{Z_2 - Z_1 - iZ_1Z_2/\omega K^*}{Z_2 + Z_1 + iZ_1Z_2/\omega K^*}
 \end{equation}
 where $Z_1$, $Z_2$ are the acoustic impedances of the raceway and lubricant materials, $\omega$ is the angular frequency of the ultrasonic pulse, and $K^*$ is the complex stiffness of the lubricant layer related to film thickness $h$ and lubricant bulk modulus $E^*$ by $K^* = E^*/h$ \cite{drinkwater_ultrasonic_2009,dou_review_2022}. This model enables direct, calibrated film thickness estimation from the measured reflection coefficient. Validation against Hamrock--Dowson predictions is reported in \cite{dwyer-joyce_measurement_2003,zhang_ultrasonic_2015,chen_evaluation_2023}. Phase-based algorithms that improve accuracy for thin films are described in \cite{wang_accuracy-improved_2024}. Sub-Nyquist sampling to reduce data acquisition requirements while retaining film thickness accuracy is demonstrated by Chen et al.\ \cite{chen_sub-nyquist_2025}. Li et al.\ \cite{li_lubrication_2026} extend the spring-layer model to the curved contact geometry of wind turbine pitch bearings using ray-modelling corrections for transducer curvature and surface geometry.
 
@@ -244,7 +242,7 @@ For electrical sensing methods (capacitance, impedance, resistance), physics-bas
 
 \subsubsection{Kappa and Lambda as Regression Targets}
 \label{subsubsec:kappa_target}
-A model-driven approach for passive sensing methods uses $\kappa$ or $\Lambda$ -- computed from the Hamrock--Dowson model and operating parameters -- as the regression target for data-driven models trained on sensor features. This provides a physically grounded target variable linked to ISO standards without requiring invasive lubricant sampling. Jakobsen et al.\ \cite{jakobsen_detecting_2023} train LASSO regression and neural network models on time-domain features and Hjorth parameters from passive ultrasound signals to predict $\kappa$, and demonstrate correlation between predicted $\kappa$ and controlled lubrication conditions across multiple bearing configurations. The approach effectively bridges the gap between physics-based lubrication models and data-driven signal processing.
+A model-driven approach for passive sensing methods uses $\kappa$ or $\Lambda$ -- computed from the Hamrock--Dowson model and operating parameters -- as the regression target for data-driven models trained on sensor features. This provides a physically grounded target variable linked to ISO standards without requiring invasive lubricant sampling. Jakobsen et al.\ \cite{jakobsen_detecting_2023} combine the Hjorth parameters defined in Section~\ref{subsubsec:moments} with LASSO regression and shallow neural networks to predict $\kappa$ from passive ultrasound signals, directly bridging physics-based lubrication modelling and data-driven signal processing.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Machine Learning and Deep Learning}
@@ -325,9 +323,7 @@ STFT / Spectrogram          & \checkmark &            &            &            
 \hline
 Wavelet transform           &            & \checkmark &            &            &            &            &            &            \\
 \hline
-EMD / HHT                   &            &            &            &            &            &            &            &            \\
-\hline
-Mode decomposition (SGMD)   &            &            &            &            &            &            &            & \checkmark \\
+Signal decomposition (SGMD) &            &            &            &            &            &            &            & \checkmark \\
 \hline
 MED / Deconvolution         & \checkmark &            &            &            &            &            &            &            \\
 \hline
@@ -339,7 +335,7 @@ $\kappa$/$\Lambda$ regression target & \checkmark & \checkmark & \checkmark &  &
 \hline
 Classical ML (SVM, LASSO)   & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            & \checkmark \\
 \hline
-Deep learning (CNN, GNN)    & \checkmark & \checkmark &            & \checkmark & \checkmark &            &            &            \\
+Deep learning (CNN, GNN)    & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
 \hline
 Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            & \checkmark \\
 \hline
