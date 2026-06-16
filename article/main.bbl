@@ -1,18 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{wakiru_review_2019}
-James~M. Wakiru, Liliane Pintelon, Peter~N. Muchiri, and Peter~K. Chemweno.
-\newblock A review on lubricant condition monitoring information analysis for
-  maintenance decision support.
-\newblock {\em Mechanical Systems and Signal Processing}, 118:108--132, March
-  2019.
-
-\bibitem{isalm_oil_2021}
-S~M~Naufel Isalm, Md~Farhan Mahmud~Rashik, and Md~Khairul Basher.
-\newblock Oil debris analysis and {Vibration} monitoring system for condition
-  monitoring and fault diagnosis of a gearbox.
-\newblock {\em IARJSET}, 8(9), September 2021.
-
 \bibitem{jakobsen_detecting_2023}
 Morten~Opprud Jakobsen, Eskild~Sune Herskind, Christian~Fischer Pedersen, and
   Mikael~Bergholz Knudsen.
@@ -39,6 +26,19 @@ Mohamed G.~A. Nassef, Mina Soliman, Belal~Galal Nassef, Mohamed~A. Daha, and
 \newblock Impact of {Graphene} {Nano}-{Additives} to {Lithium} {Grease} on the
   {Dynamic} and {Tribological} {Behavior} of {Rolling} {Bearings}.
 \newblock {\em Lubricants}, 10(2):29, February 2022.
+
+\bibitem{isalm_oil_2021}
+S~M~Naufel Isalm, Md~Farhan Mahmud~Rashik, and Md~Khairul Basher.
+\newblock Oil debris analysis and {Vibration} monitoring system for condition
+  monitoring and fault diagnosis of a gearbox.
+\newblock {\em IARJSET}, 8(9), September 2021.
+
+\bibitem{wakiru_review_2019}
+James~M. Wakiru, Liliane Pintelon, Peter~N. Muchiri, and Peter~K. Chemweno.
+\newblock A review on lubricant condition monitoring information analysis for
+  maintenance decision support.
+\newblock {\em Mechanical Systems and Signal Processing}, 118:108--132, March
+  2019.
 
 \bibitem{shang_comprehensive_2024}
 Fei Shang, Bo~Sun, and Dandan Cai.
@@ -188,6 +188,13 @@ J~Miettinen, P~Andersson, and V~Wikströ.
 \newblock {\em Proceedings of the Institution of Mechanical Engineers, Part J:
   Journal of Engineering Tribology}, 215(6):535--544, June 2001.
 
+\bibitem{zhang_coupled_2026}
+Xuanrui Zhang, Dong Zhen, Guojin Feng, Xiaoxia Liang, Hao Zhang, and Fengshou
+  Gu.
+\newblock A coupled vibration-acoustic emission model for roller bearings
+  incorporating lubricant traction and sliding friction.
+\newblock {\em Tribology International}, 221:112013, April 2026.
+
 \bibitem{georgiev_microphone_2017}
 Volodymyr Kudriashov, Vladislav Ivanov, Kiril Alexiev, and Petia
   Koprinkova-Hristova.
@@ -295,6 +302,14 @@ Akhand Rai and S.H. Upadhyay.
 \newblock A review on signal processing techniques utilized in the fault
   diagnosis of rolling element bearings.
 \newblock {\em Tribology International}, 96:289--306, April 2016.
+
+\bibitem{zhang_interpretable_2026}
+Xinzhuo Zhang, Zhijun Ren, Kai Huang, Tantao Lin, Yongsheng Zhu, Hong Fu, and
+  Jun Hong.
+\newblock An interpretable rolling-bearing lubrication-state diagnosis method
+  based on multiscale residual and semantic consistency {CycleGAN}.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement},
+  75:3512116, April 2026.
 
 \bibitem{jakobsen_low_2024}
 Morten~Opprud Jakobsen.
