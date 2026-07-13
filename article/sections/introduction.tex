@@ -2,55 +2,75 @@
 \section{Introduction}
 \label{sec:intro}
 
-Rolling element bearings are fundamental components of virtually all rotating machinery, from electric motors and pumps to wind turbines, machine tools, and rail vehicles. Their reliable operation underpins industrial productivity across manufacturing, energy, and transport sectors. Lubrication is the critical enabler of bearing function: a thin film of oil or grease separating the rolling elements from the raceways reduces contact friction, carries heat away from the loaded zone, and prevents the metal-to-metal contact that initiates wear and fatigue. When lubrication fails -- whether from starvation, viscosity degradation, or contamination -- asperity contact increases, heat generation intensifies, and wear proceeds at a rate that can reduce bearing service life from tens of thousands of hours to a small fraction of its design value. Improper lubrication is estimated to cause between 30\% and 80\% of rolling element bearing failures \cite{jakobsen_detecting_2023,dai_situ_2024,xu_vibration-based_2024,nassef_impact_2022}, consistently ranking among the leading causes of premature failure ahead of mechanical overload and installation errors \cite{isalm_oil_2021}.
+% Overall
+Rolling element bearings let parts rotate with minimal friction in almost every kind of rotating machine: motors, pumps, wind turbines, machine tools, trains. What makes this possible is a thin film of oil or grease, that keeps the rolling balls from touching their metal tracks. As long as that film is intact, the bearing runs cool and wears slowly. Once it breaks down -- because there is too little lubricant, the lubricant has degraded, or it has become contaminated -- metal starts touching metal, friction rises, heat builds up, and wear accelerates sharply, ultimately causing premature mechanical failure. Lubrication problems are estimated to cause 30--80\% of all rolling element bearing failures, more than mechanical overload or installation errors combined \cite{jakobsen_detecting_2023,dai_situ_2024,xu_vibration-based_2024,nassef_impact_2022,isalm_oil_2021}.
 
-The economic consequences of lubrication-related bearing failure extend well beyond the replacement cost of the component. Unplanned failure of a bearing in a continuous process plant -- paper mill, steel plant, petrochemical facility -- can halt an entire production line, with downtime costs that are typically an order of magnitude greater than the cost of the bearing itself. In wind energy, main shaft and gearbox bearing failures are among the most costly maintenance events; at offshore installations, crane mobilisation and vessel hire costs can dwarf the hardware expenditure, and weather-limited access windows mean that a single unplanned replacement can represent multiple days of lost generation and tens of thousands of euros in intervention costs \cite{wakiru_review_2019}. Across industry, lubrication has been identified as a primary driver of rotating machinery maintenance spend, and the reduction of premature failures attributable to inadequate lubrication represents one of the largest available levers for improving asset availability and reducing lifecycle maintenance costs.
+% Consequences of failures
+The cost of this is substantial. A single bearing failure can shut down an entire production line, and the resulting downtime typically costs far more than the bearing itself. The problem is especially acute where access is difficult: at an offshore wind farm, replacing one failed bearing can require a vessel and a crane crew, and a single unplanned trip can cost more than the part it replaces several times over \cite{wakiru_review_2019}. Reducing lubrication-related failures is therefore a large available opportunity for improving machine uptime and cutting maintenance spend across industry.
 
-Industrial relubrication practice, however, remains predominantly time-based: lubricant is applied at fixed calendar or operating-hour intervals regardless of the actual condition of the lubricant in the bearing. This approach is systematically suboptimal in both directions. Over-lubrication -- replenishing when existing lubricant remains adequate -- causes churning losses, elevated operating temperature, seal pressurisation, and in grease-lubricated bearings can disrupt the channelling behaviour that grease develops under normal operation, itself accelerating degradation. Under-lubrication -- where the fixed interval is too long for actual operating conditions -- leads to film thinning, progressive asperity contact, and accelerated wear that is invisible to operators until failure symptoms emerge \cite{wakiru_review_2019}. The correct relubrication interval and quantity are functions of bearing geometry, rotational speed, load, ambient temperature, and lubricant type and state -- a combination of variables that no fixed schedule can optimally accommodate, and that varies continuously with machine operating conditions. Surveys consistently report that both over- and under-lubrication are prevalent in industrial practice, each accounting for a meaningful share of lubrication-related failures \cite{wakiru_review_2019}.
+% Existing methods are insufficient
+Despite this, most industrial lubrication schedules are still time-based: lubricant is topped up or replaced at a fixed interval, regardless of whether the bearing actually needs it at that moment. Re-lubricating too early wastes lubricant, raises operating temperature, and -- for grease -- can disrupt the bearing's internal grease distribution, ironically accelerating degradation. Re-lubricating too late lets the film thin out and wear begin before anyone notices. The correct interval depends on bearing geometry, speed, load, temperature, and the lubricant's own condition -- a moving target that no fixed schedule can track \cite{wakiru_review_2019}.
 
-Condition-based relubrication (CBR) -- lubricating in response to a measured indication of lubricant condition rather than a fixed schedule -- eliminates both failure modes simultaneously. CBR requires continuous, non-disruptive online monitoring of whether the lubricant film in the bearing is adequate for current operating conditions. This is the core problem of lubrication condition monitoring (LCM). LCM encompasses the estimation of lubricant film thickness, viscosity adequacy, degradation state (chemical and rheological aging), and contamination by wear debris or environmental ingress -- the quantities that collectively determine the protective capacity of the lubricant. Accurate online LCM would replace time-based schedules with maintenance decisions grounded in the actual lubricant state, enabling operators to lubricate at the right time in the right quantity \cite{wakiru_review_2019}.
+\textit{Condition-based relubrication} (CBR) replaces the schedule with a measurement: lubricate when a sensor signal shows it is actually needed, not before. CBR depends on \textit{lubrication condition monitoring} (LCM) -- continuously estimating whether the lubricant film is thick enough, how degraded the lubricant has become, and whether it is contaminated. Reliable LCM would let maintenance teams act on the bearing's actual condition rather than a guess.
 
-Despite its practical importance, LCM has received substantially less research attention than vibration-based bearing fault detection and remaining useful life (RUL) estimation, which have been studied for decades and are now widely deployed in industry. The barrier to wider LCM deployment is not primarily a sensor hardware limitation: sensing modalities capable of detecting lubrication-related signals -- acoustic emission, passive ultrasound, vibration, electrical capacitance, active ultrasonic reflectometry -- have been demonstrated across a substantial body of laboratory research. The primary barrier is signal processing: the methods for extracting reliable, operating-condition-invariant lubrication condition estimates from sensor data are immature, fragmented across sensing modalities, and rarely validated beyond controlled laboratory conditions. This review addresses that gap directly.
+LCM has received far less research attention than the related and more mature problem of detecting mechanical bearing faults from vibration, which is now standard practice in industry. This is not because the necessary sensors are missing: a range of sensing technologies capable of picking up lubrication-related signals -- acoustic emission, ultrasound, vibration, electrical capacitance, and others -- have already been demonstrated in laboratory studies and ultrasound is used with simple relative threshold methods in industrial applications. The bottleneck is what happens after sensing: turning a raw sensor signal into a reliable estimate of lubrication condition that still works once the bearing's speed, load, or temperature changes. This signal processing step is fragmented across sensing technologies and rarely tested outside the lab. Closing that gap is the subject of this review.
 
-\textit{Online} monitoring, as used throughout this review, refers to continuous data acquisition from a bearing in operation without interruption or lubricant extraction. \textit{In-line} monitoring uses sensors integrated into the lubricant circulation system and likewise requires no bearing stoppage. Both modes are within the scope of this review. \textit{At-line} monitoring (near-process analysis requiring brief interruption) and \textit{offline} monitoring (laboratory analysis of extracted samples) are excluded.
-
-\subsection{Monitoring Flow}
-\label{subsec:flow}
-An LCM program with clear sequential steps is defined in \cite{wakiru_review_2019}. This, however, considers actual sampling and direct analysis of the lubrication. We define the following steps for online LCM which relies on information gathering during bearing operation:
-\begin{enumerate}
-    \item \textbf{Sensing}: observation and data collection from a bearing in operation through sensors.
-    \item \textbf{Signal processing}: signal processing and machine learning, which prepares the data for the downstream task of lubrication condition assessment. This step might contain dimensionality reduction through feature extraction or it might preserve the time-series structure of the data.
-    \item \textbf{Lubrication condition assessment}: classification or regression on the processed data to infer the current lubrication condition in terms of lubrication regime, film thickness, degradation state or contamination; elaborated in Section~\ref{sec:lubrication_physics}.
-    \item \textbf{Maintenance decision}: a concrete relubrication strategy based on the lubrication condition assessment -- when and how much to lubricate to maintain or restore adequate lubrication level.
-\end{enumerate}
-The steps in the LCM-based maintenance pipeline are visualised in Figure~\ref{fig:lcm_flow}. LCM might be concerned with all steps 1--4 or just steps 1--3 with step 4 as a downstream task. Steps 1--3 -- which include signal processing and lubrication condition assessment sitting between the raw sensor data and the maintenance decision -- are the core focus of this review.
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/lcm_overview.png}
-\caption{Steps in online LCM of a running ball bearing. Signal processing sits between the raw sensor data and the lubrication condition assessment.}
-\label{fig:lcm_flow}
-\end{figure}
+Throughout this review, \textit{online} monitoring means continuous sensing on a bearing that keeps running, with no need to stop it or extract lubricant; \textit{in-line} monitoring means sensors built into the lubricant circulation system, which also requires no stoppage. Both are in scope. Methods that need a brief interruption (\textit{at-line}) or a lab sample (\textit{offline}) are not.
 
 \subsection{Existing Reviews and Their Limitations}
 \label{subsec:existing_reviews}
-A number of reviews address related topics in LCM. Wakiru et al.\ \cite{wakiru_review_2019} review LCM for maintenance decision support, covering direct lubricant analysis by invasive methods. Shang et al.\ \cite{shang_comprehensive_2024} review film thickness estimation by optical, electrical, and ultrasonic methods (active and/or invasive). Wang et al.\ \cite{wang_advanced_2024} review bearing condition monitoring including lubricant film thickness and wear debris detection, covering primarily active or invasive methods while mentioning passive ultrasound and acoustic emission measurements for condition monitoring. Hansen et al.\ \cite{hansen_comparison_2022} review calibration for ultrasonic reflectometry (active). Cen et al.\ \cite{cen_ehl_2021} and Becker-Dombrowsky et al.\ \cite{becker-dombrowsky_electrical_2024} review electrical capacitance and impedance methods (active). Dai et al.\ \cite{dai_situ_2024} review in-situ film thickness measurement by capacitance (active). Zhu et al.\ \cite{zhu_lubricating_2017,zhu_survey_2013} review online lubricant sensors and oil monitoring methods (active and invasive). Sun et al.\ \cite{sun_online_2021} review debris monitoring methods (active). Dou et al.\ \cite{dou_review_2022} review ultrasonic reflectometry for film thickness (active).
 
-Three limitations are shared by all existing reviews. First, none provides a systematic taxonomy of signal processing methods across sensing modalities; signal processing is treated as a secondary detail beneath the sensing method taxonomy. Second, existing reviews overwhelmingly focus on active or invasive methods, leaving passive non-invasive methods -- which offer the greatest practical advantages for industrial deployment -- underrepresented. Third, no review identifies signal processing as the primary bottleneck limiting the advancement of LCM from controlled laboratory demonstrations to industrial deployment.
+Table~\ref{tab:existing_reviews} lists the reviews most closely related to this one and what each covers. \todo{Should this be in table form?}
+
+\begin{table}[H]
+\small
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{| >{\raggedright\arraybackslash}p{3.2cm} | >{\raggedright\arraybackslash}p{4cm} | >{\raggedright\arraybackslash}X |}
+\hline
+\textbf{Review} & \textbf{Focus} & \textbf{Limitation relative to this review} \\
+\hline
+Wakiru et al.\ \cite{wakiru_review_2019} & LCM for maintenance decision support & Centred on invasive lubricant sampling and analysis, not online sensing \\
+\hline
+Shang et al.\ \cite{shang_comprehensive_2024} & Film thickness measurement & Active/invasive methods only (optical, electrical, ultrasonic) \\
+\hline
+Wang et al.\ \cite{wang_advanced_2024} & Bearing condition monitoring, incl.\ film thickness and debris & Mostly active/invasive; passive methods mentioned only in passing \\
+\hline
+Hansen et al.\ \cite{hansen_comparison_2022} & Ultrasonic reflectometry calibration & Single active method only \\
+\hline
+Cen et al.\ \cite{cen_ehl_2021}; Becker-Dombrowsky et al.\ \cite{becker-dombrowsky_electrical_2024} & Electrical capacitance / impedance & Single active method only \\
+\hline
+Dai et al.\ \cite{dai_situ_2024} & In-situ film thickness by capacitance & Single active method only \\
+\hline
+Zhu et al.\ \cite{zhu_lubricating_2017,zhu_survey_2013} & Online lubricant sensors, oil monitoring & Active/invasive methods only \\
+\hline
+Sun et al.\ \cite{sun_online_2021} & Wear debris monitoring & Active methods only \\
+\hline
+Dou et al.\ \cite{dou_review_2022} & Ultrasonic film thickness & Single active method only \\
+\hline
+\end{tabularx}
+\caption{Reviews related to lubrication condition monitoring and how their scope differs from this review.}
+\label{tab:existing_reviews}
+\end{table}
+
+Three limitations are shared by all of them. First, none organises the field by signal processing method -- signal processing is treated as a detail beneath each sensing technology, not as a subject in its own right. Second, almost all focus on active or invasive sensing, leaving passive, non-invasive methods underrepresented even though these offer the easiest path to industrial retrofitting without halting machine operation. Third, none identifies signal processing -- rather than sensor hardware -- as the main reason LCM has not moved from the lab into industrial deployment.
 
 \subsection{Contribution and Scope of This Review}
 \label{subsec:contribution}
 
-This review provides the following contributions:
+This review makes four contributions:
 \begin{enumerate}
-    \item \textbf{A systematic taxonomy of signal processing methods for LCM}, organised by SP method family and applied across all sensing modalities -- the first such taxonomy in the LCM literature.
-    \item \textbf{A comprehensive comparative analysis} of sensing and SP method combinations across four dimensions: lubrication fault type sensitivity, operating condition sensitivity, deployment requirements, and technology maturity.
-    \item \textbf{A structured identification of SP-centric research gaps} that limit the advancement of LCM to industrial practice, with specific future research directions for each gap.
-    \item \textbf{Coverage of all sensing modalities} -- active and passive, invasive and non-invasive -- enabling a complete picture of the field, with greatest depth given to the passive non-invasive methods that are most relevant to industrial retrofit applications.
+    \item \textbf{A systematic taxonomy of signal processing methods for LCM}, organised by method family and applied across all sensing technologies -- the first such taxonomy in the LCM literature.
+    \item \textbf{A structured comparison} of sensing and signal processing combinations across four dimensions: sensitivity to different lubrication faults, sensitivity to changing operating conditions, practical deployment requirements, and technology maturity.
+    \item \textbf{A clear list of signal-processing-specific research gaps}, each with a concrete suggested research direction.
+    \item \textbf{Coverage of all sensing technologies} -- active and passive, invasive and non-invasive -- with extra depth on the passive, non-invasive methods most relevant to retrofitting existing industrial bearings.
 \end{enumerate}
+\todo{Update in the end if contributions are changed}
 
-This review covers the literature on online and in-line LCM of rolling element bearings (primarily ball bearings), with a focus on studies that describe signal processing methods in sufficient detail to assess their assumptions, limitations, and applicability. Studies concerned exclusively with bearing fault detection without a lubrication-specific focus, and studies on journal bearings or non-bearing tribological contacts, are excluded. The search covers literature up to early 2026.
+This review covers online and in-line LCM literature for rolling element bearings (primarily ball bearings), restricted to studies that describe their signal processing method in enough detail to assess its assumptions and limitations. Studies on bearing fault detection with no lubrication-specific focus, and studies on journal bearings or other non-bearing tribological contacts, are excluded. The literature search covers publications up to July 2026.
 
 \subsection{Paper Organisation}
 \label{subsec:organisation}
-Section~\ref{sec:search} describes the systematic literature search process and inclusion criteria. Section~\ref{sec:lubrication_physics} reviews the theoretical background of lubrication physics, degradation mechanisms, and models. Section~\ref{sec:signal_origins} discusses the physical origins of sensor signals in the context of LCM. Section~\ref{sec:sensing} provides a taxonomy and description of sensing methods, including the formal definitions of the active/passive and invasive/non-invasive classifications used throughout this review. Section~\ref{sec:sp} is the primary contribution: a systematic review of signal processing methods organised by SP family. Sections~\ref{sec:lubrication_physics}--\ref{sec:sp} together cover the complete pipeline from physical signal origins to signal processing methods. Section~\ref{sec:comparative} presents the comparative analysis. Section~\ref{sec:gaps} identifies research gaps and future directions. Section~\ref{sec:conclusion} concludes.
+
+Section~\ref{sec:search} describes the search and inclusion criteria. Section~\ref{sec:lubrication_physics} introduces the relevant lubrication physics and degradation mechanisms. Section~\ref{sec:signal_origins} explains how lubrication condition shows up physically in sensor signals. Section~\ref{sec:sensing} surveys sensing technologies, including the active/passive and invasive/non-invasive classification used throughout. Section~\ref{sec:sp} -- the main contribution -- reviews signal processing methods by family. Section~\ref{sec:comparative} compares sensing and signal processing combinations. Section~\ref{sec:gaps} sets out research gaps and future directions, and Section~\ref{sec:conclusion} concludes.
+\todo{Update once finished}

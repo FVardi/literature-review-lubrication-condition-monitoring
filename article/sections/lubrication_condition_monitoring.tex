@@ -1,0 +1,22 @@
+\section{Lubrication Condition Monitoring}
+The goal of bearing lubrication is reduction of friction and wear, and many factors influence a lubricant's ability to do so: bearing geometry, operating conditions (temperature, speed, load), contamination, starvation, and degradation are common categories. Since LCM seeks to estimate the adequacy of the lubricant film formed in an operating bearing with respect to reduction of wear and friction, it emcompasses all of these factors. LCM can therefore be viewed from multiple angles and with various sub-goals in the pursuit of estimating lubrication conditions.
+
+\subsection{Monitoring Flow}
+\label{subsec:flow}
+
+An LCM system can be broken down into four steps, shown in Figure~\ref{fig:lcm_flow}:
+\begin{enumerate}
+    \item \textbf{Sensing}: collecting data from a bearing in operation.
+    \item \textbf{Signal processing}: turning the raw sensor data into a more compact or more informative form, ready for the next step.
+    \item \textbf{Lubrication condition assessment}: estimating the lubrication regime, film thickness, degradation, or contamination level from the processed data (see Section~\ref{sec:lubrication_physics}).
+    \item \textbf{Maintenance decision}: deciding when and how much to relubricate, based on that assessment.
+\end{enumerate}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/lcm_overview.png}
+\caption{Steps in online LCM of a running ball bearing. Signal processing sits between the raw sensor data and the lubrication condition assessment.}
+\label{fig:lcm_flow}
+\end{figure}
+
+A given LCM system may stop at step 3, leaving the maintenance decision (step 4) as a separate downstream task. This review focuses on steps 1--3: sensing, signal processing, and condition assessment.
