@@ -188,6 +188,13 @@ J~Miettinen, P~Andersson, and V~Wikströ.
 \newblock {\em Proceedings of the Institution of Mechanical Engineers, Part J:
   Journal of Engineering Tribology}, 215(6):535--544, June 2001.
 
+\bibitem{zhang_coupled_2026}
+Xuanrui Zhang, Dong Zhen, Guojin Feng, Xiaoxia Liang, Hao Zhang, and Fengshou
+  Gu.
+\newblock A coupled vibration-acoustic emission model for roller bearings
+  incorporating lubricant traction and sliding friction.
+\newblock {\em Tribology International}, 221:112013, April 2026.
+
 \bibitem{georgiev_microphone_2017}
 Volodymyr Kudriashov, Vladislav Ivanov, Kiril Alexiev, and Petia
   Koprinkova-Hristova.
@@ -295,6 +302,14 @@ Akhand Rai and S.H. Upadhyay.
 \newblock A review on signal processing techniques utilized in the fault
   diagnosis of rolling element bearings.
 \newblock {\em Tribology International}, 96:289--306, April 2016.
+
+\bibitem{zhang_interpretable_2026}
+Xinzhuo Zhang, Zhijun Ren, Kai Huang, Tantao Lin, Yongsheng Zhu, Hong Fu, and
+  Jun Hong.
+\newblock An interpretable rolling-bearing lubrication-state diagnosis method
+  based on multiscale residual and semantic consistency {CycleGAN}.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement},
+  75:3512116, April 2026.
 
 \bibitem{jakobsen_low_2024}
 Morten~Opprud Jakobsen.
