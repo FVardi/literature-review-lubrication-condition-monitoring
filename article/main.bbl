@@ -1,18 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{wakiru_review_2019}
-James~M. Wakiru, Liliane Pintelon, Peter~N. Muchiri, and Peter~K. Chemweno.
-\newblock A review on lubricant condition monitoring information analysis for
-  maintenance decision support.
-\newblock {\em Mechanical Systems and Signal Processing}, 118:108--132, March
-  2019.
-
-\bibitem{isalm_oil_2021}
-S~M~Naufel Isalm, Md~Farhan Mahmud~Rashik, and Md~Khairul Basher.
-\newblock Oil debris analysis and {Vibration} monitoring system for condition
-  monitoring and fault diagnosis of a gearbox.
-\newblock {\em IARJSET}, 8(9), September 2021.
-
 \bibitem{jakobsen_detecting_2023}
 Morten~Opprud Jakobsen, Eskild~Sune Herskind, Christian~Fischer Pedersen, and
   Mikael~Bergholz Knudsen.
@@ -39,6 +26,19 @@ Mohamed G.~A. Nassef, Mina Soliman, Belal~Galal Nassef, Mohamed~A. Daha, and
 \newblock Impact of {Graphene} {Nano}-{Additives} to {Lithium} {Grease} on the
   {Dynamic} and {Tribological} {Behavior} of {Rolling} {Bearings}.
 \newblock {\em Lubricants}, 10(2):29, February 2022.
+
+\bibitem{isalm_oil_2021}
+S~M~Naufel Isalm, Md~Farhan Mahmud~Rashik, and Md~Khairul Basher.
+\newblock Oil debris analysis and {Vibration} monitoring system for condition
+  monitoring and fault diagnosis of a gearbox.
+\newblock {\em IARJSET}, 8(9), September 2021.
+
+\bibitem{wakiru_review_2019}
+James~M. Wakiru, Liliane Pintelon, Peter~N. Muchiri, and Peter~K. Chemweno.
+\newblock A review on lubricant condition monitoring information analysis for
+  maintenance decision support.
+\newblock {\em Mechanical Systems and Signal Processing}, 118:108--132, March
+  2019.
 
 \bibitem{shang_comprehensive_2024}
 Fei Shang, Bo~Sun, and Dandan Cai.

@@ -334,9 +334,8 @@ OUTPUT main.toc
 INPUT .\sections\introduction.tex
 INPUT .\sections\introduction.tex
 INPUT sections\introduction.tex
-INPUT C:\Users\favn\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Users\favn\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
 INPUT C:\Users\favn\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
+INPUT C:\Users\favn\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT .\figures\lcm_overview.png
 INPUT .\figures\lcm_overview.png
 INPUT .\figures\lcm_overview.png
@@ -347,6 +346,7 @@ INPUT .\figures\lcm_overview.png
 INPUT .\sections\literature_search_process.tex
 INPUT .\sections\literature_search_process.tex
 INPUT sections\literature_search_process.tex
+INPUT C:\Users\favn\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
 INPUT C:\Users\favn\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx7.tfm
 INPUT .\figures\prisma_flow.pdf
 INPUT .\figures\prisma_flow.pdf

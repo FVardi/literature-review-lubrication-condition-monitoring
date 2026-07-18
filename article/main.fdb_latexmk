@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1781568271.06524 "main.aux" "main.bbl" "main" 1781568276.11825 0
+["bibtex main"] 1784383312.86891 "main.aux" "main.bbl" "main" 1784383316.95437 0
   "./bib.bib" 1781564216 169663 6173bab80933b83455362bc9c6bcd871 ""
   "C:/Users/favn/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/unsrt.bst" 1291864736 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1781568274 41097 70279d21cd6ff45ae21cb06c7178fafe "pdflatex"
+  "main.aux" 1784383315 40389 21b82b0a4d35123cafa2716cee6fae9c "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1781568271.61304 "c:/Users/favn/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main.tex" "main.pdf" "main" 1781568276.11911 0
-  "C:/Users/favn/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1781567434 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+["pdflatex"] 1784383313.25517 "c:/Users/favn/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main.tex" "main.pdf" "main" 1784383316.95535 0
+  "C:/Users/favn/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1783455974 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/favn/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm0700.pk" 1781567437 8268 427f7d4df27b8f38459f5635c2060ca2 ""
   "C:/Users/favn/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1781567439 11548 dadfa8f61669ace049eb973fe1584e74 ""
   "C:/Users/favn/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1781563138 13333003 3b55f0ee7cd31dc5473c3e357fed023e ""
@@ -229,22 +229,22 @@
   "c:/Users/favn/Documents/Repos/literature-review-lubrication-condition-monitoring/article/main.tex" 1781568265 1759 f6fad1814ea73ed5885ca75057b68138 ""
   "figures/lcm_overview.png" 1781564216 61363 1a023e77a733d6999e57fbebe70e5f33 ""
   "figures/prisma_flow.pdf" 1781564216 30620 657c9eb538c58c7459bd16cb99ee8180 ""
-  "main.aux" 1781568274 41097 70279d21cd6ff45ae21cb06c7178fafe "pdflatex"
-  "main.bbl" 1781568271 20350 df996fe3570f56342d8e9684e41d87c2 "bibtex main"
-  "main.out" 1781568274 16612 9392823ecd727cb937db32587ca07eef "pdflatex"
+  "main.aux" 1784383315 40389 21b82b0a4d35123cafa2716cee6fae9c "pdflatex"
+  "main.bbl" 1784383313 20350 c8d3d1a72a6070f5f8d7a1e39518d7ce "bibtex main"
+  "main.out" 1784383315 15558 3161c4206fa71d6a2eb1c9ed96e10beb "pdflatex"
   "main.tex" 1781568265 1759 f6fad1814ea73ed5885ca75057b68138 ""
-  "main.toc" 1781568274 8109 8b7c839ef78e030fdc97e3a98fb79e03 "pdflatex"
+  "main.toc" 1784383315 7662 b6b0f185319be0dd394b09cf1f1e0c1e "pdflatex"
   "sections/abstract.tex" 1781564216 238 b590adfe12465ab17af67ca93ac7ad62 ""
-  "sections/comparative_analysis.tex" 1781564216 21592 658ac19eb511c2795c2a9d6c7b994107 ""
+  "sections/comparative_analysis.tex" 1781569815 20836 a784d0ffb330dd1f8f7d53799d26c428 ""
   "sections/conclusion.tex" 1781564216 4559 9273874944598cb5569e211720386957 ""
-  "sections/degradation_and_physical_background.tex" 1781568256 12419 028121190a4c675b5d69b336c547fb19 ""
+  "sections/degradation_and_physical_background.tex" 1781570376 12431 63ae4b4d223d6c5c835cb9d86ad2c4ca ""
   "sections/gaps_and_future.tex" 1781564216 9499 3c544da7d7412db14917bf125c0c4ad2 ""
   "sections/inclusion_criteria.tex" 1781564216 237 d851da14adf1fb389dd59023f589d24c ""
-  "sections/introduction.tex" 1781564216 10820 52e5d3af3528e665eb3206ef710fba72 ""
+  "sections/introduction.tex" 1784383303 12526 6d57a138f5e1431d638f6d349d52a693 ""
   "sections/literature_search_process.tex" 1781564216 3937 09da461db385112fae3561f530e879f7 ""
-  "sections/physical_origins_of_signals.tex" 1781564216 7918 471acbc82b135e9751d78a54a9ff0a2e ""
-  "sections/sensing_methods_and_empirical_studies.tex" 1781564216 30866 bfe2955dd941f75fde1747e7a1f964b4 ""
-  "sections/signal_processing_methods.tex" 1781567431 44761 e6eacb83fdee95fb6fcea02abf271dbb ""
+  "sections/physical_origins_of_signals.tex" 1781570301 6071 058524de642e995797c3935e415621e8 ""
+  "sections/sensing_methods_and_empirical_studies.tex" 1781569608 30833 9160857d555fd935b192439f774180b5 ""
+  "sections/signal_processing_methods.tex" 1781569735 44183 1a2ba79c5cc6c030ef651b2b53cd5eec ""
   (generated)
   "main.aux"
   "main.log"
