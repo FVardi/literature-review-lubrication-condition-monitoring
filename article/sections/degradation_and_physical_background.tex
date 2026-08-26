@@ -6,7 +6,7 @@ The following subsections present the theoretical models most commonly used in L
 
 \subsection{Lubrication Regimes}
 \label{subsec:lubrication_regimes}
-Lubrication films formed in ball bearings under operation are generally classified into three regimes depending on the physical contact between balls and raceways and how the bearing load is distributed:
+Lubrication films formed in ball bearings under operation are generally classified into three regimes depending on the physical contact between balls and raceways and how the bearing load is distributed \cite{stachowiak_engineering_2014}:
 \begin{itemize}
     \item \textbf{Boundary lubrication}: the entire load is carried by surface-to-surface contact (ball to raceway). This regime produces the highest friction, arising solely from sliding of asperities against each other. Wear rate is high, and heat generation and elastic stress-wave emission are correspondingly intense.
     \item \textbf{Mixed lubrication}: load is shared between a thin lubricant film and surface asperity contacts. Friction and wear are reduced compared to the boundary regime but asperity contacts continue to generate transient stress waves detectable by acoustic and vibration sensors.
@@ -14,9 +14,9 @@ Lubrication films formed in ball bearings under operation are generally classifi
 \end{itemize}
 The progression through these regimes as lubrication conditions deteriorate determines both the nature and the intensity of the signals accessible to passive sensing methods.
 
-\subsection{The Stribeck Curve and Its Significance for Signal Processing}
+\subsection{The Stribeck Curve}
 \label{subsec:stribeck}
-The Stribeck curve describes the relationship between the friction coefficient and the Hersey number $\eta n / p$, where $\eta$ is the dynamic viscosity, $n$ is the rotational speed, and $p$ is the contact pressure. As the Hersey number decreases -- due to lower speed, lower viscosity, or higher load -- the bearing transitions from the EHL regime, through mixed lubrication, into boundary lubrication, and the friction coefficient rises sharply. The curve is illustrated in Figure~\ref{fig:stribeck}
+The Stribeck curve describes the relationship between the friction coefficient in a fluid-lubricated contact and the Hersey number $\eta n / p$, where $\eta$ is the dynamic viscosity, $n$ is the rotational speed, and $p$ is the contact pressure \cite{stribeck_wesentlichen_1902}. As the Hersey number decreases -- due to lower speed, lower viscosity, or higher load -- the bearing transitions from the EHL regime, through mixed lubrication, into boundary lubrication, and the friction coefficient rises sharply. The curve is illustrated in Figure~\ref{fig:stribeck}
 
 \begin{figure}[htbp]
 \centering
@@ -62,7 +62,7 @@ The Stribeck curve describes the relationship between the friction coefficient a
   \draw[->, thin, gray!55] (6.35, 1.60) -- (5.35, 0.42);
 
 \end{tikzpicture}
-\caption{Schematic Stribeck curve showing friction coefficient $\mu$ as a function of Hersey number $\eta n/p$, where $\eta$ is dynamic viscosity, $n$ rotational speed, and $p$ contact pressure. As the Hersey number decreases -- due to lower speed, lower viscosity, or higher load -- the bearing transitions from full-film EHL through mixed lubrication into boundary lubrication, with a sharp rise in friction coefficient. The Stribeck minimum marks the onset of full-film lubrication.}
+\caption{Schematic Stribeck curve showing friction coefficient $\mu$ as a function of Hersey number $\eta n/p$, where $\eta$ is dynamic viscosity, $n$ rotational speed, and $p$ contact pressure. As the Hersey number decreases the bearing transitions from full-film EHL through mixed lubrication into boundary lubrication, with a sharp rise in friction coefficient. The Stribeck minimum marks the onset of full-film lubrication.}
 \label{fig:stribeck}
 \end{figure}
 
@@ -70,7 +70,7 @@ The Stribeck curve is directly relevant to signal processing because the frictio
 
 \subsection{Hamrock--Dowson Model}
 \label{subsec:hamrock_dowson}
-The Hamrock--Dowson model is the most widely used empirical model for calculating the minimum film thickness, $h_m$, in ball bearings. It is given by
+The Hamrock--Dowson model is a widely used empirical model for calculating the minimum film thickness\footnote{Minimum occurring film thickness between ball and raceway when the bearing is in operation.}, $h_m$, in ball bearings. It is given by
 \begin{equation}
     \frac{h_m}{R_{x}^{'}} = 3.63\,U^{0.68}\,G^{0.49}\,W^{-0.073}\,(1-e^{-0.68k}),
 \end{equation}
@@ -90,7 +90,9 @@ The $\Lambda$ ratio is the ratio between the lubrication film thickness and the 
 \begin{equation}
 \Lambda = \frac{h_{m}}{\sqrt{R_{q1}^2 + R_{q2}^2}},
 \end{equation}
-where $h_{m}$ is the minimum film thickness and $R_{q1}$, $R_{q2}$ are the root-mean-square roughness values of the two contacting surfaces. Lubrication regimes are conventionally assigned as: $\Lambda < 1$ (boundary), $1 \leq \Lambda \leq 3$ (mixed), $\Lambda > 3$ (EHL). The $\Lambda$ ratio is the primary physical target variable in some LCM studies that use sensor signals to estimate the lubrication regime \cite{jakobsen_detecting_2023,hou_-situ_2025,cornel_condition_2021}.
+where $h_{m}$ is the minimum film thickness and $R_{q1}$, $R_{q2}$ are the root-mean-square roughness values of the two contacting surfaces. In practice, $R_{q1}$ and $R_{q2}$ are obtained either by direct measurement -- contact stylus profilometry for raceway surfaces, or non-contact optical methods for the ball surface -- or taken from the bearing manufacturer's specified roughness in the data sheet. Because running-in wear smooths asperities over time, roughness is not strictly constant over a bearing's service life, so it might be necessary to re-measure it after and operating period.
+
+Lubrication regimes are conventionally assigned as: $\Lambda < 1$ (boundary), $1 \leq \Lambda \leq 3$ (mixed), $\Lambda > 3$ (EHL). The $\Lambda$ ratio is the primary physical target variable in some LCM studies that use sensor signals to estimate the lubrication regime \cite{jakobsen_detecting_2023,hou_-situ_2025,cornel_condition_2021}.
 
 Hansen et al.\ \cite{hansen_new_2021} note that the conventional $\Lambda$ ratio has shortcomings in the EHL regime arising from elastic asperity deformation, and propose an improved $\Lambda^*$ ratio:
 \begin{equation}
@@ -98,20 +100,21 @@ Hansen et al.\ \cite{hansen_new_2021} note that the conventional $\Lambda$ ratio
 \end{equation}
 where $\delta_a$ is the elastic asperity deformation in EHL and $z_0$ is the relaxed-state height of the surface profile.
 
+
 \subsection{$\kappa$-Ratio}
 \label{subsec:kappa}
 The $\kappa$ ratio is a model-based indicator of lubricant viscosity adequacy for a specific bearing under specific operating conditions. It is defined as
 \begin{equation}
 \kappa = \frac{\nu}{\nu_{1}},
 \end{equation}
-where $\nu$ is the kinematic viscosity of the applied lubricant under the operating conditions and $\nu_{1}$ is the reference kinematic viscosity calculated from the ISO 281 standard for the bearing diameter and rotational speed \cite{jakobsen_detecting_2023}. Interpretation guidelines are \todo{Find citation for $\kappa$ thresholds (ISO 281 or SKF/FAG catalogue)}:
+where $\nu$ is the kinematic viscosity of the applied lubricant under the operating conditions and $\nu_{1}$ is the reference kinematic viscosity calculated from the ISO 281 standard for the bearing diameter and rotational speed \cite{jakobsen_detecting_2023}. Interpretation guidelines are as follows \cite{skf_lubrication_2026}:
 \begin{itemize}
-    \item $\kappa \leq 0.1$: insufficient lubrication; load carried almost entirely by asperity contact.
-    \item $0.1 < \kappa \leq 1$: insufficient lubrication; metallic surface-to-surface contact present.
-    \item $1 < \kappa \leq 4$: adequate lubrication.
-    \item $4 < \kappa$: excessive viscosity; higher viscous friction losses.
+    \item $\kappa < 0.1$: boundary lubrication; the rolling element load is predominantly carried by asperity contact between rolling element and raceway. This threshold is not strict -- lubrication conditions change gradually around it.
+    \item $0.1 < \kappa < 1$: transitional regime; film formation is incomplete and extreme-pressure/anti-wear additives are recommended to compensate.
+    \item $1 \leq \kappa \leq 4$: the range for which most bearing applications are designed; $\kappa = 4$ corresponds to full-film lubrication, where the rolling contact load is entirely carried by the lubricant film.
+    \item $\kappa > 4$: does not further increase bearing rating life, but may still be desirable for added reliability margin, e.g.\ under frequent start-stop cycling.
 \end{itemize}
-Given the fact that $\kappa$ can be tied to lubrication conditions it can also be tied to the Stribeck curve and lubrication regimes. Jakobsen et al.\ \cite{jakobsen_detecting_2023,jakobsen_vibration_2021} use $\kappa$ as the regression target for data-driven models trained on vibration and ultrasound features, linking directly to the ISO standard and enabling quantitative LCM without invasive lubricant sampling. It should be noted that $\kappa$ is time-invariant for a given bearing and operating condition; it therefore captures viscosity inadequacy if the conditions remain constant but does not account for lubricant degradation or contamination that develops over time.
+Given the fact that $\kappa$ can be tied to lubrication conditions it can also in theory be tied to the Stribeck curve and lubrication regimes. Jakobsen et al.\ \cite{jakobsen_detecting_2023,jakobsen_vibration_2021} use $\kappa$ as the regression target for data-driven models trained on vibration and ultrasound features, linking directly to the ISO standard and enabling quantitative LCM without invasive lubricant sampling. It should be noted that $\kappa$ is time-invariant for a given bearing and operating condition; it therefore captures viscosity inadequacy if the conditions remain constant but does not account for lubricant degradation or contamination that develops over time.
 
 
 
