@@ -3,49 +3,41 @@
 \label{sec:intro}
 
 % Overall
-Rolling element bearings let parts rotate with minimal friction in almost every kind of rotating machine: motors, pumps, wind turbines, machine tools, trains. What makes this possible is a thin film of oil or grease, that keeps the rolling balls from touching their metal tracks. As long as that film is intact, the bearing runs cool and wears slowly. Once it breaks down -- because there is too little lubricant, the lubricant has degraded, or it has become contaminated -- metal starts touching metal, friction rises, heat builds up, and wear accelerates sharply, ultimately causing premature mechanical failure. Lubrication problems are estimated to cause 30--80\% of all rolling element bearing failures, more than mechanical overload or installation errors combined \cite{jakobsen_detecting_2023,dai_situ_2024,xu_vibration-based_2024,nassef_impact_2022,isalm_oil_2021}.
+Rolling element bearings let parts rotate with minimal friction in almost every kind of rotating machine: motors, pumps, wind turbines, machine tools, trains. What makes this possible is a thin film of oil or grease, that keeps the rolling balls from touching their metal tracks. As long as that film is intact, the bearing runs cool with low friction and wears slowly. Once it breaks down -- because there is too little lubricant, the lubricant has degraded, or it has become contaminated -- metal starts touching metal, friction rises, heat builds up, and wear accelerates sharply, ultimately causing premature mechanical failure. Lubrication problems are estimated to cause 30--80\% of all rolling element bearing failures, more than mechanical overload or installation errors combined \cite{jakobsen_detecting_2023,dai_situ_2024,xu_vibration-based_2024,nassef_impact_2022,isalm_oil_2021}.
 
 % Consequences of failures
-The cost of this is substantial. A single bearing failure can shut down an entire production line, and the resulting downtime typically costs far more than the bearing itself. The problem is especially acute where access is difficult: at an offshore wind farm, replacing one failed bearing can require a vessel and a crane crew, and a single unplanned trip can cost more than the part it replaces several times over \cite{wakiru_review_2019}. Reducing lubrication-related failures is therefore a large available opportunity for improving machine uptime and cutting maintenance spend across industry.
+The cost of this is substantial. A single bearing failure can shut down an entire production line, and the resulting downtime typically costs far more than the bearing itself. The problem is especially acute where access is difficult: at an offshore wind farm, replacing one failed bearing can require a vessel and a crane crew, and a single unplanned trip can cost more than the part it replaces several times over \cite{wakiru_review_2019}. Reducing lubrication-related failures is therefore a large available opportunity for improving machine uptime and cutting maintenance spend across industry, as well as cutting energy needed to overcome friction.
 
 % Existing methods are insufficient
-Despite this, most industrial lubrication schedules are still time-based: lubricant is topped up or replaced at a fixed interval, regardless of whether the bearing actually needs it at that moment. Re-lubricating too early wastes lubricant, raises operating temperature, and -- for grease -- can disrupt the bearing's internal grease distribution, ironically accelerating degradation. Re-lubricating too late lets the film thin out and wear begin before anyone notices. The correct interval depends on bearing geometry, speed, load, temperature, and the lubricant's own condition -- a moving target that no fixed schedule can track \cite{wakiru_review_2019}.
+Despite this, most industrial lubrication schedules are still time-based: lubricant is topped up or replaced at a fixed interval, regardless of whether the bearing actually needs it at that moment. Re-lubricating too early wastes lubricant, raises operating temperature, and increases friction. Re-lubricating too late lets the film thin out and wear begin. The correct interval depends on bearing geometry, speed, load, temperature, and the lubricant's own condition -- a moving target that no fixed schedule can track \cite{wakiru_review_2019}.
 
-\textit{Condition-based relubrication} (CBR) replaces the schedule with a measurement: lubricate when a sensor signal shows it is actually needed, not before. CBR depends on \textit{lubrication condition monitoring} (LCM) -- continuously estimating whether the lubricant film is thick enough, how degraded the lubricant has become, and whether it is contaminated. Reliable LCM would let maintenance teams act on the bearing's actual condition rather than a guess.
+\textit{Condition-based relubrication} (CBR) replaces the schedule with a measurement: lubricate when a sensor signal shows it is actually needed, not before. CBR depends on \textit{lubrication condition monitoring} (LCM): continuously estimating whether the lubricant film is thick enough, how degraded the lubricant has become, and whether it is contaminated. Reliable LCM would let maintenance teams act on the bearing's actual condition rather than a guess.
 
-LCM has received far less research attention than the related and more mature problem of detecting mechanical bearing faults from vibration, which is now standard practice in industry. This is not because the necessary sensors are missing: a range of sensing technologies capable of picking up lubrication-related signals -- acoustic emission, ultrasound, vibration, electrical capacitance, and others -- have already been demonstrated in laboratory studies and ultrasound is used with simple relative threshold methods in industrial applications. The bottleneck is what happens after sensing: turning a raw sensor signal into a reliable estimate of lubrication condition that still works once the bearing's speed, load, or temperature changes. This signal processing step is fragmented across sensing technologies and rarely tested outside the lab. Closing that gap is the subject of this review.
+LCM has received far less research attention than the related and more mature problem of detecting mechanical bearing faults from vibration, which is now standard practice in industry. This is not because the necessary sensors are missing: a range of sensing technologies capable of picking up lubrication-related signals -- acoustic emission, ultrasound, vibration, electrical capacitance, and others -- have already been demonstrated in laboratory studies and ultrasound is used with simple relative threshold methods in industrial applications. The bottleneck is what happens after sensing: turning a raw sensor signal into a reliable estimate of lubrication condition that still works once the bearing's speed, load, or temperature changes. This signal processing step is fragmented across sensing technologies and rarely tested outside the lab. This gap is the subject of this review.
 
 Throughout this review, \textit{online} monitoring means continuous sensing on a bearing that keeps running, with no need to stop it or extract lubricant; \textit{in-line} monitoring means sensors built into the lubricant circulation system, which also requires no stoppage. Both are in scope. Methods that need a brief interruption (\textit{at-line}) or a lab sample (\textit{offline}) are not.
 
 \subsection{Existing Reviews and Their Limitations}
 \label{subsec:existing_reviews}
 
-Table~\ref{tab:existing_reviews} lists the reviews most closely related to this one and what each covers. \todo{Should this be in table form?}
+A number of reviews on LCM exists: Table~\ref{tab:existing_reviews} lists the reviews most closely related to this one and what each covers. \todo{Change table form to prose. Check Wakiru review from MSSP for style.}
 
 \begin{table}[H]
 \small
 \centering
 \renewcommand{\arraystretch}{1.3}
-\begin{tabularx}{\linewidth}{| >{\raggedright\arraybackslash}p{3.2cm} | >{\raggedright\arraybackslash}p{4cm} | >{\raggedright\arraybackslash}X |}
+\begin{tabularx}{\linewidth}{ >{\raggedright\arraybackslash}p{3.2cm} >{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}X }
 \hline
 \textbf{Review} & \textbf{Focus} & \textbf{Limitation relative to this review} \\
 \hline
 Wakiru et al.\ \cite{wakiru_review_2019} & LCM for maintenance decision support & Centred on invasive lubricant sampling and analysis, not online sensing \\
-\hline
 Shang et al.\ \cite{shang_comprehensive_2024} & Film thickness measurement & Active/invasive methods only (optical, electrical, ultrasonic) \\
-\hline
 Wang et al.\ \cite{wang_advanced_2024} & Bearing condition monitoring, incl.\ film thickness and debris & Mostly active/invasive; passive methods mentioned only in passing \\
-\hline
 Hansen et al.\ \cite{hansen_comparison_2022} & Ultrasonic reflectometry calibration & Single active method only \\
-\hline
 Cen et al.\ \cite{cen_ehl_2021}; Becker-Dombrowsky et al.\ \cite{becker-dombrowsky_electrical_2024} & Electrical capacitance / impedance & Single active method only \\
-\hline
 Dai et al.\ \cite{dai_situ_2024} & In-situ film thickness by capacitance & Single active method only \\
-\hline
 Zhu et al.\ \cite{zhu_lubricating_2017,zhu_survey_2013} & Online lubricant sensors, oil monitoring & Active/invasive methods only \\
-\hline
 Sun et al.\ \cite{sun_online_2021} & Wear debris monitoring & Active methods only \\
-\hline
 Dou et al.\ \cite{dou_review_2022} & Ultrasonic film thickness & Single active method only \\
 \hline
 \end{tabularx}
