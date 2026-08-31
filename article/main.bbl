@@ -104,6 +104,17 @@ Yayu Li, Shiyuan Chang, Pan Dou, Wenzhuo Zhao, Tonghai Wu, and Min Yu.
 \newblock Lubrication film monitoring of the pitch bearing in a wind turbine.
 \newblock {\em Tribology International}, 214:111181, February 2026.
 
+\bibitem{stachowiak_engineering_2014}
+Gwidon~W. Stachowiak and Andrew~W. Batchelor.
+\newblock {\em Engineering Tribology}.
+\newblock Butterworth-Heinemann, 4th edition, 2014.
+
+\bibitem{stribeck_wesentlichen_1902}
+Richard Stribeck.
+\newblock Die wesentlichen eigenschaften der gleit- und rollenlager.
+\newblock {\em Zeitschrift des Vereines Deutscher Ingenieure}, 46:1341--1348,
+  1432--1438, 1902.
+
 \bibitem{hou_-situ_2025}
 Geng Hou and Liangchi Zhang.
 \newblock In-situ detection of lubrication status of bearings with acoustic
@@ -136,6 +147,10 @@ Karolina Jablonka, Romeo Glovnea, and Jeroen Bongaerts.
 Daniel Cornel, Francisco Gutiérrez~Guzmán, Georg Jacobs, and Stephan Neumann.
 \newblock Condition monitoring of roller bearings using acoustic emission.
 \newblock {\em Wind Energy Science}, 6(2):367--376, March 2021.
+
+\bibitem{skf_lubrication_2026}
+{SKF}.
+\newblock Lubrication condition -- the viscosity ratio, {\ensuremath{\kappa}}.
 
 \bibitem{jakobsen_vibration_2021}
 Morten~Opprud Jakobsen, Eskild~Sune Herskind, Kim Bjerge, Peter Ahrendt,
@@ -195,6 +210,19 @@ Xuanrui Zhang, Dong Zhen, Guojin Feng, Xiaoxia Liang, Hao Zhang, and Fengshou
   incorporating lubricant traction and sliding friction.
 \newblock {\em Tribology International}, 221:112013, April 2026.
 
+\bibitem{delft_university_of_technology_tu_delft_influence_2024}
+{Delft University of Technology (TU Delft)}, Bart Scheeren, {Allseas
+  Engineering}, Nitish~Perveshsingh Thakoerdajal, {Delft University of
+  Technology (TU Delft)}, and Lotfollah Pahlavan.
+\newblock Influence of {Grease} {Contamination} on {Acoustic} {Emission}
+  {Monitoring} of {Low}-speed {Roller} {Bearings}.
+\newblock {\em e-Journal of Nondestructive Testing}, 29(7), July 2024.
+
+\bibitem{murphy_choosing_2020}
+Christopher Murphy.
+\newblock Choosing the {Most} {Suitable} {Predictive} {Maintenance} {Sensor},
+  2020.
+
 \bibitem{georgiev_microphone_2017}
 Volodymyr Kudriashov, Vladislav Ivanov, Kiril Alexiev, and Petia
   Koprinkova-Hristova.
@@ -248,6 +276,13 @@ R.~S. Dwyer-Joyce, B.~W. Drinkwater, and C.~J. Donohoe.
   Mathematical, Physical and Engineering Sciences}, 459(2032):957--976, April
   2003.
 
+\bibitem{lindner_a23_2011}
+G.~Lindner, Ch. Brückner, and M.~Schmitt.
+\newblock A2.3 - {Online} {Bearing} {Lubricant} {Sensing} by {Mode}
+  {Conversi}¬on of {Surface} {Acoustic} {Waves}.
+\newblock In {\em Proceedings {SENSOR} 2011}, pages 45--52, Nürnberg, 2011.
+  AMA Service GmbH, Von-Münchhausen-Str. 49, 31515 Wunstorf, Germany.
+
 \bibitem{yu_novel_2021}
 Bing Yu, Nan Cao, and Tianhong Zhang.
 \newblock A novel signature extracting approach for inductive oil debris
@@ -270,14 +305,6 @@ Han Wang, Hongfu Zuo, Zhenzhen Liu, Di~Zhou, Hongsheng Yan, Xin Zhao, and
 R.~Carotenuto, F.~Pezzimenti, F.~G. {Della Corte}, D.~Iero, and M.~Merenda.
 \newblock Ranging with frequency dependent ultrasound air attenuation.
 \newblock {\em Sensors}, 21(15):4963, 2021.
-
-\bibitem{delft_university_of_technology_tu_delft_influence_2024}
-{Delft University of Technology (TU Delft)}, Bart Scheeren, {Allseas
-  Engineering}, Nitish~Perveshsingh Thakoerdajal, {Delft University of
-  Technology (TU Delft)}, and Lotfollah Pahlavan.
-\newblock Influence of {Grease} {Contamination} on {Acoustic} {Emission}
-  {Monitoring} of {Low}-speed {Roller} {Bearings}.
-\newblock {\em e-Journal of Nondestructive Testing}, 29(7), July 2024.
 
 \bibitem{scheeren_acoustic_2024}
 Bart Scheeren, Miroslaw~Lech Kaminski, and Lotfollah Pahlavan.
@@ -311,16 +338,35 @@ Xinzhuo Zhang, Zhijun Ren, Kai Huang, Tantao Lin, Yongsheng Zhu, Hong Fu, and
 \newblock {\em IEEE Transactions on Instrumentation and Measurement},
   75:3512116, April 2026.
 
-\bibitem{jakobsen_low_2024}
-Morten~Opprud Jakobsen.
-\newblock Low cost {MEMS} accelerometer and microphone based condition
-  monitoring sensor, with {LoRa} and {Bluetooth} {Low} {Energy} radio.
-\newblock {\em HardwareX}, 18:e00525, June 2024.
+\bibitem{ue_systems_ultraprobe_2026}
+{UE Systems}.
+\newblock Ultraprobe® 9000.
+\newblock Product datasheet.
 
 \bibitem{lineham_ultrasonic_2008}
 Jeremy Lineham.
 \newblock Ultrasonic probes for inspecting bearings.
 \newblock {\em World Pumps}, 2008(503):34--36, August 2008.
+
+\bibitem{ue_systems_ultra-trak_2026}
+{UE Systems}.
+\newblock Ultra-{Trak} 750.
+\newblock Product manual, {Version} 1.
+
+\bibitem{skf_ultrasound_2026}
+{SKF}.
+\newblock Ultrasound {Lubrication} {Checker}.
+
+\bibitem{garvey_monitoring_2019}
+Ray Garvey.
+\newblock Monitoring {Lubrication} {Using} {Multi}-{Frequency}
+  {Sonic}/{Ultrasonic} {Sensor}, 2019.
+
+\bibitem{jakobsen_low_2024}
+Morten~Opprud Jakobsen.
+\newblock Low cost {MEMS} accelerometer and microphone based condition
+  monitoring sensor, with {LoRa} and {Bluetooth} {Low} {Energy} radio.
+\newblock {\em HardwareX}, 18:e00525, June 2024.
 
 \bibitem{janssens_thermal_2015}
 Olivier Janssens, Raiko Schulz, Viktor Slavkovikj, Kurt Stockman, Mia
@@ -356,6 +402,13 @@ Shengchao Chen, Guanghua Xu, Tangfei Tao, Sicong Zhang, Kai Zhang, and Jiachen
   ultrasonic measurement of bearing lubrication.
 \newblock {\em Measurement}, 256:118442, December 2025.
 
+\bibitem{tatzgern_tribo-acoustic_2025}
+F.~Tatzgern, M.~Schirru, M.~Schandl, C.~Schneidhofer, and M.~Varga.
+\newblock Tribo-acoustic tachometer: {A} novel ultrasonic device for the
+  simultaneous operando measurement of grease film thickness and cage
+  rotational speed in rolling element bearings.
+\newblock {\em Tribology International}, 212:110930, December 2025.
+
 \bibitem{wang_accuracy-improved_2024}
 Jianyun Wang, Yanbo He, Jiaoyi Wu, Kun Shu, Chuanwei Zhang, Le~Gu, Haide Yu,
   Tingjian Wang, Zhen Li, and Liqin Wang.
@@ -374,30 +427,6 @@ Volker Schneider, Norbert Bader, Haichao Liu, and Gerhard Poll.
 Denis Cojocaru, Gelu Ianuș, Vlad Cârlescu, Bogdan Chiriac, and Dumitru Olaru.
 \newblock Grease {Film} {Behavior} in {Ball} {Bearings}.
 \newblock {\em Lubricants}, 13(10):429, September 2025.
-
-\bibitem{lindner_a23_2011}
-G.~Lindner, Ch. Brückner, and M.~Schmitt.
-\newblock A2.3 - {Online} {Bearing} {Lubricant} {Sensing} by {Mode}
-  {Conversi}¬on of {Surface} {Acoustic} {Waves}.
-\newblock In {\em Proceedings {SENSOR} 2011}, pages 45--52, Nürnberg, 2011.
-  AMA Service GmbH, Von-Münchhausen-Str. 49, 31515 Wunstorf, Germany.
-
-\bibitem{tatzgern_tribo-acoustic_2025}
-F.~Tatzgern, M.~Schirru, M.~Schandl, C.~Schneidhofer, and M.~Varga.
-\newblock Tribo-acoustic tachometer: {A} novel ultrasonic device for the
-  simultaneous operando measurement of grease film thickness and cage
-  rotational speed in rolling element bearings.
-\newblock {\em Tribology International}, 212:110930, December 2025.
-
-\bibitem{kestel_condition_2025}
-Kayacan Kestel, Xavier Chesterman, Donatella Zappalá, Simon Watson, Mingxin
-  Li, Edward Hart, James Carroll, Yolanda Vidal, Amir~R. Nejad, Shawn Sheng,
-  Yi~Guo, Matthias Stammler, Florian Wirsing, Ahmed Saleh, Nico Gregarek, Thao
-  Baszenski, Thomas Decker, Martin Knops, Georg Jacobs, Benjamin Lehmann,
-  Florian König, Ines Pereira, Pieter-Jan Daems, Cédric Peeters, and Jan
-  Helsen.
-\newblock Condition monitoring of wind turbine drivetrains: {State}-of-the-art
-  technologies, recent trends, and future outlook, September 2025.
 
 \bibitem{shi_ultrasensitive_2022}
 Haotian Shi, Hongpeng Zhang, Dian Huo, Shuang Yu, Jun Su, Yucai Xie, Wei Li,
