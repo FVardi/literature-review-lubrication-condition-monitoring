@@ -79,10 +79,8 @@ The section contains the following categories: time-domain and frequency-domain 
 \draw[arr] (M12.south)--(M13.north);
 
 % Frequency-Domain methods
-\node[m2] (M21) at (-4.7,-3.6)  {PSD \& bearing\\char.\ frequencies};
-\node[m2] (M23) at (-4.7,-4.75) {SK \& spectral\\shape descriptors};
-\draw[arr] (F2.south)--(M21.north);
-\draw[arr] (M21.south)--(M23.north);
+\node[m2] (M23) at (-4.7,-3.6)  {SK \& spectral\\shape descriptors};
+\draw[arr] (F2.south)--(M23.north);
 
 % Time-Freq & Decomposition methods
 \node[m3] (M31) at (-1.6,-3.6)  {STFT \&\\spectrogram};
@@ -132,7 +130,7 @@ The most widely reported features are:
     \begin{equation}
     x_\mathrm{RMS} = \sqrt{\frac{1}{N}\sum_{i=1}^{N} x_i^2}.
     \end{equation}
-    For passive methods, RMS increases monotonically with worsening lubrication due to increasing asperity contact energy. Widely reported for AE \cite{cornel_condition_2021,yoshioka_monitoring_2009,zhang_health_2025}, vibration \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}, passive ultrasound \cite{jakobsen_detecting_2023}, and thermal monitoring \cite{moussa_passive_2017}. The exception is in \cite{hou_-situ_2025} where total energy of AE signals first decreases when moving from dry to boundary lubrication but therafter increases. The decrease is due to a reduction in asperity contacts while the increase is due to higher viscous forces. If the distinction between dry and boundary lubrication is not of inteserest, this exception is less important.
+    For passive methods, RMS increases monotonically with worsening lubrication due to increasing asperity contact energy. Widely reported for AE \cite{cornel_condition_2021,yoshioka_monitoring_2009}, vibration \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}, passive ultrasound \cite{jakobsen_detecting_2023}, and thermal monitoring \cite{moussa_passive_2017}. The exception is in \cite{hou_-situ_2025} where total energy of AE signals first decreases when moving from dry to boundary lubrication but therafter increases. The decrease is due to a reduction in asperity contacts while the increase is due to higher viscous forces.
     \item \textbf{Kurtosis:} Measures the impulsiveness of the signal relative to a Gaussian distribution (for which $K=3$) and defined as
     \begin{equation}
     K = \frac{\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^4}{\left(\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2\right)^2}.
@@ -166,11 +164,11 @@ The Fourier transform and power spectral density (PSD) reveal the distribution o
 
 \subsubsection{Higher-Order Spectral Statistics and Spectral Shape Descriptors}
 \label{subsubsec:spectral_shape}
-Higher-order spectral statistics and shape descriptors characterise the spectral distribution beyond its energy content. Whether computed on a one-dimensional amplitude spectrum or per frequency bin across the time dimension of a two-dimensional STFT spectrogram, these are fundamentally shape analyses: kurtosis measures impulsiveness and peakedness, skewness measures asymmetry, flatness the energy concentration relative to white noise, and center frequency, RMS frequency, and bandwidth-related measures the location and spread of spectral energy.
+Higher-order spectral statistics and shape descriptors characterise the spectral distribution beyond its energy content. Whether computed on a one-dimensional amplitude spectrum or per frequency bin across the time dimension of a two-dimensional STFT spectrogram, these are fundamentally shape analyses. Kurtosis measures impulsiveness and peakedness, skewness measures asymmetry, flatness the energy concentration relative to white noise, and center frequency, RMS frequency, and bandwidth-related measures the location and spread of spectral energy.
 
-Jakobsen et al.\ \cite{jakobsen_vibration_2021} apply spectral kurtosis (SK) to vibration signals from grease-lubricated ball bearings under alternating lubrication conditions, with speed and temperature varied to span $\kappa$ from approximately 0.2 to 3.0. SK is computed as the normalised fourth moment of the STFT coefficient distribution at each frequency bin across successive time slices, reducing the two-dimensional spectrogram to a one-dimensional kurtosis profile. Band energy extracted from a lubrication-sensitive kurtogram band (7500--12000\,Hz) is correlated directly with $\kappa$ using Pearson and Spearman coefficients; values of $r = -0.76$, $\rho = -0.84$ are reported during the first hot-run stage ($\kappa < 0.5$). The kurtogram band energy serves as the lubrication condition indicator itself, not as a selector for downstream envelope analysis.
+Jakobsen et al.\ \cite{jakobsen_vibration_2021} apply spectral kurtosis (SK) to vibration signals from grease-lubricated ball bearings under alternating lubrication conditions, with speed and temperature varied to span $\kappa$ from approximately 0.2 to 3.0. Band energy extracted from a lubrication-sensitive kurtogram band (7500--12000\,Hz) is correlated directly with $\kappa$ using Pearson and Spearman coefficients values. The kurtogram band energy serves as the lubrication condition indicator itself, not as a selector for downstream analysis.
 
-Zhang et al.\ \cite{zhang_graph-data-based_2024} take a complementary approach, computing 15 spectral shape descriptors (features F10--F24 in their Table~1) from vibration signals in the 0--3\,kHz and 10--12.8\,kHz bands and from AE signals in the 20--40\,kHz band. These include dominant frequency, band-specific energy, center frequency, RMS frequency, spectral mean and standard deviation, spectral flatness, frequency-domain skewness and kurtosis, and normalised bandwidth. Features are selected by monotonicity and time-correlation criteria and combined with time-domain statistics as node embeddings in an MTAD-GAT model for lubrication degradation detection; temperature receives no spectral processing. The kurtosis term in Zhang et al.\ (F15) is the fourth standardised moment of the one-dimensional amplitude spectrum -- a global scalar shape statistic -- whereas Jakobsen et al.'s SK is a per-frequency-bin statistic computed over the time dimension of the STFT; both are instances of applying kurtosis to a spectral representation.
+Zhang et al.\ \cite{zhang_graph-data-based_2024} take a complementary approach, computing 15 spectral shape descriptors from vibration signals in the 0--3\,kHz and 10--12.8\,kHz bands and from AE signals in the 20--40\,kHz band. These include dominant frequency, band-specific energy, center frequency, RMS frequency, spectral mean and standard deviation, spectral flatness, frequency-domain skewness and kurtosis, and normalised bandwidth. The features are used in a graph-neural network for lubrication condition anomaly detection.
 
 \subsubsection{Multi-Band Hit-Rate and Wear Particle Index}
 \label{subsubsec:hitrate}
@@ -203,52 +201,38 @@ Minimum entropy deconvolution (MED) designs a finite impulse response (FIR) filt
 
 Physics-based methods incorporate lubricant or structural mechanics models to convert signals into physically interpretable quantities such as film thickness, lubrication regime, or lubrication adequateness. These rely on domain knowledge and are categorized into two types: physics-based measurement models which directly dictate how measurements should be interpreted, and physics-derived targets which serve as ground truths for regression or classification models.
 
-\subsubsection{Quasi-Static Spring-Layer Model for Ultrasonic Reflectometry}
+\subsubsection{Spring Model for Ultrasonic Reflectometry}
 \label{subsubsec:spring}
-Active ultrasonic reflectometry measures the reflection coefficient $R$ of an ultrasonic pulse at the raceway--lubricant interface. For a thin lubricant film (film thickness much less than the acoustic wavelength), the spring-layer model relates $R$ to the film stiffness $K^*$:
-\begin{equation}
-    R = \frac{Z_2 - Z_1 - iZ_1Z_2/\omega K^*}{Z_2 + Z_1 + iZ_1Z_2/\omega K^*}
-\end{equation}
-where $Z_1$, $Z_2$ are the acoustic impedances of the raceway and lubricant materials, $\omega$ is the angular frequency of the ultrasonic pulse, and $K^*$ is the complex stiffness of the lubricant layer related to film thickness $h$ and lubricant bulk modulus $E^*$ by $K^* = E^*/h$ \cite{drinkwater_ultrasonic_2009,dou_review_2022}. This model enables direct, calibrated film thickness estimation from the measured reflection coefficient. Validation against Hamrock--Dowson predictions is reported in \cite{dwyer-joyce_measurement_2003,zhang_ultrasonic_2015,chen_evaluation_2023}. Phase-based algorithms that improve accuracy for thin films are described in \cite{wang_accuracy-improved_2024}. Sub-Nyquist sampling to reduce data acquisition requirements while retaining film thickness accuracy is demonstrated by Chen et al.\ \cite{chen_sub-nyquist_2025}. Li et al.\ \cite{li_lubrication_2026} extend the spring-layer model to the curved contact geometry of wind turbine pitch bearings using ray-modelling corrections for transducer curvature and surface geometry.
+Active ultrasonic reflectometry estimates the reflection coefficient $R$ of an ultrasonic pulse at the raceway--lubricant interface. For a thin lubricant film, where the film thickness is much less than the acoustic wavelength, the spring model relates the estimate reflection coefficient to the film thickness and lubricant bulk modulus \cite{drinkwater_ultrasonic_2009}. Dou et al. \cite{dou_review_2022} review active ultrasonic methods for lubrication monitoring in general and note that the lubrication behaviours in ball bearings specifically are complex and almost instantaneous. Furthermore, ultrasonic reflectometry has been demonstrated to measure film thickness but has no industrial implementations. The ultrasonic spring model enables direct, calibrated film thickness estimation from the measured reflection coefficient. Validation against Hamrock--Dowson predictions is reported in \cite{dwyer-joyce_measurement_2003,zhang_ultrasonic_2015,chen_evaluation_2023}. Phase-based algorithms that improve accuracy for thin films are described in \cite{wang_accuracy-improved_2024}. Sub-Nyquist sampling to reduce data acquisition requirements while retaining film thickness accuracy is demonstrated by Chen et al.\ \cite{chen_sub-nyquist_2025}. Li et al. In general, ultrasonic reflectometry is well-covered and accurate for film thickness estimation but lacks actual industrial implementations.
 
 \subsubsection{Electrical Circuit Models}
 \label{subsubsec:electrical_model}
-For electrical sensing methods (capacitance, impedance, resistance), physics-based circuit models relate the measured electrical signal to the lubricant film thickness. The bearing is modelled as a parallel combination of capacitive and resistive elements whose values depend on the film thickness, lubricant dielectric constant, and Hertzian contact geometry. Cen et al.\ \cite{cen_ehl_2021} and Becker-Dombrowsky et al.\ \cite{becker-dombrowsky_electrical_2024} review the capacitance and impedance formulations respectively. Maruyama et al.\ \cite{maruyama_lubrication_2023} apply the impedance model to practical deep-groove ball bearings under operating conditions. Two approaches to model calibration are reported: purely physics-based models using known material properties, and empirical calibration tests using reference lubricants to derive a relationship between the measured signal and Hamrock--Dowson-predicted film thickness \cite{cen_ehl_2021,schneider_method_2022}.
+For electrical sensing methods (capacitance, impedance, resistance), physics-based circuit models relate a measured electrical signal to the lubricant film thickness. The bearing is modelled as a combination of electrically reactive elements whose characteristics depend on the film thickness, lubricant dielectric constant, and Hertzian contact geometry. This allows relating an eletrical probing of the bearing to lubrication film thickness. Cen et al.\ \cite{cen_ehl_2021} and Becker-Dombrowsky et al.\ \cite{becker-dombrowsky_electrical_2024} review the capacitance and impedance formulations respectively. Becker-Dombrowsky concludes that the covered methodology requires testing in other regimes than EHL, at different speeds and forces, for different types of lubricants, and for electrically induced damage of the bearings, which all constitute significant gaps before industrial applications will be possible. Maruyama et al.\ \cite{maruyama_lubrication_2023} apply the impedance model to practical deep-groove ball bearings under operating conditions. Two approaches to model calibration are reported: purely physics-based models using known material properties, and empirical calibration tests using reference lubricants to derive a relationship between the measured signal and Hamrock--Dowson-predicted film thickness \cite{cen_ehl_2021,schneider_method_2022}.
 
 \subsubsection{Kappa and Lambda as Regression Targets}
 \label{subsubsec:kappa_target}
-A model-driven approach for passive sensing methods uses $\kappa$ or $\Lambda$ -- computed from the Hamrock--Dowson model and operating parameters -- as the regression target for data-driven models trained on sensor features. This provides a physically grounded target variable linked to ISO standards without requiring invasive lubricant sampling. Jakobsen et al.\ \cite{jakobsen_detecting_2023} combine the Hjorth parameters defined in Section~\ref{subsubsec:moments} with LASSO regression and shallow neural networks to predict $\kappa$ from passive ultrasound signals, directly bridging physics-based lubrication modelling and data-driven signal processing.
+A model-driven approach for passive sensing methods uses $\kappa$ or $\Lambda$, as the regression target for data-driven models trained on sensor features. This provides a physically grounded target variable linked to ISO standards without requiring invasive lubricant sampling. Jakobsen et al. relate spectral energy of vibration signals to $\kappa$ \cite{jakobsen_vibration_2021} and combine the Hjorth parameters with LASSO regression and shallow neural networks to predict $\kappa$ from passive ultrasound signals \cite{jakobsen_detecting_2023}. This directly bridges physics-based lubrication modelling and data-driven signal processing.
 
 % ─────────────────────────────────────────────────────────────────────────────
-\subsection{Machine Learning and Deep Learning}
+\subsection{Machine Learning and Data-driven Methods}
 \label{subsec:sp_ml}
-
-Data-driven methods learn mappings from handcrafted or raw signal features to lubrication condition labels or continuous condition estimates. They can be organised into classical machine learning (operating on handcrafted features) and deep learning (operating on raw signals or spectrograms).
+Data-driven meachine learning methods learn mappings from handcrafted or raw signal features to lubrication condition labels or continuous condition estimates. They can be organised into classical machine learning and deep learning.
 
 \subsubsection{Classical Machine Learning}
 \label{subsubsec:classical_ml}
-Classical machine learning methods -- support vector machines (SVM), random forests, logistic regression, and regularised linear regression (LASSO) -- are applied to vectors of handcrafted features extracted by the time-domain, frequency-domain, or time-frequency methods described above. Jakobsen et al.\ \cite{jakobsen_detecting_2023} demonstrate that LASSO regression on passive ultrasound features achieves good $\kappa$ prediction while providing interpretable feature weights.
+Jakobsen et al.\ \cite{jakobsen_detecting_2023} demonstrate that regularised linear regression (LASSO) on passive ultrasound features achieves good $\kappa$ prediction while providing interpretable feature weights. The feature set found through the sparsity promoting LASSO regression is furthermore used in a simple nerual network to predict $\kappa$.
 
 \subsubsection{Deep Learning}
 \label{subsubsec:dl}
-Deep learning methods operate on raw signals or intermediate representations (spectrograms, graph adjacency matrices) and learn features jointly with the classification or regression task. Key architectures applied to LCM include:
-\begin{itemize}
-    \item \textbf{Convolutional neural networks (CNNs):} applied to lubricant debris images for particle classification \cite{wang_online_2022}. Zhang et al.\ \cite{zhang_health_2025} apply a vision-language large language model (PaLiGemma) to images of AE time-domain waveforms for automated wear detection, reporting higher classification accuracy than conventional threshold methods.
-    \item \textbf{Graph neural networks (GNNs):} Zhang et al.\ \cite{zhang_graph-data-based_2024} represent multi-sensor data (vibration, AE, temperature) as a graph and apply graph convolutional operations to detect lubrication degradation, leveraging sensor correlations that are not captured by independent feature extraction.
-    \item \textbf{Generative adversarial domain transfer (GANs):} Zhang et al.\ \cite{zhang_interpretable_2026} address the zero-labelled-fault-data problem directly with a multiscale residual and semantic-consistency CycleGAN (MSRS-CycleGAN) that translates labelled multi-state laboratory vibration signals into field-style signals, using healthy-only field vibration as the unlabelled target domain. Multiscale residual convolutional blocks improve sensitivity to the broadband, high-frequency signatures characteristic of lubrication anomalies (as opposed to the narrowband impulsive signatures of mechanical damage), and a semantic-consistency loss preserves the insufficiency/degradation/contamination state distinction during lab-to-field style transfer. A downstream autoencoder trained only on healthy field data performs anomaly detection, followed by CNN classification of the generated field-style anomaly signals into lubrication states. This is the only reviewed method that produces usable lubrication-anomaly training data for a field deployment with no labelled field-fault examples at all.
-\end{itemize}
-A consistent challenge for deep learning in LCM is the scarcity of labelled training data from real bearing degradation under controlled lubrication conditions. Controlled accelerated tests are expensive to run, and publicly available LCM datasets with varied lubrication conditions and sensing modalities are not currently available. Generative domain transfer \cite{zhang_interpretable_2026} is an emerging response to this challenge for the specific case of lab-to-field transfer, though it remains distinct from the self-supervised and foundation-model directions discussed in Section~\ref{subsec:gap_ssl}, which target representation learning from unlabelled data rather than synthesis of labelled examples in a new domain.
+Deep learning methods operate on raw signals or intermediate representations and learn features jointly with the classification or regression task. Wang et al. \cite{wang_online_2022} apply a convolutional neural network (CNN) to lubricant debris images for particle classification. Zhang et al. \cite{zhang_graph-data-based_2024} apply a graph neural network (GNN) to features from multi-sensor data (vibration, AE, temperature) lubrication degradation, leveraging sensor correlations that are not captured by independent feature extraction. Zhang et al. \cite{zhang_interpretable_2026} address the absence of labelled field lubrication faults by using a CycleGAN with multiscale residual blocks and a semantic-consistency loss to translate labelled rig signals into target-machine style, then classifying with a CNN trained solely on the generated data. This is the only reviewed method that produces usable lubrication-anomaly training data for a field deployment with no labelled field-fault examples at all. The evaluation is nonetheless not a true field test since both setups share sensor type and acquisition hardware and each lubrication state was realised on a dedicated bearing.
+
+A consistent challenge for deep learning in LCM is the scarcity of labelled training data from real bearing degradation under controlled lubrication conditions. Controlled accelerated tests are expensive to run, and publicly available LCM datasets with varied lubrication conditions and sensing modalities are not currently available. Generative domain transfer \cite{zhang_interpretable_2026} is a response to this challenge for the specific case of lab-to-field transfer, though it remains distinct from the self-supervised and foundation-model directions discussed which target representation learning from unlabelled data rather than synthesis of labelled examples in a new domain.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
-\subsection{Multi-Sensor Data Fusion}
-\label{subsec:sp_fusion}
-
-Multi-sensor fusion combines information from multiple sensing modalities to obtain lubrication condition estimates more accurate or robust than any single modality alone.
-
-\subsubsection{Feature-Level Fusion}
-Feature-level (early) fusion concatenates feature vectors from multiple sensors into a single feature vector before the classification or regression step. Zhang et al.\ \cite{zhang_graph-data-based_2024} provide the clearest example in the lubrication condition monitoring literature: vibration, AE, and temperature signals are represented as a graph in which nodes correspond to sensing modalities and edges encode their relationships through a priori domain knowledge; a graph attention network trained on this structure detects lubrication degradation, and the multi-sensor system outperforms any single-modality baseline. The graph-attention architecture is notable because it learns which modality combinations are most informative for a given operating condition, rather than weighting all sensor contributions equally.
-
+\subsection{Feature Fusion}
+\label{subsec:feature_fusion}
+Feature-level fusion concatenates feature vectors from multiple sensors into a single feature vector before the classification or regression step. Zhang et al.\ \cite{zhang_graph-data-based_2024} fuse vibration, AE, and temperature features through a graph representation. A graph attention network trained on the structure detects lubrication degradation, and the multi-sensor system outperforms any single-modality baseline. The graph-attention architecture learns which modality combinations are most informative rather than weighting all sensor contributions equally.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Master Cross-Reference Matrix}
@@ -282,13 +266,13 @@ Table~\ref{tab:sp_crossref} summarises the application of SP method families to 
 & \rotatebox{75}{\textbf{Magnetic / Oil}}
 \\
 \hline
-Time-domain statistics      & \checkmark & \checkmark & \checkmark &            & \checkmark &            &            & \checkmark \\
+Time-domain statistics      & \checkmark & \checkmark & \checkmark &            & \checkmark &            &            &            \\
 \hline
 Threshold methods           &            & \checkmark & \checkmark &            &            &            &            &            \\
 \hline
-PSD / Bearing char.\ freqs  & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            &            \\
-\hline
 Spectral shape \& kurtosis  & \checkmark & \checkmark &            &            &            &            &            &            \\
+\hline
+Multi-band hit-rate / WPI   &            & \checkmark &            &            &            &            &            &            \\
 \hline
 STFT / Spectrogram          & \checkmark &            &            &            &            &            &            &            \\
 \hline
@@ -302,11 +286,11 @@ Electrical circuit model    &            &            &            &            
 \hline
 $\kappa$/$\Lambda$ regression target & \checkmark & \checkmark & \checkmark &  &            &            &            &            \\
 \hline
-Classical ML (SVM, LASSO)   & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            & \checkmark \\
+Classical ML (SVM, LASSO)   &            &            & \checkmark &            &            &            &            &            \\
 \hline
-Deep learning (CNN, GNN, GAN) & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
+Deep learning (CNN, GNN, GAN) & \checkmark & \checkmark &            &            & \checkmark &            &            & \checkmark \\
 \hline
-Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            & \checkmark \\
+Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
 \hline
 \end{tabularx}
 \caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \checkmark indicates the combination has been demonstrated in at least one study included in this review.}
