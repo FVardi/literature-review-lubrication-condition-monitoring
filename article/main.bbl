@@ -95,6 +95,86 @@ Geng Hou and Liangchi Zhang.
 \newblock In-situ detection of lubrication status of bearings with acoustic emission monitoring.
 \newblock {\em Wear}, 571:205839, June 2025.
 
+\bibitem{chevalier_evolution_1998}
+F.~Chevalier, A.~A. Lubrecht, P.~M.~E. Cann, and G.~Dalmaz.
+\newblock The evolution of lubricant film defects in the starved regime.
+\newblock In {\em Tribology Series}, volume~34, pages 649--659. Elsevier, 1998.
+
+\bibitem{poll_starved_2020}
+Gerhard Poll, X~M Li, Norbert Bader, and F.~Guo.
+\newblock Starved {Lubrication} in {Rolling} {Contacts}-{A} {Review}.
+\newblock May 2020.
+
+\bibitem{koulocheris_experimental_2014}
+D.~Koulocheris, A.~Stathis, T.~Costopoulos, and G.~Gyparakis.
+\newblock Experimental study of the impact of grease particle contaminants on wear and fatigue life of ball bearings.
+\newblock {\em Engineering Failure Analysis}, 39:164--180, 2014.
+
+\bibitem{maru_study_2007}
+M.~M. Maru, R.~S. Castillo, and L.~R. Padovese.
+\newblock Study of solid contamination in ball bearings through vibration and wear analyses.
+\newblock {\em Tribology International}, 40(3):433--440, March 2007.
+
+\bibitem{nikas_effects_1998}
+G.K. Nikas, R.S. Sayles, and E.~Ioannides.
+\newblock Effects of debris particles in sliding/rolling elastohydrodynamic contacts.
+\newblock {\em Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology}, 212(5):333--342, 1998.
+
+\bibitem{elnaggar_oxidation_2017}
+Ashraf Elnaggar, Refaat el~adly, Tariq Altalhi, A.~Alhadhrami, Modather Farouk, Mohamed Ebiad, and A.~Salem.
+\newblock Oxidation stability of lubricating base oils.
+\newblock {\em Petroleum Science and Technology}, 36:1--7, December 2017.
+
+\bibitem{schneidhofer_model_2025}
+Christoph Schneidhofer, Michael Schandl, Nicole Dörr, and Piet~M. Lugt.
+\newblock A model describing the oxidation rate of lubricating greases.
+\newblock {\em Frontiers in Mechanical Engineering}, 11, June 2025.
+
+\bibitem{meijer_grease_2021}
+R.~J. Meijer and P.~M. Lugt.
+\newblock The grease worker and its applicability to study mechanical aging of lubricating greases for rolling bearings.
+\newblock {\em Tribology Transactions}, 65(1):32--45, 2021.
+
+\bibitem{fei_thermal_2020}
+Yi-Wei Fei, Shao-Jun Ruan, Jun Ma, and Feng Guo.
+\newblock Study on thermal oxidation and viscosity degradation for synthetic aviation lubricant fluids.
+\newblock In {\em IOP Conference Series: Materials Science and Engineering}, volume 729, 2020.
+
+\bibitem{hurley_thermal_1998}
+S.~Hurley, P.~M. Cann, and H.~A. Spikes.
+\newblock Thermal degradation of greases and the effect on lubrication performance.
+\newblock In {\em Tribology Series}, volume~34. Elsevier, 1998.
+
+\bibitem{wright_degradation_1983}
+B.~Wright and J.~P.~R. du~Parquet.
+\newblock Degradation of polymers in multigrade lubricants by mechanical shear.
+\newblock {\em Polymer Degradation and Stability}, 5:425--447, 1983.
+
+\bibitem{chatra_thermo-mechanical_2023}
+K.~R.~S. Chatra, J.~A. Osara, and P.~M. Lugt.
+\newblock Thermo-mechanical aging during churning in grease lubricated bearings and its impact on grease life.
+\newblock {\em Tribology International}, 181:108248, 2023.
+
+\bibitem{lugt_grease_2012}
+Piet~M. Lugt.
+\newblock {\em Grease {Lubrication} in {Rolling} {Bearings}}.
+\newblock Wiley, 1 edition, December 2012.
+
+\bibitem{sahu_grease_2022}
+Prashant~Kumar Sahu.
+\newblock Grease {Contamination} {Detection} in the {Rolling} {Element} {Bearing} {Using} {Deep} {Learning} {Technique}.
+\newblock {\em International Journal of Mechanical Engineering and Robotics Research}, pages 275--280, 2022.
+
+\bibitem{zhang_grease_2021}
+Xingnan Zhang and Romeo Glovnea.
+\newblock Grease film thickness measurement in rolling bearing contacts.
+\newblock {\em Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology}, 235(7):1430--1439, July 2021.
+
+\bibitem{cen_effect_2025}
+Hui Cen, Nicola De~Laurentis, Norbert Bader, and Piet~M. Lugt.
+\newblock Effect of thermal aging on the grease film thickness in ball bearings.
+\newblock {\em Tribology International}, 204:110511, April 2025.
+
 \bibitem{hansen_new_2021}
 Jonny Hansen, Marcus Björling, and Roland Larsson.
 \newblock A {New} {Film} {Parameter} for {Rough} {Surface} {EHL} {Contacts} with {Anisotropic} and {Isotropic} {Structures}.
@@ -127,26 +207,6 @@ Daniel Cornel, Francisco Gutiérrez~Guzmán, Georg Jacobs, and Stephan Neumann.
 Morten~Opprud Jakobsen, Eskild~Sune Herskind, Kim Bjerge, Peter Ahrendt, Christian~Fischer Pedersen, and Mikael~Bergholz Knudsen.
 \newblock Vibration signatures in ball bearings as a function of lubricant viscosity ratio kappa, under alternating lubrication conditions.
 \newblock {\em Tribology International}, 156:106840, April 2021.
-
-\bibitem{lugt_grease_2012}
-Piet~M. Lugt.
-\newblock {\em Grease {Lubrication} in {Rolling} {Bearings}}.
-\newblock Wiley, 1 edition, December 2012.
-
-\bibitem{sahu_grease_2022}
-Prashant~Kumar Sahu.
-\newblock Grease {Contamination} {Detection} in the {Rolling} {Element} {Bearing} {Using} {Deep} {Learning} {Technique}.
-\newblock {\em International Journal of Mechanical Engineering and Robotics Research}, pages 275--280, 2022.
-
-\bibitem{zhang_grease_2021}
-Xingnan Zhang and Romeo Glovnea.
-\newblock Grease film thickness measurement in rolling bearing contacts.
-\newblock {\em Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology}, 235(7):1430--1439, July 2021.
-
-\bibitem{cen_effect_2025}
-Hui Cen, Nicola De~Laurentis, Norbert Bader, and Piet~M. Lugt.
-\newblock Effect of thermal aging on the grease film thickness in ball bearings.
-\newblock {\em Tribology International}, 204:110511, April 2025.
 
 \bibitem{ono_comprehensive_2020}
 Kanji Ono.
@@ -242,6 +302,11 @@ R.~Carotenuto, F.~Pezzimenti, F.~G. {Della Corte}, D.~Iero, and M.~Merenda.
 Bart Scheeren, Miroslaw~Lech Kaminski, and Lotfollah Pahlavan.
 \newblock Acoustic emission monitoring of naturally developed damage in large-scale low-speed roller bearings.
 \newblock {\em Structural Health Monitoring}, 23(1):360--382, January 2024.
+
+\bibitem{zhang_health_2025}
+Junjiao Zhang, Yongna Shen, Zhanwen Wu, Gongtian Shen, Yilin Yuan, and Bin Hu.
+\newblock Health {Status} {Assessment} of {Passenger} {Ropeway} {Bearings} {Based} on {Multi}-{Parameter} {Acoustic} {Emission} {Analysis}.
+\newblock {\em Sensors}, 25(14):4403, July 2025.
 
 \bibitem{tandon_condition_2007}
 N.~Tandon, K.M. Ramakrishna, and G.S. Yadava.
@@ -360,16 +425,6 @@ Haotian Shi, Hongpeng Zhang, Dian Huo, Shuang Yu, Jun Su, Yucai Xie, Wei Li, Lai
 Takeo Yoshioka and Shigeo Shimizu.
 \newblock Monitoring of {Ball} {Bearing} {Operation} under {Grease} {Lubrication} {Using} a {New} {Compound} {Diagnostic} {System} {Detecting} {Vibration} and {Acoustic} {Emission}.
 \newblock {\em Tribology Transactions}, 52(6):725--730, October 2009.
-
-\bibitem{zhang_health_2025}
-Junjiao Zhang, Yongna Shen, Zhanwen Wu, Gongtian Shen, Yilin Yuan, and Bin Hu.
-\newblock Health {Status} {Assessment} of {Passenger} {Ropeway} {Bearings} {Based} on {Multi}-{Parameter} {Acoustic} {Emission} {Analysis}.
-\newblock {\em Sensors}, 25(14):4403, July 2025.
-
-\bibitem{renhart_monitoring_2021}
-Philipp Renhart, Michael Maier, Christopher Strablegg, Florian Summer, Florian Grün, and Andreas Eder.
-\newblock Monitoring {Tribological} {Events} by {Acoustic} {Emission} {Measurements} for {Bearing} {Contacts}.
-\newblock {\em Lubricants}, 9(11):109, November 2021.
 
 \bibitem{usgame_sandoval_acoustic_2013}
 Hector~M. Usgame~Sandoval, Camilo~A. Pedraza~Ramírez, and Jabid Quiroga.

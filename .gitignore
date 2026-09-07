@@ -10,4 +10,5 @@ Articles/
 *.out
 *.pdf
 *.synctex.gz
+*.synctex(busy)
 *.toc

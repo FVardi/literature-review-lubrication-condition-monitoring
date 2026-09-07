@@ -1,13 +1,17 @@
 \section{Comparative Analysis}
 \label{sec:comparative}
 
-This section synthesises the evidence from Sections~\ref{sec:sensing} and~\ref{sec:sp} into a structured comparison of sensing and signal processing method combinations along four dimensions: sensitivity to specific lubrication fault types, sensitivity to operating conditions, practical deployment requirements, and technology maturity. The goal is not to identify a single best method -- no such universal optimum exists, since the optimal combination is application-specific -- but to characterise the trade-offs that determine which combination is appropriate for a given deployment context.
+This section synthesises the evidence from Sections~\ref{sec:sensing} and~\ref{sec:sp} into a structured comparison of sensing and signal processing method combinations along four dimensions: sensitivity to specific lubrication fault types, sensitivity to operating conditions, practical deployment requirements, and technology maturity. The goal is to
+\begin{itemize}
+    \item characterise the trade-offs that determine which combination is appropriate for a given deployment context and
+    \item identify gaps and most promising directions for industrial applications.
+\end{itemize}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Sensitivity to Lubrication Fault Type}
 \label{subsec:comp_fault}
 
-Three principal lubrication fault types are of interest in bearing LCM: (1) \textit{lubricant starvation} (insufficient quantity), (2) \textit{viscosity degradation} (thermal or oxidative aging reducing viscosity), and (3) \textit{contamination} (external or wear debris in the lubricant). These faults produce partially distinct signal signatures, which determines which SP methods are most applicable to each. Table~\ref{tab:fault_sensitivity} summarises the reported sensitivity of each method combination to each fault type.
+Three principal lubrication fault types are of interest in bearing LCM: (1) \textit{lubricant starvation} (insufficient quantity), (2) \textit{viscosity degradation} (thermal or oxidative aging affecting viscosity), and (3) \textit{contamination} (external or wear debris in the lubricant). These faults produce partially distinct signal signatures, which determines which SP methods are most applicable to each. Table~\ref{tab:fault_sensitivity} summarises the reported sensitivity of each method combination to each fault type.
 
 \begin{table}[H]
 \scriptsize
@@ -30,8 +34,6 @@ Vibration & MED + envelope & High \cite{xu_vibration-based_2024} & & \\
 Vibration & Spectral kurtosis + $\kappa$ regression & Moderate--High \cite{jakobsen_vibration_2021} & Moderate \cite{jakobsen_vibration_2021} & \\
 \hline
 AE & Time-domain (RMS, PCR) & High \cite{miettinen_analysis_2001,hou_-situ_2025,cornel_condition_2021} & Moderate \cite{cornel_condition_2021} & Moderate \cite{miettinen_analysis_2001} \\
-\hline
-AE & Octave filter bank ($P_5$) & High \cite{renhart_monitoring_2021} & & High \cite{renhart_monitoring_2021} \\
 \hline
 AE & Multi-band hit-rate + WPI & & & High (abrasive only) \cite{delft_university_of_technology_tu_delft_influence_2024} \\
 \hline
@@ -84,7 +86,7 @@ Vibration spectral kurtosis + $\kappa$ regression & High \cite{jakobsen_vibratio
 \hline
 AE time-domain & High \cite{hou_-situ_2025} & Moderate \cite{cornel_condition_2021} & & Speed-weighted features \cite{hou_-situ_2025} \\
 \hline
-AE frequency domain (octave, SK) & & & & No compensation strategy reported in reviewed literature \\
+AE frequency domain (SK) & & & & No compensation strategy reported in reviewed literature \\
 \hline
 Passive ultrasound threshold & High \cite{lineham_ultrasonic_2008} & & & Reference measurement at same operating point \cite{lineham_ultrasonic_2008} \\
 \hline
@@ -124,14 +126,13 @@ Table~\ref{tab:deployment} compares sensing and signal processing method combina
 \hline
 \textbf{Sensing method} & \textbf{Bearing modif.} & \textbf{Sensor installation constraints} & \textbf{Sampling rate} & \textbf{Real-time capable} & \textbf{Calibration / data requirements} \\
 \hline
-AE & None & Flat surface, direct structural path to bearing bore; avoid joints and material changes; bond or clamp required for high-freq.\ coupling & $>$500\,kHz & Partial (features only) & Baseline measurement under known lubrication condition \cite{lineham_ultrasonic_2008}; labelled data for ML \\
+AE & None & Flat surface, direct structural path to bearing bore; avoid joints and material changes; bond or clamp required for high-freq.\ coupling & $>$1\,MHz & Partial (features only) & Baseline measurement under known lubrication condition \cite{lineham_ultrasonic_2008}; labelled data for ML \\
 \hline
-% TODO: cross-check "Vibration $\leq$50kHz" and "Sound/microphone $\leq$50kHz" sampling-rate figures against the accelerometer/microphone bandwidth reconciliation in sensing_methods_and_empirical_studies.tex (ADI Table 3: MEMS accelerometer DC--20kHz+, piezo accelerometer 2.5--30kHz+, MEMS microphone ~20kHz, MEMS ultrasonic ~100kHz) and Table~\ref{tab:signal_origins} row 2 (physical_origins_of_signals.tex) once those are finalised, so sampling-rate ceilings here stay consistent with whatever bandwidth figures are settled on there.
-Vibration & None & Standard industrial accelerometer mount (stud, adhesive, magnet); location affects frequency content but less critically than AE & $\leq$50\,kHz & Yes & No baseline required; labelled data for ML \\
+Vibration & None & Standard industrial accelerometer mount (stud, adhesive, magnet); location affects frequency content but less critically than AE & $>$60\,kHz & Yes & No baseline required; labelled data for ML \\
 \hline
-Passive ultrasound & None & As for AE, but less sensitive to exact path geometry at 20--100\,kHz; industrial instruments are handheld or clamp-on & 20--500\,kHz & Yes & Baseline reference at known good lubrication \cite{lineham_ultrasonic_2008}; labelled data for regression \\
+Passive ultrasound & None & As for AE, but less sensitive to exact path geometry at 20--100\,kHz; industrial instruments are handheld or clamp-on & $>$200\,kHz & Yes & Baseline reference at known good lubrication \cite{lineham_ultrasonic_2008}; labelled data for regression \\
 \hline
-Sound / microphone & None & Non-contact; proximity ($<$0.5\,m) and low ambient noise critical; high-freq.\ content lost beyond 20\,kHz in air & $\leq$50\,kHz & Yes & No baseline; labelled data for ML \\
+Sound / microphone & None & Non-contact; proximity ($<$0.5\,m) and low ambient noise critical; high-freq.\ content lost beyond 20\,kHz in air & $>$40\,kHz & Yes & No baseline; labelled data for ML \\
 \hline
 Thermal & None & Housing surface or non-contact IR; robust to mounting position; slow response renders exact location unimportant & Low (Hz) & Yes & No; threshold or trend analysis \\
 \hline
@@ -179,11 +180,9 @@ Electrical (capacitance/impedance) & Circuit model & Prototype & \cite{cen_ehl_2
 \hline
 AE & Time-domain (RMS, PCR) & Prototype & \cite{cornel_condition_2021,hou_-situ_2025,miettinen_analysis_2001} \\
 \hline
-Vibration & $\kappa$ regression (LASSO, NN) & Research & \cite{jakobsen_vibration_2021} \\
+Vibration & $\kappa$ regression & Research & \cite{jakobsen_vibration_2021} \\
 \hline
-Passive ultrasound & $\kappa$ regression & Research & \cite{jakobsen_detecting_2023} \\
-\hline
-AE & Octave filter bank + $P_5$ & Research & \cite{renhart_monitoring_2021} \\
+Passive ultrasound & $\kappa$ regression (LASSO, NN) & Research & \cite{jakobsen_detecting_2023} \\
 \hline
 AE & GNN / multi-sensor fusion & Research & \cite{zhang_graph-data-based_2024} \\
 \hline

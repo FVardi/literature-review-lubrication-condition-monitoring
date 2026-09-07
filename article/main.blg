@@ -3,46 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: unsrt.bst
 Database file #1: bib.bib
+Warning--empty journal in poll_starved_2020
 Warning--empty author and editor in noauthor_elasto-hydrodynamic_1977
-You've used 81 entries,
+You've used 92 entries,
             1791 wiz_defined-function locations,
-            890 strings with 20466 characters,
-and the built_in function-call counts, 19443 in all, are:
-= -- 1623
-> -- 1051
-< -- 6
-+ -- 382
-- -- 301
-* -- 1615
-:= -- 3173
-add.period$ -- 243
-call.type$ -- 81
-change.case$ -- 80
+            945 strings with 22384 characters,
+and the built_in function-call counts, 22113 in all, are:
+= -- 1861
+> -- 1184
+< -- 10
++ -- 430
+- -- 338
+* -- 1810
+:= -- 3599
+add.period$ -- 278
+call.type$ -- 92
+change.case$ -- 91
 chr.to.int$ -- 0
-cite$ -- 82
-duplicate$ -- 756
-empty$ -- 1815
-format.name$ -- 301
-if$ -- 4179
+cite$ -- 94
+duplicate$ -- 873
+empty$ -- 2068
+format.name$ -- 338
+if$ -- 4767
 int.to.chr$ -- 0
-int.to.str$ -- 81
-missing$ -- 76
-newline$ -- 404
-num.names$ -- 82
-pop$ -- 165
+int.to.str$ -- 92
+missing$ -- 87
+newline$ -- 459
+num.names$ -- 93
+pop$ -- 194
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 315
+skip$ -- 363
 stack$ -- 0
-substring$ -- 1352
-swap$ -- 125
-text.length$ -- 6
+substring$ -- 1525
+swap$ -- 148
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 184
-width$ -- 83
-write$ -- 880
-(There was 1 warning)
+warning$ -- 2
+while$ -- 210
+width$ -- 94
+write$ -- 1002
+(There were 2 warnings)
