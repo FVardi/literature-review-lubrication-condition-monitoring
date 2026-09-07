@@ -161,6 +161,36 @@ Christoph Schneidhofer, Michael Schandl, Nicole Dörr, and Piet~M. Lugt.
 \newblock A model describing the oxidation rate of lubricating greases.
 \newblock {\em Frontiers in Mechanical Engineering}, 11, June 2025.
 
+\bibitem{meijer_grease_2021}
+R.~J. Meijer and P.~M. Lugt.
+\newblock The grease worker and its applicability to study mechanical aging of
+  lubricating greases for rolling bearings.
+\newblock {\em Tribology Transactions}, 65(1):32--45, 2021.
+
+\bibitem{fei_thermal_2020}
+Yi-Wei Fei, Shao-Jun Ruan, Jun Ma, and Feng Guo.
+\newblock Study on thermal oxidation and viscosity degradation for synthetic
+  aviation lubricant fluids.
+\newblock In {\em IOP Conference Series: Materials Science and Engineering},
+  volume 729, 2020.
+
+\bibitem{hurley_thermal_1998}
+S.~Hurley, P.~M. Cann, and H.~A. Spikes.
+\newblock Thermal degradation of greases and the effect on lubrication
+  performance.
+\newblock In {\em Tribology Series}, volume~34. Elsevier, 1998.
+
+\bibitem{wright_degradation_1983}
+B.~Wright and J.~P.~R. du~Parquet.
+\newblock Degradation of polymers in multigrade lubricants by mechanical shear.
+\newblock {\em Polymer Degradation and Stability}, 5:425--447, 1983.
+
+\bibitem{chatra_thermo-mechanical_2023}
+K.~R.~S. Chatra, J.~A. Osara, and P.~M. Lugt.
+\newblock Thermo-mechanical aging during churning in grease lubricated bearings
+  and its impact on grease life.
+\newblock {\em Tribology International}, 181:108248, 2023.
+
 \bibitem{lugt_grease_2012}
 Piet~M. Lugt.
 \newblock {\em Grease {Lubrication} in {Rolling} {Bearings}}.
