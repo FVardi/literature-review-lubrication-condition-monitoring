@@ -126,6 +126,7 @@ Table~\ref{tab:deployment} compares sensing and signal processing method combina
 \hline
 AE & None & Flat surface, direct structural path to bearing bore; avoid joints and material changes; bond or clamp required for high-freq.\ coupling & $>$500\,kHz & Partial (features only) & Baseline measurement under known lubrication condition \cite{lineham_ultrasonic_2008}; labelled data for ML \\
 \hline
+% TODO: cross-check "Vibration $\leq$50kHz" and "Sound/microphone $\leq$50kHz" sampling-rate figures against the accelerometer/microphone bandwidth reconciliation in sensing_methods_and_empirical_studies.tex (ADI Table 3: MEMS accelerometer DC--20kHz+, piezo accelerometer 2.5--30kHz+, MEMS microphone ~20kHz, MEMS ultrasonic ~100kHz) and Table~\ref{tab:signal_origins} row 2 (physical_origins_of_signals.tex) once those are finalised, so sampling-rate ceilings here stay consistent with whatever bandwidth figures are settled on there.
 Vibration & None & Standard industrial accelerometer mount (stud, adhesive, magnet); location affects frequency content but less critically than AE & $\leq$50\,kHz & Yes & No baseline required; labelled data for ML \\
 \hline
 Passive ultrasound & None & As for AE, but less sensitive to exact path geometry at 20--100\,kHz; industrial instruments are handheld or clamp-on & 20--500\,kHz & Yes & Baseline reference at known good lubrication \cite{lineham_ultrasonic_2008}; labelled data for regression \\
@@ -188,7 +189,9 @@ AE & GNN / multi-sensor fusion & Research & \cite{zhang_graph-data-based_2024} \
 \hline
 Sound / microphone & Frequency features + ML & Research & \cite{georgiev_microphone_2017} \\
 \hline
-SAW & Spring-layer model & Research & \cite{tatzgern_tribo-acoustic_2025,lindner_a23_2011} \\
+SAW & Mode conversion & Research & \cite{lindner_a23_2011} \\
+\hline
+Active ultrasonic & Reflection + induction tachometry & Research & \cite{tatzgern_tribo-acoustic_2025} \\
 \hline
 \end{tabularx}
 \caption{Technology maturity of sensing and signal processing method combinations for LCM. Maturity levels: \textit{Industrial} -- commercially deployed; \textit{Prototype} -- demonstrated on industrial components or in field tests; \textit{Research} -- demonstrated in controlled laboratory studies only. Note: the \textit{Industrial} maturity of vibration refers to general bearing condition monitoring; LCM-specific vibration deployment is limited to simple threshold methods not identified as a dedicated LCM product in the reviewed literature.}
