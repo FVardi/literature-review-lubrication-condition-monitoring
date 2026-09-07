@@ -3,7 +3,7 @@
 
 This section provides the primary systematic contribution of this review: a taxonomy of signal processing methods applied to LCM of ball bearings, organised by processing family rather than by sensing modality. For each family the method is first described on its own terms -- its mathematical basis, assumptions, and outputs -- and then its specific applications across sensing modalities are discussed, drawing on the literature surveyed. A master cross-reference matrix linking SP method families to sensing modalities is provided in Table~\ref{tab:sp_crossref} at the end of this section.
 
-The section contains the following categories: time-domain and frequency-domain methods (Sections~\ref{subsec:sp_time}--\ref{subsec:sp_freq}) operate directly on the measured signal; time-frequency, decomposition, and signal enhancement methods (Section~\ref{subsec:sp_tf}) address non-stationarity and improve the signal before feature extraction; physics-based and model-driven methods (Section~\ref{subsec:sp_model}) incorporate lubrication physics to convert processed signals into physically interpretable quantities; and machine learning and data fusion methods (Sections~\ref{subsec:sp_ml}--\ref{subsec:sp_fusion}) learn mappings from processed features to lubrication condition labels or regression targets. Figure~\ref{fig:sp_taxonomy} provides an overview of this taxonomy.
+The section contains the following categories: time-domain and frequency-domain methods (Sections~\ref{subsec:sp_time}--\ref{subsec:sp_freq}) operate directly on the measured signal; time-frequency, decomposition, and signal enhancement methods (Section~\ref{subsec:sp_tf}) address non-stationarity and improve the signal before feature extraction; physics-based and model-driven methods (Section~\ref{subsec:sp_model}) incorporate lubrication physics to convert processed signals into physically interpretable quantities; and machine learning and data fusion methods (Sections~\ref{subsec:sp_ml}--\ref{subsec:feature_fusion}) learn mappings from processed features to lubrication condition labels or regression targets. Figure~\ref{fig:sp_taxonomy} provides an overview of this taxonomy.
 
 \begin{figure}[H]
 \centering
@@ -238,7 +238,7 @@ Feature-level fusion concatenates feature vectors from multiple sensors into a s
 \subsection{Master Cross-Reference Matrix}
 \label{subsec:sp_crossref}
 
-Table~\ref{tab:sp_crossref} summarises the application of SP method families to each sensing modality, as found in the reviewed literature. A filled cell indicates the combination has been demonstrated for LCM in at least one reviewed study.
+Table~\ref{tab:sp_crossref} summarises the successfull application of SP method families to each sensing modality, as found in the reviewed literature. A filled cell indicates the combination has been demonstrated for LCM in at least one reviewed study.
 
 \begin{table}[H]
 \scriptsize
@@ -246,51 +246,56 @@ Table~\ref{tab:sp_crossref} summarises the application of SP method families to 
 \renewcommand{\arraystretch}{1.4}
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{\linewidth}{
->{\raggedright\arraybackslash}p{3cm}
+>{\raggedright\arraybackslash}p{3.4cm}
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X
+ >{\centering\arraybackslash}X
+ >{\centering\arraybackslash}X |
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X }
+& \multicolumn{5}{c}{\textbf{Passive}} & \multicolumn{5}{c}{\textbf{Active}} \\
 \textbf{SP Method Family}
 & \rotatebox{75}{\textbf{Vibration}}
-& \rotatebox{75}{\textbf{Acoustic Emission}}
-& \rotatebox{75}{\textbf{Ultrasound (passive)}}
-& \rotatebox{75}{\textbf{Sound / Microphone}}
+& \rotatebox{75}{\textbf{\shortstack[l]{Acoustic\\Emission}}}
+& \rotatebox{75}{\textbf{\shortstack[l]{Ultrasound\\(passive)}}}
+& \rotatebox{75}{\textbf{\shortstack[l]{Sound /\\Microphone}}}
 & \rotatebox{75}{\textbf{Thermal}}
-& \rotatebox{75}{\textbf{Active Ultrasonic}}
+& \rotatebox{75}{\textbf{\shortstack[l]{Active\\Ultrasonic}}}
 & \rotatebox{75}{\textbf{Electrical}}
-& \rotatebox{75}{\textbf{Magnetic / Oil}}
+& \rotatebox{75}{\textbf{\shortstack[l]{Magnetic\\/ Oil}}}
+& \rotatebox{75}{\textbf{Optical}}
+& \rotatebox{75}{\textbf{SAW}}
 \\
 \hline
-Time-domain statistics      & \checkmark & \checkmark & \checkmark &            & \checkmark &            &            &            \\
+Time-domain statistics      & \checkmark & \checkmark & \checkmark &            & \checkmark &            &            &            &            &            \\
 \hline
-Threshold methods           &            & \checkmark & \checkmark &            &            &            &            &            \\
+Threshold methods           &            & \checkmark & \checkmark &            &            &            &            &            &            &            \\
 \hline
-Spectral shape \& kurtosis  & \checkmark & \checkmark &            &            &            &            &            &            \\
+Spectral shape  & \checkmark & \checkmark &            &            &            &            &            &            &            &            \\
 \hline
-Multi-band hit-rate / WPI   &            & \checkmark &            &            &            &            &            &            \\
+Multi-band hit-rate / WPI   &            & \checkmark &            &            &            &            &            &            &            &            \\
 \hline
-STFT / Spectrogram          & \checkmark &            &            &            &            &            &            &            \\
+STFT          & \checkmark &            &            &            &            &            &            &            &            &            \\
 \hline
-Signal decomposition (SGMD) &            &            &            &            &            &            &            & \checkmark \\
+Signal decomposition &            &            &            &            &            &            &            & \checkmark &            &            \\
 \hline
-MED / Deconvolution         & \checkmark &            &            &            &            &            &            &            \\
+Deconvolution         & \checkmark &            &            &            &            &            &            &            &            &            \\
 \hline
-Spring-layer model          &            &            &            &            &            & \checkmark &            &            \\
+Spring-layer model          &            &            &            &            &            & \checkmark &            &            &            &            \\
 \hline
-Electrical circuit model    &            &            &            &            &            &            & \checkmark &            \\
+Electrical circuit model    &            &            &            &            &            &            & \checkmark &            &            &            \\
 \hline
-$\kappa$/$\Lambda$ regression target & \checkmark & \checkmark & \checkmark &  &            &            &            &            \\
+$\kappa$/$\Lambda$ regression target & \checkmark & \checkmark & \checkmark &  &            &            &            &            &            &            \\
 \hline
-Classical ML (SVM, LASSO)   &            &            & \checkmark &            &            &            &            &            \\
+Classical ML   &            &            & \checkmark &            &            &            &            &            &            &            \\
 \hline
-Deep learning (CNN, GNN, GAN) & \checkmark & \checkmark &            &            & \checkmark &            &            & \checkmark \\
+Deep learning & \checkmark & \checkmark &            &            & \checkmark &            &            &            & \checkmark &            \\
 \hline
-Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
+Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            &            &            &            \\
 \hline
 \end{tabularx}
 \caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \checkmark indicates the combination has been demonstrated in at least one study included in this review.}
