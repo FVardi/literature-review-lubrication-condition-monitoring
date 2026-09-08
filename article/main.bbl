@@ -135,11 +135,6 @@ R.~J. Meijer and P.~M. Lugt.
 \newblock The grease worker and its applicability to study mechanical aging of lubricating greases for rolling bearings.
 \newblock {\em Tribology Transactions}, 65(1):32--45, 2021.
 
-\bibitem{fei_thermal_2020}
-Yi-Wei Fei, Shao-Jun Ruan, Jun Ma, and Feng Guo.
-\newblock Study on thermal oxidation and viscosity degradation for synthetic aviation lubricant fluids.
-\newblock In {\em IOP Conference Series: Materials Science and Engineering}, volume 729, 2020.
-
 \bibitem{hurley_thermal_1998}
 S.~Hurley, P.~M. Cann, and H.~A. Spikes.
 \newblock Thermal degradation of greases and the effect on lubrication performance.
@@ -159,16 +154,6 @@ K.~R.~S. Chatra, J.~A. Osara, and P.~M. Lugt.
 Piet~M. Lugt.
 \newblock {\em Grease {Lubrication} in {Rolling} {Bearings}}.
 \newblock Wiley, 1 edition, December 2012.
-
-\bibitem{sahu_grease_2022}
-Prashant~Kumar Sahu.
-\newblock Grease {Contamination} {Detection} in the {Rolling} {Element} {Bearing} {Using} {Deep} {Learning} {Technique}.
-\newblock {\em International Journal of Mechanical Engineering and Robotics Research}, pages 275--280, 2022.
-
-\bibitem{zhang_grease_2021}
-Xingnan Zhang and Romeo Glovnea.
-\newblock Grease film thickness measurement in rolling bearing contacts.
-\newblock {\em Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology}, 235(7):1430--1439, July 2021.
 
 \bibitem{cen_effect_2025}
 Hui Cen, Nicola De~Laurentis, Norbert Bader, and Piet~M. Lugt.
@@ -416,6 +401,11 @@ Denis Cojocaru, Gelu Ianuș, Vlad Cârlescu, Bogdan Chiriac, and Dumitru Olaru.
 \newblock Grease {Film} {Behavior} in {Ball} {Bearings}.
 \newblock {\em Lubricants}, 13(10):429, September 2025.
 
+\bibitem{zhang_grease_2021}
+Xingnan Zhang and Romeo Glovnea.
+\newblock Grease film thickness measurement in rolling bearing contacts.
+\newblock {\em Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology}, 235(7):1430--1439, July 2021.
+
 \bibitem{shi_ultrasensitive_2022}
 Haotian Shi, Hongpeng Zhang, Dian Huo, Shuang Yu, Jun Su, Yucai Xie, Wei Li, Laihao Ma, Haiquan Chen, and Yuqing Sun.
 \newblock An {Ultrasensitive} {Microsensor} {Based} on {Impedance} {Analysis} for {Oil} {Condition} {Monitoring}.
@@ -440,6 +430,11 @@ Xinzhuo Zhang, Xuhua Zhang, Linbo Zhu, Chuang Gao, Bo~Ning, and Yongsheng Zhu.
 Haiyang Pan, Yu~Yang, Xin Li, Jinde Zheng, and Junsheng Cheng.
 \newblock Symplectic geometry mode decomposition and its application to rotating machinery compound fault diagnosis.
 \newblock {\em Mechanical Systems and Signal Processing}, 114:189--211, January 2019.
+
+\bibitem{sahu_grease_2022}
+Prashant~Kumar Sahu.
+\newblock Grease {Contamination} {Detection} in the {Rolling} {Element} {Bearing} {Using} {Deep} {Learning} {Technique}.
+\newblock {\em International Journal of Mechanical Engineering and Robotics Research}, pages 275--280, 2022.
 
 \bibitem{lillelund_rulsurv_2025}
 Christian~Marius Lillelund, Fernando Pannullo, Morten~Opprud Jakobsen, Manuel Morante, and Christian~Fischer Pedersen.

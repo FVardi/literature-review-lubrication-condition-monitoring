@@ -11,52 +11,70 @@ This section synthesises the evidence from Sections~\ref{sec:sensing} and~\ref{s
 \subsection{Sensitivity to Lubrication Fault Type}
 \label{subsec:comp_fault}
 
-Three principal lubrication fault types are of interest in bearing LCM: (1) \textit{lubricant starvation} (insufficient quantity), (2) \textit{viscosity degradation} (thermal or oxidative aging affecting viscosity), and (3) \textit{contamination} (external or wear debris in the lubricant). These faults produce partially distinct signal signatures, which determines which SP methods are most applicable to each. Table~\ref{tab:fault_sensitivity} summarises the reported sensitivity of each method combination to each fault type.
+Three principal lubrication fault types are of interest in bearing LCM as described in Section~\ref{sec:lubrication_physics}: starvation, contamination, and viscosity degradation. These faults produce partially distinct signal signatures, which determines which SP methods are most applicable to each. A large part of the reviewed literature, however, does not target these fault types directly but instead quantifies film-thickness inadequacy through the viscosity ratio $\kappa$ or the specific film thickness $\Lambda$, typically by varying speed and temperature on a fresh lubricant charge. This is a distinct condition a the lubricant is neither starved, contaminated, nor aged, but the operating point yields an insufficient film. It is therefore reported as a separate column rather than folded into starvation or viscosity degradation. Table~\ref{tab:fault_sensitivity} summarises the reported or inferred sensitivity of each method combination to each category.
 
 \begin{table}[H]
 \scriptsize
 \centering
 \renewcommand{\arraystretch}{1.4}
 \setlength{\tabcolsep}{4pt}
-\begin{tabularx}{\linewidth}{|
->{\raggedright\arraybackslash}p{2.5cm}
-| >{\raggedright\arraybackslash}p{2.2cm}
-| >{\centering\arraybackslash}X
-| >{\centering\arraybackslash}X
-| >{\centering\arraybackslash}X |}
-\hline
-\textbf{Sensing method} & \textbf{SP method} & \textbf{Starvation} & \textbf{Viscosity degradation} & \textbf{Contamination} \\
-\hline
-Vibration & Time-domain (RMS, kurtosis) & Moderate \cite{jakobsen_vibration_2021,xu_vibration-based_2024} & Low--Moderate \cite{jakobsen_vibration_2021} & \\
-\hline
-Vibration & MED + envelope & High \cite{xu_vibration-based_2024} & & \\
-\hline
-Vibration & Spectral kurtosis + $\kappa$ regression & Moderate--High \cite{jakobsen_vibration_2021} & Moderate \cite{jakobsen_vibration_2021} & \\
-\hline
-AE & Time-domain (RMS, PCR) & High \cite{miettinen_analysis_2001,hou_-situ_2025,cornel_condition_2021} & Moderate \cite{cornel_condition_2021} & Moderate \cite{miettinen_analysis_2001} \\
-\hline
-AE & Multi-band hit-rate + WPI & & & High (abrasive only) \cite{delft_university_of_technology_tu_delft_influence_2024} \\
-\hline
-Passive ultrasound & Threshold (dB) & Moderate \cite{lineham_ultrasonic_2008} & & \\
-\hline
-Passive ultrasound & Spectral kurtosis + $\kappa$ regression & Moderate--High \cite{jakobsen_detecting_2023} & & \\
-\hline
-Thermal & Time-domain (trend) & Moderate (slow response) \cite{moussa_passive_2017} & & \\
-\hline
-Active ultrasonic & Spring-layer model & High (film thickness) \cite{chen_evaluation_2023,dwyer-joyce_measurement_2003} & High (film thickness) \cite{chen_evaluation_2023} & \\
-\hline
-Electrical & Circuit model & High (film thickness) \cite{cen_ehl_2021,becker-dombrowsky_electrical_2024} & & \\
-\hline
-Magnetic / inductive & Mode decomp.\ + pulse & & & High (ferrous debris) \cite{yu_novel_2021} \\
-\hline
+\begin{tabularx}{\linewidth}{
+c
+>{\raggedright\arraybackslash}p{1.9cm}
+ >{\raggedright\arraybackslash}p{2.1cm}
+ >{\centering\arraybackslash}X
+ >{\centering\arraybackslash}X
+ >{\centering\arraybackslash}X
+ >{\centering\arraybackslash}X }
+\toprule
+& \textbf{Sensing method} & \textbf{SP method} & \textbf{Starvation} & \textbf{Viscosity degradation} & \textbf{Contamination} & \textbf{Film-thickness inadequacy ($\kappa$/$\Lambda$)} \\
+\midrule
+\multirow{11}{*}[-2.5cm]{\rotatebox[origin=c]{90}{\textbf{Passive}}}
+ & Vibration & Time-domain (RMS, kurtosis) & Low \cite{xu_vibration-based_2024} & & & Moderate \cite{jakobsen_vibration_2021} \\
+\cmidrule(l){2-7}
+ & Vibration & MED + envelope & High \cite{xu_vibration-based_2024} & & & \\
+\cmidrule(l){2-7}
+ & Vibration & Spectral kurtosis + $\kappa$ regression & & & & Moderate--High \cite{jakobsen_vibration_2021} \\
+\cmidrule(l){2-7}
+ & Vibration & Cyclostationarity + kurtosis & Moderate (fully starved only) \cite{boskoski_detection_2010} & & & \\
+\cmidrule(l){2-7}
+ & Vibration & Deep learning (CycleGAN + CNN) & High\textsuperscript{$\dagger$} \cite{zhang_interpretable_2026} & High\textsuperscript{$\dagger$} \cite{zhang_interpretable_2026} & High\textsuperscript{$\dagger$} \cite{zhang_interpretable_2026} & \\
+\cmidrule(l){2-7}
+ & AE & Time-domain (RMS, PCR) & High \cite{miettinen_analysis_2001} & & Moderate--High (early stage) \cite{tandon_condition_2007} & High \cite{hou_-situ_2025,cornel_condition_2021} \\
+\cmidrule(l){2-7}
+ & AE & Multi-band hit-rate + WPI & & & High (abrasive only) \cite{delft_university_of_technology_tu_delft_influence_2024} & \\
+\cmidrule(l){2-7}
+ & Passive ultrasound & Threshold (dB) & Moderate (industrial application) \cite{lineham_ultrasonic_2008} & & & \\
+\cmidrule(l){2-7}
+ & Passive ultrasound & Hjorth parameters + $\kappa$ regression & & & & Moderate--High \cite{jakobsen_detecting_2023} \\
+\cmidrule(l){2-7}
+ & Thermal & Time-domain (trend) & Moderate (slow response) \cite{moussa_passive_2017} & & & \\
+\cmidrule(l){2-7}
+ & Multi-sensor (vib.\ + AE + thermal) & Feature fusion (GNN) & & High\textsuperscript{$\ddagger$} \cite{zhang_graph-data-based_2024} & High\textsuperscript{$\ddagger$} \cite{zhang_graph-data-based_2024} & \\
+\specialrule{1.2pt}{2pt}{2pt}
+\multirow{5}{*}[-1cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
+ & Active ultrasonic & Spring-layer model & & & & High (direct $h_m$) \cite{dwyer-joyce_measurement_2003,chen_evaluation_2023} \\
+\cmidrule(l){2-7}
+ & Electrical & Circuit model & & & & High (direct $h_m$) \cite{cen_ehl_2021,becker-dombrowsky_electrical_2024} \\
+\cmidrule(l){2-7}
+ & Magnetic / inductive & Mode decomp.\ + pulse & & & High (ferrous debris; simulated) \cite{yu_novel_2021} & \\
+\cmidrule(l){2-7}
+ & Magnetic / inductive & Impedance analysis & & & High (small particles) \cite{shi_ultrasensitive_2022} & \\
+\cmidrule(l){2-7}
+ & Optical (in-line) & Machine vision (tracking, CNN) & & & High (debris counting) \cite{liu_oil_2022,wang_online_2022} & \\
+\bottomrule
 \end{tabularx}
-\caption{Reported sensitivity of sensing and signal processing method combinations to three principal lubrication fault types. All ratings are based on direct experimental evidence in the reviewed literature. Empty cells indicate the combination has not been assessed for that fault type in the reviewed literature. Parenthetical notes indicate the specific quantity or condition reported.}
+\caption{Reported sensitivity of sensing and signal processing method combinations to the three principal lubrication fault types and to film-thickness inadequacy expressed through $\kappa$ or $\Lambda$. Ratings marked \textit{Inferred} follow from the quantity the method measures (film thickness) rather than from a dedicated test of that fault type. Empty cells indicate the combination has not been assessed for that category in the reviewed literature. Parenthetical notes indicate the specific quantity or condition reported. Three qualifications apply to individual entries. The magnetic/inductive mode-decomposition rating is derived from simulated sensor signals rather than measured ones. Ratings marked $\dagger$ are reported for laboratory multistate data, with the corresponding field-domain performance resting on GAN-generated anomaly examples rather than measured field faults. Ratings marked $\ddagger$ are placed by \emph{assumed} fault type: the source reports lubrication abnormality detection over a degradation process without identifying which fault type was induced, so the column placement is our inference and not a claim made by the cited work.}
 \label{tab:fault_sensitivity}
 \end{table}
 
-Several cross-cutting observations emerge from Table~\ref{tab:fault_sensitivity}. First, no single passive non-invasive method combination provides high sensitivity to all three fault types simultaneously. AE with time-domain features performs best across starvation, viscosity degradation, and contamination, but the sensitivity to contamination is selective for abrasive hard particles (as demonstrated by the Delft group for AE hit-rate). Active ultrasonic and electrical methods provide quantitative film thickness estimates and are therefore inherently sensitive to both starvation and viscosity degradation through their direct relationship with $h_m$, but they do not directly detect debris contamination. Magnetic and inductive methods specifically target ferrous debris and provide complementary coverage for contamination monitoring, but require access to the lubricant flow and are inapplicable to grease-lubricated or sealed bearings.
+Several cross-cutting observations emerge from Table~\ref{tab:fault_sensitivity}. First, only one combination reports high sensitivity to all three fault types simultaneously: the CycleGAN-based deep learning pipeline of Zhang et al.\ \cite{zhang_interpretable_2026} applied to vibration. Its field-domain performance rests on generated rather than measured anomaly examples, so the coverage is not yet demonstrated on measured field faults. Among combinations evaluated entirely on measured data, AE with time-domain features has the broadest coverage -- starvation, contamination, and $\kappa$/$\Lambda$ estimation -- but its contamination sensitivity is selective for abrasive hard particles (as demonstrated by the Delft group for AE hit-rate), and its early-stage contamination performance is established only relative to vibration, stator current, and shock pulse rather than in absolute terms \cite{tandon_condition_2007}. Active ultrasonic and electrical methods provide quantitative film thickness estimates and are therefore inherently sensitive to both starvation and viscosity degradation through their direct relationship with $h_m$, although this sensitivity is inferred from the measured quantity rather than demonstrated on those fault types directly, and neither method detects debris contamination. Magnetic, inductive, and in-line optical methods target debris directly and provide complementary coverage for contamination monitoring, but all require access to the lubricant flow and are inapplicable to grease-lubricated or sealed bearings.
 
-Second, passive methods are most sensitive to starvation -- the fault type that generates the greatest increase in asperity contact energy -- and least sensitive to viscosity degradation. Viscosity degradation reduces $\kappa$ and shifts the lubrication regime boundary, but whether the operating point crosses into mixed or boundary lubrication depends on the initial viscosity margin; bearings operating with a large film thickness reserve may remain in the EHL regime even with significantly degraded lubricant, producing little change in passive sensor signals.
+A further group of studies detects lubrication degradation without resolving which fault type produced it. Zhang et al.\ \cite{zhang_graph-data-based_2024} detect lubrication abnormality from fused vibration, AE, and temperature features, but report performance over a degradation process rather than against an induced fault type. The corresponding entry in Table~\ref{tab:fault_sensitivity} is therefore placed under the fault types assumed to dominate that process, and is marked accordingly. Such studies establish that a degradation signal is detectable without establishing what the sensor is responding to, which limits their use for method selection.
+
+Second, passive methods are most consistently sensitive to starvation, the fault type that generates the greatest increase in asperity contact energy. The viscosity degradation column, by contrast, is almost entirely empty, and this reflects a gap in the literature rather than a demonstrated insensitivity. No reviewed study subjects a bearing to thermally or oxidatively aged lubricant and reports the resulting sensor response. The studies that appear to address viscosity instead vary the operating viscosity through speed and temperature on a fresh lubricant charge, which shifts $\kappa$ without degrading the lubricant itself -- the reason these results are reported in the $\kappa$/$\Lambda$ column. Whether a sensor calibrated to track $\kappa$ under speed and temperature variation responds equivalently to an aged lubricant at the same nominal $\kappa$ remains untested, and this gap is carried forward to Section~\ref{sec:gaps}.
+
+This asymmetry plausibly reflects how the fault types are induced experimentally rather than their relative industrial importance. Starvation is realised directly and repeatably within a single test session by withholding or removing lubricant, and an inadequate $\kappa$ follows immediately from a chosen speed and temperature. Thermal and oxidative aging, by contrast, develop over hundreds to thousands of operating hours, and the resulting degradation state is harder to control and to verify than a lubricant quantity. The evidence base is therefore weighted toward the fault types that are inexpensive to induce, which is consistent with the scarcity of long-duration run-to-degradation datasets discussed in Section~\ref{subsec:gap_datasets}.
 
 Third, the temporal response of thermal monitoring is qualitatively different from acoustic methods: temperature rise is a consequence of sustained elevated friction and therefore lags the onset of inadequate lubrication by minutes to hours, whereas AE and vibration respond on the timescale of individual asperity contacts (microseconds to milliseconds). Thermal monitoring is therefore better suited to detecting the existence of inadequate lubrication conditions than to detecting their onset or intermittent occurrence.
 

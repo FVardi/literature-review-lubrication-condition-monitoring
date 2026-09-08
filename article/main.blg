@@ -5,45 +5,45 @@ The style file: unsrt.bst
 Database file #1: bib.bib
 Warning--empty journal in poll_starved_2020
 Warning--empty author and editor in noauthor_elasto-hydrodynamic_1977
-You've used 92 entries,
+You've used 91 entries,
             1791 wiz_defined-function locations,
-            945 strings with 22384 characters,
-and the built_in function-call counts, 22113 in all, are:
-= -- 1861
-> -- 1184
-< -- 10
-+ -- 430
-- -- 338
-* -- 1810
-:= -- 3599
-add.period$ -- 278
-call.type$ -- 92
-change.case$ -- 91
+            940 strings with 22161 characters,
+and the built_in function-call counts, 21897 in all, are:
+= -- 1848
+> -- 1170
+< -- 9
++ -- 425
+- -- 334
+* -- 1796
+:= -- 3565
+add.period$ -- 275
+call.type$ -- 91
+change.case$ -- 90
 chr.to.int$ -- 0
-cite$ -- 94
-duplicate$ -- 873
-empty$ -- 2068
-format.name$ -- 338
-if$ -- 4767
+cite$ -- 93
+duplicate$ -- 861
+empty$ -- 2043
+format.name$ -- 334
+if$ -- 4718
 int.to.chr$ -- 0
-int.to.str$ -- 92
-missing$ -- 87
-newline$ -- 459
-num.names$ -- 93
-pop$ -- 194
+int.to.str$ -- 91
+missing$ -- 86
+newline$ -- 454
+num.names$ -- 92
+pop$ -- 188
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 363
+skip$ -- 359
 stack$ -- 0
 substring$ -- 1525
-swap$ -- 148
-text.length$ -- 10
+swap$ -- 145
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 210
-width$ -- 94
-write$ -- 1002
+while$ -- 209
+width$ -- 93
+write$ -- 991
 (There were 2 warnings)
