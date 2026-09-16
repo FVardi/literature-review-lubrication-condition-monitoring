@@ -9,110 +9,62 @@ The section contains the following categories: time-domain and frequency-domain 
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-  root/.style={rectangle, rounded corners=5pt, draw=black, line width=1.2pt,
-               fill=black!80, text=white, align=center,
-               font=\sffamily\bfseries\large, inner sep=10pt},
-  f1/.style={rectangle, rounded corners=4pt, draw=blue!60!black, line width=0.9pt,
-             fill=blue!18, align=center, font=\sffamily\bfseries\normalsize,
-             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
-  f2/.style={rectangle, rounded corners=4pt, draw=teal!70!black, line width=0.9pt,
-             fill=teal!18, align=center, font=\sffamily\bfseries\normalsize,
-             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
-  f3/.style={rectangle, rounded corners=4pt, draw=violet!70!black, line width=0.9pt,
-             fill=violet!15, align=center, font=\sffamily\bfseries\normalsize,
-             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
-  f4/.style={rectangle, rounded corners=4pt, draw=orange!70!black, line width=0.9pt,
-             fill=orange!18, align=center, font=\sffamily\bfseries\normalsize,
-             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
-  f5/.style={rectangle, rounded corners=4pt, draw=red!60!black, line width=0.9pt,
-             fill=red!15, align=center, font=\sffamily\bfseries\normalsize,
-             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
-  f6/.style={rectangle, rounded corners=4pt, draw=green!55!black, line width=0.9pt,
-             fill=green!15, align=center, font=\sffamily\bfseries\normalsize,
-             text width=2.7cm, inner sep=5pt, minimum height=1.1cm},
-  m1/.style={rectangle, rounded corners=3pt, draw=blue!50!black, line width=0.6pt,
-             fill=blue!7, align=center, font=\sffamily\small,
-             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
-  m2/.style={rectangle, rounded corners=3pt, draw=teal!60!black, line width=0.6pt,
-             fill=teal!7, align=center, font=\sffamily\small,
-             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
-  m3/.style={rectangle, rounded corners=3pt, draw=violet!60!black, line width=0.6pt,
-             fill=violet!7, align=center, font=\sffamily\small,
-             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
-  m4/.style={rectangle, rounded corners=3pt, draw=orange!60!black, line width=0.6pt,
-             fill=orange!7, align=center, font=\sffamily\small,
-             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
-  m5/.style={rectangle, rounded corners=3pt, draw=red!50!black, line width=0.6pt,
-             fill=red!7, align=center, font=\sffamily\small,
-             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
-  m6/.style={rectangle, rounded corners=3pt, draw=green!50!black, line width=0.6pt,
-             fill=green!7, align=center, font=\sffamily\small,
-             text width=2.5cm, inner sep=3pt, minimum height=0.75cm},
-  arr/.style={->, >=stealth, line width=0.7pt, gray!65},
+  root/.style={circle, draw=black!85, fill=black!85, text=white,
+               align=center, font=\sffamily\bfseries, text width=2.4cm, inner sep=4pt,
+               preaction={fill=black!15, transform canvas={xshift=0.8pt, yshift=-1pt}}},
+  cat/.style={rectangle, rounded corners=9pt, draw=none, fill=black!9,
+              align=center, font=\sffamily\bfseries\small,
+              text width=2.6cm, inner sep=5pt, minimum height=1.2cm},
+  meth/.style={rectangle, rounded corners=5pt, draw=black!20, line width=0.5pt,
+               fill=white, align=center, font=\sffamily\footnotesize,
+               text width=2.4cm, inner sep=3pt, minimum height=0.9cm,
+               preaction={fill=black!15, transform canvas={xshift=0.8pt, yshift=-1pt}}},
+  arr/.style={line width=0.9pt, black!55},
+  execute at begin node={\hyphenpenalty=10000\relax},
 ]
+\def\rcat{3.6}   % radius of the category ring
+\def\rmeth{6.6}  % radius of the method ring
 
 % Root
 \node[root] (R) at (0,0) {Signal Processing Methods for LCM};
 
-% Family nodes — x positions: -7.8 -4.7 -1.6 1.6 4.7 7.8
-\node[f1] (F1) at (-7.8,-2.0) {Time-Domain\\Statistics};
-\node[f2] (F2) at (-4.7,-2.0) {Frequency\\Domain};
-\node[f3] (F3) at (-1.6,-2.0) {Time-Freq.\ \&\\Decomposition};
-\node[f4] (F4) at ( 1.6,-2.0) {Signal\\Enhancement};
-\node[f5] (F5) at ( 4.7,-2.0) {Physics-Based\\\& Model-Driven};
-\node[f6] (F6) at ( 7.8,-2.0) {ML \&\\Data Fusion};
+% Categories (first level), clockwise from the left
+\foreach \name/\ang/\txt in {
+    T/180/{Time-Domain\\Statistics},
+    F/120/{Frequency\\Domain},
+    TF/60/{Time-Frequency,\\Decomposition\\\& Enhancement},
+    P/0/{Physics-Based \&\\Model-Driven},
+    ML/-60/{Machine Learning\\\& Data-Driven},
+    FF/-120/{Feature\\Fusion}}
+{
+  \node[cat] (\name) at (\ang:\rcat) {\txt};
+  \draw[arr] (R) -- (\name);
+}
 
-% Root → families
-\draw[arr] (R.south) -- (F1.north);
-\draw[arr] (R.south) -- (F2.north);
-\draw[arr] (R.south) -- (F3.north);
-\draw[arr] (R.south) -- (F4.north);
-\draw[arr] (R.south) -- (F5.north);
-\draw[arr] (R.south) -- (F6.north);
-
-% Time-Domain methods
-\node[m1] (M11) at (-7.8,-3.6)  {RMS, kurtosis,\\crest factor, PCR};
-\node[m1] (M12) at (-7.8,-4.75) {AE amplitude\\\& energy centres};
-\node[m1] (M13) at (-7.8,-5.9)  {Threshold\\methods};
-\draw[arr] (F1.south)--(M11.north);
-\draw[arr] (M11.south)--(M12.north);
-\draw[arr] (M12.south)--(M13.north);
-
-% Frequency-Domain methods
-\node[m2] (M23) at (-4.7,-3.6)  {SK \& spectral\\shape descriptors};
-\draw[arr] (F2.south)--(M23.north);
-
-% Time-Freq & Decomposition methods
-\node[m3] (M31) at (-1.6,-3.6)  {STFT \&\\spectrogram};
-\node[m3] (M33) at (-1.6,-4.75) {EMD\,/\,VMD};
-\node[m3] (M34) at (-1.6,-5.9)  {SGMD};
-\draw[arr] (F3.south)--(M31.north);
-\draw[arr] (M31.south)--(M33.north);
-\draw[arr] (M33.south)--(M34.north);
-
-% Signal Enhancement methods
-\node[m4] (M41) at ( 1.6,-3.6)  {MED \&\\deconvolution};
-\draw[arr] (F4.south)--(M41.north);
-
-% Physics-Based & Model-Driven methods
-\node[m5] (M51) at ( 4.7,-3.6)  {Spring-layer model\\(ultrasonic)};
-\node[m5] (M52) at ( 4.7,-4.75) {Electrical circuit\\model};
-\node[m5] (M53) at ( 4.7,-5.9)  {$\kappa$\,/\,$\Lambda$\\regression};
-\draw[arr] (F5.south)--(M51.north);
-\draw[arr] (M51.south)--(M52.north);
-\draw[arr] (M52.south)--(M53.north);
-
-% ML & Data Fusion methods
-\node[m6] (M61) at ( 7.8,-3.6)  {Classical ML\\(LASSO, SVM)};
-\node[m6] (M62) at ( 7.8,-4.75) {Deep learning\\(CNN, GNN)};
-\node[m6] (M63) at ( 7.8,-5.9)  {Feature-level\\fusion};
-\draw[arr] (F6.south)--(M61.north);
-\draw[arr] (M61.south)--(M62.north);
-\draw[arr] (M62.south)--(M63.north);
+% Methods (second level): outside their category, offset by \t cm along the ring
+\foreach \parent/\ang/\t/\txt in {
+    T/180/-1.7/{Moments \& energy metrics\\(RMS, kurtosis,\\Hjorth, PCR)},
+    T/180/0/{Speed \& load\\normalisation},
+    T/180/1.5/{Threshold\\methods},
+    F/120/-1.35/{Spectral statistics \&\\shape descriptors},
+    F/120/1.35/{Multi-band\\hit rate \& WPI},
+    TF/60/-2.1/{STFT \&\\kurtogram},
+    TF/60/0/{EMD, VMD\\\& SGMD},
+    TF/60/2.1/{Minimum entropy\\deconvolution},
+    P/0/-1.5/{Spring model\\(ultrasonic)},
+    P/0/0/{Electrical circuit\\models},
+    P/0/1.5/{$\kappa$\,/\,$\Lambda$ as\\regression targets},
+    ML/-60/-1.35/{Classical ML\\(LASSO, shallow NN)},
+    ML/-60/1.35/{Deep learning\\(CNN, GNN, CycleGAN)},
+    FF/-120/0/{Graph-based\\multi-sensor fusion}}
+{
+  \node[meth, shift={(\ang-90:\t)}] (m) at (\ang:\rmeth) {\txt};
+  \draw[arr] (\parent) -- (m);
+}
 
 \end{tikzpicture}%
 }
-\caption{Taxonomy of signal processing method families applied to lubrication condition monitoring of rolling element bearings. Methods are organised by processing family rather than by sensing modality; the master cross-reference matrix (Table~\ref{tab:sp_crossref}) maps each family to the sensing modalities for which LCM application has been demonstrated in the reviewed literature.}
+\caption{Taxonomy of signal processing method families applied to lubrication condition monitoring of rolling element bearings. The six method categories (inner ring) correspond to Sections~\ref{subsec:sp_time}--\ref{subsec:feature_fusion}, and the methods reviewed within each category are arranged on the outer ring. Methods are organised by processing family rather than by sensing modality; the master cross-reference matrix (Table~\ref{tab:sp_crossref}) maps each family to the sensing modalities for which LCM application has been demonstrated in the reviewed literature.}
 \label{fig:sp_taxonomy}
 \end{figure}\todo{Update figure with final methods once paper is done.}
 

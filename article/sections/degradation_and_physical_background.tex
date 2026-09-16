@@ -13,7 +13,60 @@ Lubrication films formed in ball bearings under operation are generally classifi
     \item \textbf{Mixed lubrication}: load is shared between a thin lubricant film and surface asperity contacts. Friction and wear are reduced compared to the boundary regime but asperity contacts continue to generate transient stress waves detectable by acoustic and vibration sensors.
     \item \textbf{Elastohydrodynamic lubrication (EHL)}: all load is carried by a lubricant film between the balls and raceway. The high pressure building up in the contact zone causes elastic deformation of the solid materials, sustaining the film. Friction is at its minimum for full-film EHL and rises again at excessive viscosities due to viscous shear losses. Wear is minimal and elastic wave emission is negligible, making this the ideal operating regime for bearing longevity.
 \end{itemize}
-The progression through these regimes as lubrication conditions deteriorate determines both the nature and the intensity of the signals accessible to passive sensing methods.
+The three regimes are illustrated schematically in Figure~\ref{fig:lubrication_regimes}. The progression through these regimes as lubrication conditions deteriorate determines both the nature and the intensity of the signals accessible to passive sensing methods.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  declare function={
+    rl(\x) = 0.20*sin(380*\x) + 0.13*sin(950*\x+40) + 0.06*sin(2000*\x+110);
+    ru(\x) = 0.19*sin(450*\x+70) + 0.13*sin(1080*\x+200) + 0.06*sin(2250*\x+15);
+  },
+  solid/.style={fill=gray!30, draw=gray!55!black, line width=0.5pt},
+  lbl/.style={font=\scriptsize\sffamily, text=gray!40!black},
+]
+% \h: mean separation between the ball and raceway surfaces
+\foreach \h/\i/\name/\lam/\desc/\col in {
+    0.05/0/Boundary/{$\Lambda < 1$}/{Load carried by\\asperity contacts}/red!70!black,
+    0.42/1/Mixed/{$1 \leq \Lambda \leq 3$}/{Load shared by film\\and asperity contacts}/orange!70!black,
+    1.30/2/EHL/{$\Lambda > 3$}/{Load carried by the\\lubricant film}/green!50!black}
+{
+  \begin{scope}[xshift=\i*4.9cm]
+    % Lubricant
+    \fill[blue!22] (0,{-\h/2-0.5}) rectangle (4.2,{\h/2+0.5});
+    % Raceway (lower surface)
+    \fill[solid] plot[domain=0:4.2, samples=300, smooth] (\x,{rl(\x)-\h/2})
+      -- (4.2,-1.5) -- (0,-1.5) -- cycle;
+    % Ball (upper surface), resting on the raceway where asperities meet
+    \fill[solid] plot[domain=0:4.2, samples=300, smooth] (\x,{max(\h/2+ru(\x), rl(\x)-\h/2)})
+      -- (4.2,1.5) -- (0,1.5) -- cycle;
+    % Asperity contacts
+    \begin{scope}
+      \clip plot[domain=0:4.2, samples=300, smooth] (\x,{\h/2+ru(\x)-0.01})
+        -- (4.2,2) -- (0,2) -- cycle;
+      \draw[red!80!black, line width=1.6pt]
+        plot[domain=0:4.2, samples=300, smooth] (\x,{rl(\x)-\h/2});
+    \end{scope}
+    % Panel frame and solid labels
+    \draw[\col, line width=1pt] (0,-1.5) rectangle (4.2,1.5);
+    \node[lbl, anchor=north west] at (0.05,1.48) {Ball};
+    \node[lbl, anchor=south west] at (0.05,-1.48) {Raceway};
+    % Load and sliding velocity
+    \draw[-{Stealth[length=5pt]}, thick] (2.1,2.25) -- (2.1,1.6) node[pos=0, above, font=\scriptsize] {$W$};
+    \draw[-{Stealth[length=4pt]}, thick, gray!40!black] (3.0,1.2) -- (3.9,1.2) node[midway, above=-1pt, font=\scriptsize] {$u$};
+    % Regime description
+    \node[font=\small\sffamily\bfseries, text=\col] at (2.1,-1.85) {\name};
+    \node[font=\footnotesize] at (2.1,-2.3) {\lam};
+    \node[font=\scriptsize\sffamily, align=center] at (2.1,-2.85) {\desc};
+  \end{scope}
+}
+% Film thickness trend
+\draw[-{Stealth[length=6pt]}, thick, gray!60!black] (0,-3.55) -- (14.0,-3.55)
+  node[midway, below, font=\scriptsize\sffamily] {increasing film thickness $h_m$ and $\Lambda$};
+\end{tikzpicture}
+\caption{Simplified schematic of the three lubrication regimes in a ball--raceway contact, viewed from the side at the scale of surface roughness. The ball and raceway are shown in grey, the lubricant in blue, and asperity contacts in red. In boundary lubrication the film is thinner than the surface roughness and the load is carried by asperity contacts. In mixed lubrication the load is shared between the film and intermittent asperity contacts. In EHL the film fully separates the surfaces. The $\Lambda$ and $\kappa$ ranges follow the conventional assignments given in Sections~\ref{subsec:lambda} and \ref{subsec:kappa}}
+\label{fig:lubrication_regimes}
+\end{figure}
 
 
 \subsection{The Stribeck Curve}

@@ -11,77 +11,40 @@ In general, the current active methods directly measure the relevant quantities,
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}
-    % ===== PARAMETERS =====
-    \pgfmathsetmacro{\W}{7}    % total width
-    \pgfmathsetmacro{\H}{5}    % total height
-    \pgfmathsetmacro{\S}{1.4}  % global scale factor
-    \pgfmathsetmacro{\LW}{1}   % line width in pt
+\begin{tikzpicture}[
+  font=\sffamily,
+  stage/.style={rectangle, rounded corners=5pt, draw=black!20, line width=0.5pt,
+                fill=white, align=center, font=\sffamily\footnotesize,
+                minimum width=5.0cm, minimum height=0.52cm, inner sep=2pt,
+                preaction={fill=black!15, transform canvas={xshift=0.8pt, yshift=-1pt}}},
+  region/.style={rounded corners=9pt, fill=black!6},
+  tag/.style={font=\sffamily\scriptsize\bfseries, text=black!60, inner sep=0pt},
+]
+% Quadrant panels: columns = passive/active, rows = non-invasive/invasive
+\def\pw{6.2}   % panel width
+\def\ph{3.9}   % panel height
+\def\gap{0.3}  % gap between panels
+\fill[region] (0,0)               rectangle (\pw,\ph);
+\fill[region] ({\pw+\gap},0)      rectangle ({2*\pw+\gap},\ph);
+\fill[region] (0,{-\ph-\gap})     rectangle (\pw,-\gap);
+\fill[region] ({\pw+\gap},{-\ph-\gap}) rectangle ({2*\pw+\gap},-\gap);
 
-    % Derived midpoints
-    \pgfmathsetmacro{\Mx}{\W/2}
-    \pgfmathsetmacro{\My}{\H/2}
+% Axis labels
+\node[tag, anchor=south] at ({\pw/2},{\ph+0.2}) {PASSIVE};
+\node[tag, anchor=south] at ({1.5*\pw+\gap},{\ph+0.2}) {ACTIVE};
+\node[tag, anchor=south, rotate=90] at (-0.2,{\ph/2}) {NON-INVASIVE};
+\node[tag, anchor=south, rotate=90] at (-0.2,{-\ph/2-\gap}) {INVASIVE};
 
-    \begin{scope}[scale=\S]
-
-        % ===== DRAWING =====
-        % Outer rectangle
-        \draw[line width=\LW pt] (0,0) rectangle (\W,\H);
-
-        % Softer, semi-transparent colors
-        \fill[gray, opacity=0.2] (0,\My) rectangle (\Mx,\H);
-        \fill[gray, opacity=0.2] (\Mx,\My) rectangle (\W,\H);
-        \fill[gray, opacity=0.2] (0,0) rectangle (\Mx,\My);
-        \fill[gray, opacity=0.2] (\Mx,0) rectangle (\W,\My);
-
-        % Dividing lines
-        \draw[line width=\LW pt] (0,\My) -- (\W,\My);
-        \draw[line width=\LW pt] (\Mx,0) -- (\Mx,\H);
-
-        % ===== TEXT OUTSIDE BOXES =====
-        % Top labels (centered above top squares)
-        \node[anchor=south] at (\Mx/2, \H) {\textbf{Passive}};
-        \node[anchor=south] at (\Mx + \Mx/2, \H) {\textbf{Active}};
-
-        % Left labels (vertical, centered beside left squares)
-        \node[anchor=south, rotate=90] at (0, \My + \My/2) {\textbf{Non-invasive}};
-        \node[anchor=south, rotate=90] at (0, \My/2) {\textbf{Invasive}};
-
-        % ===== TEXT INSIDE BOXES =====
-        % ===== TEXT STYLE =====
-        \tikzset{
-            boxtext/.style={
-                font=\sffamily\itshape\footnotesize,
-                text=black                     % text color
-            }
-        }
-        % Centers of each quadrant
-        \node[boxtext] at (\Mx/2,        \My + \My/2) {
-            \begin{tabular}{l}
-                Acoustic Emission \\
-                Vibration \\
-                Passive Ultrasound \\
-                Audible Sound \\
-                Thermal Monitoring
-            \end{tabular}
-        };
-        \node[boxtext] at (\Mx + \Mx/2,  \My + \My/2) {
-            \begin{tabular}{l}
-                Ultrasonic Reflectometry\\
-            \end{tabular}
-        };
-        % Passive/Invasive quadrant intentionally left empty — see caption
-        \node[boxtext, text=gray!50, font=\sffamily\itshape\footnotesize] at (\Mx/2, \My/2) {(none identified)};
-        \node[boxtext] at (\Mx + \Mx/2,  \My/2)       {
-            \begin{tabular}{l}
-                Optical interferometry \\
-                Electrical methods \\
-                Surface Acoustic Wave \\
-                Magnetic/Inductive debris detection \\
-            \end{tabular}
-        };
-
-    \end{scope}
+% Passive / non-invasive
+\foreach \txt [count=\k] in {Acoustic emission, Vibration, Passive ultrasound, Audible sound, Thermal monitoring}
+  \node[stage] at ({\pw/2},{\ph/2+(3-\k)*0.68}) {\txt};
+% Active / non-invasive
+\node[stage] at ({1.5*\pw+\gap},{\ph/2}) {Ultrasonic reflectometry};
+% Passive / invasive: intentionally empty -- see caption
+\node[font=\sffamily\itshape\footnotesize, text=black!40] at ({\pw/2},{-\ph/2-\gap}) {(none identified)};
+% Active / invasive
+\foreach \txt [count=\k] in {Optical interferometry, Electrical methods, Surface acoustic wave, Magnetic/inductive debris detection}
+  \node[stage] at ({1.5*\pw+\gap},{-\ph/2-\gap+(2.5-\k)*0.68}) {\txt};
 \end{tikzpicture}
 \caption{Classification of sensing methods for lubrication condition monitoring along two independent axes: active vs.\ passive signal acquisition, and invasive vs.\ non-invasive installation requirements. The passive/invasive quadrant contains no identified methods: sensing methods that require physical access to the lubricant (invasive) almost invariably do so to supply or measure a controlled excitation (active).}
 \label{fig:taxonomy}
@@ -100,12 +63,14 @@ For a sensor mounted on the bearing housing, the signal originates at the ball--
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-  scale=0.85, transform shape,
-  blk/.style={rectangle, rounded corners=4pt, draw=black!65, line width=0.9pt,
-              fill=gray!10, minimum width=2.4cm, minimum height=1.2cm,
-              align=center, font=\sffamily\small\bfseries, inner sep=5pt},
-  arr/.style={->, >=stealth, line width=1.3pt, black!55},
-  darr/.style={->, >=stealth, line width=1.0pt, dashed, blue!50},
+  font=\sffamily,
+  blk/.style={rectangle, rounded corners=5pt, draw=black!20, line width=0.5pt,
+              fill=white, align=center, font=\sffamily\footnotesize,
+              text width=2.2cm, minimum width=2.4cm, minimum height=1.3cm, inner sep=2pt,
+              preaction={fill=black!15, transform canvas={xshift=0.8pt, yshift=-1pt}}},
+  asset/.style={blk, draw=black!85, fill=black!85, text=white},
+  arr/.style={-{Stealth[length=5pt, width=4pt]}, line width=0.9pt, black!55},
+  tag/.style={font=\sffamily\scriptsize\bfseries, text=black!60, inner sep=0pt},
 ]
 
 % Blocks
@@ -116,7 +81,7 @@ For a sensor mounted on the bearing housing, the signal originates at the ball--
 % is application-specific, so it is not asserted here. The sensor coupling
 % layer is a genuine distinct material regardless of mounting style, so it
 % gets its own block rather than an arrow label.
-\node[blk]  (SRC) at (0,0)     {Contact zone\\(source)};
+\node[asset] (SRC) at (0,0)    {Contact zone\\(source)};
 \node[blk]  (OR)  at (3.0,0)   {Outer ring};
 \node[blk]  (HSG) at (6.0,0)   {Housing};
 \node[blk]  (CPL) at (9.0,0)   {Coupling layer/ \\ Transfer medium};
@@ -128,10 +93,9 @@ For a sensor mounted on the bearing housing, the signal originates at the ball--
 \draw[arr] (HSG.east) -- (CPL.west);
 \draw[arr] (CPL.east) -- (SEN.west);
 
-% Bandwidth arrow (top, spanning full path)
-\node[font=\sffamily\scriptsize\bfseries, text=blue!65] at (6.0, 1.5)
-  {Usable signal bandwidth narrows with path length};
-\draw[darr] (0.5,1.7) -- (11.5,1.7);
+% Bandwidth band (below, spanning full path): tapers as usable bandwidth narrows
+\fill[black!9, rounded corners=3pt] (-1.2,-1.05) -- (-1.2,-1.95) -- (13.2,-1.55) -- (13.2,-1.45) -- cycle;
+\node[tag, anchor=west] at (-1.0,-1.5) {USABLE SIGNAL BANDWIDTH NARROWS WITH PATH LENGTH};
 
 \end{tikzpicture}
 \caption{Signal transmission path from the ball--raceway contact zone to a housing-mounted sensor. The interface between the outer ring and housing bore -- press fit, clearance fit, or clamped, depending on the bearing arrangement -- is the dominant attenuation element for high-frequency content. Cumulative path losses of 30--60\,dB at 500\,kHz render the usable frequency bandwidth at the sensor geometry-, mounting-, and material-specific, limiting the transferability of signal processing configurations across experimental setups.}

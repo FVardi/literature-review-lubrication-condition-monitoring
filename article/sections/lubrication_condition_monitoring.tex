@@ -16,7 +16,38 @@ An LCM system can be broken down into four steps, shown in Figure~\ref{fig:lcm_f
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/lcm_overview.png}
+\begin{tikzpicture}[
+  font=\sffamily,
+  stage/.style={rectangle, rounded corners=5pt, draw=black!20, line width=0.5pt,
+                fill=white, align=center, font=\sffamily\footnotesize,
+                text width=2.2cm, minimum width=2.4cm, minimum height=1.5cm, inner sep=2pt,
+                preaction={fill=black!15, transform canvas={xshift=0.8pt, yshift=-1pt}}},
+  asset/.style={stage, draw=black!85, fill=black!85, text=white, text width=1.8cm,
+                minimum width=2.0cm},
+  arr/.style={-{Stealth[length=5pt, width=4pt]}, line width=0.9pt, black!55},
+  region/.style={rounded corners=9pt},
+  tag/.style={anchor=north west, font=\sffamily\scriptsize\bfseries, text=black!60,
+              inner sep=0pt},
+]
+% Regions
+\fill[region, black!4] (2.35,-1.30) rectangle (14.70,1.95);
+\node[tag] at (2.55,1.77) {LCM + MAINTENANCE DECISION};
+\fill[region, black!9] (2.65,-1.00) rectangle (11.65,1.45);
+\node[tag] at (2.85,1.27) {LCM};
+
+% Stages
+\node[asset] (B)  at ( 1.00,0) {Ball bearing};
+\node[stage] (S)  at ( 4.15,0) {{\scriptsize\bfseries\color{black!45}STEP 1}\\[1pt] Sensing};
+\node[stage] (SP) at ( 7.15,0) {{\scriptsize\bfseries\color{black!45}STEP 2}\\[1pt] Signal processing and modelling};
+\node[stage] (LA) at (10.15,0) {{\scriptsize\bfseries\color{black!45}STEP 3}\\[1pt] Lubrication condition assessment};
+\node[stage] (MD) at (13.20,0) {{\scriptsize\bfseries\color{black!45}STEP 4}\\[1pt] Maintenance decision};
+
+% Flow
+\draw[arr] (B)  -- (S);
+\draw[arr] (S)  -- (SP);
+\draw[arr] (SP) -- (LA);
+\draw[arr] (LA) -- (MD);
+\end{tikzpicture}
 \caption{Steps in online LCM of a running ball bearing. Signal processing sits between the raw sensor data and the lubrication condition assessment.}
 \label{fig:lcm_flow}
 \end{figure}
