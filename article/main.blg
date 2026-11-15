@@ -1,51 +1,49 @@
-This is BibTeX, Version 0.99e
+This is BibTeX, Version 0.99d (TeX Live 2025)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
-Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: unsrt.bst
-Reallocating 'name_of_file' (item size: 1) to 4 items.
 Database file #1: bib.bib
 Warning--empty journal in poll_starved_2020
 Warning--empty author and editor in noauthor_elasto-hydrodynamic_1977
-You've used 91 entries,
+You've used 94 entries,
             1791 wiz_defined-function locations,
-            940 strings with 22161 characters,
-and the built_in function-call counts, 21897 in all, are:
-= -- 1848
-> -- 1170
+            953 strings with 22488 characters,
+and the built_in function-call counts, 22387 in all, are:
+= -- 1890
+> -- 1189
 < -- 9
-+ -- 425
-- -- 334
-* -- 1796
-:= -- 3565
-add.period$ -- 275
-call.type$ -- 91
-change.case$ -- 90
++ -- 433
+- -- 339
+* -- 1825
+:= -- 3646
+add.period$ -- 284
+call.type$ -- 94
+change.case$ -- 91
 chr.to.int$ -- 0
-cite$ -- 93
-duplicate$ -- 861
-empty$ -- 2043
-format.name$ -- 334
-if$ -- 4718
+cite$ -- 96
+duplicate$ -- 884
+empty$ -- 2097
+format.name$ -- 339
+if$ -- 4826
 int.to.chr$ -- 0
-int.to.str$ -- 91
-missing$ -- 86
-newline$ -- 454
-num.names$ -- 92
-pop$ -- 188
+int.to.str$ -- 94
+missing$ -- 87
+newline$ -- 469
+num.names$ -- 95
+pop$ -- 197
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 359
+skip$ -- 364
 stack$ -- 0
-substring$ -- 1525
-swap$ -- 145
+substring$ -- 1546
+swap$ -- 150
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 209
-width$ -- 93
-write$ -- 991
+while$ -- 213
+width$ -- 96
+write$ -- 1022
 (There were 2 warnings)
