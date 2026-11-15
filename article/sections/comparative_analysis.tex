@@ -1,70 +1,63 @@
 \section{Comparative Analysis}
 \label{sec:comparative}
 
-This section synthesises the evidence from Sections~\ref{sec:sensing} and~\ref{sec:sp} into a structured comparison of sensing and signal processing method combinations along four dimensions: sensitivity to specific lubrication fault types, sensitivity to operating conditions, practical deployment requirements, and technology maturity. The goal is to
-\begin{itemize}
-    \item characterise the trade-offs that determine which combination is appropriate for a given deployment context and
-    \item identify research gaps and most promising directions for industrial applications.
-\end{itemize}
+This section synthesises the evidence from Sections~\ref{sec:sensing} and~\ref{sec:sp} into a structured comparison of sensing and signal processing method combinations along three dimensions: sensitivity to specific lubrication fault types, sensitivity to operating conditions, and technology maturity. The goal is to identify research gaps and most promising directions for research and industrial applications.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Sensitivity to Lubrication Fault Type}
 \label{subsec:comp_fault}
 
-Three principal lubrication fault types are of interest in bearing LCM as described in Section~\ref{sec:lubrication_physics}: starvation, contamination, and viscosity degradation. These faults produce partially distinct signal signatures, which determine which SP methods are most applicable to each. A large part of the reviewed literature, however, does not target these fault types directly but instead quantifies film-thickness inadequacy through the viscosity ratio $\kappa$ or the specific film thickness $\Lambda$. This is distinct from starved, contaminated, and aged lubrication condtions since the operating point yields an insufficient film. It is therefore reported as a separate column rather than included in the  columns of starvation or viscosity degradation. Table~\ref{tab:fault_sensitivity} summarises the reported or inferred sensitivity of each method combination to each category.
+Three principal lubrication fault types are of interest in bearing LCM, as described in Section~\ref{sec:lubrication_physics}: starvation, contamination, and viscosity degradation. A large part of the reviewed literature does not target these fault types directly. It instead quantifies film-thickness inadequacy through the viscosity ratio $\kappa$ or the specific film thickness $\Lambda$. This category is therefore reported in a separate column. Table~\ref{tab:fault_sensitivity} records which sensing and SP combinations have been tested against each category. The studies differ in bearing type, test rig, fault induction, and performance metric, and most cells rest on a single study. The table therefore records demonstrated detection rather than a ranking of sensitivity.
 
 \begin{table}[H]
-\scriptsize
+\footnotesize
 \centering
-\renewcommand{\arraystretch}{1.4}
+\renewcommand{\arraystretch}{1.25}
 \setlength{\tabcolsep}{4pt}
 \begin{tabularx}{\linewidth}{
-c
->{\raggedright\arraybackslash}p{1.9cm}
- >{\raggedright\arraybackslash}p{2.1cm}
+>{\raggedright\arraybackslash}p{2.1cm}
+ >{\raggedright\arraybackslash}p{3.2cm}
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X }
 \toprule
-& \textbf{Sensing method} & \textbf{SP method} & \textbf{Starvation} & \textbf{Viscosity degradation} & \textbf{Contamination} & \textbf{Film-thickness inadequacy ($\kappa$/$\Lambda$)} \\
+\textbf{Sensing method} & \textbf{SP method} & \textbf{Starvation} & \textbf{Viscosity degradation} & \textbf{Contamination} & \textbf{Film thickness ($\kappa$/$\Lambda$)} \\
 \midrule
-\multirow{10}{*}[-2.3cm]{\rotatebox[origin=c]{90}{\textbf{Passive}}}
- & Vibration & Time-domain (RMS, kurtosis) & Low \cite{xu_vibration-based_2024} & & & Moderate \cite{jakobsen_vibration_2021} \\
-\cmidrule(l){2-7}
- & Vibration & MED + envelope & High \cite{xu_vibration-based_2024} & & & \\
-\cmidrule(l){2-7}
- & Vibration & Spectral kurtosis + $\kappa$ regression & & & & Moderate--High \cite{jakobsen_vibration_2021} \\
-\cmidrule(l){2-7}
- & Vibration & Cyclostationarity + kurtosis & Moderate (fully starved only) \cite{boskoski_detection_2010} & & & \\
-\cmidrule(l){2-7}
- & Vibration & Deep learning (CycleGAN + CNN) & High\textsuperscript{$\dagger$} \cite{zhang_interpretable_2026} & High\textsuperscript{$\dagger$} \cite{zhang_interpretable_2026} & High\textsuperscript{$\dagger$} \cite{zhang_interpretable_2026} & \\
-\cmidrule(l){2-7}
- & AE & Time-domain (RMS, PCR) & High \cite{miettinen_analysis_2001} & & Moderate--High (early stage) \cite{tandon_condition_2007} & High \cite{hou_-situ_2025,cornel_condition_2021} \\
-\cmidrule(l){2-7}
- & AE & Multi-band hit-rate + WPI & & & High (abrasive only) \cite{delft_university_of_technology_tu_delft_influence_2024} & \\
-\cmidrule(l){2-7}
- & Passive ultrasound & Threshold (dB) & Moderate (industrial application) \cite{lineham_ultrasonic_2008} & & & \\
-\cmidrule(l){2-7}
- & Passive ultrasound & Hjorth parameters + $\kappa$ regression & & & & Moderate--High \cite{jakobsen_detecting_2023} \\
-\cmidrule(l){2-7}
- & Multi-sensor (vib.\ + AE + thermal) & Feature fusion (GNN) & & High\textsuperscript{$\ddagger$} \cite{zhang_graph-data-based_2024} & High\textsuperscript{$\ddagger$} \cite{zhang_graph-data-based_2024} & \\
-\specialrule{1.2pt}{2pt}{2pt}
-\multirow{2}{*}[-0.3cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
- & Active ultrasonic & Spring-layer model & & & & High (direct $h_m$) \cite{dwyer-joyce_measurement_2003,chen_evaluation_2023} \\
-\cmidrule(l){2-7}
- & Electrical & Circuit model & & & & High (direct $h_m$) \cite{cen_ehl_2021,becker-dombrowsky_electrical_2024} \\
+\multicolumn{6}{l}{\textit{Passive}} \\
+Vibration & Time-domain (RMS, kurtosis) & \xmark{} \cite{xu_vibration-based_2024} & & \checkmark{} \cite{tandon_condition_2007} & \\
+ & MED + spectral centroid ratio & \checkmark{} \cite{xu_vibration-based_2024} & & & \\
+ & Spectral kurtosis band energy & & & & \checkmark{} \cite{jakobsen_vibration_2021} \\
+ & Cyclostationarity + kurtosis & \checkmark{} fully starved only \cite{boskoski_detection_2010} & & & \\
+ & CycleGAN + CNN & \checkmark{} \cite{zhang_interpretable_2026} & \checkmark{} \cite{zhang_interpretable_2026} & \checkmark{} \cite{zhang_interpretable_2026} & \\
+\cmidrule(l){1-6}
+AE & Pulse count rate & \checkmark{} \cite{miettinen_analysis_2001} & & & \\
+ & Peak amplitude & & & \checkmark{} \cite{tandon_condition_2007} & \\
+ & Amplitude and energy & & & & \checkmark{} \cite{hou_-situ_2025,cornel_condition_2021} \\
+ & Load-cycle-normalised hit rate & & & \checkmark{} abrasive only \cite{delft_university_of_technology_tu_delft_influence_2024} & \\
+\cmidrule(l){1-6}
+Passive ultrasound & Threshold (dB above baseline) & \checkmark{} guidance only \cite{lineham_ultrasonic_2008} & & & \\
+ & Hjorth parameters + regression & & & & \checkmark{} \cite{jakobsen_detecting_2023} \\
+ & Kurtosis, crest factor & & & & \checkmark{} radial load only \cite{jakobsen_detecting_2023} \\
+\cmidrule(l){1-6}
+Multi-sensor & GNN anomaly detection & \checkmark{} \cite{zhang_graph-data-based_2024} & & & \\
+\midrule
+\multicolumn{6}{l}{\textit{Active}} \\
+Ultrasonic & Spring-layer model & & & & \checkmark{} \cite{dwyer-joyce_measurement_2003,chen_evaluation_2023} \\
+Electrical & Circuit model & & & & \checkmark{} \cite{cen_ehl_2021,becker-dombrowsky_electrical_2024} \\
 \bottomrule
 \end{tabularx}
-\caption{Reported sensitivity of sensing and signal processing method combinations to the three principal lubrication fault types and to film-thickness inadequacy expressed through $\kappa$ or $\Lambda$. Ratings marked \textit{Inferred} follow from the quantity the method measures (film thickness) rather than from a dedicated test of that fault type. Empty cells indicate the combination has not been assessed for that category in the reviewed literature. Parenthetical notes indicate the specific quantity or condition reported. Two qualifications apply to individual entries. Ratings marked $\dagger$ are reported for laboratory multistate data, with the corresponding field-domain performance resting on GAN-generated anomaly examples rather than measured field faults. Ratings marked $\ddagger$ are placed by \emph{assumed} fault type: the source reports lubrication abnormality detection over a degradation process without identifying which fault type was induced, so the column placement is our inference and not a claim made by the cited work.}
+\caption{Lubrication fault categories against which each sensing and SP combination has been tested in the reviewed literature. \checkmark: detection demonstrated; \xmark: tested but not discriminative; empty: not tested. The marks indicate demonstrated detection only, since bearing type, test rig, fault induction, and performance metric differ between studies.}
 \label{tab:fault_sensitivity}
 \end{table}
+
+Table~\ref{tab:fault_sensitivity} shows uneven coverage. Starvation and film-thickness inadequacy are the most frequently tested categories for passive methods. Viscosity degradation has been addressed in a single study, using offline-aged grease \cite{zhang_interpretable_2026}. Tandon et al.\ \cite{tandon_condition_2007} provide the only within-study comparison of sensing modalities. In their tests, AE peak amplitude responded far more strongly to contamination than vibration did. Two results are negative or conditional. Raw RMS and kurtosis did not separate starved from properly lubricated bearings, while MED with a spectral centroid ratio did \cite{xu_vibration-based_2024}. AE hit rate responded to abrasive but not to non-abrasive particles \cite{delft_university_of_technology_tu_delft_influence_2024}. Some marks also rest on weaker evidence. The passive ultrasound threshold is practitioner guidance rather than a controlled test \cite{lineham_ultrasonic_2008}, the GNN result comes from a single run-to-failure test in which lubricant loss coincides with wear \cite{zhang_graph-data-based_2024}, and the CycleGAN study realised each lubrication state on a single bearing \cite{zhang_interpretable_2026}. Most cells rest on one laboratory study, which limits what can be concluded about the relative merit of the methods.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Sensitivity to Operating Conditions}
 \label{subsec:comp_operating}
 
-Passive signals respond to speed, load, and temperature as well as to lubrication. A rise in RMS, AE energy, or ultrasound level may therefore reflect a change of operating point rather than worsening lubrication. Whether a study can separate these effects depends largely on its experimental design. Table~\ref{tab:test_conditions} summarises the test conditions of the key passive studies.
+Passive signals respond to speed, load, and temperature as well as to lubrication. A rise in RMS, AE energy, or ultrasound level may therefore reflect a change of operating point rather than worsening lubrication. Whether a study can separate these effects depends largely on its experimental design. Table~\ref{tab:test_conditions} summarises the test conditions of the key studies of passive methods.
 
 \begin{table}[H]
 \scriptsize
@@ -83,7 +76,7 @@ Passive signals respond to speed, load, and temperature as well as to lubricatio
 \midrule
 Jakobsen et al.\ \cite{jakobsen_vibration_2021} \newline \textit{Vibration; spectral kurtosis band energy} & Speed and temperature, setting $\kappa \approx 0.2$--3.0 & 500--3000\,rpm & Constant, 4\,kN & 30--120\,$^\circ$C & No; $\kappa$ set by speed and temperature \\
 \cmidrule{1-6}
-Jakobsen et al.\ \cite{jakobsen_detecting_2023} \newline \textit{Passive ultrasound (MEMS microphone); Hjorth parameters + regression} & Speed and temperature, setting $\kappa \approx 0.05$--2.2 & 500--3000\,rpm & Constant, 4\,kN; validation rig unloaded & 40--120\,$^\circ$C & No; $\kappa$ set by speed and temperature \\
+Jakobsen et al.\ \cite{jakobsen_detecting_2023} \newline \textit{Passive ultrasound (MEMS microphone); Hjorth parameters + regression} & Speed and temperature, setting $\kappa \approx 0.1$--1.0 (primary) and 0.05--2.2 (validation) & 500--3000\,rpm (primary); 180--2400\,rpm (validation) & Constant, 4\,kN; validation rig unloaded & 40--120\,$^\circ$C (primary); 25--90\,$^\circ$C (validation) & No; $\kappa$ set by speed and temperature \\
 \cmidrule{1-6}
 Cornel et al.\ \cite{cornel_condition_2021} \newline \textit{AE; amplitude versus $\Lambda$} & Temperature, setting $\Lambda$ & 500 and 3000\,rpm & Constant contact pressure, 2.0\,GPa & 30--130\,$^\circ$C & No; $\Lambda$ set by temperature \\
 \cmidrule{1-6}
@@ -104,119 +97,74 @@ Zhang et al.\ \cite{zhang_graph-data-based_2024} \newline \textit{Vibration, AE,
 
 As Table~\ref{tab:test_conditions} shows, the studies vary lubrication in two distinct ways. Four studies change the lubricant itself, through grease quantity, lubricant viscosity, or offline aging and contamination \cite{hou_-situ_2025,xu_vibration-based_2024,zhang_coupled_2026,zhang_interpretable_2026}. Lubrication and operating conditions can then be varied independently. Jakobsen et al.\ \cite{jakobsen_vibration_2021,jakobsen_detecting_2023} and Cornel et al.\ \cite{cornel_condition_2021} instead set $\kappa$ or $\Lambda$ through speed and temperature. The lubrication indicator is then a function of the same variables that confound the signal. A feature that correlates with $\kappa$ may partly track speed or temperature, and these designs cannot fully separate the two effects.
 
-Load is the least examined variable. It is held constant in every study that reports an LCM indicator. Only Zhang et al.\ \cite{zhang_coupled_2026} vary it, and they find that AE amplitude rises with radial load at fixed speed. The $\kappa$ ratio contains no load term (Section~\ref{subsec:kappa}), so $\kappa$-based models do not compensate for load. Jakobsen et al.\ \cite{jakobsen_detecting_2023} hold load constant because film thickness depends only weakly on it. Yet in their unloaded validation test, kurtosis and crest factor no longer responded to decreasing $\kappa$, which indicates that load affects the features even where it barely affects the film.
+Load is the least examined variable. It is held constant or not reported in every study that reports an LCM indicator. Only Zhang et al.\ \cite{zhang_coupled_2026} vary it, and they find that AE amplitude rises with radial load at fixed speed. The $\kappa$ ratio contains no load term, so $\kappa$-based models do not compensate for load.
 
 The reviewed literature contains four approaches to handling operating conditions:
 \begin{itemize}
     \item \textbf{$\kappa$ as reference variable:} $\kappa$ encodes speed and temperature through ISO 281 and the lubricant viscosity--temperature relation \cite{jakobsen_vibration_2021,jakobsen_detecting_2023}.
     \item \textbf{Speed as model input:} Hou and Zhang \cite{hou_-situ_2025} weight their amplitude- and energy-based $\Lambda$ estimates by shaft speed.
-    \item \textbf{Speed-robust ratio features:} Xu et al.\ \cite{xu_vibration-based_2024} divide the spectral centroid of the MED-filtered signal by that of the raw signal. Across 400--1200\,rpm the ratio stays clearly separated between proper and starved lubrication, while raw RMS under proper lubrication rises from 0.04\,g to 0.19\,g.
+    \item \textbf{Speed-robust ratio features:} Xu et al.\ \cite{xu_vibration-based_2024} divide the spectral centroid of the MED-filtered signal by that of the raw signal. Across the tested speed range, the ratio stays clearly separated between proper and starved lubrication, while raw RMS under proper lubrication rises roughly fivefold.
     \item \textbf{Reference at the same operating point:} industrial threshold methods compare readings with a baseline taken at the same speed and load \cite{lineham_ultrasonic_2008}.
 \end{itemize}
 Zhang et al.\ \cite{zhang_interpretable_2026} also test transfer from a test rig to a motor running at other speeds, although at a set of discrete speeds.
 
-Active methods are less affected by speed because film thickness is their measurand, but their measurement models still depend on operating conditions. The dielectric constant of the lubricant varies with pressure and temperature \cite{cen_ehl_2021}. The Hertzian contact area in electrical models varies with load, and a study reviewed by Becker-Dombrowsky et al.\ \cite{becker-dombrowsky_electrical_2024} reports measured capacitance deviating from the model by a factor of 3 to 11, depending on speed and temperature. To our knowledge, no reviewed SP method has been validated under continuously varying speed and load (Section~\ref{sec:gaps}).
+To our knowledge, no reviewed SP method has been validated under continuously varying speed and load (Section~\ref{sec:gaps}).
 
-% ─────────────────────────────────────────────────────────────────────────────
-\subsection{Practical Deployment Requirements}
-\label{subsec:comp_deployment}
+% % ─────────────────────────────────────────────────────────────────────────────
+% \subsection{Practical Deployment Requirements}
+% \label{subsec:comp_deployment}
 
-Table~\ref{tab:deployment} compares sensing and signal processing method combinations on practical deployment characteristics relevant to industrial implementation.
+% Table~\ref{tab:deployment} compares sensing and signal processing method combinations on practical deployment characteristics relevant to industrial implementation.
 
-\begin{table}[H]
-\scriptsize
-\centering
-\renewcommand{\arraystretch}{1.4}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\linewidth}{
-c
->{\raggedright\arraybackslash}p{1.8cm}
- >{\raggedright\arraybackslash}p{1.7cm}
- >{\raggedright\arraybackslash}X
- >{\centering\arraybackslash}p{1.4cm}
- >{\centering\arraybackslash}p{1.4cm}
- >{\raggedright\arraybackslash}X }
-\toprule
-& \textbf{Sensing method} & \textbf{Bearing modif.} & \textbf{Sensor installation constraints} & \textbf{Sampling rate} & \textbf{Real-time capable} & \textbf{Calibration / data requirements} \\
-\midrule
-\multirow{5}{*}[-3.2cm]{\rotatebox[origin=c]{90}{\textbf{Passive}}}
- & AE & None & Flat surface, direct structural path to bearing bore; avoid joints and material changes; bond or clamp required for high-freq.\ coupling & $>$1\,MHz & Partial (features only) & Baseline measurement under known lubrication condition \cite{lineham_ultrasonic_2008}; labelled data for ML \\
-\cmidrule(l){2-7}
- & Vibration & None & Standard industrial accelerometer mount (stud, adhesive, magnet); location affects frequency content but less critically than AE & $>$60\,kHz & Yes & No baseline required; labelled data for ML \\
-\cmidrule(l){2-7}
- & Passive ultrasound & None & As for AE, but less sensitive to exact path geometry at 20--100\,kHz; industrial instruments are handheld or clamp-on & $>$200\,kHz & Yes & Baseline reference at known good lubrication \cite{lineham_ultrasonic_2008}; labelled data for regression \\
-\cmidrule(l){2-7}
- & Sound / microphone & None & Non-contact; proximity ($<$0.5\,m) and low ambient noise critical; high-freq.\ content lost beyond 20\,kHz in air & $>$40\,kHz & Yes & No baseline; labelled data for ML \\
-\cmidrule(l){2-7}
- & Thermal & None & Housing surface or non-contact IR; robust to mounting position; slow response renders exact location unimportant & Low (Hz) & Yes & No; threshold or trend analysis \\
-\specialrule{1.2pt}{2pt}{2pt}
-\multirow{2}{*}[-1.5cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
- & Active ultrasonic & Transducer coupling & Requires permanent or clamp-on transducer with controlled couplant; alignment critical; curved surfaces need geometric correction \cite{li_lubrication_2026} & $>$1\,MHz & Partial & Calibration reference signal essential \cite{hansen_comparison_2022}; no labelled data (model-based) \\
-\cmidrule(l){2-7}
- & Electrical & Electrical path through bearing & Requires electrical isolation of bearing from frame; brush or slip-ring contacts to rotating shaft; not retrofittable in standard machines & kHz--MHz & Partial & Calibration reference \cite{cen_ehl_2021}; no labelled data (model-based) \\
-\bottomrule
-\end{tabularx}
-\caption{Practical deployment characteristics of sensing methods for LCM. ``Bearing modification'' refers to structural changes to the bearing or housing beyond sensor attachment. ``Real-time capable'' refers to whether the SP method can produce condition estimates at bearing rotational rates without offline computation. Installation constraints reflect both sensor coupling requirements and signal propagation considerations (Section~\ref{subsec:transmission}).}
-\label{tab:deployment}
-\end{table}
+% \begin{table}[H]
+% \scriptsize
+% \centering
+% \renewcommand{\arraystretch}{1.4}
+% \setlength{\tabcolsep}{3pt}
+% \begin{tabularx}{\linewidth}{
+% c
+% >{\raggedright\arraybackslash}p{1.8cm}
+%  >{\raggedright\arraybackslash}p{1.7cm}
+%  >{\raggedright\arraybackslash}X
+%  >{\centering\arraybackslash}p{1.4cm}
+%  >{\centering\arraybackslash}p{1.4cm}
+%  >{\raggedright\arraybackslash}X }
+% \toprule
+% & \textbf{Sensing method} & \textbf{Bearing modif.} & \textbf{Sensor installation constraints} & \textbf{Sampling rate} & \textbf{Real-time capable} & \textbf{Calibration / data requirements} \\
+% \midrule
+% \multirow{5}{*}[-3.2cm]{\rotatebox[origin=c]{90}{\textbf{Passive}}}
+%  & AE & None & Flat surface, direct structural path to bearing bore; avoid joints and material changes; bond or clamp required for high-freq.\ coupling & $>$1\,MHz & Partial (features only) & Baseline measurement under known lubrication condition \cite{lineham_ultrasonic_2008}; labelled data for ML \\
+% \cmidrule(l){2-7}
+%  & Vibration & None & Standard industrial accelerometer mount (stud, adhesive, magnet); location affects frequency content but less critically than AE & $>$60\,kHz & Yes & No baseline required; labelled data for ML \\
+% \cmidrule(l){2-7}
+%  & Passive ultrasound & None & As for AE, but less sensitive to exact path geometry at 20--100\,kHz; industrial instruments are handheld or clamp-on & $>$200\,kHz & Yes & Baseline reference at known good lubrication \cite{lineham_ultrasonic_2008}; labelled data for regression \\
+% \cmidrule(l){2-7}
+%  & Sound / microphone & None & Non-contact; proximity ($<$0.5\,m) and low ambient noise critical; high-freq.\ content lost beyond 20\,kHz in air & $>$40\,kHz & Yes & No baseline; labelled data for ML \\
+% \cmidrule(l){2-7}
+%  & Thermal & None & Housing surface or non-contact IR; robust to mounting position; slow response renders exact location unimportant & Low (Hz) & Yes & No; threshold or trend analysis \\
+% \specialrule{1.2pt}{2pt}{2pt}
+% \multirow{2}{*}[-1.5cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
+%  & Active ultrasonic & Transducer coupling & Requires permanent or clamp-on transducer with controlled couplant; alignment critical; curved surfaces need geometric correction \cite{li_lubrication_2026} & $>$1\,MHz & Partial & Calibration reference signal essential \cite{hansen_comparison_2022}; no labelled data (model-based) \\
+% \cmidrule(l){2-7}
+%  & Electrical & Electrical path through bearing & Requires electrical isolation of bearing from frame; brush or slip-ring contacts to rotating shaft; not retrofittable in standard machines & kHz--MHz & Partial & Calibration reference \cite{cen_ehl_2021}; no labelled data (model-based) \\
+% \bottomrule
+% \end{tabularx}
+% \caption{Practical deployment characteristics of sensing methods for LCM. ``Bearing modification'' refers to structural changes to the bearing or housing beyond sensor attachment. ``Real-time capable'' refers to whether the SP method can produce condition estimates at bearing rotational rates without offline computation. Installation constraints reflect both sensor coupling requirements and signal propagation considerations (Section~\ref{subsec:transmission}).}
+% \label{tab:deployment}
+% \end{table}
 
-Passive non-invasive methods (AE, vibration, ultrasound, sound, thermal) share the critical practical advantage that they require no bearing modification and can in principle be retrofitted to bearings in service. The trade-off is that their signals carry lubrication information mixed with other sources (machine vibration, electromagnetic interference, structural resonances), requiring more sophisticated SP to extract the lubrication-relevant component. Active and invasive methods provide cleaner, more direct lubrication information at the cost of installation complexity and, in some cases, bearing modification.
+% Passive non-invasive methods (AE, vibration, ultrasound, sound, thermal) share the critical practical advantage that they require no bearing modification and can in principle be retrofitted to bearings in service. The trade-off is that their signals carry lubrication information mixed with other sources (machine vibration, electromagnetic interference, structural resonances), requiring more sophisticated SP to extract the lubrication-relevant component. Active and invasive methods provide cleaner, more direct lubrication information at the cost of installation complexity and, in some cases, bearing modification.
 
-The installation constraints in Table~\ref{tab:deployment} highlight a practical hierarchy among passive non-invasive methods. AE is the most installation-sensitive: the frequency-dependent attenuation described in Section~\ref{subsec:transmission} means that signal quality degrades significantly if the sensor is separated from the bearing by bolted joints, material transitions, or long structural paths. A sensor poorly positioned relative to the bearing can render high-frequency AE content undetectable regardless of its nominal sensitivity. Passive ultrasound at 20--100\,kHz is more tolerant of imperfect mounting, which partly explains its wider industrial adoption. Vibration accelerometers, operating at yet lower frequencies, are the most robust to mounting position variations. Thermal sensors, operating at DC, are entirely insensitive to structural transmission path effects. Among passive methods, AE imposes the highest data-rate requirement ($>$500\,kHz sampling) due to the high-frequency nature of the emitted waves, which creates storage and computation challenges for continuous real-time monitoring. The two-dimensional amplitude-energy framework of Hou and Zhang \cite{hou_-situ_2025} demonstrates a computationally demanding offline analysis; real-time implementations would require significant simplification or dedicated hardware.
+% The installation constraints in Table~\ref{tab:deployment} highlight a practical hierarchy among passive non-invasive methods. AE is the most installation-sensitive: the frequency-dependent attenuation described in Section~\ref{subsec:transmission} means that signal quality degrades significantly if the sensor is separated from the bearing by bolted joints, material transitions, or long structural paths. A sensor poorly positioned relative to the bearing can render high-frequency AE content undetectable regardless of its nominal sensitivity. Passive ultrasound at 20--100\,kHz is more tolerant of imperfect mounting, which partly explains its wider industrial adoption. Vibration accelerometers, operating at yet lower frequencies, are the most robust to mounting position variations. Thermal sensors, operating at DC, are entirely insensitive to structural transmission path effects. Among passive methods, AE imposes the highest data-rate requirement ($>$500\,kHz sampling) due to the high-frequency nature of the emitted waves, which creates storage and computation challenges for continuous real-time monitoring. The two-dimensional amplitude-energy framework of Hou and Zhang \cite{hou_-situ_2025} demonstrates a computationally demanding offline analysis; real-time implementations would require significant simplification or dedicated hardware.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Technology Maturity}
 \label{subsec:comp_maturity}
 
-Table~\ref{tab:maturity} characterises the technology readiness of each method combination on a three-level scale: \textit{Research} (demonstrated only in controlled laboratory conditions), \textit{Prototype} (demonstrated on industrial components or in field trials, but not in commercial products), and \textit{Industrial} (available in commercial products or deployed in regular industrial use).
+The maturity of each method can be placed on a three-level scale: \textit{Research} (demonstrated only in controlled laboratory conditions), \textit{Prototype} (demonstrated on industrial components or in field trials, but not in commercial products), and \textit{Industrial} (available in commercial products or in regular industrial use).
 
-\begin{table}[H]
-\scriptsize
-\centering
-\renewcommand{\arraystretch}{1.4}
-\setlength{\tabcolsep}{4pt}
-\begin{tabularx}{\linewidth}{
-c
->{\raggedright\arraybackslash}p{2.5cm}
- >{\raggedright\arraybackslash}p{3cm}
- >{\centering\arraybackslash}X
- X }
-\toprule
-& \textbf{Sensing method} & \textbf{SP method} & \textbf{Maturity} & \textbf{Representative evidence} \\
-\midrule
-\multirow{7}{*}[-1.9cm]{\rotatebox[origin=c]{90}{\textbf{Passive}}}
- & Passive ultrasound & dB threshold & Industrial & UE Systems, Sonotec, AccuTrak products \cite{lineham_ultrasonic_2008} \\
-\cmidrule(l){2-5}
- & Vibration & Time-domain + frequency-domain (general bearing CM; LCM via threshold) & Industrial & Widely deployed; Brüel \& Kjær, SKF, Schaeffler products \\
-\cmidrule(l){2-5}
- & AE & Time-domain (RMS, PCR) & Prototype & \cite{cornel_condition_2021,hou_-situ_2025,miettinen_analysis_2001} \\
-\cmidrule(l){2-5}
- & Vibration & $\kappa$ regression & Research & \cite{jakobsen_vibration_2021} \\
-\cmidrule(l){2-5}
- & Passive ultrasound & $\kappa$ regression (LASSO, NN) & Research & \cite{jakobsen_detecting_2023} \\
-\cmidrule(l){2-5}
- & AE & GNN / multi-sensor fusion & Research & \cite{zhang_graph-data-based_2024} \\
-\cmidrule(l){2-5}
- & Sound / microphone & Frequency features + ML & Research & \cite{georgiev_microphone_2017} \\
-\specialrule{1.2pt}{2pt}{2pt}
-\multirow{4}{*}[-0.8cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
- & Active ultrasonic & Spring-layer model & Prototype & \cite{dwyer-joyce_measurement_2003,li_lubrication_2026,chen_evaluation_2023} \\
-\cmidrule(l){2-5}
- & Electrical (capacitance/impedance) & Circuit model & Prototype & \cite{cen_ehl_2021,becker-dombrowsky_electrical_2024,schneider_method_2022} \\
-\cmidrule(l){2-5}
- & SAW & Mode conversion & Research & \cite{lindner_a23_2011} \\
-\cmidrule(l){2-5}
- & Active ultrasonic & Reflection + induction tachometry & Research & \cite{tatzgern_tribo-acoustic_2025} \\
-\bottomrule
-\end{tabularx}
-\caption{Technology maturity of sensing and signal processing method combinations for LCM. Maturity levels: \textit{Industrial} -- commercially deployed; \textit{Prototype} -- demonstrated on industrial components or in field tests; \textit{Research} -- demonstrated in controlled laboratory studies only. Note: the \textit{Industrial} maturity of vibration refers to general bearing condition monitoring; LCM-specific vibration deployment is limited to simple threshold methods not identified as a dedicated LCM product in the reviewed literature.}
-\label{tab:maturity}
-\end{table}
+Only one passive method is at industrial level: passive ultrasound with a dB threshold above a baseline is implemented in commercial instruments \cite{ue_systems_ultraprobe_2026,ue_systems_ultra-trak_2026,skf_ultrasound_2026}, following the procedure described by Lineham \cite{lineham_ultrasonic_2008}. Among active methods, ultrasonic reflectometry with the spring-layer model reaches the prototype level. It has been developed on laboratory rigs \cite{dwyer-joyce_measurement_2003,chen_evaluation_2023} and applied to a full-scale wind turbine pitch bearing on a test rig \cite{li_lubrication_2026}.
 
-A striking observation is the large gap between the industrial deployment of passive ultrasound threshold methods and the research-stage status of virtually all more sophisticated SP approaches. The threshold method -- despite its well-documented limitations (speed-load confounding, no degradation modelling) -- is the only passive non-invasive LCM method in routine commercial deployment. All regression, ML, and physics-informed SP methods remain at the research stage, with none yet validated in a full industrial deployment at scale. This gap constitutes a primary motivation for the research direction described in Section~\ref{sec:gaps}.
+All other methods in this review remain at the research stage. For passive sensing, this includes time-domain AE features \cite{miettinen_analysis_2001,cornel_condition_2021,hou_-situ_2025,delft_university_of_technology_tu_delft_influence_2024}, vibration features based on spectral kurtosis, MED, or cyclostationarity \cite{jakobsen_vibration_2021,xu_vibration-based_2024,boskoski_detection_2010}, $\kappa$ regression from passive ultrasound \cite{jakobsen_detecting_2023}, microphone-based monitoring \cite{georgiev_microphone_2017}, and deep learning and multi-sensor fusion \cite{zhang_interpretable_2026,zhang_graph-data-based_2024}. For active sensing, it includes electrical capacitance and impedance methods \cite{cen_ehl_2021,becker-dombrowsky_electrical_2024,schneider_method_2022}, SAW sensing \cite{lindner_a23_2011}, and the tribo-acoustic tachometer \cite{tatzgern_tribo-acoustic_2025}.
 
-% ─────────────────────────────────────────────────────────────────────────────
-\subsection{Summary of Comparative Findings}
-\label{subsec:comp_summary}
-
-The comparative analysis reveals a structural inversion at the core of the LCM field: the sensing methods most accessible for industrial deployment -- passive, non-invasive, retrofittable without bearing modification -- are supported by the least mature signal processing, while the methods with the most physically grounded and quantitatively capable SP (active ultrasonic reflectometry, electrical circuit models) impose installation barriers that restrict them to controlled test environments or high-value dedicated assets. Industrial deployment of passive LCM is consequently dominated by threshold methods developed in the early 2000s, while the diagnostically superior SP approaches -- physics-informed $\kappa$ regression, multi-sensor GNN fusion -- remain at the research stage, validated only under constant operating conditions. Closing this gap requires SP methods that are simultaneously physically interpretable, robust to operating condition variation, and deployable on standard industrial hardware without bearing modification -- the challenge that defines the research gaps identified in Section~\ref{sec:gaps}.
+There is thus a large gap between industrial practice and research. The threshold method is the only passive non-invasive LCM method found in commercial products in this review, although it does not account for changes in operating conditions and does not model degradation. The regression, machine learning, and model-based methods for passive signals have all been validated only in the laboratory and their generalisability has not been demonstrated. This gap motivates the research directions in Section~\ref{sec:gaps}.

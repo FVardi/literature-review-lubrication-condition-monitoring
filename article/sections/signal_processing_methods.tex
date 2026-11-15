@@ -1,7 +1,7 @@
 \section{Signal Processing Methods}
 \label{sec:sp}
 
-This section provides the primary systematic contribution of this review: a taxonomy of signal processing methods applied to LCM of ball bearings, organised by processing family rather than by sensing modality. For each family the method is first described on its own terms -- its mathematical basis, assumptions, and outputs -- and then its specific applications across sensing modalities are discussed, drawing on the literature surveyed. A master cross-reference matrix linking SP method families to sensing modalities is provided in Table~\ref{tab:sp_crossref} at the end of this section.
+This section provides the main contribution of this review: a taxonomy of signal processing methods applied to LCM of ball bearings, organised by processing family rather than by sensing modality. For each family the method is first described on its own terms -- its mathematical basis, assumptions, and outputs -- and then its specific applications across sensing modalities are discussed, drawing on the literature surveyed. A master cross-reference matrix linking SP method families to sensing modalities is provided in Table~\ref{tab:sp_crossref} at the end of this section.
 
 The section contains the following categories: time-domain and frequency-domain methods (Sections~\ref{subsec:sp_time}--\ref{subsec:sp_freq}) operate directly on the measured signal; time-frequency, decomposition, and signal enhancement methods (Section~\ref{subsec:sp_tf}) address non-stationarity and improve the signal before feature extraction; physics-based and model-driven methods (Section~\ref{subsec:sp_model}) incorporate lubrication physics to convert processed signals into physically interpretable quantities; and machine learning and data fusion methods (Sections~\ref{subsec:sp_ml}--\ref{subsec:feature_fusion}) learn mappings from processed features to lubrication condition labels or regression targets. Figure~\ref{fig:sp_taxonomy} provides an overview of this taxonomy.
 
@@ -47,7 +47,7 @@ The section contains the following categories: time-domain and frequency-domain 
     T/180/0/{Speed \& load\\normalisation},
     T/180/1.5/{Threshold\\methods},
     F/120/-1.35/{Spectral statistics \&\\shape descriptors},
-    F/120/1.35/{Multi-band\\hit rate \& WPI},
+    F/120/1.35/{Multi-band\\hit rate},
     TF/60/-2.1/{STFT \&\\kurtogram},
     TF/60/0/{EMD \&\\VMD},
     TF/60/2.1/{Minimum entropy\\deconvolution},
@@ -55,7 +55,7 @@ The section contains the following categories: time-domain and frequency-domain 
     P/0/-0.75/{Electrical circuit\\models},
     P/0/0.75/{SAW attenuation \&\\time-delay models},
     P/0/2.25/{$\kappa$\,/\,$\Lambda$ as\\regression targets},
-    ML/-60/-1.35/{Classical ML\\(LASSO, shallow NN)},
+    ML/-60/-1.35/{Classical ML\\(linear regression, shallow NN)},
     ML/-60/1.35/{Deep learning\\(CNN, GNN, CycleGAN)},
     FF/-120/0/{Graph-based\\multi-sensor fusion}}
 {
@@ -132,7 +132,7 @@ The coefficient of quartile deviation (CQD) is a robust, distribution-shape-base
 
 \subsubsection{Threshold Methods}
 \label{subsubsec:threshold}
-The simplest operational approach is to compare a time-domain feature, commonly the ultrasound dB level or AE RMS, against a threshold established during a reference measurement under known adequate lubrication. If the feature rises a specified number of dB above the reference, relubrication is recommended \cite{lineham_ultrasonic_2008}. This is the method employed by industrial instruments such as UE Systems Ultraprobe and Sonotec's handheld devices. The advantages are simplicity, interpretability, and no requirement for labelled training data. The critical disadvantage is that the threshold carries no information about operating condition and a speed or load change might trigger a false alarm.
+The simplest operational approach is to compare a time-domain feature, commonly the ultrasound dB level, against a threshold established during a reference measurement under known adequate lubrication. If the feature rises a specified number of dB above the reference, relubrication is recommended \cite{lineham_ultrasonic_2008}. This is the method employed by industrial instruments such as the UE Systems Ultraprobe and the SKF Ultrasound Lubrication Checker \cite{ue_systems_ultraprobe_2026,skf_ultrasound_2026}. The advantages are simplicity, interpretability, and no requirement for labelled training data. The critical disadvantage is that the threshold carries no independent information about operating condition and a speed or load change might trigger a false alarm.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Frequency-Domain Methods}
@@ -146,15 +146,15 @@ The Fourier transform and power spectral density (PSD) reveal the distribution o
 \label{subsubsec:spectral_shape}
 Higher-order spectral statistics and shape descriptors characterise the spectral distribution beyond its energy content. Whether computed on a one-dimensional amplitude spectrum or per frequency bin across the time dimension of a two-dimensional STFT spectrogram, these are fundamentally shape analyses. Kurtosis measures impulsiveness and peakedness, skewness measures asymmetry, flatness the energy concentration relative to white noise, and center frequency, RMS frequency, and bandwidth-related measures the location and spread of spectral energy.
 
-Jakobsen et al.\ \cite{jakobsen_vibration_2021} apply spectral kurtosis (SK) to vibration signals from grease-lubricated ball bearings under alternating lubrication conditions, with speed and temperature varied to span $\kappa$ from approximately 0.2 to 3.0. Band energy extracted from a lubrication-sensitive kurtogram band (7500--12000\,Hz) is correlated directly with $\kappa$ using Pearson and Spearman coefficients values. The kurtogram band energy serves as the lubrication condition indicator itself, not as a selector for downstream analysis.
+Jakobsen et al.\ \cite{jakobsen_vibration_2021} apply spectral kurtosis (SK) to vibration signals from grease-lubricated ball bearings under alternating lubrication conditions, with speed and temperature varied to span $\kappa$ from approximately 0.2 to 3.0. Band energy extracted from a lubrication-sensitive kurtogram band (7500--12000\,Hz) is correlated directly with $\kappa$ using Pearson and Spearman coefficients. The correlation is negative and strongest at low $\kappa$, although one unheated test stage shows the opposite sign. The kurtogram band energy serves as the lubrication condition indicator itself, not as a selector for downstream analysis.
 
 Zhang et al.\ \cite{zhang_graph-data-based_2024} take a complementary approach, computing 15 spectral shape descriptors from vibration signals in the 0--3\,kHz and 10--12.8\,kHz bands and from AE signals in the 20--40\,kHz band. These include dominant frequency, band-specific energy, center frequency, RMS frequency, spectral mean and standard deviation, spectral flatness, frequency-domain skewness and kurtosis, and normalised bandwidth. The features are used in a graph-neural network for lubrication condition anomaly detection.
 
-For airborne sound, Georgiev et al.\ \cite{georgiev_microphone_2017} extract frequency-domain features from microphone array measurements and show that they change measurably as the lubrication level varies, proposing fuzzy-logic or neural-network classification of the lubrication state.
+For airborne sound, Kudriashov et al.\ \cite{georgiev_microphone_2017} estimate focalised spectra from microphone array measurements and show that lubrication loss raises the spectral level across the audible range. They propose threshold-based detection against a reference spectrum, and cite fuzzy-logic and neural-network classifiers from other work as alternatives.
 
-\subsubsection{Multi-Band Hit-Rate and Wear Particle Index}
+\subsubsection{Multi-Band Hit Rate}
 \label{subsubsec:hitrate}
-The Delft University group \cite{delft_university_of_technology_tu_delft_influence_2024} employ a three-band sensor array (40--100\,kHz, 95--180\,kHz, 180--580\,kHz) for AE monitoring of large-scale low-speed slew bearings. An AE hit is recorded when the signal in a given band exceeds a threshold with a minimum SNR of 20\,dB, and the hit rate is normalised by loading cycles to remove the effect of varying test duration. A Wear Particle Index (WPI) derived from the normalised hit rate shows linear correlation with abrasive particle mass fraction in grease. Crucially, non-abrasive (soft) particles produce negligible additional hits, demonstrating that AE hit-rate is selective for hardness contrast rather than total particle mass -- a practically important limitation for contamination monitoring.
+Scheeren et al.\ \cite{delft_university_of_technology_tu_delft_influence_2024} use a three-band sensor array (40--100\,kHz, 95--180\,kHz, 180--580\,kHz) for AE monitoring of low-speed roller bearings. An AE hit is recorded when the signal in a given band exceeds a threshold with a minimum SNR of 20\,dB, and the hit rate is normalised by load cycles to allow comparison between bearings of different geometry and speed. The load-cycle-normalised hit rate correlates linearly with the concentration of abrasive particles in the grease.
 
 A related but distinct use of sub-band decomposition is mechanism attribution rather than fault or wear detection. Zhang et al.\ \cite{zhang_coupled_2026} divide the 1--200\,kHz AE spectrum into 20\,kHz-wide sub-bands and, within each, fit the RMS-versus-speed trend and its coefficient of determination ($R^2$) to identify whether the asperity-load ($\sqrt{\text{speed}}$) or sliding-friction (speed$^2$) mechanism dominates. This reveals that the two AE generation mechanisms identified in Section~\ref{sec:signal_origins} are not uniformly distributed across frequency: for low-viscosity grease the lower sub-bands trend closer to the square-root relationship while higher sub-bands trend closer to quadratic, whereas for high-viscosity grease the quadratic trend holds across all sub-bands.
 
@@ -174,7 +174,7 @@ Empirical mode decomposition (EMD) and variants adaptively decompose a signal in
 
 \subsubsection{Minimum Entropy Deconvolution}
 \label{subsubsec:med}
-Minimum entropy deconvolution (MED) designs a finite impulse response (FIR) filter that maximises the kurtosis of the filter output, thereby recovering the sparse impulsive excitation source from a noisy observation. In the LCM context, the impulsive sources are the transient mechanical impacts associated with asperity contacts, formation of cracks, or rolling element passage over roughened raceways under starved lubrication. Xu et al.\ \cite{xu_vibration-based_2024} demonstrate that MED applied to vibration signals significantly enhances the detection of lubrication starvation-related impulses, enabling spectral centroid and envelope features to detect starved conditions that are not detectable in the unprocessed signal. The method assumes that the source signal is sparse, which may not hold for all lubrication fault types.
+Minimum entropy deconvolution (MED) designs a finite impulse response (FIR) filter that maximises the kurtosis of the filter output, thereby recovering the sparse impulsive excitation source from a noisy observation. Xu et al.\ \cite{xu_vibration-based_2024} demonstrate that MED applied to vibration signals significantly enhances the detection of lubrication starvation-related impulses, enabling spectral centroid and envelope features to detect starved conditions that are not detectable in the unprocessed signal.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -202,30 +202,29 @@ A model-driven approach for passive sensing methods uses $\kappa$ or $\Lambda$, 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Machine Learning and Data-driven Methods}
 \label{subsec:sp_ml}
-Data-driven meachine learning methods learn mappings from handcrafted or raw signal features to lubrication condition labels or continuous condition estimates. They can be organised into classical machine learning and deep learning.
+Data-driven machine learning methods learn mappings from handcrafted or raw signal features to lubrication condition labels or continuous condition estimates. They can be organised into classical machine learning and deep learning.
 
 \subsubsection{Classical Machine Learning}
 \label{subsubsec:classical_ml}
-\todo{Check whether Georgiev et al.\ (georgiev\_microphone\_2017) demonstrate fuzzy-logic/NN classification with results or only propose it. If demonstrated, add a sentence here; if only proposed, remove the Classical ML tick under Sound/Microphone in Table~\ref{tab:sp_crossref}.}
-Jakobsen et al.\ \cite{jakobsen_detecting_2023} demonstrate that regularised linear regression (LASSO) on passive ultrasound features achieves good $\kappa$ prediction while providing interpretable feature weights. The feature set found through the sparsity promoting LASSO regression is furthermore used in a simple nerual network to predict $\kappa$.
+Jakobsen et al.\ \cite{jakobsen_detecting_2023} predict $\kappa$ from passive ultrasound features with linear regression and a small neural network. LASSO regression serves as a check on the manually selected feature sets, and it consistently selects the high-pass-filtered Hjorth mobility and complexity. The neural networks predict $\kappa$ more accurately than the linear models.
 
 \subsubsection{Deep Learning}
 \label{subsubsec:dl}
-Deep learning methods operate on raw signals or intermediate representations and learn features jointly with the classification or regression task. Zhang et al. \cite{zhang_graph-data-based_2024} apply a graph neural network (GNN) to features from multi-sensor data (vibration, AE, temperature) lubrication degradation, leveraging sensor correlations that are not captured by independent feature extraction. Zhang et al. \cite{zhang_interpretable_2026} address the absence of labelled field lubrication faults by using a CycleGAN with multiscale residual blocks and a semantic-consistency loss to translate labelled rig signals into target-machine style, then classifying with a CNN trained solely on the generated data. This is the only reviewed method that produces usable lubrication-anomaly training data for a field deployment with no labelled field-fault examples at all. The evaluation is nonetheless not a true field test since both setups share sensor type and acquisition hardware and each lubrication state was realised on a dedicated bearing.
+Deep learning methods operate on raw signals or intermediate representations and learn features jointly with the classification or regression task. Zhang et al. \cite{zhang_graph-data-based_2024} apply a graph neural network (GNN) to features from multi-sensor data (vibration, AE, temperature) lubrication degradation, leveraging sensor correlations that are not captured by independent feature extraction. Zhang et al. \cite{zhang_interpretable_2026} address the absence of labelled field lubrication faults by using a CycleGAN with multiscale residual blocks and a semantic-consistency loss to translate labelled rig signals into target-machine style, then classifying with a CNN trained solely on the generated data. The CNN classifies four lubrication states (normal, degraded, insufficient, contaminated) with high accuracy on measured motor data. This is the only reviewed method that produces usable lubrication-anomaly training data for a field deployment with no labelled field-fault examples at all. The evaluation is nonetheless not a true field test since both setups share sensor type and acquisition hardware and each lubrication state was realised on a dedicated bearing.
 
-A consistent challenge for deep learning in LCM is the scarcity of labelled training data from real bearing degradation under controlled lubrication conditions. Controlled accelerated tests are expensive to run, and publicly available LCM datasets with varied lubrication conditions and sensing modalities are not currently available. Generative domain transfer \cite{zhang_interpretable_2026} is a response to this challenge for the specific case of lab-to-field transfer, though it remains distinct from the self-supervised and foundation-model directions.
+A consistent challenge for deep learning in LCM is the scarcity of labelled training data from real bearing degradation under controlled lubrication conditions. Controlled accelerated tests are expensive to run, and publicly available LCM datasets with varied lubrication conditions and sensing modalities are not currently available. Generative domain transfer \cite{zhang_interpretable_2026} addresses this challenge for the specific case of transfer from a test rig to another machine. Self-supervised learning is a separate approach to the same problem (Section~\ref{subsec:gap_ssl}).
 
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Feature Fusion}
 \label{subsec:feature_fusion}
-Feature-level fusion concatenates feature vectors from multiple sensors into a single feature vector before the classification or regression step. Zhang et al.\ \cite{zhang_graph-data-based_2024} fuse vibration, AE, and temperature features through a graph representation. A graph attention network trained on the structure detects lubrication degradation, and the multi-sensor system outperforms any single-modality baseline.
+Feature-level fusion concatenates feature vectors from multiple sensors into a single feature vector before the classification or regression step. Zhang et al.\ \cite{zhang_graph-data-based_2024} fuse vibration, AE, and temperature features through a graph representation. A graph attention network trained on the structure detects lubrication degradation, and the multi-sensor system outperforms any single-modality baseline. The evidence comes from a single run-to-failure test, in which the anomaly is flagged before the temperature rise used as the failure criterion. Lubricant loss and wear progress together in this test, so the detection cannot be attributed to lubrication alone.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Master Cross-Reference Matrix}
 \label{subsec:sp_crossref}
 
-Table~\ref{tab:sp_crossref} summarises the successfull application of SP method families to each sensing modality, as found in the reviewed literature. A filled cell indicates the combination has been demonstrated for LCM in at least one reviewed study.
+Table~\ref{tab:sp_crossref} summarises the successful application of SP method families to each sensing modality, as found in the reviewed literature. A filled cell indicates the combination has been demonstrated for LCM in at least one reviewed study.
 
 \begin{table}[H]
 \scriptsize
@@ -256,31 +255,31 @@ Table~\ref{tab:sp_crossref} summarises the successfull application of SP method 
 \hline
 Time-domain statistics      & \checkmark & \checkmark & \checkmark &            &            &            &            &            \\
 \hline
-Threshold methods           &            & \checkmark & \checkmark &            &            &            &            &            \\
+Threshold methods           &            &            & \checkmark &            &            &            &            &            \\
 \hline
 Spectral shape  & \checkmark & \checkmark &            & \checkmark &            &            &            &            \\
 \hline
-Multi-band hit-rate / WPI   &            & \checkmark &            &            &            &            &            &            \\
+Multi-band hit rate         &            & \checkmark &            &            &            &            &            &            \\
 \hline
 STFT          & \checkmark &            &            &            &            &            &            &            \\
 \hline
 Deconvolution         & \checkmark &            &            &            &            &            &            &            \\
+\hline
+Classical ML   &            &            & \checkmark &            &            &            &            &            \\
+\hline
+$\kappa$/$\Lambda$ regression target & \checkmark & \checkmark & \checkmark &  &            &            &            &            \\
+\hline
+Deep learning & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
+\hline
+Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
 \hline
 Spring-layer model          &            &            &            &            &            & \checkmark &            &            \\
 \hline
 Electrical circuit model    &            &            &            &            &            &            & \checkmark &            \\
 \hline
 SAW attenuation / time-delay model &      &            &            &            &            &            &            & \checkmark \\
-\hline
-$\kappa$/$\Lambda$ regression target & \checkmark & \checkmark & \checkmark &  &            &            &            &            \\
-\hline
-Classical ML   &            &            & \checkmark & \checkmark &            &            &            &            \\
-\hline
-Deep learning & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
-\hline
-Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
 \end{tabularx}
-\caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \checkmark indicates the combination has been demonstrated in at least one study included in this review.}
+\caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of rolling element bearings. A \checkmark indicates the combination has been demonstrated in at least one study included in this review.}
 \label{tab:sp_crossref}
 \end{table}
 

@@ -1,21 +1,22 @@
 
-\section{Systematic Literature Search}
+\section{Literature Selection}
 \label{sec:search}
 
-\subsection{Search Strategy}
-\label{subsec:search_strategy}
-
-The literature search was conducted in January--February 2026 using the databases Google Scholar, ScienceDirect, Scopus, and ResearchGate, supplemented by citation graph exploration via Connected Papers to identify relevant works not captured by keyword search alone. Boolean search strings were constructed from combinations of the following keyword groups:
+\subsection{Search Approach}
+This is a narrative review witha  structured search. Relevant literature was identified through keyword searches in Scopus, ScienceDirect, Google Scholar and ResearchGate, carried out mainly between October and December 2025, with later additions up to November 2026. Searches used combinations of terms from the following keyword groups:
 
 \begin{itemize}
-    \item \textit{Application domain:} lubrication, lubrication condition monitoring, film thickness, lubrication degradation, lubricant starvation, grease condition, oil condition.
-    \item \textit{Component:} ball bearing, rolling element bearing, roller bearing.
-    \item \textit{Sensing modality:} vibration, acoustic emission, ultrasound, sound, microphone, thermal, infrared, electrical, capacitance, impedance, optical, magnetic, inductive.
-    \item \textit{Signal processing:} signal processing, feature extraction, time domain, frequency domain, wavelet, machine learning, deep learning, neural network, regression, classification.
-    \item \textit{Monitoring mode:} online, in-line, in-situ, condition monitoring.
+  \item \textbf{Application domain:} lubrication, lubrication condition monitoring, film thickness, lubrication degradation, lubricant starvation, grease condition, oil condition.
+  \item \textbf{Component:} ball bearing, rolling element bearing, roller bearing.
+  \item \textbf{Sensing modality:} vibration, acoustic emission, ultrasound, sound, microphone, thermal, infrared, electrical, capacitance, impedance, optical, magnetic, inductive.
+  \item \textbf{Signal processing:} signal processing, feature extraction, time domain, frequency domain, wavelet, machine learning, deep learning, neural network, regression, classification.
+  \item \textbf{Monitoring mode:} online, in-line, in-situ, condition monitoring.
 \end{itemize}
 
-\subsection{Inclusion and Exclusion Criteria}
+The searches were supplemented by citation-graph exploration (Connected Papers) and technical documentation from bearing manufacturers (SKF, Schaeffler).
+
+\subsection{Selection Criteria}
+Studies were selected by the author against the criteria in Table~2. Studies meeting all inclusion criteria form the primary basis of the comparisons in Sections~7 and~8; further sources provide background on lubrication physics, signal processing methodology and industrial practice.
 \label{subsec:criteria}
 \begin{table}[H]
 \scriptsize
@@ -28,93 +29,94 @@ The literature search was conducted in January--February 2026 using the database
 \toprule
 \textbf{Inclusion criteria} & \textbf{Exclusion criteria} \\
 \midrule
-Study concerns rolling element bearings (including ball bearings, cylindrical roller bearings, tapered roller bearings, or slew bearings) & Study concerns non-rolling element bearings exclusively \\
+Study concerns rolling element bearings & Study concerns non-rolling element bearings exclusively \\
 \cmidrule{1-2}
 Study identifies the sensing modality and the signal processing approach used on its own data. & Study does not identify the sensing modality or signal processing approach. \\
 \cmidrule{1-2}
-Monitoring is online, in-line, or in-situ (data collected during bearing operation) & Monitoring is exclusively offline (lubricant laboratory analysis without online data collection) \\
+Monitoring is online, in-line, or in-situ & Monitoring is exclusively offline \\
 \cmidrule{1-2}
-Study focuses on lubrication condition as the primary monitoring target (film thickness, viscosity, degradation, contamination, or regime) & Study concerns bearing fault detection or RUL estimation with no specific lubrication condition focus \\
+Study focuses on lubrication condition as the primary monitoring target & Study concerns bearing fault detection or RUL estimation with no specific lubrication condition focus \\
 \cmidrule{1-2}
 English-language peer-reviewed journal papers and conference proceedings; technical reports and manuals from industrial applications of LCM & Non-English sources, patents, and promotional material without technical substance \\
 \bottomrule
 \end{tabularx}
-\caption{Inclusion and exclusion criteria for the systematic literature search.}
+\caption{Inclusion and exclusion criteria for the literature selection.}
 \label{tab:criteria}
 \end{table}
 
-\subsection{Search Results and PRISMA Flow}
-\label{subsec:prisma}
-\todo{Figure and text will be adjusted with updated numbers in the end.}
-A total of 131 sources were initially identified through the literature search. After removal of duplicates across databases, 48 sources were identified as treating the topic of online or in-line LCM for rolling element bearings. Of these, 33 treated monitoring with active or invasive sensing methods and 20 treated passive and non-invasive sensing methods (some sources address both). All 48 are included as the primary basis for this review; the broader set of 131 sources provides supporting context for theoretical background, signal processing methodology, and industrial applications.
+Studies meeting all inclusion criteria form the evidence base for Sections~\ref{sec:sensing}--\ref{sec:comparative} and are summarised in Tables~\ref{tab:sp_crossref}, \ref{tab:fault_sensitivity} and~\ref{tab:test_conditions}; further sources are cited for background on lubrication physics, signal processing methodology and industrial practice. The selection was made by a single reviewer without a formal screening protocol, so the corpus is representative rather than exhaustive.
 
-\begin{figure}[H]
-\centering
-\newcommand{\prismaN}[1]{(\mbox{$n = #1$})}
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-    font=\footnotesize,
-    node distance=7mm and 8mm,
-    box/.style={draw, rectangle, align=center, inner sep=4pt,
-                minimum height=11mm, fill=white,
-                execute at begin node={\hyphenpenalty=10000}},
-    main/.style={box, text width=74mm, fill=blue!6},
-    excl/.style={box, text width=46mm, fill=red!5},
-    incl/.style={box, text width=74mm, fill=green!10},
-    sub/.style={box, text width=31mm, fill=green!4},
-    phase/.style={draw, rounded corners=2pt, fill=blue!15,
-                  font=\footnotesize\bfseries, rotate=90, inner sep=3pt},
-    arr/.style={-{Stealth[length=2.2mm]}, semithick},
-]
-% Main column
-\node[main] (id) {Records identified through database search\\
-    (Google Scholar, ScienceDirect, Scopus, ResearchGate)\\
-    and citation-graph exploration (Connected Papers)\\
-    \prismaN{131}};
-\node[main, below=16mm of id] (scr) {Records screened by title and abstract\\
-    \prismaN{131}};
-\node[main, below=of scr] (full) {Full-text articles assessed for eligibility\\
-    \prismaN{48}};
-\node[incl, below=of full] (inc) {Studies included in systematic review\\
-    \prismaN{48}};
-% Exclusion column
-\node[excl, right=of scr] (exs) {Excluded: not related to bearing LCM\\
-    \prismaN{83}};
-\node[excl, right=of full] (exf) {Excluded:\\
-    sensing/processing not identified \prismaN{0}\\
-    offline only \prismaN{0}};
-\coordinate (mid) at ($(id.south)!0.5!(scr.north)$);
-\node[excl, minimum height=8mm] (dup) at (mid -| exs)
-    {Duplicates removed \prismaN{0}};
-% Sub-groups
-\node[sub, anchor=north] (act) at ($(inc.south) + (-21.5mm,-10mm)$)
-    {Active or invasive\\ sensing methods\\ \prismaN{33}};
-\node[sub, anchor=north] (pas) at ($(inc.south) + (21.5mm,-10mm)$)
-    {Passive and\\ non-invasive methods\\ \prismaN{20}};
-% Arrows
-\draw[arr] (id) -- (scr);
-\draw[arr] (scr) -- (full);
-\draw[arr] (full) -- (inc);
-\draw[arr] (id.south |- dup.west) -- (dup.west);
-\draw[arr] (scr) -- (exs);
-\draw[arr] (full) -- (exf);
-\coordinate (split) at ($(inc.south) + (0,-5mm)$);
-\draw[semithick] (inc.south) -- (split);
-\draw[arr] (split) -| (act.north);
-\draw[arr] (split) -| (pas.north);
-\node[font=\scriptsize\itshape, below=1pt of split] {(some overlap)};
-% Phase labels
-\coordinate (lx) at ($(id.west) + (-6mm,0)$);
-\path let \p1 = (id.north), \p2 = (id.south) in
-    node[phase, minimum width=\y1-\y2] at (lx |- id) {Identification};
-\path let \p1 = (scr.north), \p2 = (full.south) in
-    node[phase, minimum width=\y1-\y2]
-    at ($(lx |- scr.north)!0.5!(lx |- full.south)$) {Screening};
-\path let \p1 = (inc.north), \p2 = (act.south) in
-    node[phase, minimum width=\y1-\y2]
-    at ($(lx |- inc.north)!0.5!(lx |- act.south)$) {Included};
-\end{tikzpicture}%
-}
-\caption{PRISMA-style literature selection flow diagram. Numbers reflect the search conducted in January--February 2026.}
-\label{fig:prisma}
-\end{figure}
+% \subsection{Search Results and PRISMA Flow}
+% \label{subsec:prisma}
+% A total of 131 sources were initially identified through the literature search. After removal of duplicates across databases, 48 sources were identified as treating the topic of online or in-line LCM for rolling element bearings. Of these, 33 treated monitoring with active or invasive sensing methods and 20 treated passive and non-invasive sensing methods (some sources address both). All 48 are included as the primary basis for this review; the broader set of 131 sources provides supporting context for theoretical background, signal processing methodology, and industrial applications.
+
+% \begin{figure}[H]
+% \centering
+% \newcommand{\prismaN}[1]{(\mbox{$n = #1$})}
+% \resizebox{\textwidth}{!}{%
+% \begin{tikzpicture}[
+%     font=\footnotesize,
+%     node distance=7mm and 8mm,
+%     box/.style={draw, rectangle, align=center, inner sep=4pt,
+%                 minimum height=11mm, fill=white,
+%                 execute at begin node={\hyphenpenalty=10000}},
+%     main/.style={box, text width=74mm, fill=blue!6},
+%     excl/.style={box, text width=46mm, fill=red!5},
+%     incl/.style={box, text width=74mm, fill=green!10},
+%     sub/.style={box, text width=31mm, fill=green!4},
+%     phase/.style={draw, rounded corners=2pt, fill=blue!15,
+%                   font=\footnotesize\bfseries, rotate=90, inner sep=3pt},
+%     arr/.style={-{Stealth[length=2.2mm]}, semithick},
+% ]
+% % Main column
+% \node[main] (id) {Records identified through database search\\
+%     (Google Scholar, ScienceDirect, Scopus, ResearchGate)\\
+%     and citation-graph exploration (Connected Papers)\\
+%     \prismaN{131}};
+% \node[main, below=16mm of id] (scr) {Records screened by title and abstract\\
+%     \prismaN{131}};
+% \node[main, below=of scr] (full) {Full-text articles assessed for eligibility\\
+%     \prismaN{48}};
+% \node[incl, below=of full] (inc) {Studies included in systematic review\\
+%     \prismaN{48}};
+% % Exclusion column
+% \node[excl, right=of scr] (exs) {Excluded: not related to bearing LCM\\
+%     \prismaN{83}};
+% \node[excl, right=of full] (exf) {Excluded:\\
+%     sensing/processing not identified \prismaN{0}\\
+%     offline only \prismaN{0}};
+% \coordinate (mid) at ($(id.south)!0.5!(scr.north)$);
+% \node[excl, minimum height=8mm] (dup) at (mid -| exs)
+%     {Duplicates removed \prismaN{0}};
+% % Sub-groups
+% \node[sub, anchor=north] (act) at ($(inc.south) + (-21.5mm,-10mm)$)
+%     {Active or invasive\\ sensing methods\\ \prismaN{33}};
+% \node[sub, anchor=north] (pas) at ($(inc.south) + (21.5mm,-10mm)$)
+%     {Passive and\\ non-invasive methods\\ \prismaN{20}};
+% % Arrows
+% \draw[arr] (id) -- (scr);
+% \draw[arr] (scr) -- (full);
+% \draw[arr] (full) -- (inc);
+% \draw[arr] (id.south |- dup.west) -- (dup.west);
+% \draw[arr] (scr) -- (exs);
+% \draw[arr] (full) -- (exf);
+% \coordinate (split) at ($(inc.south) + (0,-5mm)$);
+% \draw[semithick] (inc.south) -- (split);
+% \draw[arr] (split) -| (act.north);
+% \draw[arr] (split) -| (pas.north);
+% \node[font=\scriptsize\itshape, below=1pt of split] {(some overlap)};
+% % Phase labels
+% \coordinate (lx) at ($(id.west) + (-6mm,0)$);
+% \path let \p1 = (id.north), \p2 = (id.south) in
+%     node[phase, minimum width=\y1-\y2] at (lx |- id) {Identification};
+% \path let \p1 = (scr.north), \p2 = (full.south) in
+%     node[phase, minimum width=\y1-\y2]
+%     at ($(lx |- scr.north)!0.5!(lx |- full.south)$) {Screening};
+% \path let \p1 = (inc.north), \p2 = (act.south) in
+%     node[phase, minimum width=\y1-\y2]
+%     at ($(lx |- inc.north)!0.5!(lx |- act.south)$) {Included};
+% \end{tikzpicture}%
+% }
+% \caption{PRISMA-style literature selection flow diagram. Numbers reflect the search conducted in January--February 2026.}
+% \label{fig:prisma}
+% \end{figure}
