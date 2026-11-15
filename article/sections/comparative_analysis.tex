@@ -29,7 +29,7 @@ c
 \toprule
 & \textbf{Sensing method} & \textbf{SP method} & \textbf{Starvation} & \textbf{Viscosity degradation} & \textbf{Contamination} & \textbf{Film-thickness inadequacy ($\kappa$/$\Lambda$)} \\
 \midrule
-\multirow{11}{*}[-2.5cm]{\rotatebox[origin=c]{90}{\textbf{Passive}}}
+\multirow{10}{*}[-2.3cm]{\rotatebox[origin=c]{90}{\textbf{Passive}}}
  & Vibration & Time-domain (RMS, kurtosis) & Low \cite{xu_vibration-based_2024} & & & Moderate \cite{jakobsen_vibration_2021} \\
 \cmidrule(l){2-7}
  & Vibration & MED + envelope & High \cite{xu_vibration-based_2024} & & & \\
@@ -48,23 +48,15 @@ c
 \cmidrule(l){2-7}
  & Passive ultrasound & Hjorth parameters + $\kappa$ regression & & & & Moderate--High \cite{jakobsen_detecting_2023} \\
 \cmidrule(l){2-7}
- & Thermal & Time-domain (trend) & Moderate (slow response) \cite{moussa_passive_2017} & & & \\
-\cmidrule(l){2-7}
  & Multi-sensor (vib.\ + AE + thermal) & Feature fusion (GNN) & & High\textsuperscript{$\ddagger$} \cite{zhang_graph-data-based_2024} & High\textsuperscript{$\ddagger$} \cite{zhang_graph-data-based_2024} & \\
 \specialrule{1.2pt}{2pt}{2pt}
-\multirow{5}{*}[-1cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
+\multirow{2}{*}[-0.3cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
  & Active ultrasonic & Spring-layer model & & & & High (direct $h_m$) \cite{dwyer-joyce_measurement_2003,chen_evaluation_2023} \\
 \cmidrule(l){2-7}
  & Electrical & Circuit model & & & & High (direct $h_m$) \cite{cen_ehl_2021,becker-dombrowsky_electrical_2024} \\
-\cmidrule(l){2-7}
- & Magnetic / inductive & Mode decomp.\ + pulse & & & High (ferrous debris; simulated) \cite{yu_novel_2021} & \\
-\cmidrule(l){2-7}
- & Magnetic / inductive & Impedance analysis & & & High (small particles) \cite{shi_ultrasensitive_2022} & \\
-\cmidrule(l){2-7}
- & Optical (in-line) & Machine vision (tracking, CNN) & & & High (debris counting) \cite{liu_oil_2022,wang_online_2022} & \\
 \bottomrule
 \end{tabularx}
-\caption{Reported sensitivity of sensing and signal processing method combinations to the three principal lubrication fault types and to film-thickness inadequacy expressed through $\kappa$ or $\Lambda$. Ratings marked \textit{Inferred} follow from the quantity the method measures (film thickness) rather than from a dedicated test of that fault type. Empty cells indicate the combination has not been assessed for that category in the reviewed literature. Parenthetical notes indicate the specific quantity or condition reported. Three qualifications apply to individual entries. The magnetic/inductive mode-decomposition rating is derived from simulated sensor signals rather than measured ones. Ratings marked $\dagger$ are reported for laboratory multistate data, with the corresponding field-domain performance resting on GAN-generated anomaly examples rather than measured field faults. Ratings marked $\ddagger$ are placed by \emph{assumed} fault type: the source reports lubrication abnormality detection over a degradation process without identifying which fault type was induced, so the column placement is our inference and not a claim made by the cited work.}
+\caption{Reported sensitivity of sensing and signal processing method combinations to the three principal lubrication fault types and to film-thickness inadequacy expressed through $\kappa$ or $\Lambda$. Ratings marked \textit{Inferred} follow from the quantity the method measures (film thickness) rather than from a dedicated test of that fault type. Empty cells indicate the combination has not been assessed for that category in the reviewed literature. Parenthetical notes indicate the specific quantity or condition reported. Two qualifications apply to individual entries. Ratings marked $\dagger$ are reported for laboratory multistate data, with the corresponding field-domain performance resting on GAN-generated anomaly examples rather than measured field faults. Ratings marked $\ddagger$ are placed by \emph{assumed} fault type: the source reports lubrication abnormality detection over a degradation process without identifying which fault type was induced, so the column placement is our inference and not a claim made by the cited work.}
 \label{tab:fault_sensitivity}
 \end{table}
 
@@ -119,7 +111,7 @@ The reviewed literature contains four approaches to handling operating condition
     \item \textbf{$\kappa$ as reference variable:} $\kappa$ encodes speed and temperature through ISO 281 and the lubricant viscosity--temperature relation \cite{jakobsen_vibration_2021,jakobsen_detecting_2023}.
     \item \textbf{Speed as model input:} Hou and Zhang \cite{hou_-situ_2025} weight their amplitude- and energy-based $\Lambda$ estimates by shaft speed.
     \item \textbf{Speed-robust ratio features:} Xu et al.\ \cite{xu_vibration-based_2024} divide the spectral centroid of the MED-filtered signal by that of the raw signal. Across 400--1200\,rpm the ratio stays clearly separated between proper and starved lubrication, while raw RMS under proper lubrication rises from 0.04\,g to 0.19\,g.
-    \item \textbf{Reference at the same operating point:} industrial threshold methods compare readings with a baseline taken at the same speed and load \cite{lineham_ultrasonic_2008}. Moussa \cite{moussa_passive_2017} compares the transient temperature rise with that of a healthy bearing under identical conditions.
+    \item \textbf{Reference at the same operating point:} industrial threshold methods compare readings with a baseline taken at the same speed and load \cite{lineham_ultrasonic_2008}.
 \end{itemize}
 Zhang et al.\ \cite{zhang_interpretable_2026} also test transfer from a test rig to a motor running at other speeds, although at a set of discrete speeds.
 
@@ -158,12 +150,10 @@ c
 \cmidrule(l){2-7}
  & Thermal & None & Housing surface or non-contact IR; robust to mounting position; slow response renders exact location unimportant & Low (Hz) & Yes & No; threshold or trend analysis \\
 \specialrule{1.2pt}{2pt}{2pt}
-\multirow{3}{*}[-2.2cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
+\multirow{2}{*}[-1.5cm]{\rotatebox[origin=c]{90}{\textbf{Active}}}
  & Active ultrasonic & Transducer coupling & Requires permanent or clamp-on transducer with controlled couplant; alignment critical; curved surfaces need geometric correction \cite{li_lubrication_2026} & $>$1\,MHz & Partial & Calibration reference signal essential \cite{hansen_comparison_2022}; no labelled data (model-based) \\
 \cmidrule(l){2-7}
  & Electrical & Electrical path through bearing & Requires electrical isolation of bearing from frame; brush or slip-ring contacts to rotating shaft; not retrofittable in standard machines & kHz--MHz & Partial & Calibration reference \cite{cen_ehl_2021}; no labelled data (model-based) \\
-\cmidrule(l){2-7}
- & Magnetic / inductive & Access to lubricant flow & Sensor in or around lubricant line or sump; not applicable to grease-lubricated sealed bearings & kHz & Yes & Particle count baseline; no labelled data \\
 \bottomrule
 \end{tabularx}
 \caption{Practical deployment characteristics of sensing methods for LCM. ``Bearing modification'' refers to structural changes to the bearing or housing beyond sensor attachment. ``Real-time capable'' refers to whether the SP method can produce condition estimates at bearing rotational rates without offline computation. Installation constraints reflect both sensor coupling requirements and signal propagation considerations (Section~\ref{subsec:transmission}).}

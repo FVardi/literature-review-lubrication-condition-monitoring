@@ -49,11 +49,12 @@ The section contains the following categories: time-domain and frequency-domain 
     F/120/-1.35/{Spectral statistics \&\\shape descriptors},
     F/120/1.35/{Multi-band\\hit rate \& WPI},
     TF/60/-2.1/{STFT \&\\kurtogram},
-    TF/60/0/{EMD, VMD\\\& SGMD},
+    TF/60/0/{EMD \&\\VMD},
     TF/60/2.1/{Minimum entropy\\deconvolution},
-    P/0/-1.5/{Spring model\\(ultrasonic)},
-    P/0/0/{Electrical circuit\\models},
-    P/0/1.5/{$\kappa$\,/\,$\Lambda$ as\\regression targets},
+    P/0/-2.25/{Spring model\\(ultrasonic)},
+    P/0/-0.75/{Electrical circuit\\models},
+    P/0/0.75/{SAW attenuation \&\\time-delay models},
+    P/0/2.25/{$\kappa$\,/\,$\Lambda$ as\\regression targets},
     ML/-60/-1.35/{Classical ML\\(LASSO, shallow NN)},
     ML/-60/1.35/{Deep learning\\(CNN, GNN, CycleGAN)},
     FF/-120/0/{Graph-based\\multi-sensor fusion}}
@@ -73,22 +74,56 @@ The section contains the following categories: time-domain and frequency-domain 
 \label{subsec:sp_time}
 
 Time-domain methods extract scalar features from a windowed segment of the raw or bandpass-filtered sensor signal. They are computationally lightweight, robust to non-stationarity within the window, and directly interpretable in physical terms. These properties make them the most practically deployed class of methods in both research and industrial LCM applications.
+% Table~\ref{tab:td_features} summarises the time-domain features reported in the reviewed literature.
+
+% \begin{table}[H]
+% \scriptsize
+% \centering
+% \renewcommand{\arraystretch}{1.4}
+% \setlength{\tabcolsep}{4pt}
+% \begin{tabularx}{\linewidth}{
+% >{\raggedright\arraybackslash}p{1.6cm}
+%  >{\raggedright\arraybackslash}p{3.0cm}
+%  >{\raggedright\arraybackslash}p{1.9cm}
+%  >{\raggedright\arraybackslash}X
+%  >{\raggedright\arraybackslash}p{2.6cm} }
+% \toprule
+% \textbf{Feature} & \textbf{Definition} & \textbf{Captures} & \textbf{Reported trend} & \textbf{Modality and refs.} \\
+% \midrule
+% RMS & $\sqrt{\tfrac{1}{N}\sum_{i} x_i^2}$ & Signal energy & $\uparrow$ with worsening lubrication; non-monotonic for AE (decreases from dry to boundary, then increases) \cite{hou_-situ_2025} & AE \cite{cornel_condition_2021,yoshioka_monitoring_2009,hou_-situ_2025}; Vib \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}; US \cite{jakobsen_detecting_2023}; Thermal \cite{moussa_passive_2017} \\
+% \cmidrule{1-5}
+% Kurtosis & $\dfrac{\tfrac{1}{N}\sum_{i}(x_i-\bar{x})^4}{\sigma^4}$ & Impulsiveness & $\uparrow$ with fault severity ($\sim$8.6$\times$) \cite{usgame_sandoval_acoustic_2013}; $\downarrow$ under grease as damage becomes broadband \cite{yoshioka_monitoring_2009} & AE \cite{usgame_sandoval_acoustic_2013}; Vib \cite{yoshioka_monitoring_2009} \\
+% \cmidrule{1-5}
+% Crest factor & $\max|x_i| \,/\, \mathrm{RMS}$ & Impulsiveness & $\downarrow$ as signal shifts from sparse impulses to broadband noise & US, Vib \cite{jakobsen_detecting_2023} \\
+% \cmidrule{1-5}
+% Hjorth parameters & Activity $\mathrm{var}(x)$; mobility $\sqrt{\mathrm{var}(x')/\mathrm{var}(x)}$; complexity $M(x')/M(x)$ & Variance, mean frequency, bandwidth & All three correlate with $\kappa$; predict $\kappa$ via linear regression or shallow NN & US \cite{jakobsen_detecting_2023} \\
+% \cmidrule{1-5}
+% Pulse count rate (PCR) & Threshold crossings per unit time & AE burst rate & $\uparrow$ monotonically with grease starvation; separates grease formulations & AE \cite{miettinen_analysis_2001} \\
+% \cmidrule{1-5}
+% Ring-down count & Threshold crossings within a single AE burst & Burst duration and energy & $\uparrow$ with fault severity ($\sim$266$\times$); most sensitive single feature in study & AE \cite{usgame_sandoval_acoustic_2013} \\
+% \cmidrule{1-5}
+% CQD & $(Q_3 - Q_1)/(Q_3 + Q_1)$ of the RMS time series & RMS fluctuation & Higher for low- than high-viscosity grease across all sub-bands & AE \cite{zhang_coupled_2026} \\
+% \bottomrule
+% \end{tabularx}
+% \caption{Time-domain features applied to LCM of rolling element bearings in the reviewed literature. $\uparrow$/$\downarrow$ denote an increase/decrease of the feature; $M(\cdot)$ denotes mobility. Vib: vibration; US: passive ultrasound. See Table~\ref{tab:sp_crossref} for the family-level overview across all SP methods and sensing modalities.}
+% \label{tab:td_features}
+% \end{table}
 
 \subsubsection{Standard Statistical Moments and Energy Metrics}
 \label{subsubsec:moments}
 Statistical moments and energy metrics are broadly used to estimate signal energy and impulsiveness. Empirically, they have been shown to correlate well with faults, rotational speed, and, to a lesser degree, lubrication conditions.
 
 \paragraph{Root Mean Square}
-The most widely reported time-domain feature is the root mean square (RMS), which reflects the total signal energy over the window. For passive methods, RMS in general increases monotonically with worsening lubrication due to increasing asperity contact energy. It is widely reported for AE \cite{cornel_condition_2021,yoshioka_monitoring_2009, hou_-situ_2025}, vibration \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}, passive ultrasound \cite{jakobsen_detecting_2023}, and thermal monitoring \cite{moussa_passive_2017}. An exception is reported by Hou and Zhang \cite{hou_-situ_2025}, where the total energy of AE signals first decreases when moving from dry to boundary lubrication but thereafter increases. The decrease is accredited to a reduction in asperity contacts, while the increase is accredited to higher viscous forces.
+The most widely reported time-domain feature is the root mean square (RMS), which reflects the total signal energy over the window. For passive methods, RMS in general increases monotonically with worsening lubrication due to increasing asperity contact energy. It is widely reported for AE \cite{cornel_condition_2021,hou_-situ_2025}, vibration \cite{jakobsen_vibration_2021,jakobsen_detecting_2023,xu_vibration-based_2024}, and passive ultrasound \cite{jakobsen_detecting_2023}. An exception is reported by Hou and Zhang \cite{hou_-situ_2025}, where the total energy of AE signals first decreases when moving from dry to boundary lubrication but thereafter increases. The decrease is accredited to a reduction in asperity contacts, while the increase is accredited to higher viscous forces.
 
 \paragraph{Kurtosis and Peak Sensitivity}
-Where RMS captures overall energy, kurtosis captures the impulsiveness of the signal relative to a Gaussian distribution. High kurtosis indicates sparse, high-amplitude transients such as those produced by asperity micro-contacts or incipient crack impacts. Usgame Sandoval et al.\ \cite{usgame_sandoval_acoustic_2013} report an $\sim$8.6-fold increase in AE kurtosis from normal to severe fault in tapered roller bearings. In contrast, Yoshioka and Shimizu \cite{yoshioka_monitoring_2009} note that under grease lubrication, kurtosis of the raw vibration signal decreases as damage transitions from sparse impulsive AE to a continuous broadband noise floor -- a counter-intuitive reversal that illustrates the importance of bearing-specific calibration. The crest factor, defined as the peak-to-RMS ratio, behaves similarly: it is sensitive to impulsive events but tends to decrease as the signal transitions from sparse impulses to continuous broadband noise. Jakobsen et al.\ \cite{jakobsen_detecting_2023} apply it to passive ultrasound and vibration signals for LCM. Kurtosis applied to spectral representations also forms the basis for higher-order spectral analysis of lubrication signals (Section~\ref{subsubsec:spectral_shape}).
+Where RMS captures overall energy, kurtosis captures the impulsiveness of the signal relative to a Gaussian distribution. High kurtosis indicates sparse, high-amplitude transients such as those produced by asperity micro-contacts or incipient crack impacts. The crest factor, defined as the peak-to-RMS ratio, behaves similarly: it is sensitive to impulsive events but tends to decrease as the signal transitions from sparse impulses to continuous broadband noise. Jakobsen et al.\ \cite{jakobsen_detecting_2023} apply it to passive ultrasound and vibration signals for LCM. Kurtosis applied to spectral representations also forms the basis for higher-order spectral analysis of lubrication signals (Section~\ref{subsubsec:spectral_shape}).
 
 \paragraph{Hjorth's Parameters}
 Jakobsen et al.\ \cite{jakobsen_detecting_2023} further use the Hjorth parameters, three features derived from successive derivatives of the signal: \textit{activity} (signal variance), \textit{mobility} (ratio of the standard deviation of the first derivative to that of the signal, proportional to mean frequency), and \textit{complexity} (ratio of the mobility of the first derivative to the mobility of the signal, reflecting bandwidth). Applied to high-pass filtered passive ultrasound signals, all three correlate well with $\kappa$, and when combined with linear regression or a shallow neural network they predict $\kappa$ with good precision. No other paper in the reviewed literature reports Hjorth parameters for LCM.
 
 \paragraph{Pulse Couting Methods}
-Count-based features are a simple feature for AE signals. The pulse count rate (PCR) is the number of AE threshold crossings per unit time. Miettinen et al.\ \cite{miettinen_analysis_2001} show that PCR increases monotonically with grease starvation and distinguishes ten grease formulations by thickener type and base-oil viscosity. PCR is the computationally minimal AE processing approach and forms the basis of the industrial threshold methods, described in (Section~\ref{subsubsec:threshold}). The closely related ring-down count is the total number of threshold crossings within a single AE burst event. Usgame Sandoval et al.\ \cite{usgame_sandoval_acoustic_2013} report a $\sim$266-fold increase in ring-down count from normal to severe fault and find it to be the most sensitive single time-domain feature in their study, outperforming kurtosis and RMS.
+Count-based features are a simple feature for AE signals. The pulse count rate (PCR) is the number of AE threshold crossings per unit time. Miettinen et al.\ \cite{miettinen_analysis_2001} show that PCR increases monotonically with grease starvation and distinguishes ten grease formulations by thickener type and base-oil viscosity. PCR is the computationally minimal AE processing approach and forms the basis of the industrial threshold methods, described in (Section~\ref{subsubsec:threshold}).
 
 \paragraph{Quantile Methods}
 The coefficient of quartile deviation (CQD) is a robust, distribution-shape-based measure of dispersion in the time-varying RMS, defined as $\mathrm{CQD} = (Q_3 - Q_1)/(Q_3 + Q_1)$ for quartiles $Q_1$, $Q_3$ of the RMS time series within a window. Zhang et al.\ \cite{zhang_coupled_2026} use CQD to quantify the fluctuation level of AE signals in cylindrical roller bearings and show that low-viscosity grease produces significantly higher CQD than high-viscosity grease across all analysed frequency sub-bands, consistent with a shift in the dominant AE generation mechanism.
@@ -115,6 +150,8 @@ Jakobsen et al.\ \cite{jakobsen_vibration_2021} apply spectral kurtosis (SK) to 
 
 Zhang et al.\ \cite{zhang_graph-data-based_2024} take a complementary approach, computing 15 spectral shape descriptors from vibration signals in the 0--3\,kHz and 10--12.8\,kHz bands and from AE signals in the 20--40\,kHz band. These include dominant frequency, band-specific energy, center frequency, RMS frequency, spectral mean and standard deviation, spectral flatness, frequency-domain skewness and kurtosis, and normalised bandwidth. The features are used in a graph-neural network for lubrication condition anomaly detection.
 
+For airborne sound, Georgiev et al.\ \cite{georgiev_microphone_2017} extract frequency-domain features from microphone array measurements and show that they change measurably as the lubrication level varies, proposing fuzzy-logic or neural-network classification of the lubrication state.
+
 \subsubsection{Multi-Band Hit-Rate and Wear Particle Index}
 \label{subsubsec:hitrate}
 The Delft University group \cite{delft_university_of_technology_tu_delft_influence_2024} employ a three-band sensor array (40--100\,kHz, 95--180\,kHz, 180--580\,kHz) for AE monitoring of large-scale low-speed slew bearings. An AE hit is recorded when the signal in a given band exceeds a threshold with a minimum SNR of 20\,dB, and the hit rate is normalised by loading cycles to remove the effect of varying test duration. A Wear Particle Index (WPI) derived from the normalised hit rate shows linear correlation with abrasive particle mass fraction in grease. Crucially, non-abrasive (soft) particles produce negligible additional hits, demonstrating that AE hit-rate is selective for hardness contrast rather than total particle mass -- a practically important limitation for contamination monitoring.
@@ -133,7 +170,7 @@ The STFT divides the signal into short, overlapping windows and computes the FFT
 
 \subsubsection{Signal Decomposition Methods}
 \label{subsubsec:decomposition}
-Empirical mode decomposition (EMD) and variants adaptively decompose a signal into intrinsic mode functions without requiring a predefined basis as with e.g. the Fourier transform. They are furthermore well suited to non-linear and non-stationary bearing signals \cite{wang_advanced_2024}. Although these methods are used in general bearing condition monitoring, no study in the reviewed LCM literature applies EMD or VMD specifically to lubrication condition estimation on a real dataset, leaving them as a potential avenue for future work. Pan et al.\ \cite{pan_symplectic_2019} provide the methodological foundation for the symplectic geometry mode decomposition (SGMD) which Yu et al.\ \cite{yu_novel_2021} apply in conjuction with empirical mode decomposition (EMD) to simualated signals from inductive debris sensors and conclude that it performs better than EMD and wavelet decompositions alone.
+Empirical mode decomposition (EMD) and variants adaptively decompose a signal into intrinsic mode functions without requiring a predefined basis as with e.g. the Fourier transform. They are furthermore well suited to non-linear and non-stationary bearing signals \cite{wang_advanced_2024}. Although these methods are used in general bearing condition monitoring, no study in the reviewed LCM literature applies EMD or VMD specifically to lubrication condition estimation on a real dataset, leaving them as a potential avenue for future work.
 
 \subsubsection{Minimum Entropy Deconvolution}
 \label{subsubsec:med}
@@ -154,6 +191,10 @@ Active ultrasonic reflectometry estimates the reflection coefficient $R$ of an u
 \label{subsubsec:electrical_model}
 For electrical sensing methods (capacitance, impedance, resistance), physics-based circuit models relate a measured electrical signal to the lubricant film thickness. The bearing is modelled as a combination of electrically reactive elements whose characteristics depend on the film thickness, lubricant dielectric constant, and Hertzian contact geometry. This allows relating an eletrical probing of the bearing to lubrication film thickness. Cen et al.\ \cite{cen_ehl_2021} and Becker-Dombrowsky et al.\ \cite{becker-dombrowsky_electrical_2024} review the capacitance and impedance formulations respectively. Becker-Dombrowsky concludes that the covered methodology requires testing in other regimes than EHL, at different speeds and forces, for different types of lubricants, and for electrically induced damage of the bearings, which all constitute significant gaps before industrial applications will be possible. Maruyama et al.\ \cite{maruyama_lubrication_2023} apply the impedance model to practical deep-groove ball bearings under operating conditions. Two approaches to model calibration are reported: purely physics-based models using known material properties, and empirical calibration tests using reference lubricants to derive a relationship between the measured signal and Hamrock--Dowson-predicted film thickness \cite{cen_ehl_2021,schneider_method_2022}.
 
+\subsubsection{Attenuation and Time-Delay Models for Surface Acoustic Waves}
+\label{subsubsec:saw_model}
+For SAW sensing, the measured quantities are the attenuation and the time delay of a surface wave travelling along the raceway between a transmitting and a receiving transducer. When the wave travels through along the raceway it is attenuated and delayed through its interaction with the bearing material and lubricant. A wave-propagation model relates them to film thickness and lubrication condition \cite{lindner_a23_2011}. It is the only reviewed SP approach for SAW sensing.
+
 \subsubsection{Kappa and Lambda as Regression Targets}
 \label{subsubsec:kappa_target}
 A model-driven approach for passive sensing methods uses $\kappa$ or $\Lambda$, as the regression target for data-driven models trained on sensor features. This provides a physically grounded target variable linked to ISO standards without requiring invasive lubricant sampling. Jakobsen et al. relate spectral energy of vibration signals to $\kappa$ \cite{jakobsen_vibration_2021} and combine the Hjorth parameters with LASSO regression and shallow neural networks to predict $\kappa$ from passive ultrasound signals \cite{jakobsen_detecting_2023}. This directly bridges physics-based lubrication modelling and data-driven signal processing.
@@ -165,11 +206,12 @@ Data-driven meachine learning methods learn mappings from handcrafted or raw sig
 
 \subsubsection{Classical Machine Learning}
 \label{subsubsec:classical_ml}
+\todo{Check whether Georgiev et al.\ (georgiev\_microphone\_2017) demonstrate fuzzy-logic/NN classification with results or only propose it. If demonstrated, add a sentence here; if only proposed, remove the Classical ML tick under Sound/Microphone in Table~\ref{tab:sp_crossref}.}
 Jakobsen et al.\ \cite{jakobsen_detecting_2023} demonstrate that regularised linear regression (LASSO) on passive ultrasound features achieves good $\kappa$ prediction while providing interpretable feature weights. The feature set found through the sparsity promoting LASSO regression is furthermore used in a simple nerual network to predict $\kappa$.
 
 \subsubsection{Deep Learning}
 \label{subsubsec:dl}
-Deep learning methods operate on raw signals or intermediate representations and learn features jointly with the classification or regression task. Wang et al. \cite{wang_online_2022} apply a convolutional neural network (CNN) to lubricant debris images for particle classification. Zhang et al. \cite{zhang_graph-data-based_2024} apply a graph neural network (GNN) to features from multi-sensor data (vibration, AE, temperature) lubrication degradation, leveraging sensor correlations that are not captured by independent feature extraction. Zhang et al. \cite{zhang_interpretable_2026} address the absence of labelled field lubrication faults by using a CycleGAN with multiscale residual blocks and a semantic-consistency loss to translate labelled rig signals into target-machine style, then classifying with a CNN trained solely on the generated data. This is the only reviewed method that produces usable lubrication-anomaly training data for a field deployment with no labelled field-fault examples at all. The evaluation is nonetheless not a true field test since both setups share sensor type and acquisition hardware and each lubrication state was realised on a dedicated bearing.
+Deep learning methods operate on raw signals or intermediate representations and learn features jointly with the classification or regression task. Zhang et al. \cite{zhang_graph-data-based_2024} apply a graph neural network (GNN) to features from multi-sensor data (vibration, AE, temperature) lubrication degradation, leveraging sensor correlations that are not captured by independent feature extraction. Zhang et al. \cite{zhang_interpretable_2026} address the absence of labelled field lubrication faults by using a CycleGAN with multiscale residual blocks and a semantic-consistency loss to translate labelled rig signals into target-machine style, then classifying with a CNN trained solely on the generated data. This is the only reviewed method that produces usable lubrication-anomaly training data for a field deployment with no labelled field-fault examples at all. The evaluation is nonetheless not a true field test since both setups share sensor type and acquisition hardware and each lubrication state was realised on a dedicated bearing.
 
 A consistent challenge for deep learning in LCM is the scarcity of labelled training data from real bearing degradation under controlled lubrication conditions. Controlled accelerated tests are expensive to run, and publicly available LCM datasets with varied lubrication conditions and sensing modalities are not currently available. Generative domain transfer \cite{zhang_interpretable_2026} is a response to this challenge for the specific case of lab-to-field transfer, though it remains distinct from the self-supervised and foundation-model directions.
 
@@ -199,10 +241,8 @@ Table~\ref{tab:sp_crossref} summarises the successfull application of SP method 
  >{\centering\arraybackslash}X |
  >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X
- >{\centering\arraybackslash}X
- >{\centering\arraybackslash}X
  >{\centering\arraybackslash}X }
-& \multicolumn{5}{c}{\textbf{Passive}} & \multicolumn{5}{c}{\textbf{Active}} \\
+& \multicolumn{5}{c}{\textbf{Passive}} & \multicolumn{3}{c}{\textbf{Active}} \\
 \textbf{SP Method Family}
 & \rotatebox{75}{\textbf{Vibration}}
 & \rotatebox{75}{\textbf{\shortstack[l]{Acoustic\\Emission}}}
@@ -211,36 +251,34 @@ Table~\ref{tab:sp_crossref} summarises the successfull application of SP method 
 & \rotatebox{75}{\textbf{Thermal}}
 & \rotatebox{75}{\textbf{\shortstack[l]{Active\\Ultrasonic}}}
 & \rotatebox{75}{\textbf{Electrical}}
-& \rotatebox{75}{\textbf{\shortstack[l]{Magnetic\\/ Oil}}}
-& \rotatebox{75}{\textbf{Optical}}
 & \rotatebox{75}{\textbf{SAW}}
 \\
 \hline
-Time-domain statistics      & \checkmark & \checkmark & \checkmark &            & \checkmark &            &            &            &            &            \\
+Time-domain statistics      & \checkmark & \checkmark & \checkmark &            &            &            &            &            \\
 \hline
-Threshold methods           &            & \checkmark & \checkmark &            &            &            &            &            &            &            \\
+Threshold methods           &            & \checkmark & \checkmark &            &            &            &            &            \\
 \hline
-Spectral shape  & \checkmark & \checkmark &            &            &            &            &            &            &            &            \\
+Spectral shape  & \checkmark & \checkmark &            & \checkmark &            &            &            &            \\
 \hline
-Multi-band hit-rate / WPI   &            & \checkmark &            &            &            &            &            &            &            &            \\
+Multi-band hit-rate / WPI   &            & \checkmark &            &            &            &            &            &            \\
 \hline
-STFT          & \checkmark &            &            &            &            &            &            &            &            &            \\
+STFT          & \checkmark &            &            &            &            &            &            &            \\
 \hline
-Signal decomposition &            &            &            &            &            &            &            & \checkmark &            &            \\
+Deconvolution         & \checkmark &            &            &            &            &            &            &            \\
 \hline
-Deconvolution         & \checkmark &            &            &            &            &            &            &            &            &            \\
+Spring-layer model          &            &            &            &            &            & \checkmark &            &            \\
 \hline
-Spring-layer model          &            &            &            &            &            & \checkmark &            &            &            &            \\
+Electrical circuit model    &            &            &            &            &            &            & \checkmark &            \\
 \hline
-Electrical circuit model    &            &            &            &            &            &            & \checkmark &            &            &            \\
+SAW attenuation / time-delay model &      &            &            &            &            &            &            & \checkmark \\
 \hline
-$\kappa$/$\Lambda$ regression target & \checkmark & \checkmark & \checkmark &  &            &            &            &            &            &            \\
+$\kappa$/$\Lambda$ regression target & \checkmark & \checkmark & \checkmark &  &            &            &            &            \\
 \hline
-Classical ML   &            &            & \checkmark &            &            &            &            &            &            &            \\
+Classical ML   &            &            & \checkmark & \checkmark &            &            &            &            \\
 \hline
-Deep learning & \checkmark & \checkmark &            &            & \checkmark &            &            &            & \checkmark &            \\
+Deep learning & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
 \hline
-Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            &            &            &            \\
+Multi-sensor fusion         & \checkmark & \checkmark &            &            & \checkmark &            &            &            \\
 \end{tabularx}
 \caption{Master cross-reference matrix of signal processing method families and sensing modalities for LCM of ball bearings. A \checkmark indicates the combination has been demonstrated in at least one study included in this review.}
 \label{tab:sp_crossref}
