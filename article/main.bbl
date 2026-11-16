@@ -35,6 +35,10 @@ James~M. Wakiru, Liliane Pintelon, Peter~N. Muchiri, and Peter~K. Chemweno.
 \newblock A review on lubricant condition monitoring information analysis for maintenance decision support.
 \newblock {\em Mechanical Systems and Signal Processing}, 118:108--132, March 2019.
 
+\bibitem{skf_lubrication_2026}
+{SKF}.
+\newblock Lubrication condition -- the viscosity ratio, {\ensuremath{\kappa}}.
+
 \bibitem{ma_review_2025}
 Jiaojiao Ma, Jiefei Yu, Xianwen Zhou, Fengshou Gu, Lingli Jiang, and Xuejun Li.
 \newblock Condition monitoring of journal bearings based on acoustic emissions: {A} state-of-the-art review.
@@ -198,10 +202,6 @@ Karolina Jablonka, Romeo Glovnea, and Jeroen Bongaerts.
 Daniel Cornel, Francisco Gutiérrez~Guzmán, Georg Jacobs, and Stephan Neumann.
 \newblock Condition monitoring of roller bearings using acoustic emission.
 \newblock {\em Wind Energy Science}, 6(2):367--376, March 2021.
-
-\bibitem{skf_lubrication_2026}
-{SKF}.
-\newblock Lubrication condition -- the viscosity ratio, {\ensuremath{\kappa}}.
 
 \bibitem{jakobsen_vibration_2021}
 Morten~Opprud Jakobsen, Eskild~Sune Herskind, Kim Bjerge, Peter Ahrendt, Christian~Fischer Pedersen, and Mikael~Bergholz Knudsen.
